@@ -90,6 +90,7 @@ const UI = {
   painLabels: ['Sin molestia', 'Muy leve', 'Leve', 'Moderada', 'Intensa', 'Muy intensa'],
   reviewsNotice: 'Reseñas de ejemplo: se sustituirán por opiniones reales de clientas. No son testimonios verificados.',
   imageSlot: 'Foto pendiente',
+  scrollHint: 'Desliza para descubrir',
 };
 const PAIN = (n) => UI.painLabels[Math.max(0, Math.min(5, Number(n) || 0))];
 
@@ -399,7 +400,7 @@ ${fontsUrl ? `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:locale" content="${esc(seo.locale || 'es_ES')}">
 ${url ? `<meta property="og:url" content="${esc(url)}">\n` : ''}${ogAbs ? `<meta property="og:image" content="${esc(ogAbs)}">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n` : ''}<meta name="twitter:card" content="summary_large_image">
-<script>document.documentElement.className=document.documentElement.className.replace('no-js','js');</script>
+<script>(function(d){d.className=d.className.replace('no-js','js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.className+=' motion-ok';}catch(e){}})(document.documentElement);</script>
 ${[businessLd(), ...ld].map(jsonLd).join('\n')}
 </head>
 <body>
@@ -527,15 +528,79 @@ function contactForm(root, preselect = '') {
 const featured = (() => { const f = treatments.filter((t) => t.featured); return (f.length ? f : treatments).slice(0, 6); })();
 const activePromos = arr(mk.promos).filter((p) => p.active !== false);
 
+/* ---------- Inicio: hero inmersivo ----------
+   HTML completo y legible sin JS (hero normal). Con JS y sin reduced-motion, main.js
+   añade .hx-on: escena fijada (sticky) cuyo progreso de scroll dirige la coreografía. */
+const wordsOf = (s) => String(s ?? '').trim().split(/\s+/).filter(Boolean);
+const bare = (w) => String(w ?? '').replace(/[^\p{L}\p{N}'’-]/gu, '');
+/** Divide un texto en palabras (sin cortes) y letras para la máscara de entrada. Siempre aria-hidden fuera. */
+function splitChars(text, start = 0) {
+  let i = start;
+  const html = wordsOf(text).map((w) => `<span class="hx-w">${[...w].map((c) => `<span class="hx-ch" style="--i:${i++}">${esc(c)}</span>`).join('')}</span>`).join(' ');
+  return { html, next: i };
+}
+function heroImmersive(root, h, heroImg) {
+  const stats = arr(site.stats);
+  const big = arr(h.bigWords).length ? arr(h.bigWords).slice(0, 2) : [bare(wordsOf(h.title)[0]), bare(wordsOf(h.titleAccent || h.title).slice(-1)[0])].filter(Boolean);
+  const l1 = splitChars(h.title);
+  const l2 = h.titleAccent ? splitChars(h.titleAccent, l1.next) : null;
+  const L = (cls, z, fly, depth, rot, d, inner) => `<div class="hx__layer ${cls}" data-z="${z}" data-fly="${fly}" data-depth="${depth}" data-rot="${rot}" style="--d:${d}"><div class="hx__in">${inner}</div></div>`;
+  let r = 0; // índice de revelado escalonado
+  const rv = () => ` data-hx-reveal="${r++}"`;
+  return `<section class="hero hero--immersive" aria-labelledby="hero-title" data-immersive>
+  <div class="hx__track">
+    <div class="hx__stage">
+      <div class="hx__bg hx__bg--1" aria-hidden="true"></div>
+      <div class="hx__bg hx__bg--2" aria-hidden="true"></div>
+      <div class="hx__bg hx__bg--3" aria-hidden="true"></div>
+      <div class="hx__glow" aria-hidden="true"></div>
+      <div class="hx__words" aria-hidden="true">${big.map((w, i) => `<span class="hx__word hx__word--${i ? 'r' : 'l'}"><span class="hx__in">${esc(w)}</span></span>`).join('')}</div>
+      <div class="hx__scene" aria-hidden="true"><div class="hx__rig">
+        ${L('hx-l--blob-a', -320, 760, 0.35, 8, 0, blob('', 'pink', 'coral', 0))}
+        ${L('hx-l--blob-b', -220, 900, 0.45, -10, 1, blob('', 'sage', 'cream', 1))}
+        ${L('hx-l--leaf-far hx-d', -420, -650, 0.25, 14, 2, leaf('', 'sage'))}
+        ${L('hx-l--ring-a', -160, 820, 0.7, 0, 3, '<span class="hx-ring"></span>')}
+        ${L('hx-l--ring-b hx-d', -60, 640, 0.9, 0, 4, '<span class="hx-ring hx-ring--thin"></span>')}
+        ${L('hx-l--dot-a', 40, 700, 1.1, 0, 5, '<span class="hx-dot"></span>')}
+        ${L('hx-l--dot-b hx-d', -260, 980, 0.55, 0, 6, '<span class="hx-dot hx-dot--sm"></span>')}
+        ${L('hx-l--blob-c', 0, 560, 0.85, 20, 7, blob('', 'gold', 'pink', 1))}
+        ${L('hx-l--palm-a', 120, 700, 1.25, -12, 8, palm('', 'sage'))}
+        ${L('hx-l--palm-b', 160, 780, 1.35, 10, 9, palm('', 'green'))}
+        ${L('hx-l--sparkles', 60, 420, 1.5, 0, 10, sparkles('deco-sparkles', 10))}
+      </div></div>
+      <canvas class="hx__particles" aria-hidden="true"></canvas>
+      <div class="container hx__content">
+        ${h.eyebrow ? `<p class="eyebrow hx__eyebrow"${rv()}>${esc(h.eyebrow)}</p>` : ''}
+        <h1 id="hero-title" class="hx-title"><span class="visually-hidden">${esc([h.title, h.titleAccent].filter(Boolean).join(' '))}</span><span class="hx-title__line hx-title__line--1" aria-hidden="true">${l1.html}</span>${l2 ? ` <span class="hx-title__line hx-title__line--2 accent" aria-hidden="true">${l2.html}</span>` : ''}</h1>
+        <div class="hx__body">
+          ${h.subtitle ? `<p class="hero__subtitle"${rv()}>${esc(h.subtitle)}</p>` : ''}
+          <div class="btn-row"${rv()}>
+            ${h.ctaPrimary ? `<a class="btn" href="${esc(link(h.ctaPrimary.href, root))}"${extAttrs(h.ctaPrimary.href)}>${icon('calendar')}<span>${esc(h.ctaPrimary.label)}</span></a>` : ''}
+            ${h.ctaSecondary ? `<a class="btn btn--ghost" href="${esc(link(h.ctaSecondary.href, root))}"${extAttrs(h.ctaSecondary.href)}><span>${esc(h.ctaSecondary.label)}</span>${icon('arrow')}</a>` : ''}
+          </div>
+          ${stats.length ? `<ul class="hx-stats"${rv()}>${stats.map((s) => `<li><span class="hx-stats__value">${esc(s.value)}</span><span class="hx-stats__label">${esc(s.label)}</span></li>`).join('')}</ul>` : ''}
+        </div>
+        <div class="hx__visual">
+          <div class="arch__ring" aria-hidden="true"></div>
+          <div class="arch">${heroImg ? `<img src="${esc(imgSrc(heroImg, root))}" alt="${esc(h.imageAlt || '')}" fetchpriority="high">` : imgSlot('static/src/assets/img/hero.jpg')}</div>
+        </div>
+      </div>
+      <p class="hx__hint" aria-hidden="true"><span>${esc(h.scrollHint || UI.scrollHint)}</span><span class="hx__hint-line"></span></p>
+    </div>
+  </div>
+</section>`;
+}
+
 /* ---------- Inicio ---------- */
 function pageHome() {
   const h = site.hero || {};
   const heroImg = findImage(h.image, 'hero');
   const testi = site.testimonials || {};
   const lm = mk.leadMagnet;
-  const statsHtml = arr(site.stats).length ? `<div class="container stats"><ul class="stats__list reveal">${arr(site.stats).map((s) => `<li class="stat"><span class="stat__value">${esc(s.value)}</span><span class="stat__label">${esc(s.label)}</span></li>`).join('')}</ul></div>` : '';
+  const immersive = h.immersive !== false;
+  const statsHtml = !immersive && arr(site.stats).length ? `<div class="container stats"><ul class="stats__list reveal">${arr(site.stats).map((s) => `<li class="stat"><span class="stat__value">${esc(s.value)}</span><span class="stat__label">${esc(s.label)}</span></li>`).join('')}</ul></div>` : '';
   const body = (root) => `
-<section class="hero" aria-labelledby="hero-title" data-parallax-scope>
+${immersive ? heroImmersive(root, h, heroImg) : `<section class="hero" aria-labelledby="hero-title" data-parallax-scope>
   <div class="hero__layer" data-speed="0.08">${blob('deco-blob-a', 'pink', 'coral', 0)}${blob('deco-blob-b', 'sage', 'cream', 1)}</div>
   <div class="hero__layer" data-speed="0.18">${blob('deco-blob-c', 'gold', 'pink', 1)}</div>
   <div class="hero__layer" data-speed="0.32">${palm('deco-leaf-a', 'sage')}${palm('deco-leaf-b', 'green')}${leaf('deco-leaf-c', 'sage')}</div>
@@ -558,7 +623,7 @@ function pageHome() {
       ${arr(site.stats)[0] ? `<div class="float-card float-card--b" aria-hidden="true">${icon('sparkle')}<span><strong>${esc(site.stats[0].value)}</strong>${esc(site.stats[0].label)}</span></div>` : ''}
     </div>
   </div>
-</section>
+</section>`}
 ${statsHtml}
 
 ${categories.length ? `<section class="section" aria-labelledby="cats-title">

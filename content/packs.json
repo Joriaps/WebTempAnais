@@ -46,11 +46,11 @@
       "badge": "Básico imprescindible",
       "description": "Manos y pies impecables en una sola visita, con esmaltado semipermanente de larga duración.",
       "items": [
-        "Manicura con esmaltado semipermanente",
-        "Pedicura completa con esmaltado semipermanente"
+        "Manicura semipermanente con retirada",
+        "Semipermanente de pies con retirada"
       ],
       "price": 44,
-      "oldPrice": 52,
+      "oldPrice": 54,
       "highlight": false,
       "cta": "Reservar Manos & Pies"
     },
@@ -145,14 +145,68 @@
     }
   ],
   "bonos": [
-    { "treatmentId": "depilacion-laser", "label": "Láser axilas", "sessions": 6, "price": 135, "oldPrice": 180 },
-    { "treatmentId": "depilacion-laser", "label": "Láser ingles", "sessions": 6, "price": 179, "oldPrice": 240 },
-    { "treatmentId": "depilacion-laser", "label": "Láser piernas completas", "sessions": 6, "price": 549, "oldPrice": 720 },
-    { "treatmentId": "maderoterapia", "label": "Maderoterapia corporal", "sessions": 10, "price": 360, "oldPrice": 450 },
-    { "treatmentId": "presoterapia", "label": "Presoterapia", "sessions": 10, "price": 220, "oldPrice": 300 },
-    { "treatmentId": "microneedling-dermapen", "label": "Microneedling Dermapen facial", "sessions": 3, "price": 225, "oldPrice": 270 },
-    { "treatmentId": "bb-glow", "label": "BB Glow", "sessions": 3, "price": 225, "oldPrice": 270 },
-    { "treatmentId": "micropuntura-estrias", "label": "Micropuntura brasileña estrías (zona media)", "sessions": 4, "price": 260, "oldPrice": 320 },
-    { "treatmentId": "micropuntura-capilar", "label": "Micropuntura capilar", "sessions": 6, "price": 430, "oldPrice": 540 }
+    {
+      "treatmentId": "depilacion-laser",
+      "label": "Láser axilas",
+      "sessions": 6,
+      "price": 135,
+      "oldPrice": 180
+    },
+    {
+      "treatmentId": "depilacion-laser",
+      "label": "Láser ingles",
+      "sessions": 6,
+      "price": 179,
+      "oldPrice": 240
+    },
+    {
+      "treatmentId": "depilacion-laser",
+      "label": "Láser piernas completas",
+      "sessions": 6,
+      "price": 549,
+      "oldPrice": 720
+    },
+    {
+      "treatmentId": "maderoterapia",
+      "label": "Maderoterapia corporal",
+      "sessions": 10,
+      "price": 360,
+      "oldPrice": 450
+    },
+    {
+      "treatmentId": "presoterapia",
+      "label": "Presoterapia",
+      "sessions": 10,
+      "price": 220,
+      "oldPrice": 300
+    },
+    {
+      "treatmentId": "microneedling-dermapen",
+      "label": "Microneedling Dermapen facial",
+      "sessions": 3,
+      "price": 225,
+      "oldPrice": 270
+    },
+    {
+      "treatmentId": "bb-glow",
+      "label": "BB Glow",
+      "sessions": 3,
+      "price": 225,
+      "oldPrice": 270
+    },
+    {
+      "treatmentId": "micropuntura-estrias",
+      "label": "Micropuntura brasileña estrías (zona media)",
+      "sessions": 4,
+      "price": 260,
+      "oldPrice": 320
+    },
+    {
+      "treatmentId": "micropuntura-capilar",
+      "label": "Micropuntura capilar",
+      "sessions": 6,
+      "price": 430,
+      "oldPrice": 540
+    }
   ]
 }

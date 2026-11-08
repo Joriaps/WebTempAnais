@@ -58,6 +58,7 @@
     { "label": "Contacto", "href": "contacto/" }
   ],
   "hero": {
+    "immersive": true,
     "eyebrow": "Estética avanzada · Belleza · Bienestar",
     "title": "Brilla a tu manera,",
     "titleAccent": "reina tu imperio",

@@ -123,3 +123,18 @@ npm run check      # enlaces internos, anclas, un <h1> por página, alt en <img>
 ```
 `seo.siteUrl` (o la variable `SITE_URL`) activa canonical, `og:url`, sitemap con URLs absolutas y JSON-LD con URL. En GitHub Pages el workflow la rellena sola si `seo.siteUrl` está vacío.
 Si `content/treatments.json`, `packs.json` o `marketing.json` no existen o no son JSON válido, se usan los datos de prueba de `static/fixtures/`.
+
+## Hero inmersivo de la portada (`site.json → hero`)
+Campos **opcionales** añadidos para el inicio inmersivo. Si faltan, se usan los valores por defecto.
+
+| Campo | Por defecto | Uso |
+|---|---|---|
+| `immersive` | `true` | `true`: inicio inmersivo (escena fijada de ~2,5–3 pantallas de scroll, titular gigante que se divide, capas en profundidad, partículas doradas que reaccionan al cursor/toque). `false`: vuelve al hero clásico de dos columnas con parallax suave. |
+| `bigWords` | 1.ª palabra de `title` y última de `titleAccent` (p. ej. `["Brilla", "imperio"]`) | Hasta 2 palabras decorativas gigantes que se abren en horizontal al hacer scroll. Son decorativas (ocultas a lectores de pantalla): el texto real es `title` + `titleAccent`. Mejor palabras cortas (≤ 8 letras). |
+| `scrollHint` | `"Desliza para descubrir"` | Texto pequeño que invita a hacer scroll al inicio de la escena (decorativo). |
+
+Notas:
+- El `h1` sigue siendo `title` + `titleAccent` (texto accesible intacto; las letras animadas están ocultas a lectores de pantalla).
+- `subtitle`, `ctaPrimary`, `ctaSecondary` y `stats` aparecen al final del recorrido con entrada escalonada. Con el teclado, al llegar a los botones la escena salta directamente al final.
+- Con `prefers-reduced-motion` o sin JavaScript se muestra un hero estático (sin escena fijada ni partículas) con todo el contenido visible.
+- La foto del arco sigue siendo `image` / `imageAlt` (o `static/src/assets/img/hero.jpg`).
