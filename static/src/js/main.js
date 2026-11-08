@@ -1,5 +1,6 @@
 /* Imperium Beauty Studio — JS mínimo (progressive enhancement).
-   Todo el contenido es visible sin JS; aquí solo se añade comportamiento. */
+   Todo el contenido es visible sin JS; aquí solo se añade comportamiento.
+   Sin textos propios: los mensajes traducidos llegan en atributos data-* generados por build.mjs. */
 (function () {
   'use strict';
   var doc = document.documentElement;
@@ -78,6 +79,18 @@
   onScroll();
 
   var heroFx = initImmersiveHero(document.querySelector('[data-immersive]'));
+
+  // Al llegar con un ancla (p. ej. #quienes-somos), el hero cambia de altura tras cargar
+  // y el navegador queda mal posicionado: se vuelve a llevar al destino ya con el layout final.
+  if (location.hash.length > 1) {
+    var fixHash = function () {
+      var target = null;
+      try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) {}
+      if (target) target.scrollIntoView({ block: 'start' });
+    };
+    requestAnimationFrame(function () { requestAnimationFrame(fixHash); });
+    window.addEventListener('load', fixHash, { once: true });
+  }
 
   reduceMQ.addEventListener('change', function (e) {
     reduced = e.matches;
@@ -439,7 +452,8 @@
         g.hidden = !on;
         if (on) shown += g.querySelectorAll('.card').length;
       });
-      if (live) live.textContent = shown + (shown === 1 ? ' tratamiento' : ' tratamientos');
+      // Textos traducidos desde el HTML (content/i18n/ui.json → countOne / countMany)
+      if (live) live.textContent = String((shown === 1 ? filterBar.dataset.countOne : filterBar.dataset.countMany) || '{n}').replace('{n}', shown);
       if (fromUser && history.replaceState) history.replaceState(null, '', cat === 'all' ? location.pathname + location.search : '#' + cat);
     };
     filterBar.addEventListener('click', function (e) {
@@ -501,7 +515,7 @@
         e.preventDefault();
         var bad = form.querySelector(':invalid');
         form.querySelectorAll('input,select,textarea').forEach(function (f) { f.setAttribute('aria-invalid', String(!f.validity.valid)); });
-        setStatus(form.dataset.msgInvalid || 'Revisa los campos marcados.', 'error');
+        setStatus(form.dataset.msgInvalid || '', 'error');
         if (bad) bad.focus();
         return;
       }
@@ -511,14 +525,14 @@
       var endpoint = form.dataset.endpoint;
       e.preventDefault();
       if (endpoint) {
-        setStatus(form.dataset.msgSending || 'Enviando…', '');
+        setStatus(form.dataset.msgSending || '', '');
         fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
           .then(function (r) {
             if (!r.ok) throw new Error(String(r.status));
             form.reset();
-            setStatus(form.dataset.msgOk || '¡Gracias! Te responderemos muy pronto.', 'ok');
+            setStatus(form.dataset.msgOk || '', 'ok');
           })
-          .catch(function () { setStatus(form.dataset.msgError || 'No se pudo enviar. Escríbenos por WhatsApp.', 'error'); });
+          .catch(function () { setStatus(form.dataset.msgError || '', 'error'); });
         return;
       }
       // Sin endpoint: compone el mensaje y abre WhatsApp
@@ -530,7 +544,7 @@
       var url = 'https://wa.me/' + form.dataset.wa + '?text=' + encodeURIComponent(lines.filter(Boolean).join('\n'));
       var w = window.open(url, '_blank');
       if (w) w.opener = null; else location.href = url;
-      setStatus(form.dataset.msgWa || 'Abriendo WhatsApp…', 'ok');
+      setStatus(form.dataset.msgWa || '', 'ok');
     });
   });
 

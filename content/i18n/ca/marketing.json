@@ -1,0 +1,97 @@
+{
+  "announcement": {
+    "text": "Primera vegada a Imperium? Emporta't un 15% amb la teva benvinguda Aloha i valoració gratis"
+  },
+  "promos": [
+    {
+      "id": "aloha-bienvenida",
+      "title": "Benvinguda Aloha",
+      "text": "15% en el teu primer tractament i valoració gratuïta abans de començar. Sense compromís.",
+      "badge": "-15%",
+      "validity": "Permanent per a clients nous"
+    },
+    {
+      "id": "ohana-amigos",
+      "title": "Ohana: porta la teva gent",
+      "text": "Vine amb una amiga o un familiar que no ens conegui i us emporteu un 20% cadascuna.",
+      "badge": "-20% x2",
+      "validity": "Permanent"
+    },
+    {
+      "id": "horas-valle",
+      "title": "Matins Imperium",
+      "text": "De dimarts a dijous, de 10:00 a 13:00, un 10% en manicura, pedicura, massatges i facials. Ideal si teletreballes, estudies o fas torn de tarda.",
+      "badge": "-10%",
+      "validity": "De dimarts a dijous de 10:00 a 13:00, excepte festius"
+    },
+    {
+      "id": "cumpleanos",
+      "title": "El teu mes, el teu regal",
+      "text": "Durant el mes del teu aniversari et regalem un extra a la teva cita (mascareta, tint de celles o 10 minuts més de massatge). Només ens ho has de dir en reservar.",
+      "badge": "Regal",
+      "validity": "Mes del teu aniversari, un cop l'any"
+    },
+    {
+      "id": "laser-otono",
+      "title": "Comença el làser ara i arriba a punt a l'estiu",
+      "text": "La tardor i l'hivern són la millor època per començar: menys sol, menys risc de taques i temps per completar diverses sessions. Prova de tolerància gratis.",
+      "badge": "Temporada",
+      "validity": "Novembre 2026 – febrer 2027"
+    },
+    {
+      "id": "tarjeta-regalo-navidad",
+      "title": "Targetes regal de Nadal",
+      "text": "Regala un tractament o un pack amb una targeta regal personalitzada. Validesa de 6 mesos i possibilitat de triar el tractament més endavant.",
+      "badge": "Nadal",
+      "validity": "Del 20 de novembre al 6 de gener"
+    }
+  ],
+  "loyalty": {
+    "description": "La nostra targeta de fidelitat digital: cada visita suma una corona i, quan completes la targeta, t'emportes un regal. Sense quotes i sense lletra petita.",
+    "steps": [
+      "Demana la teva targeta Club Corona en la primera visita (o registra-la amb el mòbil).",
+      "Suma 1 corona per cada cita de 25 € o més.",
+      "Quan arribes a 8 corones, tries regal: 50% en un tractament de fins a 50 € o un massatge relaxant de 30 minuts.",
+      "Les corones no caduquen mentre ens visitis almenys un cop cada 6 mesos."
+    ]
+  },
+  "leadMagnet": {
+    "title": "Diagnòstic de pell gratis",
+    "text": "En 20 minuts analitzem el teu tipus de pell, taques, porus o estries i et donem un pla clar amb opcions i preus per escrit. Tu decideixes si comences, sense compromís.",
+    "cta": "Reservar el meu diagnòstic gratis"
+  },
+  "faqGeneral": [
+    {
+      "q": "Com puc reservar cita?",
+      "a": "Per WhatsApp, per telèfon, amb el botó de reserva en línia del web o passant pel centre. Et confirmem la cita per missatge."
+    },
+    {
+      "q": "Què passa si no puc venir a la meva cita?",
+      "a": "Avisa'ns amb almenys 24 hores i la canviem sense cost. Si no avises o cancel·les amb menys temps de manera repetida, et podrem demanar una paga i senyal per a properes reserves, perquè aquest forat l'hauria pogut aprofitar una altra persona."
+    },
+    {
+      "q": "Quines formes de pagament accepteu?",
+      "a": "Efectiu, targeta i Bizum. Els packs i bons es paguen en començar el tractament; consulta'ns si prefereixes pagar-los en dues parts."
+    },
+    {
+      "q": "És la meva primera vegada, com funciona?",
+      "a": "Arriba 5 minuts abans per omplir una fitxa breu. Parlem del que busques, valorem la zona o la teva pell i t'expliquem el tractament, el nombre de sessions i el preu abans de començar. A més, tens un 15% amb la teva benvinguda Aloha."
+    },
+    {
+      "q": "Ateneu menors d'edat?",
+      "a": "Sí, en tractaments adequats a la seva edat (manicura, pedicura, celles, facials de neteja, cera…). Els menors de 16 anys han de venir acompanyats i els de 16 i 17 necessiten una autorització signada de la mare, el pare o el tutor. Alguns tractaments com el làser, la micropuntura o el Dermapen requereixen una valoració específica."
+    },
+    {
+      "q": "Els packs i bons caduquen?",
+      "a": "Els bons i packs tenen una validesa de 12 mesos des de la compra, temps suficient per completar les sessions amb la freqüència recomanada. Són personals, però ens pots consultar si necessites transferir-los."
+    },
+    {
+      "q": "Els preus inclouen IVA?",
+      "a": "Sí, tots els preus publicats inclouen IVA. Són orientatius i poden variar després de la valoració, però sempre et direm el preu final abans de començar."
+    },
+    {
+      "q": "Teniu targetes regal?",
+      "a": "Sí. Pots regalar un import, un tractament o un pack. Les targetes tenen 6 mesos de validesa i la persona que la rep pot triar el tractament més endavant."
+    }
+  ]
+}

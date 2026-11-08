@@ -1,0 +1,150 @@
+{
+  "aloha": {
+    "subtitle": "Your welcome to Imperium",
+    "description": "Is it your first time with us? We'll welcome you with 15% off your first treatment and a free assessment so you know exactly what's right for you before you pay a thing.",
+    "perks": [
+      "15% off your first treatment (anything on the menu)",
+      "Free skin or area assessment before you start",
+      "Free patch test for laser, Dermapen and micropuncture",
+      "We'll give you the price and number of sessions in writing, no obligation"
+    ],
+    "conditions": "Only for first-time clients. One use per person, on a single treatment. Cannot be combined with other offers or applied to packs or packages that are already discounted. Under-18s need permission from a parent or guardian.",
+    "cta": "I want my Aloha welcome"
+  },
+  "ohana": {
+    "subtitle": "Bring your people, you both win",
+    "description": "At Imperium we're family. If you bring a friend, partner or family member who's new to us, you both get 20% off: your guest on their first visit and you on your next appointment.",
+    "perks": [
+      "20% off for your friend or family member on their first treatment",
+      "20% off for you on your next treatment",
+      "No limit: every new person you bring means another 20% for you",
+      "You can come together on the same day and share a treatment room if available"
+    ],
+    "conditions": "Your guest must be a new client and give your name when booking. Your 20% is activated once they complete their first appointment and expires after 3 months. One discount per treatment; cannot be combined with Aloha or other offers, or applied to packs or packages.",
+    "cta": "Book with my Ohana"
+  },
+  "packs": [
+    {
+      "id": "pack-mirada-perfecta",
+      "name": "Perfect Eyes Pack",
+      "badge": "Social media favourite",
+      "description": "Lifted lashes and groomed brows for weeks. Wake up ready to go, no mascara or brow pencil needed.",
+      "items": [
+        "Lash lift with tint",
+        "Brow lamination with tint and shaping"
+      ],
+      "cta": "Book Perfect Eyes"
+    },
+    {
+      "id": "pack-manos-pies",
+      "name": "Hands & Feet Pack",
+      "badge": "Essential basic",
+      "description": "Flawless hands and feet in a single visit, with long-lasting gel polish.",
+      "items": [
+        "Gel polish manicure with removal",
+        "Gel polish for feet with removal"
+      ],
+      "cta": "Book Hands & Feet"
+    },
+    {
+      "id": "pack-silueta",
+      "name": "Silhouette Pack",
+      "badge": "Recommended",
+      "description": "The star combination to sculpt and de-puff: wood therapy to work the area and pressotherapy to drain.",
+      "items": [
+        "5 body wood therapy sessions",
+        "5 pressotherapy sessions",
+        "Initial and final assessment and measurements"
+      ],
+      "cta": "Start my Silhouette Pack"
+    },
+    {
+      "id": "pack-glow-facial",
+      "name": "Glow Facial Pack",
+      "badge": "Healthy-glow effect",
+      "description": "Clean, radiant skin with a more even tone. First we prep the skin, then we apply BB Glow.",
+      "items": [
+        "Deep cleansing facial",
+        "1 BB Glow session"
+      ],
+      "cta": "Book Glow Facial"
+    },
+    {
+      "id": "pack-verano-laser",
+      "name": "Summer Laser Pack",
+      "badge": "Start in autumn",
+      "description": "The three most requested areas in a single session. Starting in autumn or winter is ideal so you reach summer with most of the treatment done.",
+      "items": [
+        "Underarm laser hair removal",
+        "Bikini line laser hair removal",
+        "Full leg laser hair removal"
+      ],
+      "cta": "Book Summer Laser"
+    },
+    {
+      "id": "pack-relax",
+      "name": "Relax Pack",
+      "badge": "Perfect as a gift",
+      "description": "An hour and a half just for you: a full-body relaxing massage and a hydrating facial to leave you feeling brand new.",
+      "items": [
+        "50-minute relaxing massage",
+        "Express hydrating facial"
+      ],
+      "cta": "Book Relax Pack"
+    },
+    {
+      "id": "pack-ligereza",
+      "name": "Light Legs Pack",
+      "badge": "Goodbye heaviness",
+      "description": "For tired, swollen legs or fluid retention: manual drainage plus pressotherapy, over three appointments.",
+      "items": [
+        "3 lymphatic drainage massages",
+        "3 pressotherapy sessions"
+      ],
+      "cta": "Book Light Legs"
+    },
+    {
+      "id": "pack-novias-eventos",
+      "name": "Brides & Events Pack",
+      "badge": "Limited spots per date",
+      "description": "For weddings, communions, graduations or any big day. We plan it with you weeks in advance so everything is just right.",
+      "items": [
+        "Deep cleansing facial + BB Glow",
+        "Lash lift and brow lamination with tint",
+        "Gel polish manicure and pedicure",
+        "BB Lips",
+        "Personalised appointment schedule before the event"
+      ],
+      "cta": "Plan my big day"
+    }
+  ],
+  "bonos": [
+    {
+      "label": "Underarm laser"
+    },
+    {
+      "label": "Bikini line laser"
+    },
+    {
+      "label": "Full leg laser"
+    },
+    {
+      "label": "Body wood therapy"
+    },
+    {
+      "label": "Pressotherapy"
+    },
+    {
+      "label": "Facial Microneedling Dermapen"
+    },
+    {
+      "label": "BB Glow"
+    },
+    {
+      "label": "Brazilian micropuncture for stretch marks (medium area)"
+    },
+    {
+      "label": "Hair micropuncture"
+    }
+  ]
+}

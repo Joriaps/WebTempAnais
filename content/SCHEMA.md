@@ -141,3 +141,25 @@ Notas:
 
 ### Líneas de precio "desde"
 En `treatments[].prices[]` se puede añadir `"from": true` para mostrar "desde X €" (p. ej. decoraciones con precio según diseño).
+
+## «Quiénes somos» (`site.json → about`, opcional)
+Sección de la portada con id `quienes-somos`, situada antes de «Por qué nosotras» (`whyUs`). Si `about` no existe, no se muestra la sección ni el enlace del menú.
+```jsonc
+"about": {
+  "eyebrow": "Quiénes somos",
+  "title": "Más de 10 años cuidándote,", "titleAccent": "y aprendiendo cada día",   // titleAccent sale en color de acento
+  "paragraphs": [ "", "", "" ],                                                     // párrafos del texto
+  "highlights": [ { "icon": "star", "title": "", "text": "" } ]                     // tarjetas destacadas (icono del sprite)
+}
+```
+El menú (cabecera, menú móvil y pie) añade automáticamente «Quiénes somos» como primer elemento, enlazando a `#quienes-somos` de la portada del idioma en curso (funciona desde cualquier página). Su texto está en `content/i18n/ui.json → navAbout`; no hace falta tocar `nav`.
+
+## Idiomas (es · ca · en)
+- El español es la base y se publica en la raíz (`/`); el catalán en `/ca/` y el inglés en `/en/`, **con los mismos slugs** (p. ej. `/ca/tratamientos/bb-glow/`). Los `id` nunca se traducen.
+- Traducciones de contenido: `content/i18n/<ca|en>/{site,treatments,packs,marketing}.json`, fusionadas sobre el español con las reglas de `content/i18n/LEEME.md`. Si falta un archivo o un texto, se usa el español y el build lo resume en consola (`⚠ i18n …`).
+- Textos fijos de la interfaz (botones, títulos de sección, etiquetas de la ficha, formularios y validación, aria-labels, páginas legales, 404…): `content/i18n/ui.json` → `{ "es": {…}, "ca": {…}, "en": {…} }`. Ver formato en `content/i18n/LEEME.md`.
+- Cada página lleva `<html lang>`, `<link rel="alternate" hreflang="es|ca|en|x-default">`, canonical de su idioma (con `seo.siteUrl`/`SITE_URL`), `og:locale` (`es_ES`, `ca_ES`, `en_GB`) y JSON-LD `WebPage` con `inLanguage`. El `sitemap.xml` lista las URLs de los tres idiomas con sus alternativas.
+- Selector de idioma ES · CA · EN en la cabecera (escritorio), el menú móvil y el pie: enlaza a la misma página en el otro idioma. No hay redirección automática por idioma del navegador.
+- `404.html` (GitHub Pages) está en español y enlaza a las portadas de `ca` y `en`.
+- `seo.locale` de `site.json` ya no se usa: el `og:locale` sale del idioma de cada página.
+- Precios: mismo número en los tres idiomas; solo cambia el formato (`25 €` en es/ca, `€25` en en).

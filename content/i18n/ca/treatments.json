@@ -1,0 +1,2438 @@
+{
+  "categories": [
+    {
+      "id": "manos-pies",
+      "name": "Mans i peus",
+      "intro": "Ungles boniques, cuidades i al teu estil. Des d'una manicura ràpida per sortir del pas fins a un semipermanent que aguanta setmanes sense perdre la brillantor."
+    },
+    {
+      "id": "depilacion",
+      "name": "Depilació",
+      "intro": "Digues adeu a les fulles d'afaitar cada dos dies. Làser de díode per reduir el borrissol de manera duradora o cera de tota la vida quan vols un resultat immediat."
+    },
+    {
+      "id": "mirada",
+      "name": "Mirada",
+      "intro": "Pestanyes amb corba, celles pentinades i amb color sense maquillar-te cada matí. Petits gestos que et canvien la cara i t'estalvien temps."
+    },
+    {
+      "id": "masajes",
+      "name": "Massatges",
+      "intro": "El teu moment per desconnectar. Massatges per alliberar tensió, descansar de debò o sentir les cames més lleugeres."
+    },
+    {
+      "id": "corporal",
+      "name": "Corporal",
+      "intro": "Tractaments per cuidar el teu cos: fusta, pressió, aparatologia i protocols combinats que t'ajuden a sentir-te més lleugera, ferma i a gust amb la teva pell."
+    },
+    {
+      "id": "facial",
+      "name": "Facial",
+      "intro": "Pell neta, lluminosa i sucosa. Des d'una bona neteja fins a tractaments amb tecnologia per millorar la textura, el to i els signes de l'edat."
+    },
+    {
+      "id": "micropuntura",
+      "name": "Micropuntura brasilera",
+      "intro": "Una tècnica manual de precisió que estimula la regeneració pròpia de la pell. La fem servir per millorar l'aspecte d'estries i cicatrius i per donar suport al creixement del cabell."
+    }
+  ],
+  "treatments": [
+    {
+      "id": "manicura",
+      "name": "Manicura",
+      "short": "Manicura tradicional amb color, exfoliació i massatge. També amb parafina per a unes mans extrasuaus.",
+      "hook": "Mans cuidades en menys d'una hora",
+      "whatIs": "És la cura completa de les teves mans i ungles. Donem forma a l'ungla, cuidem les cutícules, exfoliem i hidratem la pell amb un massatge, i acabem amb el color normal que triïs. Si vols un extra de suavitat, afegeix-hi el tractament de parafina.",
+      "benefits": [
+        {
+          "title": "Aspecte cuidat a l'instant",
+          "text": "Surts amb les ungles netes, igualades i amb bona forma."
+        },
+        {
+          "title": "Cutícules sanes",
+          "text": "Retirem l'excés amb cura perquè l'ungla creixi millor i es vegi més bonica."
+        },
+        {
+          "title": "Mans més suaus",
+          "text": "Acabem amb crema hidratant i un petit massatge."
+        },
+        {
+          "title": "Ràpida i assequible",
+          "text": "Perfecta per a un esdeveniment, una entrevista o simplement per donar-te un caprici."
+        },
+        {
+          "title": "Per a qualsevol persona",
+          "text": "Unes mans cuidades queden bé a tothom, portin color o no."
+        }
+      ],
+      "idealFor": [
+        "Qui vol unes mans cuidades sense complicar-se",
+        "Persones que prefereixen ungles naturals o canviar de color sovint",
+        "Abans d'un esdeveniment, una cita o una entrevista",
+        "Primera vegada en un centre d'estètica"
+      ],
+      "howItWorks": [
+        {
+          "title": "Neteja",
+          "text": "Retirem restes d'esmalt i desinfectem les mans i les eines."
+        },
+        {
+          "title": "Forma i cutícules",
+          "text": "Tallem i llimem l'ungla amb la forma que prefereixis i cuidem les cutícules."
+        },
+        {
+          "title": "Exfoliació i massatge",
+          "text": "Renovem la pell de les mans i la hidratem amb un massatge."
+        },
+        {
+          "title": "Color",
+          "text": "Esmaltat normal del to que més t'agradi."
+        }
+      ],
+      "duration": "45 min – 1 h",
+      "sessions": "Quan vulguis; l'habitual és cada 1-2 setmanes",
+      "results": "Es nota a l'instant. L'esmaltat tradicional sol durar de 4 a 7 dies segons el teu ritme de vida.",
+      "aftercare": [
+        "Si portes esmalt, espera uns minuts abans de manipular objectes",
+        "Fes servir guants per rentar plats o netejar",
+        "Hidrata les mans i les cutícules cada dia"
+      ],
+      "contraindications": [
+        "Infeccions per fongs o ferides obertes a les mans o les ungles",
+        "Al·lèrgia coneguda a algun component dels esmalts (avisa'ns i busquem una alternativa)"
+      ],
+      "faq": [
+        {
+          "q": "Quina diferència hi ha amb el semipermanent?",
+          "a": "L'esmalt tradicional s'asseca a l'aire i dura uns quants dies. El semipermanent es fixa amb làmpada i aguanta 2-3 setmanes amb brillantor."
+        },
+        {
+          "q": "Què és el tractament de parafina?",
+          "a": "És un bany de parafina tèbia que embolcalla les mans, juntament amb exfoliació i massatge, per deixar-les molt suaus i hidratades. L'hem de preparar, per això cal avisar prèviament."
+        },
+        {
+          "q": "Puc portar el meu propi esmalt?",
+          "a": "És clar, tot i que tenim una carta de colors àmplia perquè triïs."
+        },
+        {
+          "q": "És només per a dones?",
+          "a": "No, gens ni mica. Molta gent ve només per la cura sense color."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Manicura tradicional + color normal · 45 min",
+          "note": "Inclou exfoliació i massatge"
+        },
+        {
+          "label": "Manicura tradicional amb parafina + color normal · 1 h",
+          "note": "Inclou exfoliació i massatge. Cal avisar prèviament"
+        },
+        {
+          "label": "Tractament de parafina · 15 min",
+          "note": "Parafina + massatge + exfoliació. Cal avisar prèviament"
+        },
+        {
+          "label": "Tallar + llimar mans · 15 min",
+          "note": "Acabat amb brillantor o hidratació, a triar"
+        },
+        {
+          "label": "Pack treure color mans + peus · 30 min",
+          "note": "Inclou tallar, llimar i hidratació"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "ungles",
+        "mans",
+        "manicura",
+        "esmalt",
+        "cura"
+      ]
+    },
+    {
+      "id": "pedicura",
+      "name": "Pedicura",
+      "short": "Peus suaus i ungles cuidades. Pedicura clàssica amb color o sense, o spa amb semipermanent, exfoliació i massatge.",
+      "hook": "Els teus peus també mereixen un respir",
+      "whatIs": "És la cura estètica dels peus i les ungles. Tallem i llimem les ungles, cuidem les cutícules i suavitzem les durícies. La pedicura spa hi afegeix semipermanent amb retirada de color, exfoliació, mascareta i massatge.",
+      "benefits": [
+        {
+          "title": "Peus més suaus",
+          "text": "Reduïm les durícies i la pell aspra dels talons i les plantes."
+        },
+        {
+          "title": "Ungles boniques",
+          "text": "Tallades, llimades i a punt per lluir sandàlies."
+        },
+        {
+          "title": "Descans de debò",
+          "text": "La versió spa inclou un massatge que alleuja la sensació de cansament."
+        },
+        {
+          "title": "Higiene i benestar",
+          "text": "Un peu cuidat se sent més còmode en el dia a dia."
+        },
+        {
+          "title": "Amb color o sense",
+          "text": "Pots acabar amb esmalt tradicional o passar-te al semipermanent."
+        }
+      ],
+      "idealFor": [
+        "Abans de l'estiu o d'unes vacances",
+        "Persones que passen moltes hores dempeus",
+        "Qui té durícies lleus o talons secs",
+        "Qualsevol persona que vulgui una estona de relax"
+      ],
+      "howItWorks": [
+        {
+          "title": "Preparació",
+          "text": "Netegem i desinfectem els peus i les eines."
+        },
+        {
+          "title": "Ungles i cutícules",
+          "text": "Tall, llimat i cura de les cutícules."
+        },
+        {
+          "title": "Durícies",
+          "text": "Suavitzem les zones aspres amb llima i productes específics."
+        },
+        {
+          "title": "Exfoliació i mascareta (spa)",
+          "text": "Renovem la pell i la nodrim en profunditat."
+        },
+        {
+          "title": "Massatge i acabat",
+          "text": "Crema hidratant, massatge i color: normal en la clàssica o semipermanent en la spa."
+        }
+      ],
+      "duration": "45 min – 1 h",
+      "sessions": "Cada 3-5 setmanes per mantenir els peus cuidats",
+      "results": "Notaràs els peus més suaus i cuidats des del primer dia. L'efecte dura més si els hidrates a casa.",
+      "aftercare": [
+        "Hidrata els peus cada dia, sobretot els talons",
+        "Si portes esmalt, fes servir calçat obert una estona després",
+        "Asseca bé entre els dits després de la dutxa"
+      ],
+      "contraindications": [
+        "Fongs, berrugues o ferides als peus",
+        "Ungles encarnades amb infecció (millor anar abans al podòleg)",
+        "Persones amb diabetis: avisa'ns per adaptar el tractament i consultar-ho amb el teu podòleg"
+      ],
+      "faq": [
+        {
+          "q": "És el mateix que anar al podòleg?",
+          "a": "No. La pedicura és estètica. Si tens ungles encarnades, dolor o problemes als peus, l'especialista és el podòleg."
+        },
+        {
+          "q": "Què inclou la pedicura spa?",
+          "a": "Tot el de la clàssica més semipermanent, retirada de color, exfoliació, mascareta nutritiva i massatge."
+        },
+        {
+          "q": "I si només vull color durador als peus?",
+          "a": "Tens el semipermanent de peus amb retirada inclosa per 26 € (45 min)."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Pedicura clàssica, amb color normal o sense · 45 min"
+        },
+        {
+          "label": "Pedicura spa amb semipermanent · 1 h",
+          "note": "Inclou retirada de color, exfoliació, mascareta i massatge"
+        },
+        {
+          "label": "Tallar + llimar peus · 15 min",
+          "note": "Acabat amb brillantor o hidratació, a triar"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "peus",
+        "pedicura",
+        "spa",
+        "ungles",
+        "relax"
+      ]
+    },
+    {
+      "id": "esmaltado-semipermanente",
+      "name": "Esmaltat semipermanent",
+      "short": "Color amb brillantor que aguanta 2-3 setmanes sense escrostonar-se. Mans i peus, amb retirada inclosa.",
+      "hook": "Ungles perfectes durant setmanes, sense retocs",
+      "whatIs": "És un esmalt especial que s'asseca amb una làmpada LED. Queda totalment sec en sortir, amb molta brillantor, i dura entre 2 i 3 setmanes sense escrostonar-se. Inclou la retirada de l'anterior i la preparació de l'ungla. Si la teva ungla és fina o irregular, l'anivellament la deixa llisa i més resistent. I si li vols donar un toc, afegeix-hi francesa, cromat o ull de gat.",
+      "benefits": [
+        {
+          "title": "Dura de debò",
+          "text": "Entre 2 i 3 setmanes amb el color intacte, segons el teu ritme de vida."
+        },
+        {
+          "title": "Sec a l'instant",
+          "text": "Surts sense por d'espatllar-lo: res d'esperar que s'assequi."
+        },
+        {
+          "title": "Brillantor del primer dia",
+          "text": "L'acabat es manté brillant fins a la retirada."
+        },
+        {
+          "title": "Mil colors i dissenys",
+          "text": "Des d'un nude elegant fins a tons atrevits o decoracions senzilles."
+        },
+        {
+          "title": "Protegeix l'ungla",
+          "text": "Ajuda que les ungles fines es trenquin menys mentre el portes."
+        }
+      ],
+      "idealFor": [
+        "Qui no té temps per pintar-se les ungles sovint",
+        "Vacances, viatges, casaments i esdeveniments",
+        "Persones amb ungles que s'obren o es trenquen amb facilitat",
+        "Amants del color i les tendències"
+      ],
+      "howItWorks": [
+        {
+          "title": "Preparació",
+          "text": "Donem forma, cuidem les cutícules i matifiquem la superfície de l'ungla."
+        },
+        {
+          "title": "Base",
+          "text": "Apliquem una base que ajuda que el color s'adhereixi bé."
+        },
+        {
+          "title": "Color",
+          "text": "Dues capes fines del to triat, cadascuna assecada amb làmpada LED."
+        },
+        {
+          "title": "Top coat",
+          "text": "Capa final de brillantor i protecció, i oli de cutícules per acabar."
+        }
+      ],
+      "duration": "45 min – 1 h 45 min",
+      "sessions": "Cada 2-3 setmanes. La retirada s'ha de fer al centre per cuidar l'ungla",
+      "results": "Resultat immediat. Sol durar 2-3 setmanes; a partir d'aquí es nota el creixement a la base.",
+      "aftercare": [
+        "No l'arrenquis: la retirada professional protegeix la teva ungla natural",
+        "Fes servir guants quan netegis amb productes agressius",
+        "Aplica oli de cutícules diverses vegades per setmana",
+        "No facis servir les ungles com a eina per obrir llaunes o etiquetes"
+      ],
+      "contraindications": [
+        "Fongs o infeccions a les ungles",
+        "Ungles molt malmeses o desenganxades (les valorem abans d'aplicar-lo)",
+        "Al·lèrgia coneguda als acrilats o a components del gel"
+      ],
+      "faq": [
+        {
+          "q": "Fa malbé les ungles?",
+          "a": "Ben aplicat i retirat al centre, no ho hauria de fer. El dany sol venir d'arrencar-lo a casa."
+        },
+        {
+          "q": "La retirada està inclosa?",
+          "a": "Sí: en la manicura semipermanent i en el semipermanent de peus la retirada va inclosa en el preu. Si només el vols retirar, són 15 € i inclou tallar, llimar i hidratació."
+        },
+        {
+          "q": "Me'l puc fer a les mans i als peus alhora?",
+          "a": "Sí, reserva els dos serveis a la mateixa cita i t'ho fem tot seguit."
+        },
+        {
+          "q": "Quant dura als peus?",
+          "a": "Als peus l'ungla creix més a poc a poc, així que sol durar fins i tot més: 3-5 setmanes."
+        },
+        {
+          "q": "Què és l'anivellament?",
+          "a": "És una capa que iguala la superfície de l'ungla abans del color. Va bé si les teves ungles són fines, toves o irregulars: queden més llises i resistents."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Manicura semipermanent + retirada · 1 h"
+        },
+        {
+          "label": "Extra massatge i exfoliació de mans · +15 min"
+        },
+        {
+          "label": "Manicura + anivellament + semipermanent · 1 h 45 min"
+        },
+        {
+          "label": "Semipermanent peus + retirada · 45 min"
+        },
+        {
+          "label": "Només retirada de semipermanent (mans o peus) · 15 min",
+          "note": "Inclou tallar, llimar i hidratació"
+        },
+        {
+          "label": "Decoracions, reforç i efectes (francesa, cromat, ull de gat…)",
+          "note": "Consultar el preu segons el disseny. Mans i peus"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "semipermanent",
+        "ungles",
+        "esmaltat",
+        "mans",
+        "peus",
+        "color"
+      ]
+    },
+    {
+      "id": "depilacion-laser",
+      "name": "Depilació làser de díode",
+      "short": "Redueix el borrissol de manera progressiva i duradora, sessió a sessió, en qualsevol zona del cos.",
+      "hook": "Oblida't de les fulles d'afaitar i la cera",
+      "whatIs": "El làser de díode emet un feix de llum que es dirigeix al pigment del pèl i debilita el fol·licle, l'arrel on neix. Amb diverses sessions el borrissol creix cada vegada menys, més fi i més clar. És un dels mètodes més utilitzats per reduir el borrissol a llarg termini.",
+      "benefits": [
+        {
+          "title": "Reducció duradora",
+          "text": "Sessió a sessió el borrissol es debilita i apareix molt menys."
+        },
+        {
+          "title": "Adeu a granets i pèls encarnats",
+          "text": "Ajuda a reduir la irritació típica de la fulla d'afaitar i la cera."
+        },
+        {
+          "title": "Sessions ràpides",
+          "text": "Les zones petites es fan en pocs minuts."
+        },
+        {
+          "title": "Molt tolerable",
+          "text": "El díode incorpora fred al capçal perquè la sessió sigui més còmoda."
+        },
+        {
+          "title": "Estalvi a la llarga",
+          "text": "Menys fulles d'afaitar, cremes i cites de cera durant anys."
+        },
+        {
+          "title": "Per a tothom",
+          "text": "Zones i packs per a dones i homes."
+        }
+      ],
+      "idealFor": [
+        "Qui està cansat de depilar-se cada pocs dies",
+        "Persones amb pèls encarnats o irritació després de la fulla d'afaitar",
+        "Dones i homes amb borrissol fosc o castany (és on millor funciona)",
+        "Majors de 16 anys (menors amb autorització de la mare, el pare o el tutor)"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta prèvia gratuïta",
+          "text": "Valorem la teva pell i el teu borrissol, fem una prova i signes el consentiment."
+        },
+        {
+          "title": "Preparació",
+          "text": "Véns amb la zona afaitada (amb fulla, mai amb cera) i sense cremes."
+        },
+        {
+          "title": "Sessió",
+          "text": "Passem el capçal per la zona. Notaràs fred i una lleugera calor o punxadeta."
+        },
+        {
+          "title": "Cures",
+          "text": "Apliquem una crema calmant i et donem els consells per als dies següents."
+        }
+      ],
+      "duration": "10 – 60 min segons la zona",
+      "sessions": "Una sessió cada 4 setmanes. Solen ser entre 6 i 12 sessions i, després, sessions de repàs i manteniment",
+      "results": "Moltes persones noten menys borrissol des de les primeres sessions. El resultat final depèn del tipus de pèl, de la pell i de factors hormonals, per això varia en cada cas.",
+      "aftercare": [
+        "Els 4 dies abans i els 4 dies després de cada sessió, no prenguis el sol directament ni et cremis. Pots fer vida totalment normal, només evita l'exposició forta al sol directe",
+        "Fes servir protector solar SPF 50 a les zones exposades",
+        "No facis servir cera ni pinces entre sessions; només fulla d'afaitar o crema",
+        "Evita la sauna, la piscina i l'esport intens 24-48 h",
+        "Hidrata la zona amb crema calmant o àloe vera"
+      ],
+      "contraindications": [
+        "Embaràs i lactància",
+        "Haver pres el sol directe amb força o haver-te cremat els 4 dies anteriors a la sessió",
+        "Medicaments fotosensibilitzants (alguns antibiòtics, isotretinoïna, etc.)",
+        "Ferides, infeccions o lesions actives a la zona",
+        "Tatuatges a la zona que es vol tractar",
+        "Epilèpsia fotosensible o malalties de la pell actives: consulta-ho abans"
+      ],
+      "faq": [
+        {
+          "q": "Fa mal?",
+          "a": "La majoria ho descriu com una punxadeta o una goma elàstica amb calor. El capçal refreda la pell i és força suportable."
+        },
+        {
+          "q": "Funciona en pèl ros, pèl-roig o canós?",
+          "a": "El làser busca el pigment fosc, així que en borrissol molt clar o blanc els resultats són molt limitats. T'ho direm amb sinceritat a la consulta."
+        },
+        {
+          "q": "És definitiva?",
+          "a": "Parlem de reducció duradora: el borrissol baixa molt, però els canvis hormonals poden fer que n'aparegui de nou i calgui algun repàs."
+        },
+        {
+          "q": "Ho puc fer a l'estiu?",
+          "a": "Sí, en zones que no prenguin el sol i amb protecció solar. En zones exposades valorem cada cas."
+        },
+        {
+          "q": "Per què s'ha d'afaitar abans?",
+          "a": "Perquè la llum arribi a l'arrel i no cremi el pèl de la superfície. Amb cera arrencaries l'arrel i el làser no tindria on actuar."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Llavi superior o mentó",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Aixelles",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Engonals (línia del biquini)",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Engonal brasilera / íntegra",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Braços complets",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Mitges cames",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Esquena completa",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Cames completes",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Pack cos complet",
+          "note": "Per sessió. Zones incloses per confirmar a la consulta"
+        },
+        {
+          "label": "Bo 6 sessions aixelles"
+        },
+        {
+          "label": "Bo 6 sessions aixelles + engonal brasilera"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "làser",
+        "díode",
+        "depilació",
+        "borrissol",
+        "home",
+        "dona"
+      ]
+    },
+    {
+      "id": "depilacion-cera",
+      "name": "Depilació amb cera",
+      "short": "Pell llisa a l'instant i durant unes quantes setmanes. Cera tèbia o calenta segons la zona.",
+      "hook": "Pell suau des d'avui mateix",
+      "whatIs": "La cera arrenca el borrissol des de l'arrel, així que la pell queda llisa durant 3-4 setmanes. Fem servir cera tèbia a les zones àmplies i cera calenta a les zones petites o sensibles, que agafa millor el pèl curt i és més suau amb la pell.",
+      "benefits": [
+        {
+          "title": "Resultat immediat",
+          "text": "Surts amb la pell llisa en aquell moment."
+        },
+        {
+          "title": "Dura setmanes",
+          "text": "En treure l'arrel, el borrissol tarda 3-4 setmanes a tornar."
+        },
+        {
+          "title": "Va bé per a qualsevol tipus de borrissol",
+          "text": "Funciona en borrissol clar, ros o canós, on el làser no arriba."
+        },
+        {
+          "title": "Borrissol més fi amb el temps",
+          "text": "Amb constància, moltes persones noten que el pèl surt més feble."
+        },
+        {
+          "title": "Preu econòmic",
+          "text": "Ideal per a un moment puntual o com a alternativa al làser."
+        }
+      ],
+      "idealFor": [
+        "Qui necessita un resultat ràpid per a un esdeveniment o un viatge",
+        "Persones amb borrissol clar o canós",
+        "Qui encara no es decideix pel làser",
+        "Dones i homes"
+      ],
+      "howItWorks": [
+        {
+          "title": "Preparació",
+          "text": "Netegem la zona i apliquem un producte que protegeix la pell."
+        },
+        {
+          "title": "Aplicació",
+          "text": "Estenem la cera a la temperatura adequada a favor del borrissol."
+        },
+        {
+          "title": "Retirada",
+          "text": "La retirem amb un gest ràpid a contrapèl, subjectant la pell perquè molesti menys."
+        },
+        {
+          "title": "Calmar",
+          "text": "Traiem les restes i apliquem oli o loció calmant."
+        }
+      ],
+      "duration": "10 – 45 min segons la zona",
+      "sessions": "Cada 3-5 setmanes, quan el borrissol faci uns 4-5 mm",
+      "results": "Pell llisa a l'instant durant 3-4 setmanes, segons el ritme de creixement de cada persona.",
+      "aftercare": [
+        "Evita el sol, la sauna i l'aigua molt calenta 24 h",
+        "No facis servir desodorant amb alcohol a les aixelles acabades de depilar",
+        "Exfolia suaument 2 vegades per setmana a partir del tercer dia per evitar pèls encarnats",
+        "Hidrata la pell cada dia"
+      ],
+      "contraindications": [
+        "Varius marcades o problemes circulatoris a la zona",
+        "Ferides, cremades solars o pell irritada",
+        "Tractaments amb retinoides o isotretinoïna",
+        "Diabetis: consulta'ns abans"
+      ],
+      "faq": [
+        {
+          "q": "Quina llargada ha de tenir el borrissol?",
+          "a": "L'ideal són uns 4-5 mm, més o menys 2-3 setmanes sense depilar amb fulla d'afaitar."
+        },
+        {
+          "q": "Cera o làser?",
+          "a": "La cera dona un resultat immediat però s'ha de repetir sempre. El làser redueix el borrissol a llarg termini. T'ajudem a triar."
+        },
+        {
+          "q": "Fa molt mal?",
+          "a": "Molesta en el moment de l'estirada, sobretot les primeres vegades. Amb constància es tolera cada vegada millor."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Llavi superior o celles"
+        },
+        {
+          "label": "Aixelles"
+        },
+        {
+          "label": "Engonals"
+        },
+        {
+          "label": "Engonal brasilera / íntegra"
+        },
+        {
+          "label": "Braços"
+        },
+        {
+          "label": "Mitges cames"
+        },
+        {
+          "label": "Esquena o pit"
+        },
+        {
+          "label": "Cames completes"
+        },
+        {
+          "label": "Cames completes + engonals + aixelles",
+          "note": "Combo"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "cera",
+        "depilació",
+        "borrissol",
+        "pell suau"
+      ]
+    },
+    {
+      "id": "lifting-pestanas",
+      "name": "Lifting de pestanyes",
+      "short": "Les teves pestanyes naturals, amb corba i més llargues a la vista durant 6-8 setmanes. Sense arrissador.",
+      "hook": "Desperta't amb la mirada feta",
+      "whatIs": "És un tractament que eleva i arrissa les teves pròpies pestanyes des de l'arrel, sense extensions ni cola. Fem servir uns motlles de silicona i productes que fixen la forma. Si vols, ho combinem amb tint perquè es vegin més fosques i intenses.",
+      "benefits": [
+        {
+          "title": "Pestanyes 100 % teves",
+          "text": "Sense extensions: és la teva pestanya natural amb més corba."
+        },
+        {
+          "title": "Mirada més oberta",
+          "text": "La corba fa que els ulls es vegin més grans i desperts."
+        },
+        {
+          "title": "Adeu a l'arrissador",
+          "text": "T'estalvies temps cada matí i fins i tot el rímel si hi afegeixes tint."
+        },
+        {
+          "title": "Dura setmanes",
+          "text": "L'efecte es manté unes 6-8 setmanes, el que tarda la pestanya a renovar-se."
+        },
+        {
+          "title": "Sense manteniment",
+          "text": "Pots dormir, nedar o anar al gimnàs sense preocupar-te."
+        }
+      ],
+      "idealFor": [
+        "Persones amb pestanyes rectes o que apunten cap avall",
+        "Qui vol un look natural sense extensions",
+        "Esportistes i amants de la platja i la piscina",
+        "Qui vol estalviar temps en la seva rutina"
+      ],
+      "howItWorks": [
+        {
+          "title": "Neteja",
+          "text": "Desmaquillem i netegem bé les pestanyes."
+        },
+        {
+          "title": "Motlles",
+          "text": "Triem la mida del motlle segons la llargada de les teves pestanyes i la corba que busques."
+        },
+        {
+          "title": "Elevació i fixació",
+          "text": "Apliquem els productes per fases mentre descanses amb els ulls tancats."
+        },
+        {
+          "title": "Tint i nutrició",
+          "text": "Opcionalment les tenyim i acabem amb un sèrum nutritiu."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Cada 6-8 setmanes per mantenir l'efecte",
+      "results": "Es veu a l'instant. La corba es manté unes 6-8 setmanes, segons el cicle natural de les teves pestanyes.",
+      "aftercare": [
+        "No mullis les pestanyes durant les primeres 24 h",
+        "Evita el vapor, la sauna i el rímel les primeres 24 h",
+        "No et freguis els ulls ni dormis de bocaterrosa la primera nit",
+        "Pentina les pestanyes i fes servir un sèrum nutritiu per cuidar-les"
+      ],
+      "contraindications": [
+        "Infeccions oculars, conjuntivitis o mussols",
+        "Cirurgia ocular recent",
+        "Al·lèrgia als productes del tractament (es pot fer una prova prèvia)",
+        "Pestanyes molt curtes o molt malmeses: les valorem abans"
+      ],
+      "faq": [
+        {
+          "q": "Fa malbé les pestanyes?",
+          "a": "Amb productes professionals i respectant els temps entre sessions, no. A més, acabem amb un nutritiu."
+        },
+        {
+          "q": "Em puc maquillar després?",
+          "a": "Sí, a partir de les 24 hores. Moltes persones ja no necessiten rímel."
+        },
+        {
+          "q": "És el mateix que les extensions?",
+          "a": "No. Les extensions afegeixen pèl artificial. El lifting treballa només amb les teves pestanyes."
+        },
+        {
+          "q": "Se'l poden fer els nois?",
+          "a": "És clar, és un tractament per a qualsevol persona que vulgui una mirada més desperta."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Lifting de pestanyes"
+        },
+        {
+          "label": "Lifting + tint de pestanyes",
+          "note": "El més demanat"
+        },
+        {
+          "label": "Combo lifting + laminat de celles",
+          "note": "Tint inclòs"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "pestanyes",
+        "lifting",
+        "mirada",
+        "natural",
+        "sense rímel"
+      ]
+    },
+    {
+      "id": "laminado-cejas",
+      "name": "Laminat de celles",
+      "short": "Celles pentinades, ordenades i amb més volum durant 4-6 setmanes. Efecte 'acabades de pentinar'.",
+      "hook": "Celles de revista, cada matí",
+      "whatIs": "El laminat allisa i fixa el pèl de les celles en la direcció que volem, normalment cap amunt. Així les celles es veuen més poblades, ordenades i amb forma. Ho completem amb disseny i, si vols, tint.",
+      "benefits": [
+        {
+          "title": "Més volum",
+          "text": "En pentinar el pèl cap amunt, la cella es veu més poblada."
+        },
+        {
+          "title": "Celles rebels sota control",
+          "text": "Els pèls que creixen en totes direccions es queden al seu lloc."
+        },
+        {
+          "title": "Rostre més fresc",
+          "text": "Unes celles boniques emmarquen la cara i obren la mirada."
+        },
+        {
+          "title": "Menys maquillatge",
+          "text": "No necessites gel ni llapis perquè estiguin perfectes."
+        },
+        {
+          "title": "Disseny a mida",
+          "text": "Adaptem la forma a les teves faccions."
+        }
+      ],
+      "idealFor": [
+        "Celles rebels, amb remolins o pèls llargs",
+        "Celles amb buits que vols dissimular",
+        "Qui busca l'estil de cella natural i despentinada",
+        "Persones que volen estalviar temps de maquillatge"
+      ],
+      "howItWorks": [
+        {
+          "title": "Disseny",
+          "text": "Estudiem el teu rostre i marquem la forma ideal."
+        },
+        {
+          "title": "Allisat",
+          "text": "Apliquem el primer producte perquè el pèl es deixi modelar."
+        },
+        {
+          "title": "Fixació",
+          "text": "Pentinem en la direcció triada i fixem la forma."
+        },
+        {
+          "title": "Acabat",
+          "text": "Depilem el que sobra, apliquem tint si vols i un nutritiu."
+        }
+      ],
+      "duration": "45 min",
+      "sessions": "Cada 4-6 setmanes",
+      "results": "L'efecte es veu en acabar i sol durar 4-6 setmanes, segons el teu tipus de pèl.",
+      "aftercare": [
+        "No mullis les celles durant 24 h",
+        "Evita el maquillatge, la sauna i la suor intensa les primeres 24 h",
+        "Pentina les celles cada matí amb un raspallet",
+        "Aplica oli o sèrum nutritiu a la nit"
+      ],
+      "contraindications": [
+        "Irritació, ferides o granets a la zona",
+        "Tractaments amb retinoides o peelings recents a la zona",
+        "Al·lèrgia als productes (es pot fer una prova prèvia)"
+      ],
+      "faq": [
+        {
+          "q": "Serveix si tinc poques celles?",
+          "a": "Ajuda que es vegin més poblades, tot i que necessita una mica de pèl per treballar. Si hi ha molts buits, t'expliquem altres opcions."
+        },
+        {
+          "q": "Queda artificial?",
+          "a": "No té per què. Ajustem l'efecte perquè sigui tan natural o marcat com prefereixis."
+        },
+        {
+          "q": "Es pot fer juntament amb el lifting de pestanyes?",
+          "a": "Sí, és el combo estrella per tenir la mirada a punt."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Laminat de celles amb disseny"
+        },
+        {
+          "label": "Laminat + tint de celles"
+        },
+        {
+          "label": "Combo laminat + lifting de pestanyes",
+          "note": "Tint inclòs"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "celles",
+        "laminat",
+        "mirada",
+        "brow lamination"
+      ]
+    },
+    {
+      "id": "tinte-cejas-pestanas",
+      "name": "Tint de celles i pestanyes",
+      "short": "Color i intensitat per a la teva mirada sense maquillatge. Ràpid, senzill i amb efecte immediat.",
+      "hook": "Més intensitat en només 20 minuts",
+      "whatIs": "Apliquem un tint específic per a celles i pestanyes que enfosqueix el pèl i el fa més visible. Les pestanyes semblen més llargues i les celles més definides, sense haver de maquillar-te.",
+      "benefits": [
+        {
+          "title": "Efecte rímel sense rímel",
+          "text": "Les puntes clares de les pestanyes es tenyeixen i semblen més llargues."
+        },
+        {
+          "title": "Celles definides",
+          "text": "Omple visualment els buits i unifica el color."
+        },
+        {
+          "title": "Molt ràpid",
+          "text": "En uns 20 minuts tens el resultat."
+        },
+        {
+          "title": "Perfecte per a l'estiu",
+          "text": "Ideal per a la platja, la piscina o l'esport sense maquillatge que es corri."
+        },
+        {
+          "title": "Color a la teva mida",
+          "text": "Triem el to que va amb el teu cabell i la teva pell."
+        }
+      ],
+      "idealFor": [
+        "Persones amb celles o pestanyes clares o rosses",
+        "Qui vol anar sense maquillatge i veure's la cara definida",
+        "Vacances i estiu",
+        "Com a complement del lifting o del laminat"
+      ],
+      "howItWorks": [
+        {
+          "title": "Triar el to",
+          "text": "Escollim el color segons el teu cabell i l'efecte que busques."
+        },
+        {
+          "title": "Protegir",
+          "text": "Protegim la pell del voltant perquè no es taqui."
+        },
+        {
+          "title": "Aplicar",
+          "text": "Apliquem el tint i el deixem actuar uns minuts."
+        },
+        {
+          "title": "Retirar",
+          "text": "Netegem i revisem el resultat."
+        }
+      ],
+      "duration": "15 – 30 min",
+      "sessions": "Cada 3-6 setmanes",
+      "results": "Es nota a l'instant. A les celles el color dura unes 3-4 setmanes i a les pestanyes fins a 6.",
+      "aftercare": [
+        "Evita mullar la zona durant unes hores",
+        "No facis servir desmaquillants amb oli els primers dies, poden aclarir el to",
+        "Protegeix les celles del sol perquè el color duri més"
+      ],
+      "contraindications": [
+        "Al·lèrgia als tints: fem una prova de sensibilitat 48 h abans si és la teva primera vegada",
+        "Infeccions o irritació ocular",
+        "Ferides o irritació a la zona"
+      ],
+      "faq": [
+        {
+          "q": "Necessito una prova d'al·lèrgia?",
+          "a": "Si és la teva primera vegada o tens la pell sensible, sí. És ràpida i ens quedem més tranquil·les."
+        },
+        {
+          "q": "Puc tenyir només les celles o només les pestanyes?",
+          "a": "És clar, tens les dues opcions per separat o juntes."
+        },
+        {
+          "q": "Es nota que és tint?",
+          "a": "No, si triem bé el to. Busquem un efecte natural."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Tint de celles"
+        },
+        {
+          "label": "Tint de pestanyes"
+        },
+        {
+          "label": "Tint de celles + pestanyes"
+        },
+        {
+          "label": "Disseny de celles amb pinça + tint"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "tint",
+        "celles",
+        "pestanyes",
+        "mirada",
+        "color"
+      ]
+    },
+    {
+      "id": "masaje-relajante",
+      "name": "Massatge relaxant",
+      "short": "Moviments suaus i envoltants per alliberar tensió i desconnectar de tot.",
+      "hook": "Prem pausa: aquesta estona és només teva",
+      "whatIs": "És un massatge amb olis i maniobres suaus i rítmiques que ajuden a relaxar els músculs i la ment. Ajustem la pressió al que et vingui de gust i ens podem centrar en l'esquena, el coll o tot el cos.",
+      "benefits": [
+        {
+          "title": "Menys estrès",
+          "text": "Ajuda a baixar revolucions i a sentir-te més tranquil·la/tranquil."
+        },
+        {
+          "title": "Músculs més relaxats",
+          "text": "Alleuja la sensació de tensió al coll, les espatlles i l'esquena."
+        },
+        {
+          "title": "Millor descans",
+          "text": "Moltes persones dormen millor la nit del massatge."
+        },
+        {
+          "title": "Pell nodrida",
+          "text": "Els olis deixen la pell suau i hidratada."
+        },
+        {
+          "title": "Un regal perfecte",
+          "text": "Ideal per regalar en aniversaris o dates especials."
+        }
+      ],
+      "idealFor": [
+        "Èpoques d'estrès, exàmens o molta feina",
+        "Persones que passen hores assegudes o davant de pantalles",
+        "Qui busca un moment d'autocura",
+        "Regalar a algú especial"
+      ],
+      "howItWorks": [
+        {
+          "title": "Xerrada breu",
+          "text": "Ens expliques quines zones et molesten i quina pressió prefereixes."
+        },
+        {
+          "title": "Ambient",
+          "text": "Llum suau, música relaxant i llitera calenteta."
+        },
+        {
+          "title": "Massatge",
+          "text": "Maniobres lentes i envoltants amb oli."
+        },
+        {
+          "title": "Tornada a la calma",
+          "text": "Et deixem uns minuts per aixecar-te sense presses i t'oferim aigua."
+        }
+      ],
+      "duration": "30 o 60 min",
+      "sessions": "Quan ho necessitis; un cop al mes és una bona rutina d'autocura",
+      "results": "La sensació de relaxació es nota en acabar. Repetir-lo de manera regular ajuda a mantenir aquesta sensació de benestar.",
+      "aftercare": [
+        "Beu aigua després del massatge",
+        "Intenta no tenir pressa just després",
+        "Evita els àpats copiosos just abans"
+      ],
+      "contraindications": [
+        "Febre, grip o infeccions",
+        "Lesions recents, fractures o inflamacions",
+        "Problemes de pell o ferides a les zones que es vol massatjar",
+        "Embaràs: avisa'ns per adaptar el massatge",
+        "Trombosi o problemes circulatoris greus"
+      ],
+      "faq": [
+        {
+          "q": "Quina diferència hi ha amb un massatge esportiu?",
+          "a": "El relaxant busca el benestar i és suau. L'esportiu treballa amb més pressió sobre les contractures."
+        },
+        {
+          "q": "M'he de despullar del tot?",
+          "a": "No. Et quedes en roba interior i et cobrim amb tovalloles en tot moment."
+        },
+        {
+          "q": "El puc regalar?",
+          "a": "Sí, tenim targetes regal."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Massatge relaxant 30 min (esquena i coll)"
+        },
+        {
+          "label": "Massatge relaxant 60 min (cos sencer)"
+        },
+        {
+          "label": "Bo 5 massatges de 60 min",
+          "note": "Compartible"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "massatge",
+        "relax",
+        "estrès",
+        "benestar",
+        "regal"
+      ]
+    },
+    {
+      "id": "masaje-drenante",
+      "name": "Massatge drenant (drenatge limfàtic manual)",
+      "short": "Maniobres suaus que ajuden a eliminar líquids i deixen les cames lleugeres.",
+      "hook": "Cames lleugeres, cos desinflat",
+      "whatIs": "El drenatge limfàtic manual és un massatge molt suau i rítmic que estimula el sistema limfàtic, l'encarregat de recollir l'excés de líquid del cos. Ajuda a reduir la sensació d'inflor i de cames cansades.",
+      "benefits": [
+        {
+          "title": "Menys inflor",
+          "text": "Ajuda a eliminar els líquids retinguts."
+        },
+        {
+          "title": "Cames lleugeres",
+          "text": "Alleuja la pesadesa, sobretot a l'estiu o després de moltes hores dempeus."
+        },
+        {
+          "title": "Molt agradable",
+          "text": "És un massatge suau i relaxant, sense pressió forta."
+        },
+        {
+          "title": "Complement perfecte",
+          "text": "Potencia tractaments corporals com la maderoteràpia o la pressoteràpia."
+        },
+        {
+          "title": "Millor aspecte de la pell",
+          "text": "Contribueix a una pell més llisa quan hi ha retenció."
+        }
+      ],
+      "idealFor": [
+        "Persones amb retenció de líquids",
+        "Sensació de cames pesades o cansades",
+        "Feines de moltes hores dempeus o assegut",
+        "Com a suport a tractaments corporals"
+      ],
+      "howItWorks": [
+        {
+          "title": "Valoració",
+          "text": "Mirem les teves zones de retenció i els teus objectius."
+        },
+        {
+          "title": "Obertura de ganglis",
+          "text": "Comencem pel coll i les zones clau per preparar el drenatge."
+        },
+        {
+          "title": "Drenatge",
+          "text": "Maniobres lentes i rítmiques en la direcció natural de la limfa."
+        },
+        {
+          "title": "Tancament",
+          "text": "Et recomanem beure aigua i alguns hàbits per mantenir l'efecte."
+        }
+      ],
+      "duration": "60 min",
+      "sessions": "Un cicle de 8-10 sessions, 1-2 per setmana, i després manteniment",
+      "results": "Moltes persones noten les cames més lleugeres des de la primera sessió. Amb constància, la sensació d'inflor sol millorar.",
+      "aftercare": [
+        "Beu aigua en abundància",
+        "És normal tenir més ganes d'anar al lavabo després",
+        "Camina i mantén-te actiu/activa",
+        "Redueix la sal i l'alcohol aquests dies"
+      ],
+      "contraindications": [
+        "Trombosi o flebitis",
+        "Insuficiència cardíaca o renal",
+        "Infeccions agudes o febre",
+        "Càncer actiu (llevat d'indicació mèdica)",
+        "Embaràs: només amb autorització mèdica"
+      ],
+      "faq": [
+        {
+          "q": "Aprima?",
+          "a": "No crema greix. Ajuda a eliminar líquids, per això et pots sentir menys inflada/inflat."
+        },
+        {
+          "q": "Per què és tan suau?",
+          "a": "El sistema limfàtic és just sota la pell; amb una pressió forta no s'estimula millor."
+        },
+        {
+          "q": "El puc combinar amb pressoteràpia?",
+          "a": "Sí, es complementen molt bé."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Sessió de drenatge limfàtic 60 min"
+        },
+        {
+          "label": "Bo 5 sessions"
+        },
+        {
+          "label": "Bo 10 sessions"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "drenatge",
+        "limfàtic",
+        "retenció",
+        "cames",
+        "massatge"
+      ]
+    },
+    {
+      "id": "maderoterapia",
+      "name": "Maderoteràpia",
+      "short": "Massatge amb estris de fusta que ajuda a modelar la silueta i millorar l'aspecte de la pell de taronja.",
+      "hook": "El massatge que modela la teva silueta",
+      "whatIs": "És un massatge corporal que es fa amb estris de fusta de diferents formes: corrons, copes i taules. Cada peça treballa la zona d'una manera per activar la circulació, ajudar a drenar líquids i millorar l'aspecte de la cel·lulitis.",
+      "benefits": [
+        {
+          "title": "Silueta més definida",
+          "text": "Ajuda a modelar zones com l'abdomen, els glutis, les malucs i les cames."
+        },
+        {
+          "title": "Menys pell de taronja",
+          "text": "Millora l'aspecte de la cel·lulitis amb constància."
+        },
+        {
+          "title": "Efecte drenant",
+          "text": "Contribueix a eliminar líquids i a sentir-te més lleugera/lleuger."
+        },
+        {
+          "title": "Pell més ferma",
+          "text": "Activa la circulació i deixa la pell més tonificada."
+        },
+        {
+          "title": "Natural i sense aparells",
+          "text": "Només fusta, olis i les mans de la teva professional."
+        }
+      ],
+      "idealFor": [
+        "Qui vol millorar l'aspecte de la cel·lulitis",
+        "Persones amb retenció de líquids",
+        "Qui busca definir la seva silueta juntament amb hàbits saludables",
+        "Abans de l'estiu o d'un esdeveniment"
+      ],
+      "howItWorks": [
+        {
+          "title": "Valoració",
+          "text": "Analitzem zones i objectius i et proposem un pla."
+        },
+        {
+          "title": "Preparació",
+          "text": "Escalfem la zona amb oli i maniobres manuals."
+        },
+        {
+          "title": "Treball amb fusta",
+          "text": "Fem servir cada estri segons la zona: corrons per drenar, copes per a la cel·lulitis, taules per modelar."
+        },
+        {
+          "title": "Drenatge final",
+          "text": "Acabem amb moviments que ajuden a portar els líquids cap als ganglis."
+        }
+      ],
+      "duration": "50 – 60 min",
+      "sessions": "Un cicle de 10-12 sessions, 2 per setmana, i després manteniment mensual",
+      "results": "Hi ha qui nota la pell més llisa i menys inflor després de les primeres sessions. Els canvis de silueta se solen apreciar a partir de la 4a-6a sessió i depenen de cada cos i dels teus hàbits.",
+      "aftercare": [
+        "Beu almenys 1,5-2 litres d'aigua al dia",
+        "Acompanya-ho d'exercici i una alimentació equilibrada per obtenir millors resultats",
+        "Evita l'alcohol i l'excés de sal",
+        "Poden aparèixer petites vermellors que desapareixen en hores"
+      ],
+      "contraindications": [
+        "Embaràs i lactància",
+        "Varius marcades, trombosi o fragilitat capil·lar",
+        "Ferides, infeccions o problemes de pell a la zona",
+        "Problemes cardíacs o tractaments anticoagulants",
+        "Cirurgia recent a la zona"
+      ],
+      "faq": [
+        {
+          "q": "Fa mal?",
+          "a": "És un massatge intens en algunes zones, però adaptem la pressió al que toleris."
+        },
+        {
+          "q": "Surten blaus?",
+          "a": "No n'haurien de sortir si es fa bé. Si tens la pell sensible, ho anem ajustant."
+        },
+        {
+          "q": "Serveix per aprimar-se?",
+          "a": "No és un tractament per perdre pes. Ajuda a millorar l'aspecte de la silueta i la pell, sobretot juntament amb bons hàbits."
+        },
+        {
+          "q": "Es pot combinar?",
+          "a": "Sí, amb pressoteràpia o aparatologia el resultat sol ser més complet."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Sessió de maderoteràpia"
+        },
+        {
+          "label": "Bo 5 sessions"
+        },
+        {
+          "label": "Bo 10 sessions",
+          "note": "El més recomanat"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "maderoteràpia",
+        "cel·lulitis",
+        "silueta",
+        "drenant",
+        "corporal"
+      ]
+    },
+    {
+      "id": "presoterapia",
+      "name": "Pressoteràpia",
+      "short": "Botes de pressió d'aire que ajuden a drenar líquids i deixen les cames lleugeríssimes.",
+      "hook": "Relaxa't mentre les teves cames es desinflen",
+      "whatIs": "Et poses unes botes (i, si vols, una faixa per a l'abdomen i els braços) que s'inflen i es desinflen per zones. Aquesta pressió ajuda a moure els líquids i estimula la circulació. Només t'has d'estirar i relaxar.",
+      "benefits": [
+        {
+          "title": "Cames lleugeres",
+          "text": "Alleuja la sensació de pesadesa i cansament."
+        },
+        {
+          "title": "Menys retenció",
+          "text": "Ajuda a eliminar l'excés de líquids."
+        },
+        {
+          "title": "Zero esforç",
+          "text": "Estàs estirada/estirat, pots llegir, descansar o mirar el mòbil."
+        },
+        {
+          "title": "Potencia altres tractaments",
+          "text": "És el complement ideal de la maderoteràpia o l'aparatologia."
+        },
+        {
+          "title": "Sensació de massatge",
+          "text": "La compressió rítmica resulta molt relaxant."
+        }
+      ],
+      "idealFor": [
+        "Persones amb retenció o cames cansades",
+        "Feines dempeus o de moltes hores assegut",
+        "Esportistes que volen recuperar les cames",
+        "Qui combina tractaments corporals"
+      ],
+      "howItWorks": [
+        {
+          "title": "Valoració",
+          "text": "Comprovem que no hi hagi contraindicacions."
+        },
+        {
+          "title": "Col·locació",
+          "text": "Et posem les botes o peces per sobre de la roba interior."
+        },
+        {
+          "title": "Programa",
+          "text": "Triem la pressió i el programa; les cambres s'inflen dels peus cap amunt."
+        },
+        {
+          "title": "Final",
+          "text": "Retirem les peces i a punt per continuar el teu dia."
+        }
+      ],
+      "duration": "30 – 40 min",
+      "sessions": "Cicle de 10 sessions, 2-3 per setmana, i després manteniment",
+      "results": "La sensació de lleugeresa es nota des de la primera sessió. La millora de la retenció depèn de la constància i dels hàbits.",
+      "aftercare": [
+        "Beu aigua després de la sessió",
+        "Camina una mica per activar la circulació",
+        "Redueix la sal a la teva alimentació"
+      ],
+      "contraindications": [
+        "Trombosi, flebitis o varius greus",
+        "Insuficiència cardíaca o renal, hipertensió no controlada",
+        "Embaràs",
+        "Ferides o infeccions a les cames",
+        "Marcapassos o problemes cardíacs: consulta mèdica prèvia"
+      ],
+      "faq": [
+        {
+          "q": "Estreny molt?",
+          "a": "Es nota pressió, però és agradable i la regulem al teu gust."
+        },
+        {
+          "q": "M'he de despullar?",
+          "a": "N'hi ha prou amb roba lleugera o roba interior; et donem roba d'un sol ús si vols."
+        },
+        {
+          "q": "La puc fer sola o millor combinada?",
+          "a": "Funciona sola, però combinada amb maderoteràpia o drenatge manual l'efecte es potencia."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Sessió de pressoteràpia (cames i abdomen)"
+        },
+        {
+          "label": "Bo 5 sessions"
+        },
+        {
+          "label": "Bo 10 sessions"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "pressoteràpia",
+        "cames",
+        "retenció",
+        "circulació",
+        "corporal"
+      ]
+    },
+    {
+      "id": "aparatologia-corporal",
+      "name": "Aparatologia corporal (radiofreqüència i cavitació)",
+      "short": "Tecnologia per treballar el greix localitzat, la flacciditat i la textura de la pell en zones concretes.",
+      "hook": "Tecnologia que treballa on més ho necessites",
+      "whatIs": "Fem servir aparells d'estètica per tractar zones concretes del cos. La radiofreqüència escalfa suaument les capes profundes de la pell per estimular el col·lagen i millorar la fermesa. La cavitació fa servir ultrasons per ajudar a reduir el greix localitzat. Et recomanem l'aparell o la combinació segons el teu objectiu.",
+      "benefits": [
+        {
+          "title": "Zones concretes",
+          "text": "Ideal per a aquelles zones que costen més: abdomen, flancs, malucs o braços."
+        },
+        {
+          "title": "Pell més ferma",
+          "text": "La radiofreqüència ajuda a millorar l'aspecte de la flacciditat."
+        },
+        {
+          "title": "Ajuda amb el greix localitzat",
+          "text": "La cavitació contribueix a reduir el contorn en zones puntuals."
+        },
+        {
+          "title": "No invasiu",
+          "text": "Sense agulles ni temps de recuperació: continues el teu dia amb normalitat."
+        },
+        {
+          "title": "Sessions còmodes",
+          "text": "Sensació de calor agradable o un lleu brunzit."
+        }
+      ],
+      "idealFor": [
+        "Qui té greix localitzat que no marxa amb dieta i exercici",
+        "Flacciditat lleu o moderada després de canvis de pes o amb l'edat",
+        "Persones que busquen una opció sense agulles",
+        "Com a part d'un pla corporal complet"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta prèvia gratuïta",
+          "text": "Mesurem i valorem per triar la tecnologia adequada."
+        },
+        {
+          "title": "Preparació",
+          "text": "Netegem la zona i apliquem gel conductor."
+        },
+        {
+          "title": "Tractament",
+          "text": "Passem el capçal per la zona amb moviments controlats."
+        },
+        {
+          "title": "Drenatge",
+          "text": "Acabem amb maniobres drenants o pressoteràpia per potenciar l'efecte."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Entre 8 i 10 sessions, 1-2 per setmana, segons la zona i la tecnologia",
+      "results": "Els canvis se solen notar de manera progressiva a partir de la 3a-4a sessió. El resultat varia segons cada cos, la zona i els hàbits.",
+      "aftercare": [
+        "Beu aigua en abundància, sobretot després de la cavitació",
+        "Fes una mica d'exercici suau aquell dia",
+        "Mantén una alimentació equilibrada",
+        "La pell pot quedar una mica vermellosa uns minuts"
+      ],
+      "contraindications": [
+        "Embaràs i lactància",
+        "Marcapassos, pròtesis o implants metàl·lics a la zona",
+        "Càncer actiu o recent",
+        "Problemes cardíacs, hepàtics o renals",
+        "Ferides, infeccions o alteracions de la sensibilitat a la zona",
+        "DIU de coure (per al tractament abdominal)"
+      ],
+      "faq": [
+        {
+          "q": "Quin aparell em convé?",
+          "a": "Depèn del teu objectiu: radiofreqüència per a la fermesa, cavitació per al greix localitzat. Ho mirem juntes a la consulta."
+        },
+        {
+          "q": "Fa mal?",
+          "a": "No. La radiofreqüència fa calor i la cavitació, un lleu xiulet a l'orella. És molt suportable."
+        },
+        {
+          "q": "És per perdre pes?",
+          "a": "No. És per millorar zones concretes. Per perdre pes, l'ideal és combinar-ho amb hàbits saludables."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Radiofreqüència corporal (1 zona)"
+        },
+        {
+          "label": "Cavitació (1 zona)"
+        },
+        {
+          "label": "Sessió combinada cavitació + radiofreqüència"
+        },
+        {
+          "label": "Bo 8 sessions combinades"
+        }
+      ],
+      "priceNote": "Preu orientatiu. [POR DEFINIR: confirmar aparatos disponibles en el centro]",
+      "tags": [
+        "aparatologia",
+        "radiofreqüència",
+        "cavitació",
+        "greix localitzat",
+        "flacciditat"
+      ]
+    },
+    {
+      "id": "tratamiento-corporal-reafirmante",
+      "name": "Tractament corporal reafirmant i reductor",
+      "short": "Pla corporal a mida que combina tècniques manuals, aparatologia i cosmètica per a una pell més ferma.",
+      "hook": "El teu pla corporal, dissenyat per a tu",
+      "whatIs": "És un protocol personalitzat que combina diverses tècniques en una mateixa sessió: exfoliació, massatge, aparatologia i productes reafirmants o reductors. L'adaptem segons si el teu objectiu és millorar la fermesa, la cel·lulitis o el contorn.",
+      "benefits": [
+        {
+          "title": "Tot en un",
+          "text": "Diverses tècniques combinades per a un resultat més complet."
+        },
+        {
+          "title": "Fet a la teva mida",
+          "text": "Cada sessió s'adapta a les teves zones i objectius."
+        },
+        {
+          "title": "Pell més ferma i suau",
+          "text": "Ajuda a millorar la textura i la tonicitat."
+        },
+        {
+          "title": "Seguiment",
+          "text": "Mesurem i comparem per veure la teva evolució."
+        },
+        {
+          "title": "Moment de benestar",
+          "text": "A més de cuidar el teu cos, és una estona molt agradable."
+        }
+      ],
+      "idealFor": [
+        "Qui busca un pla complet i no sap per on començar",
+        "Flacciditat o cel·lulitis lleu o moderada",
+        "Preparació per a l'estiu, un casament o un esdeveniment",
+        "Després de canvis de pes"
+      ],
+      "howItWorks": [
+        {
+          "title": "Diagnòstic",
+          "text": "Consulta prèvia gratuïta, mesures i fotos per al seguiment."
+        },
+        {
+          "title": "Exfoliació",
+          "text": "Preparem la pell perquè absorbeixi millor els actius."
+        },
+        {
+          "title": "Tecnologia o massatge",
+          "text": "Apliquem la tècnica adequada al teu objectiu (radiofreqüència, cavitació, fusta…)."
+        },
+        {
+          "title": "Embolcall o mascareta",
+          "text": "Productes reafirmants o reductors per potenciar l'efecte."
+        },
+        {
+          "title": "Revisió",
+          "text": "Cada poques sessions revisem les mesures i ajustem el pla."
+        }
+      ],
+      "duration": "60 – 75 min",
+      "sessions": "Un pla de 8-10 sessions, 1-2 per setmana",
+      "results": "Els primers canvis a la pell se solen notar després de 3-4 sessions. El resultat final depèn de cada persona i dels seus hàbits.",
+      "aftercare": [
+        "Hidrata la pell cada dia amb la cosmètica recomanada",
+        "Beu aigua i cuida l'alimentació",
+        "Fes exercici de manera regular",
+        "Evita el sol intens just després de la sessió"
+      ],
+      "contraindications": [
+        "Embaràs i lactància",
+        "Problemes circulatoris greus o trombosi",
+        "Marcapassos o implants metàl·lics (segons la tecnologia)",
+        "Ferides o problemes de pell a la zona",
+        "Al·lèrgia a algun cosmètic del protocol"
+      ],
+      "faq": [
+        {
+          "q": "En què es diferencia de l'aparatologia sola?",
+          "a": "Aquí combinem diverses tècniques i cosmètica en cada sessió, amb un pla i un seguiment."
+        },
+        {
+          "q": "Puc triar les zones?",
+          "a": "Sí, treballem les que més et preocupin."
+        },
+        {
+          "q": "Quan veuré resultats?",
+          "a": "La pell se sol notar més suau aviat; els canvis de fermesa o contorn requereixen diverses sessions."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Sessió de tractament corporal"
+        },
+        {
+          "label": "Bo 5 sessions"
+        },
+        {
+          "label": "Bo 10 sessions",
+          "note": "Inclou seguiment de mesures"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "reafirmant",
+        "reductor",
+        "corporal",
+        "flacciditat",
+        "cel·lulitis"
+      ]
+    },
+    {
+      "id": "higiene-facial",
+      "name": "Higiene facial profunda",
+      "short": "Neteja a fons, extracció d'impureses i pell fresca i lluminosa des del primer dia.",
+      "hook": "La teva pell, neta de debò",
+      "whatIs": "És una neteja facial completa que va més enllà de la rutina de casa. Netegem, exfoliem, obrim els porus amb vapor i extraiem punts negres i impureses. Acabem amb mascareta i hidratació segons el teu tipus de pell.",
+      "benefits": [
+        {
+          "title": "Porus més nets",
+          "text": "Retirem punts negres i impureses acumulades."
+        },
+        {
+          "title": "Pell lluminosa",
+          "text": "L'exfoliació elimina cèl·lules mortes i aporta brillantor."
+        },
+        {
+          "title": "Millor absorció",
+          "text": "Les teves cremes funcionen millor sobre una pell neta."
+        },
+        {
+          "title": "Adaptada a la teva pell",
+          "text": "Greixosa, mixta, seca o sensible: triem els productes per a tu."
+        },
+        {
+          "title": "Ideal per començar",
+          "text": "És la base de qualsevol rutina facial."
+        }
+      ],
+      "idealFor": [
+        "Pells amb punts negres, porus dilatats o lluentors",
+        "Adolescents i joves que volen cuidar la seva pell",
+        "Abans d'un esdeveniment important",
+        "Qualsevol persona que vulgui mantenir la pell sana"
+      ],
+      "howItWorks": [
+        {
+          "title": "Diagnòstic i neteja",
+          "text": "Mirem el teu tipus de pell i netegem en doble pas."
+        },
+        {
+          "title": "Exfoliació i vapor",
+          "text": "Renovem la pell i obrim els porus."
+        },
+        {
+          "title": "Extracció",
+          "text": "Retirem les impureses amb cura i higiene."
+        },
+        {
+          "title": "Mascareta i hidratació",
+          "text": "Calmem, tanquem porus i apliquem protecció solar."
+        }
+      ],
+      "duration": "60 min",
+      "sessions": "Una al mes per mantenir la pell en bon estat",
+      "results": "Pell més neta i lluminosa des del primer dia. Hi pot haver una mica de vermellor les primeres hores.",
+      "aftercare": [
+        "No et maquillis en les 12 hores següents",
+        "Evita el sol directe i fes servir SPF 50",
+        "No toquis ni premis granets a casa",
+        "Mantén la teva rutina de neteja i hidratació"
+      ],
+      "contraindications": [
+        "Acne molt inflamat o amb infecció (el valorem abans)",
+        "Herpes actiu",
+        "Cremades solars o pell irritada",
+        "Tractaments amb isotretinoïna o peelings recents"
+      ],
+      "faq": [
+        {
+          "q": "Cada quant l'he de fer?",
+          "a": "Un cop al mes és l'ideal, que és el que tarda la pell a renovar-se."
+        },
+        {
+          "q": "Serveix si tinc acne?",
+          "a": "Pot ajudar a mantenir la pell neta. Si l'acne és intens, et recomanarem consultar dermatologia."
+        },
+        {
+          "q": "Sortiré vermella?",
+          "a": "Hi pot haver una lleugera vermellor que desapareix en poques hores."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Higiene facial profunda"
+        },
+        {
+          "label": "Higiene facial + mascareta específica o ampolla"
+        },
+        {
+          "label": "Bo 4 higienes facials",
+          "note": "Una al mes"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "facial",
+        "neteja",
+        "punts negres",
+        "porus",
+        "pell"
+      ]
+    },
+    {
+      "id": "facial-hidratante-antiedad",
+      "name": "Facial hidratant i antiedat amb aparatologia",
+      "short": "Hidratació profunda i tecnologia per a una pell més sucosa, ferma i amb millor textura.",
+      "hook": "Efecte bona cara, amb tecnologia",
+      "whatIs": "És un tractament facial que combina cosmètica d'alta qualitat amb aparatologia, com la radiofreqüència facial, els ultrasons o l'electroporació, perquè els actius arribin millor a la pell. L'adaptem per hidratar en profunditat o treballar les línies d'expressió i la fermesa.",
+      "benefits": [
+        {
+          "title": "Hidratació profunda",
+          "text": "La pell es veu més sucosa i descansada."
+        },
+        {
+          "title": "Més fermesa",
+          "text": "La radiofreqüència ajuda a estimular el col·lagen."
+        },
+        {
+          "title": "Línies més suaus",
+          "text": "Millora l'aspecte de les línies fines d'expressió."
+        },
+        {
+          "title": "Efecte flaix",
+          "text": "Perfecte abans d'un esdeveniment: es nota des de la primera sessió."
+        },
+        {
+          "title": "Sense agulles",
+          "text": "Tractament còmode, sense temps de recuperació."
+        }
+      ],
+      "idealFor": [
+        "Pells deshidratades, apagades o cansades",
+        "Primeres línies d'expressió",
+        "Qui vol prevenir l'envelliment",
+        "Abans de casaments, festes o fotos"
+      ],
+      "howItWorks": [
+        {
+          "title": "Neteja i diagnòstic",
+          "text": "Netegem i mirem què necessita la teva pell."
+        },
+        {
+          "title": "Exfoliació suau",
+          "text": "Preparem la pell per rebre els actius."
+        },
+        {
+          "title": "Aparatologia",
+          "text": "Apliquem la tecnologia adequada juntament amb sèrums específics."
+        },
+        {
+          "title": "Mascareta i massatge",
+          "text": "Acabem amb mascareta, massatge facial i protecció solar."
+        }
+      ],
+      "duration": "60 – 75 min",
+      "sessions": "Una sessió puntual per a un efecte flaix, o 4-6 sessions cada 1-2 setmanes per a un tractament complet",
+      "results": "La pell es veu més lluminosa en acabar. Els canvis en fermesa i textura solen ser progressius i varien segons cada pell.",
+      "aftercare": [
+        "Fes servir protector solar cada dia",
+        "Mantén la hidratació a casa amb productes adequats",
+        "Evita la sauna i l'esport intens les primeres hores"
+      ],
+      "contraindications": [
+        "Embaràs (segons la tecnologia)",
+        "Marcapassos o implants metàl·lics a la cara",
+        "Farciments o bòtox recents: avisa'ns",
+        "Ferides, herpes actiu o irritacions",
+        "Càncer actiu"
+      ],
+      "faq": [
+        {
+          "q": "A partir de quina edat es recomana?",
+          "a": "La part hidratant és per a qualsevol edat. La part antiedat sol interessar a partir dels 25-30."
+        },
+        {
+          "q": "Quins aparells feu servir?",
+          "a": "Depèn de la teva pell. T'ho expliquem a la consulta prèvia."
+        },
+        {
+          "q": "Em puc maquillar després?",
+          "a": "Millor esperar unes hores perquè la pell aprofiti els actius."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Facial hidratant amb aparatologia"
+        },
+        {
+          "label": "Facial antiedat amb radiofreqüència"
+        },
+        {
+          "label": "Bo 4 sessions"
+        }
+      ],
+      "priceNote": "Preu orientatiu. [POR DEFINIR: confirmar aparatos disponibles en el centro]",
+      "tags": [
+        "facial",
+        "hidratant",
+        "antiedat",
+        "radiofreqüència",
+        "lluminositat"
+      ]
+    },
+    {
+      "id": "microneedling-dermapen",
+      "name": "Microagulles / Dermapen",
+      "short": "Microagulles que estimulen la renovació de la pell per millorar porus, marques i textura.",
+      "hook": "Renova la teva pell des de dins",
+      "whatIs": "El Dermapen és un dispositiu amb microagulles molt fines que creen petits canals a la pell. La pell respon reparant-se i produint més col·lagen. Alhora, aprofitem aquests canals per aplicar sèrums que penetren molt millor.",
+      "benefits": [
+        {
+          "title": "Millor textura",
+          "text": "La pell es veu més llisa i uniforme."
+        },
+        {
+          "title": "Porus més fins",
+          "text": "Ajuda a reduir l'aspecte dels porus dilatats."
+        },
+        {
+          "title": "Marques d'acne",
+          "text": "Millora l'aspecte de petites cicatrius i marques."
+        },
+        {
+          "title": "Més lluminositat",
+          "text": "Aporta un efecte de pell renovada i amb brillantor."
+        },
+        {
+          "title": "Actius que arriben més lluny",
+          "text": "Els sèrums penetren molt millor durant el tractament."
+        }
+      ],
+      "idealFor": [
+        "Pells amb marques d'acne o textura irregular",
+        "Porus dilatats",
+        "Pell apagada o amb les primeres línies",
+        "Majors de 18 anys"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta prèvia gratuïta",
+          "text": "Valorem la teva pell i signes el consentiment informat."
+        },
+        {
+          "title": "Preparació",
+          "text": "Neteja profunda i, si cal, crema anestèsica tòpica."
+        },
+        {
+          "title": "Microagulles",
+          "text": "Passem el Dermapen per zones amb la profunditat adequada i sèrums específics."
+        },
+        {
+          "title": "Calmar",
+          "text": "Mascareta calmant i protecció solar."
+        }
+      ],
+      "duration": "60 – 75 min",
+      "sessions": "Entre 3 i 6 sessions, cada 4 setmanes",
+      "results": "La pell es veu més lluminosa al cap d'uns dies. Els canvis en la textura i les marques són progressius i se solen apreciar millor a partir de la 2a-3a sessió. Varia segons cada pell.",
+      "aftercare": [
+        "La pell estarà vermellosa 24-48 h, com després d'un dia de sol",
+        "No et maquillis en les 24 h següents",
+        "Evita el sol, la sauna, la piscina i l'esport intens 48-72 h",
+        "Fes servir SPF 50 cada dia i la cosmètica calmant recomanada",
+        "No facis servir àcids ni retinol durant 5-7 dies"
+      ],
+      "contraindications": [
+        "Embaràs i lactància",
+        "Acne actiu inflamat, herpes o infeccions a la zona",
+        "Tractament amb isotretinoïna en els últims 6 mesos",
+        "Tendència a cicatrius queloides",
+        "Problemes de coagulació o anticoagulants",
+        "Malalties autoimmunes o diabetis no controlada"
+      ],
+      "faq": [
+        {
+          "q": "Fa mal?",
+          "a": "Es nota un formigueig o una sensació de rascada. Amb crema anestèsica és força suportable."
+        },
+        {
+          "q": "Puc anar a treballar després?",
+          "a": "Sí, tot i que tindràs la cara vermellosa aquell dia. L'ideal és fer-ho a última hora o abans del cap de setmana."
+        },
+        {
+          "q": "En quina època és millor?",
+          "a": "La tardor i l'hivern són ideals pel sol, però amb una bona protecció es pot fer tot l'any."
+        },
+        {
+          "q": "Es pot fer al coll i l'escot?",
+          "a": "Sí, tens zones extra."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Dermapen facial"
+        },
+        {
+          "label": "Dermapen cara + coll"
+        },
+        {
+          "label": "Zona extra (coll o escot)"
+        },
+        {
+          "label": "Bo 3 sessions facials"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "dermapen",
+        "microagulles",
+        "col·lagen",
+        "porus",
+        "marques d'acne"
+      ]
+    },
+    {
+      "id": "bb-glow",
+      "name": "BB Glow",
+      "short": "Efecte 'bona cara' semipermanent: to més uniforme i lluminós, com amb una BB cream.",
+      "hook": "Desperta't amb efecte maquillatge natural",
+      "whatIs": "És un tractament que combina microagulles molt superficials amb un sèrum amb pigment del color de la teva pell. El resultat és un to més uniforme i lluminós, semblant a portar una BB cream lleugera, que es va atenuant a poc a poc amb les setmanes.",
+      "benefits": [
+        {
+          "title": "To més uniforme",
+          "text": "Ajuda a dissimular vermellors, taquetes i ulleres lleus."
+        },
+        {
+          "title": "Lluminositat",
+          "text": "La pell es veu fresca i radiant."
+        },
+        {
+          "title": "Menys maquillatge",
+          "text": "Moltes persones deixen la base per a ocasions especials."
+        },
+        {
+          "title": "Pell més cuidada",
+          "text": "Les microagulles superficials també milloren la textura."
+        },
+        {
+          "title": "Natural",
+          "text": "Triem el to exacte perquè el resultat sigui discret."
+        }
+      ],
+      "idealFor": [
+        "Pells amb to irregular, vermellors o petites taques",
+        "Pell apagada o amb aspecte cansat",
+        "Qui vol reduir el maquillatge diari",
+        "Majors de 18 anys"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta prèvia gratuïta",
+          "text": "Valorem la teva pell, triem el to i signes el consentiment."
+        },
+        {
+          "title": "Preparació",
+          "text": "Neteja i exfoliació suau."
+        },
+        {
+          "title": "Aplicació",
+          "text": "Microagulles superficials amb el sèrum de color, per zones."
+        },
+        {
+          "title": "Segellat",
+          "text": "Mascareta calmant i protecció solar."
+        }
+      ],
+      "duration": "60 – 90 min",
+      "sessions": "De 2 a 4 sessions, cada 2-4 setmanes, i manteniment cada pocs mesos",
+      "results": "L'efecte es veu des de la primera sessió i s'intensifica amb les següents. Sol durar uns quants mesos, tot i que depèn del tipus de pell, del sol i de la rutina.",
+      "aftercare": [
+        "No mullis ni maquillis la cara les primeres 24 h",
+        "Evita el sol, la sauna i l'esport intens 48-72 h",
+        "Fes servir SPF 50 cada dia",
+        "No facis servir exfoliants, àcids ni retinol durant una setmana"
+      ],
+      "contraindications": [
+        "Embaràs i lactància",
+        "Acne actiu, rosàcia severa o herpes",
+        "Al·lèrgia a algun component del sèrum (prova prèvia)",
+        "Tractament amb isotretinoïna recent",
+        "Tendència a cicatrius queloides o problemes de coagulació"
+      ],
+      "faq": [
+        {
+          "q": "És un tatuatge?",
+          "a": "No. El pigment es queda a les capes més superficials i es va eliminant de manera natural."
+        },
+        {
+          "q": "Tapa les ulleres i les taques?",
+          "a": "Ajuda a dissimular-les si són lleus. No substitueix un tractament despigmentant."
+        },
+        {
+          "q": "Queda efecte màscara?",
+          "a": "No, busquem un to molt proper al teu perquè es vegi natural."
+        },
+        {
+          "q": "Fa mal?",
+          "a": "Molt poc; són unes microagulles molt superficials."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Sessió de BB Glow"
+        },
+        {
+          "label": "Bo 3 sessions",
+          "note": "Recomanat per a l'efecte complet"
+        },
+        {
+          "label": "Sessió de manteniment"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "bb glow",
+        "lluminositat",
+        "to",
+        "sense maquillatge",
+        "facial"
+      ]
+    },
+    {
+      "id": "bb-lips",
+      "name": "BB Lips",
+      "short": "Llavis amb un toc de color natural, més definits i sucosos durant mesos.",
+      "hook": "Llavis amb color, sense pintallavis",
+      "whatIs": "És la versió del BB Glow per als llavis. Amb microagulles molt superficials introduïm un pigment suau que retorna el color i defineix el contorn. A més, els llavis es veuen més hidratats. No és un farciment ni un tatuatge.",
+      "benefits": [
+        {
+          "title": "Color natural",
+          "text": "Recupera el to dels llavis pàl·lids o desiguals."
+        },
+        {
+          "title": "Contorn més definit",
+          "text": "Els llavis es veuen més marcats i bonics."
+        },
+        {
+          "title": "Més hidratació",
+          "text": "Els actius ajuden que es vegin sucosos."
+        },
+        {
+          "title": "Adeu al pintallavis diari",
+          "text": "Et veus amb color fins i tot acabada/acabat de llevar."
+        },
+        {
+          "title": "Temporal",
+          "text": "Es va atenuant a poc a poc, sense compromís permanent."
+        }
+      ],
+      "idealFor": [
+        "Llavis pàl·lids, apagats o amb to desigual",
+        "Qui vol un look natural sense maquillatge",
+        "Persones que busquen color sense fer-se una micropigmentació",
+        "Majors de 18 anys"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta i elecció del color",
+          "text": "Triem juntes el to que millor et queda."
+        },
+        {
+          "title": "Preparació",
+          "text": "Exfoliem els llavis i apliquem anestèsic tòpic si cal."
+        },
+        {
+          "title": "Aplicació",
+          "text": "Microagulles superficials amb el pigment."
+        },
+        {
+          "title": "Segellat",
+          "text": "Bàlsam reparador i recomanacions."
+        }
+      ],
+      "duration": "60 min",
+      "sessions": "2 sessions amb 3-4 setmanes de diferència i retoc quan el color baixi",
+      "results": "El color es veu més intens els primers dies i després se suavitza. Sol durar uns quants mesos, segons cada persona.",
+      "aftercare": [
+        "Aplica el bàlsam reparador diverses vegades al dia",
+        "No et pintis els llavis ni mengis res molt picant o calent les primeres 24-48 h",
+        "Evita els petons intensos, el sol i la piscina uns dies",
+        "No arrenquis les pelletes si n'apareixen"
+      ],
+      "contraindications": [
+        "Herpes labial actiu o freqüent (consulta-ho abans, pot caldre un tractament previ)",
+        "Embaràs i lactància",
+        "Farciments de llavis recents (cal esperar almenys 4 setmanes)",
+        "Ferides o irritació als llavis",
+        "Al·lèrgia a algun component del pigment"
+      ],
+      "faq": [
+        {
+          "q": "Augmenta el volum?",
+          "a": "No és un farciment, però en definir-los i donar-los color els llavis poden semblar més plens."
+        },
+        {
+          "q": "És el mateix que la micropigmentació?",
+          "a": "No. El BB Lips és més superficial i temporal."
+        },
+        {
+          "q": "Puc triar el color?",
+          "a": "Sí, dins de tons naturals que afavoreixen la teva pell."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Sessió de BB Lips"
+        },
+        {
+          "label": "Bo 2 sessions",
+          "note": "Recomanat"
+        },
+        {
+          "label": "Retoc",
+          "note": "En els 3 mesos següents"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "bb lips",
+        "llavis",
+        "color",
+        "hidratació",
+        "facial"
+      ]
+    },
+    {
+      "id": "micropuntura-estrias",
+      "name": "Micropuntura brasilera per a estries",
+      "short": "Tècnica manual que estimula la pell per millorar l'aspecte de les estries, també les blanques.",
+      "hook": "Una nova oportunitat per a les teves estries",
+      "whatIs": "La micropuntura brasilera és una tècnica manual i de molta precisió. Amb una agulla molt fina es treballa punt per punt dins de cada estria, juntament amb un actiu regenerador. Això genera una petita inflamació controlada que 'desperta' la pell perquè produeixi col·lagen i elastina, i així l'estria es va omplint i repigmentant. A diferència dels aparells, actua només sobre l'estria i no sobre la pell sana.",
+      "benefits": [
+        {
+          "title": "Funciona en estries blanques",
+          "text": "Una de les poques tècniques que treballa també les estries antigues."
+        },
+        {
+          "title": "Tractament de precisió",
+          "text": "Només es treballa l'estria, respectant la pell del voltant."
+        },
+        {
+          "title": "Millora la textura i el color",
+          "text": "L'estria es veu menys enfonsada i amb un to més semblant al de la teva pell."
+        },
+        {
+          "title": "Estimula la teva pròpia pell",
+          "text": "Activa la producció natural de col·lagen."
+        },
+        {
+          "title": "Més seguretat en tu",
+          "text": "T'ajuda a sentir-te més a gust amb el teu cos."
+        }
+      ],
+      "idealFor": [
+        "Estries blanques o vermelles a l'abdomen, els malucs, els glutis, les cuixes, el pit o els braços",
+        "Estries després d'embarassos, canvis de pes o l'estirada de l'adolescència",
+        "Persones que ja han provat cremes sense resultat",
+        "Majors de 18 anys"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta prèvia gratuïta",
+          "text": "Valorem les estries, fem fotos i signes el consentiment."
+        },
+        {
+          "title": "Preparació",
+          "text": "Netegem i desinfectem la zona."
+        },
+        {
+          "title": "Micropuntura",
+          "text": "Treballem cada estria punt per punt amb l'agulla i l'actiu regenerador."
+        },
+        {
+          "title": "Calmar i protegir",
+          "text": "Apliquem un producte calmant i t'expliquem les cures."
+        }
+      ],
+      "duration": "60 – 90 min segons la zona",
+      "sessions": "Normalment de 3 a 6 sessions per zona, amb almenys 30-45 dies entre sessions perquè la pell es regeneri",
+      "results": "La millora és progressiva: se sol apreciar a partir de la 2a sessió, quan la pell ha tingut temps de regenerar-se. No fa desaparèixer l'estria del tot; el resultat depèn de la seva antiguitat, la seva mida i de cada pell.",
+      "aftercare": [
+        "La zona quedarà vermella i inflada uns dies; és part del procés",
+        "Poden sortir petites crostetes: no les arrenquis",
+        "Evita el sol, la piscina, la platja i la sauna durant almenys 15 dies",
+        "Porta roba ampla i fes servir la crema regeneradora recomanada",
+        "Protegeix la zona amb SPF 50 durant tot el tractament"
+      ],
+      "contraindications": [
+        "Embaràs i lactància",
+        "Pell bronzejada o exposició solar recent",
+        "Diabetis no controlada o problemes de cicatrització",
+        "Tendència a queloides",
+        "Infeccions, ferides o problemes de pell a la zona",
+        "Anticoagulants o problemes de coagulació"
+      ],
+      "faq": [
+        {
+          "q": "Què és exactament la micropuntura brasilera?",
+          "a": "És una tècnica manual creada al Brasil que treballa dins de l'estria amb una agulla molt fina perquè la pell es regeneri sola."
+        },
+        {
+          "q": "Fa mal?",
+          "a": "És molest, sobretot a les zones sensibles, però es tolera bé. Anem parant quan ho necessitis."
+        },
+        {
+          "q": "Per què tant de temps entre sessions?",
+          "a": "Perquè la pell tarda setmanes a fabricar col·lagen nou. Aquest temps és part del tractament."
+        },
+        {
+          "q": "Quina és la millor època?",
+          "a": "La tardor i l'hivern, perquè cal evitar el sol a la zona tractada."
+        },
+        {
+          "q": "Desapareixen del tot?",
+          "a": "No t'ho podem prometre. L'objectiu és millorar-ne molt l'aspecte, i en alguns casos es noten molt poc."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Zona petita (p. ex. pit o braços)",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Zona mitjana (p. ex. malucs o glutis)",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Zona gran (p. ex. abdomen o cuixes)",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Bo 3 sessions zona petita"
+        },
+        {
+          "label": "Bo 3 sessions zona gran"
+        }
+      ],
+      "priceNote": "Preu orientatiu. El preu exacte es confirma a la valoració segons la mida i el nombre d'estries",
+      "tags": [
+        "micropuntura",
+        "estries",
+        "estries blanques",
+        "col·lagen",
+        "corporal"
+      ]
+    },
+    {
+      "id": "micropuntura-cicatrices",
+      "name": "Micropuntura brasilera per a cicatrius",
+      "short": "Ajuda a millorar el relleu i el color de cicatrius d'acne, petites cicatrius i marques.",
+      "hook": "Suavitza les marques que t'acompanyen",
+      "whatIs": "Apliquem la tècnica de micropuntura brasilera sobre la cicatriu. Amb una agulla molt fina i un actiu regenerador, treballem punt per punt perquè la pell es reorganitzi i produeixi col·lagen nou. Així, a poc a poc, la cicatriu es veu més plana, suau i integrada amb la pell del voltant.",
+      "benefits": [
+        {
+          "title": "Menys relleu",
+          "text": "Ajuda a anivellar cicatrius enfonsades, com les d'acne."
+        },
+        {
+          "title": "Color més uniforme",
+          "text": "Millora el to de cicatrius blanques o rosades."
+        },
+        {
+          "title": "Precisió total",
+          "text": "Només es treballa la marca, sense afectar la pell sana."
+        },
+        {
+          "title": "Tècnica manual",
+          "text": "S'adapta a cada cicatriu, per petita o irregular que sigui."
+        },
+        {
+          "title": "Regeneració natural",
+          "text": "La teva pròpia pell fa la feina."
+        }
+      ],
+      "idealFor": [
+        "Cicatrius d'acne o de varicel·la",
+        "Petites cicatrius de ferides o cirurgies ja curades (més d'un any)",
+        "Marques que et resten seguretat",
+        "Majors de 18 anys"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta prèvia gratuïta",
+          "text": "Valorem el tipus de cicatriu i la seva antiguitat, i signes el consentiment."
+        },
+        {
+          "title": "Preparació",
+          "text": "Neteja i desinfecció de la zona."
+        },
+        {
+          "title": "Micropuntura",
+          "text": "Treballem sobre la cicatriu punt per punt amb l'actiu regenerador."
+        },
+        {
+          "title": "Cures",
+          "text": "Producte calmant i pautes per a casa."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "De 3 a 6 sessions, amb 30-45 dies entre cadascuna",
+      "results": "La millora és progressiva i s'aprecia millor després de diverses sessions. El resultat depèn del tipus de cicatriu, de la seva antiguitat i de cada pell; no fa desaparèixer la cicatriu del tot.",
+      "aftercare": [
+        "Vermellor i inflamació uns dies: és normal",
+        "No arrenquis les crostetes",
+        "Evita el sol, la piscina i la sauna almenys 15 dies",
+        "Fes servir la crema regeneradora i SPF 50 cada dia"
+      ],
+      "contraindications": [
+        "Cicatrius queloides o hipertròfiques (en relleu)",
+        "Cicatrius de menys d'un any",
+        "Embaràs i lactància",
+        "Acne actiu o infeccions a la zona",
+        "Isotretinoïna en els últims 6 mesos",
+        "Problemes de coagulació o cicatrització"
+      ],
+      "faq": [
+        {
+          "q": "Serveix per a totes les cicatrius?",
+          "a": "No per a les queloides o en relleu. Funciona millor en cicatrius enfonsades o planes. Ho valorem a la consulta."
+        },
+        {
+          "q": "Quant de temps ha de tenir la cicatriu?",
+          "a": "Almenys un any i estar totalment curada."
+        },
+        {
+          "q": "Es pot fer a la cara?",
+          "a": "Sí, és molt habitual per a cicatrius d'acne."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Zona petita (una cicatriu o zona reduïda)",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Zona mitjana (p. ex. galtes per acne)",
+          "note": "Per sessió"
+        },
+        {
+          "label": "Bo 3 sessions zona petita"
+        },
+        {
+          "label": "Bo 3 sessions zona mitjana"
+        }
+      ],
+      "priceNote": "Preu orientatiu. El preu exacte es confirma a la valoració",
+      "tags": [
+        "micropuntura",
+        "cicatrius",
+        "acne",
+        "marques",
+        "regeneració"
+      ]
+    },
+    {
+      "id": "micropuntura-capilar",
+      "name": "Micropuntura brasilera capil·lar",
+      "short": "Estimula el cuir cabellut per afavorir el creixement i enfortir el cabell en zones amb menys densitat.",
+      "hook": "Dona una empenta al teu cabell",
+      "whatIs": "És la tècnica de micropuntura aplicada al cuir cabellut. Amb microperforacions controlades a les zones amb menys cabell, estimulem la circulació i els fol·licles, i apliquem actius capil·lars que penetren millor. L'objectiu és ajudar a enfortir el cabell i afavorir-ne el creixement.",
+      "benefits": [
+        {
+          "title": "Estimula els fol·licles",
+          "text": "Activa la zona perquè el cabell creixi en millors condicions."
+        },
+        {
+          "title": "Més densitat visual",
+          "text": "Ajuda que el cabell es vegi més fort i abundant."
+        },
+        {
+          "title": "Actius que arriben a l'arrel",
+          "text": "Els productes capil·lars penetren molt millor."
+        },
+        {
+          "title": "Menys caiguda",
+          "text": "Pot ajudar a frenar la caiguda en alguns casos."
+        },
+        {
+          "title": "Per a tothom",
+          "text": "Dones i homes amb el cabell debilitat."
+        }
+      ],
+      "idealFor": [
+        "Persones amb zones de menys densitat o entrades incipients",
+        "Caiguda per estrès, canvis hormonals o estacional",
+        "Cabell fi o debilitat",
+        "Dones i homes majors de 18 anys"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta prèvia gratuïta",
+          "text": "Valorem el cuir cabellut i et preguntem per l'origen de la caiguda."
+        },
+        {
+          "title": "Neteja",
+          "text": "Netegem i desinfectem el cuir cabellut."
+        },
+        {
+          "title": "Micropuntura",
+          "text": "Treballem les zones amb menys densitat juntament amb actius capil·lars."
+        },
+        {
+          "title": "Pautes",
+          "text": "Et donem recomanacions de cura i rentat."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Entre 6 i 10 sessions, cada 2-4 setmanes, i després manteniment",
+      "results": "El cabell necessita temps: els canvis se solen començar a notar a partir del 3r-4t mes. Els resultats varien segons la causa de la caiguda i cada persona.",
+      "aftercare": [
+        "No et rentis el cabell en les 24 h següents",
+        "Evita tints, decoloracions i productes agressius durant una setmana",
+        "Evita el sol directe al cap, la sauna i la piscina uns dies",
+        "No et gratis la zona"
+      ],
+      "contraindications": [
+        "Infeccions, ferides o dermatitis activa al cuir cabellut",
+        "Embaràs i lactància",
+        "Problemes de coagulació o anticoagulants",
+        "Alopècies cicatricials o de causa mèdica sense valoració de l'especialista",
+        "Al·lèrgia a algun actiu capil·lar"
+      ],
+      "faq": [
+        {
+          "q": "Serveix per a l'alopècia?",
+          "a": "Pot ajudar en caigudes lleus o moderades. Si la caiguda és intensa o sobtada, et recomanem consultar dermatologia per conèixer-ne la causa."
+        },
+        {
+          "q": "Es nota després del tractament?",
+          "a": "Hi pot haver una mica de vermellor al cuir cabellut aquell dia, normalment tapada pel mateix cabell."
+        },
+        {
+          "q": "És compatible amb altres tractaments capil·lars?",
+          "a": "Sol ser-ho. Explica'ns què fas servir i ho valorem."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Sessió de micropuntura capil·lar"
+        },
+        {
+          "label": "Bo 6 sessions"
+        },
+        {
+          "label": "Bo 10 sessions"
+        }
+      ],
+      "priceNote": "Preu orientatiu",
+      "tags": [
+        "micropuntura",
+        "capil·lar",
+        "caiguda del cabell",
+        "cabell",
+        "densitat"
+      ]
+    }
+  ]
+}

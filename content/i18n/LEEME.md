@@ -19,3 +19,24 @@ content/i18n/ui.json       ← textos fijos de la interfaz (botones, títulos de
 
 Si cambias un precio, solo lo cambias en `content/treatments.json` / `packs.json` y vale para los tres idiomas.
 Si cambias un texto en español, recuerda cambiarlo también en `ca` y `en` (si no, se verá la versión antigua traducida).
+
+## Cómo lo aplica el build
+- `node static/build.mjs` genera el sitio completo tres veces: `static/dist/` (es), `static/dist/ca/` y `static/dist/en/`, con los mismos slugs. CSS, JS e imágenes se comparten desde la raíz de `dist/`.
+- Si falta un archivo de traducción, o no es JSON válido, se usa el español entero para ese archivo. Si falta un texto, se usa el texto español.
+- Al final del build se muestra un **resumen por archivo** (no una línea por texto): `⚠ i18n en/treatments.json: 7 texto(s) sin traducir … p. ej.: treatments[manicura].whatIs, …`. También avisa de listas con distinto número de elementos, de `id` que no existen en el español y de tipos distintos (p. ej. un texto donde el español tiene una lista).
+- Además de lo indicado en la regla 6, se toman siempre del español `brand.shortName` y `seo.titleSuffix` (son la marca), y los datos de contacto no textuales (`phone`, `whatsapp`, `email`, `postalCode`, `mapsUrl`, `mapsEmbed`, `bookingUrl`, `formEndpoint`), `social`, `image`, `ogImage`, `siteUrl` y `locale`. Sí se traducen `whatsappMessage`, `whatsappTreatmentMessage` (conserva `{treatment}`), `phoneDisplay`, `address`, `hours[].days/time`, `bookingLabel`, `hero.scrollHint`, `hero.bigWords`, `about`…
+
+## `ui.json` — textos fijos de la interfaz
+```jsonc
+{
+  "es": { "skip": "Saltar al contenido", "footer": { "explore": "Explora" }, "treatment": { "duration": "Duración" }, … },
+  "ca": { … mismas claves … },
+  "en": { … mismas claves … }
+}
+```
+- Mismas claves en los tres idiomas; si falta una en `ca`/`en`, se usa la española (y el build lo avisa).
+- `{variable}` se sustituye al construir (`{brand}`, `{name}`, `{n}`, `{amount}`, `{pct}`, `{date}`, `{email}`, `{providers}`, `{disclaimer}`, `{treatment}`…): **no se traduce** lo que va entre llaves.
+- `*texto*` = palabra destacada en color de acento (títulos de sección). `**texto**` = negrita. `[POR DEFINIR]` se deja tal cual (se resalta como pendiente).
+- `painLabels` es una lista de 6 textos (molestia 0 a 5).
+- Grupos: raíz (botones y textos comunes, aria-labels, mensajes de WhatsApp), `footer`, `cta`, `contactInfo`, `form` (formularios, validación y estados), `homePage`, `catalog`, `treatment`, `prices`, `packs`, `contactPage`, `legal` (`privacy`, `terms`, `cookies`) y `notFound`.
+- Los nombres de los idiomas del selector (Español, Català, English) son fijos en `static/build.mjs`.

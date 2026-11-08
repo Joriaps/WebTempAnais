@@ -107,6 +107,33 @@
       "label": "con tu pack Aloha"
     }
   ],
+  "about": {
+    "eyebrow": "Quiénes somos",
+    "title": "Más de 10 años cuidándote,",
+    "titleAccent": "y aprendiendo cada día",
+    "paragraphs": [
+      "Llevamos más de una década dedicándonos a la estética y seguimos aprendiendo cada día. Nos formamos de manera continua para trabajar con las técnicas y tecnologías más actuales, porque cuidarte bien también es estar al día.",
+      "Cuidamos cada servicio hasta el último detalle y te atendemos de forma individual: escuchamos lo que buscas, valoramos tu caso y adaptamos cada tratamiento a ti. Te acompañamos en todo el proceso con un único objetivo: conseguir el mejor resultado posible para ti.",
+      "Queremos que cada visita sea un momento tuyo, en el que te sientas como en casa: un trato cercano y de confianza, con la exigencia y el mimo de quien ama lo que hace."
+    ],
+    "highlights": [
+      {
+        "icon": "star",
+        "title": "+10 años de experiencia",
+        "text": "Una década de oficio que se nota en cada detalle."
+      },
+      {
+        "icon": "sparkle",
+        "title": "Formación continua",
+        "text": "Al día en las últimas técnicas y tecnologías."
+      },
+      {
+        "icon": "heart",
+        "title": "Atención individual",
+        "text": "Un plan pensado para ti, sin prisas y con seguimiento."
+      }
+    ]
+  },
   "whyUs": [
     {
       "icon": "shield",

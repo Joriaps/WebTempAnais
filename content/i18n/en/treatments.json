@@ -1,0 +1,2495 @@
+{
+  "categories": [
+    {
+      "id": "manos-pies",
+      "name": "Hands & feet",
+      "intro": "Pretty, well-kept nails, your way. From a quick manicure when you're short on time to gel polish that lasts for weeks without losing its shine."
+    },
+    {
+      "id": "depilacion",
+      "name": "Hair removal",
+      "intro": "Say goodbye to shaving every other day. Diode laser to reduce hair for the long term, or good old-fashioned waxing when you want instant results."
+    },
+    {
+      "id": "mirada",
+      "name": "Lashes & brows",
+      "intro": "Curled lashes and groomed, tinted brows without doing your make-up every morning. Little touches that transform your face and save you time."
+    },
+    {
+      "id": "masajes",
+      "name": "Massages",
+      "intro": "Your time to switch off. Massages to release tension, rest properly or feel lighter on your feet."
+    },
+    {
+      "id": "corporal",
+      "name": "Body",
+      "intro": "Treatments to look after your body: wood, pressure, beauty devices and combined protocols that help you feel lighter, firmer and comfortable in your skin."
+    },
+    {
+      "id": "facial",
+      "name": "Facial",
+      "intro": "Clean, radiant, dewy skin. From a thorough cleanse to tech-led treatments that improve texture, tone and signs of ageing."
+    },
+    {
+      "id": "micropuntura",
+      "name": "Brazilian micropuncture",
+      "intro": "A precise manual technique that stimulates the skin's own regeneration. We use it to improve the appearance of stretch marks and scars, and to support hair growth."
+    }
+  ],
+  "treatments": [
+    {
+      "id": "manicura",
+      "name": "Manicure",
+      "short": "Classic manicure with colour, exfoliation and massage. Also available with paraffin for extra-soft hands.",
+      "hook": "Well-kept hands in under an hour",
+      "whatIs": "It's complete care for your hands and nails. We shape the nails, look after the cuticles, exfoliate and moisturise the skin with a massage, and finish with the regular polish colour of your choice. For extra softness, add the paraffin treatment.",
+      "benefits": [
+        {
+          "title": "Polished look in no time",
+          "text": "You leave with clean, even, nicely shaped nails."
+        },
+        {
+          "title": "Healthy cuticles",
+          "text": "We carefully remove the excess so your nails grow better and look prettier."
+        },
+        {
+          "title": "Softer hands",
+          "text": "We finish with moisturiser and a short massage."
+        },
+        {
+          "title": "Quick and affordable",
+          "text": "Perfect for an event, an interview or simply a little treat."
+        },
+        {
+          "title": "For everyone",
+          "text": "Well-kept hands suit everyone, with or without colour."
+        }
+      ],
+      "idealFor": [
+        "Anyone who wants well-kept hands without the fuss",
+        "People who prefer natural nails or like to change colour often",
+        "Before an event, a date or an interview",
+        "Your first time at a beauty salon"
+      ],
+      "howItWorks": [
+        {
+          "title": "Cleansing",
+          "text": "We remove any old polish and disinfect hands and tools."
+        },
+        {
+          "title": "Shape and cuticles",
+          "text": "We trim and file your nails to the shape you like and look after the cuticles."
+        },
+        {
+          "title": "Exfoliation and massage",
+          "text": "We renew the skin on your hands and moisturise it with a massage."
+        },
+        {
+          "title": "Colour",
+          "text": "Regular polish in your favourite shade."
+        }
+      ],
+      "duration": "45 min – 1 h",
+      "sessions": "Whenever you like; most people come every 1-2 weeks",
+      "results": "You'll see it straight away. Regular polish usually lasts 4 to 7 days, depending on your lifestyle.",
+      "aftercare": [
+        "If you're wearing polish, wait a few minutes before handling things",
+        "Wear gloves for washing up or cleaning",
+        "Moisturise your hands and cuticles every day"
+      ],
+      "contraindications": [
+        "Fungal infections or open wounds on the hands or nails",
+        "Known allergy to any ingredient in the polishes (let us know and we'll find an alternative)"
+      ],
+      "faq": [
+        {
+          "q": "How is it different from gel polish?",
+          "a": "Regular polish air-dries and lasts a few days. Gel polish is cured under a lamp and stays glossy for 2-3 weeks."
+        },
+        {
+          "q": "What is the paraffin treatment?",
+          "a": "It's a warm paraffin bath that wraps your hands, along with exfoliation and massage, leaving them very soft and hydrated. We need to prepare it, so please book in advance."
+        },
+        {
+          "q": "Can I bring my own polish?",
+          "a": "Of course, although we have a wide range of colours for you to choose from."
+        },
+        {
+          "q": "Is it just for women?",
+          "a": "Not at all. Lots of people come just for the care, without colour."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Classic manicure + regular polish · 45 min",
+          "note": "Includes exfoliation and massage"
+        },
+        {
+          "label": "Classic manicure with paraffin + regular polish · 1 h",
+          "note": "Includes exfoliation and massage. Advance notice required"
+        },
+        {
+          "label": "Paraffin treatment · 15 min",
+          "note": "Paraffin + massage + exfoliation. Advance notice required"
+        },
+        {
+          "label": "Hands trim + file · 15 min",
+          "note": "Finished with shine or hydration, your choice"
+        },
+        {
+          "label": "Colour removal pack, hands + feet · 30 min",
+          "note": "Includes trim, file and hydration"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "nails",
+        "hands",
+        "manicure",
+        "polish",
+        "care"
+      ]
+    },
+    {
+      "id": "pedicura",
+      "name": "Pedicure",
+      "short": "Soft feet and well-kept nails. Classic pedicure with or without colour, or spa pedicure with gel polish, exfoliation and massage.",
+      "hook": "Your feet deserve a break too",
+      "whatIs": "It's beauty care for your feet and toenails. We trim and file the nails, look after the cuticles and smooth hard skin. The spa pedicure adds gel polish with colour removal, exfoliation, a mask and a massage.",
+      "benefits": [
+        {
+          "title": "Softer feet",
+          "text": "We reduce hard skin and roughness on heels and soles."
+        },
+        {
+          "title": "Pretty toenails",
+          "text": "Trimmed, filed and ready for sandals."
+        },
+        {
+          "title": "Real rest",
+          "text": "The spa version includes a massage that eases that tired feeling."
+        },
+        {
+          "title": "Hygiene and wellbeing",
+          "text": "Well-cared-for feet feel more comfortable day to day."
+        },
+        {
+          "title": "With or without colour",
+          "text": "Finish with regular polish or switch to gel polish."
+        }
+      ],
+      "idealFor": [
+        "Before summer or a holiday",
+        "People who spend long hours on their feet",
+        "Anyone with mild hard skin or dry heels",
+        "Anyone who fancies a bit of relaxation"
+      ],
+      "howItWorks": [
+        {
+          "title": "Preparation",
+          "text": "We clean and disinfect your feet and our tools."
+        },
+        {
+          "title": "Nails and cuticles",
+          "text": "Trimming, filing and cuticle care."
+        },
+        {
+          "title": "Hard skin",
+          "text": "We smooth rough areas with a file and specific products."
+        },
+        {
+          "title": "Exfoliation and mask (spa)",
+          "text": "We renew the skin and deeply nourish it."
+        },
+        {
+          "title": "Massage and finish",
+          "text": "Moisturiser, massage and colour: regular polish on the classic or gel polish on the spa."
+        }
+      ],
+      "duration": "45 min – 1 h",
+      "sessions": "Every 3-5 weeks to keep your feet looking their best",
+      "results": "Your feet will feel softer and better cared for from day one. The effect lasts longer if you moisturise at home.",
+      "aftercare": [
+        "Moisturise your feet every day, especially your heels",
+        "If you're wearing polish, wear open shoes for a while afterwards",
+        "Dry well between your toes after showering"
+      ],
+      "contraindications": [
+        "Fungal infections, verrucas or wounds on the feet",
+        "Infected ingrown toenails (better to see a podiatrist first)",
+        "Diabetes: let us know so we can adapt the treatment and check with your podiatrist"
+      ],
+      "faq": [
+        {
+          "q": "Is it the same as seeing a podiatrist?",
+          "a": "No. A pedicure is a beauty treatment. If you have ingrown nails, pain or foot problems, a podiatrist is the specialist to see."
+        },
+        {
+          "q": "What does the spa pedicure include?",
+          "a": "Everything in the classic plus gel polish, colour removal, exfoliation, a nourishing mask and a massage."
+        },
+        {
+          "q": "What if I just want long-lasting colour on my toes?",
+          "a": "You can have gel polish for feet with removal included for 26 € (45 min)."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Classic pedicure, with or without regular polish · 45 min",
+          "note": ""
+        },
+        {
+          "label": "Spa pedicure with gel polish · 1 h",
+          "note": "Includes colour removal, exfoliation, mask and massage"
+        },
+        {
+          "label": "Feet trim + file · 15 min",
+          "note": "Finished with shine or hydration, your choice"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "feet",
+        "pedicure",
+        "spa",
+        "nails",
+        "relax"
+      ]
+    },
+    {
+      "id": "esmaltado-semipermanente",
+      "name": "Gel polish",
+      "short": "Glossy colour that lasts 2-3 weeks without chipping. Hands and feet, removal included.",
+      "hook": "Perfect nails for weeks, no touch-ups",
+      "whatIs": "It's a special polish that's cured under an LED lamp. It's completely dry when you leave, really glossy, and lasts 2 to 3 weeks without chipping. Removal of your previous polish and nail prep are included. If your nails are thin or uneven, a levelling layer makes them smooth and stronger. And if you fancy a little extra, add a French tip, chrome or cat eye.",
+      "benefits": [
+        {
+          "title": "Genuinely long-lasting",
+          "text": "2 to 3 weeks with flawless colour, depending on your lifestyle."
+        },
+        {
+          "title": "Dry instantly",
+          "text": "Leave without worrying about smudges: no waiting for it to dry."
+        },
+        {
+          "title": "Day-one shine",
+          "text": "The glossy finish lasts until removal."
+        },
+        {
+          "title": "Endless colours and designs",
+          "text": "From elegant nudes to bold shades or simple nail art."
+        },
+        {
+          "title": "Protects your nails",
+          "text": "Helps thin nails break less while you're wearing it."
+        }
+      ],
+      "idealFor": [
+        "Anyone without time to paint their nails often",
+        "Holidays, trips, weddings and events",
+        "People whose nails split or break easily",
+        "Colour and trend lovers"
+      ],
+      "howItWorks": [
+        {
+          "title": "Preparation",
+          "text": "We shape the nails, look after the cuticles and buff the nail surface."
+        },
+        {
+          "title": "Base",
+          "text": "We apply a base coat that helps the colour adhere properly."
+        },
+        {
+          "title": "Colour",
+          "text": "Two thin coats of your chosen shade, each cured under an LED lamp."
+        },
+        {
+          "title": "Top coat",
+          "text": "A final layer for shine and protection, finished with cuticle oil."
+        }
+      ],
+      "duration": "45 min – 1 h 45 min",
+      "sessions": "Every 2-3 weeks. Removal should be done at the salon to protect your nails",
+      "results": "Instant results. It usually lasts 2-3 weeks; after that, regrowth starts to show at the base.",
+      "aftercare": [
+        "Don't peel it off: professional removal protects your natural nail",
+        "Wear gloves when cleaning with harsh products",
+        "Apply cuticle oil several times a week",
+        "Don't use your nails as tools to open cans or peel labels"
+      ],
+      "contraindications": [
+        "Fungal infections or infections of the nails",
+        "Very damaged or lifting nails (we'll assess them first)",
+        "Known allergy to acrylates or gel ingredients"
+      ],
+      "faq": [
+        {
+          "q": "Does it damage your nails?",
+          "a": "When applied and removed properly at the salon, it shouldn't. Damage usually comes from peeling it off at home."
+        },
+        {
+          "q": "Is removal included?",
+          "a": "Yes: removal is included in the price of the gel polish manicure and gel polish for feet. If you only want it removed, it's 15 € and includes trim, file and hydration."
+        },
+        {
+          "q": "Can I have it on my hands and feet at the same time?",
+          "a": "Yes, book both services in the same appointment and we'll do them back to back."
+        },
+        {
+          "q": "How long does it last on toes?",
+          "a": "Toenails grow more slowly, so it usually lasts even longer: 3-5 weeks."
+        },
+        {
+          "q": "What is levelling?",
+          "a": "It's a layer that evens out the nail surface before the colour. It's great if your nails are thin, soft or uneven: they end up smoother and stronger."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Gel polish manicure + removal · 1 h",
+          "note": ""
+        },
+        {
+          "label": "Extra hand massage and exfoliation · +15 min",
+          "note": ""
+        },
+        {
+          "label": "Manicure + levelling + gel polish · 1 h 45 min",
+          "note": ""
+        },
+        {
+          "label": "Gel polish for feet + removal · 45 min",
+          "note": ""
+        },
+        {
+          "label": "Gel polish removal only (hands or feet) · 15 min",
+          "note": "Includes trim, file and hydration"
+        },
+        {
+          "label": "Nail art, strengthening and effects (French tip, chrome, cat eye…)",
+          "note": "Price on request depending on the design. Hands and feet"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "gel polish",
+        "nails",
+        "polish",
+        "hands",
+        "feet",
+        "colour"
+      ]
+    },
+    {
+      "id": "depilacion-laser",
+      "name": "Diode laser hair removal",
+      "short": "Reduces hair gradually and for the long term, session by session, on any area of the body.",
+      "hook": "Forget razors and wax",
+      "whatIs": "The diode laser emits a beam of light that targets the pigment in the hair and weakens the follicle, the root it grows from. Over several sessions, hair grows back less and less, finer and lighter. It's one of the most popular methods for long-term hair reduction.",
+      "benefits": [
+        {
+          "title": "Long-lasting reduction",
+          "text": "Session by session the hair weakens and much less grows back."
+        },
+        {
+          "title": "Bye-bye bumps and ingrown hairs",
+          "text": "Helps reduce the irritation typical of shaving and waxing."
+        },
+        {
+          "title": "Quick sessions",
+          "text": "Small areas take just a few minutes."
+        },
+        {
+          "title": "Very tolerable",
+          "text": "The diode has a built-in cooling head to make the session more comfortable."
+        },
+        {
+          "title": "Saves money in the long run",
+          "text": "Fewer razors, creams and waxing appointments for years."
+        },
+        {
+          "title": "For everyone",
+          "text": "Areas and packs for women and men."
+        }
+      ],
+      "idealFor": [
+        "Anyone tired of shaving every few days",
+        "People who get ingrown hairs or irritation after shaving",
+        "Women and men with dark or brown hair (that's where it works best)",
+        "Over-16s (minors need permission from a parent or guardian)"
+      ],
+      "howItWorks": [
+        {
+          "title": "Free initial consultation",
+          "text": "We assess your skin and hair, do a patch test and you sign the consent form."
+        },
+        {
+          "title": "Preparation",
+          "text": "Come with the area shaved (with a razor, never waxed) and no creams."
+        },
+        {
+          "title": "Session",
+          "text": "We pass the handpiece over the area. You'll feel cold and a slight warmth or prick."
+        },
+        {
+          "title": "Aftercare",
+          "text": "We apply a soothing cream and give you tips for the following days."
+        }
+      ],
+      "duration": "10 – 60 min depending on the area",
+      "sessions": "One session every 4 weeks. Usually between 6 and 12 sessions, followed by top-up and maintenance sessions",
+      "results": "Many people notice less hair from the first few sessions. The final result depends on hair type, skin and hormonal factors, so it varies from person to person.",
+      "aftercare": [
+        "For the 4 days before and 4 days after each session, avoid direct sunbathing and getting sunburnt. You can carry on completely as normal, just avoid strong direct sun exposure",
+        "Use SPF 50 sunscreen on exposed areas",
+        "Don't wax or tweeze between sessions; only shave or use cream",
+        "Avoid saunas, swimming pools and intense exercise for 24-48 h",
+        "Moisturise the area with a soothing cream or aloe vera"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Strong direct sun exposure or sunburn in the 4 days before the session",
+        "Photosensitising medication (some antibiotics, isotretinoin, etc.)",
+        "Wounds, infections or active lesions in the area",
+        "Tattoos in the area to be treated",
+        "Photosensitive epilepsy or active skin conditions: please check with us first"
+      ],
+      "faq": [
+        {
+          "q": "Does it hurt?",
+          "a": "Most people describe it as a little prick or an elastic band snap with warmth. The handpiece cools the skin and it's quite bearable."
+        },
+        {
+          "q": "Does it work on blonde, red or grey hair?",
+          "a": "The laser targets dark pigment, so on very light or white hair the results are very limited. We'll be honest with you at the consultation."
+        },
+        {
+          "q": "Is it permanent?",
+          "a": "We talk about long-lasting reduction: hair is greatly reduced, but hormonal changes can cause some new growth, so you may need the odd top-up."
+        },
+        {
+          "q": "Can I do it in summer?",
+          "a": "Yes, on areas not exposed to the sun and with sun protection. For exposed areas, we assess each case."
+        },
+        {
+          "q": "Why do I need to shave beforehand?",
+          "a": "So the light reaches the root and doesn't burn the hair on the surface. Waxing would pull out the root and the laser would have nothing to work on."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Upper lip or chin",
+          "note": "Per session"
+        },
+        {
+          "label": "Underarms",
+          "note": "Per session"
+        },
+        {
+          "label": "Bikini line",
+          "note": "Per session"
+        },
+        {
+          "label": "Brazilian / full bikini",
+          "note": "Per session"
+        },
+        {
+          "label": "Full arms",
+          "note": "Per session"
+        },
+        {
+          "label": "Half legs",
+          "note": "Per session"
+        },
+        {
+          "label": "Full back",
+          "note": "Per session"
+        },
+        {
+          "label": "Full legs",
+          "note": "Per session"
+        },
+        {
+          "label": "Full body pack",
+          "note": "Per session. Areas included to be confirmed at consultation"
+        },
+        {
+          "label": "6-session package, underarms",
+          "note": ""
+        },
+        {
+          "label": "6-session package, underarms + Brazilian bikini",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "laser",
+        "diode",
+        "hair removal",
+        "body hair",
+        "men",
+        "women"
+      ]
+    },
+    {
+      "id": "depilacion-cera",
+      "name": "Waxing",
+      "short": "Smooth skin straight away and for several weeks. Warm or hot wax depending on the area.",
+      "hook": "Soft skin from today",
+      "whatIs": "Wax removes hair from the root, so your skin stays smooth for 3-4 weeks. We use warm wax on larger areas and hot wax on small or sensitive areas, as it grips short hair better and is gentler on the skin.",
+      "benefits": [
+        {
+          "title": "Instant results",
+          "text": "You leave with smooth skin there and then."
+        },
+        {
+          "title": "Lasts for weeks",
+          "text": "Because the root is removed, hair takes 3-4 weeks to grow back."
+        },
+        {
+          "title": "Works on all hair types",
+          "text": "Works on light, blonde or grey hair, where laser can't."
+        },
+        {
+          "title": "Finer hair over time",
+          "text": "With regular waxing, many people find their hair grows back weaker."
+        },
+        {
+          "title": "Budget-friendly",
+          "text": "Ideal for a one-off occasion or as an alternative to laser."
+        }
+      ],
+      "idealFor": [
+        "Anyone who needs quick results for an event or a trip",
+        "People with light or grey hair",
+        "Anyone who hasn't decided on laser yet",
+        "Women and men"
+      ],
+      "howItWorks": [
+        {
+          "title": "Preparation",
+          "text": "We cleanse the area and apply a product that protects the skin."
+        },
+        {
+          "title": "Application",
+          "text": "We spread the wax at the right temperature in the direction of hair growth."
+        },
+        {
+          "title": "Removal",
+          "text": "We remove it with a quick motion against the hair growth, holding the skin taut so it's more comfortable."
+        },
+        {
+          "title": "Soothe",
+          "text": "We remove any residue and apply a soothing oil or lotion."
+        }
+      ],
+      "duration": "10 – 45 min depending on the area",
+      "sessions": "Every 3-5 weeks, when the hair is about 4-5 mm long",
+      "results": "Smooth skin straight away for 3-4 weeks, depending on how fast your hair grows.",
+      "aftercare": [
+        "Avoid the sun, saunas and very hot water for 24 h",
+        "Don't use alcohol-based deodorant on freshly waxed underarms",
+        "Exfoliate gently twice a week from the third day to prevent ingrown hairs",
+        "Moisturise your skin every day"
+      ],
+      "contraindications": [
+        "Prominent varicose veins or circulation problems in the area",
+        "Wounds, sunburn or irritated skin",
+        "Treatment with retinoids or isotretinoin",
+        "Diabetes: please check with us first"
+      ],
+      "faq": [
+        {
+          "q": "How long should the hair be?",
+          "a": "Ideally about 4-5 mm, roughly 2-3 weeks without shaving."
+        },
+        {
+          "q": "Wax or laser?",
+          "a": "Wax gives instant results but you always have to repeat it. Laser reduces hair long term. We'll help you choose."
+        },
+        {
+          "q": "Does it hurt a lot?",
+          "a": "It stings at the moment of the pull, especially the first few times. With regular waxing it gets easier and easier."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Upper lip or eyebrows",
+          "note": ""
+        },
+        {
+          "label": "Underarms",
+          "note": ""
+        },
+        {
+          "label": "Bikini line",
+          "note": ""
+        },
+        {
+          "label": "Brazilian / full bikini",
+          "note": ""
+        },
+        {
+          "label": "Arms",
+          "note": ""
+        },
+        {
+          "label": "Half legs",
+          "note": ""
+        },
+        {
+          "label": "Back or chest",
+          "note": ""
+        },
+        {
+          "label": "Full legs",
+          "note": ""
+        },
+        {
+          "label": "Full legs + bikini line + underarms",
+          "note": "Combo"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "wax",
+        "waxing",
+        "body hair",
+        "smooth skin"
+      ]
+    },
+    {
+      "id": "lifting-pestanas",
+      "name": "Lash lift",
+      "short": "Your natural lashes, curled and looking longer for 6-8 weeks. No eyelash curler needed.",
+      "hook": "Wake up with your eyes ready to go",
+      "whatIs": "It's a treatment that lifts and curls your own lashes from the root, with no extensions or glue. We use silicone shields and products that set the shape. If you like, we can combine it with a tint to make them look darker and more intense.",
+      "benefits": [
+        {
+          "title": "100% your own lashes",
+          "text": "No extensions: it's your natural lash with more curl."
+        },
+        {
+          "title": "More open eyes",
+          "text": "The curl makes your eyes look bigger and brighter."
+        },
+        {
+          "title": "Goodbye, eyelash curler",
+          "text": "Save time every morning, and even skip mascara if you add a tint."
+        },
+        {
+          "title": "Lasts for weeks",
+          "text": "The effect lasts around 6-8 weeks, the time it takes for lashes to renew."
+        },
+        {
+          "title": "No upkeep",
+          "text": "Sleep, swim or hit the gym without a second thought."
+        }
+      ],
+      "idealFor": [
+        "People with straight or downward-pointing lashes",
+        "Anyone who wants a natural look without extensions",
+        "Sporty types and beach and pool lovers",
+        "Anyone looking to save time on their routine"
+      ],
+      "howItWorks": [
+        {
+          "title": "Cleansing",
+          "text": "We remove make-up and thoroughly clean your lashes."
+        },
+        {
+          "title": "Shields",
+          "text": "We choose the shield size based on your lash length and the curl you want."
+        },
+        {
+          "title": "Lift and set",
+          "text": "We apply the products in stages while you relax with your eyes closed."
+        },
+        {
+          "title": "Tint and nourish",
+          "text": "Optionally, we tint and finish with a nourishing serum."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Every 6-8 weeks to maintain the effect",
+      "results": "You see it straight away. The curl lasts around 6-8 weeks, depending on your lashes' natural cycle.",
+      "aftercare": [
+        "Don't get your lashes wet for the first 24 h",
+        "Avoid steam, saunas and mascara for the first 24 h",
+        "Don't rub your eyes or sleep face down the first night",
+        "Brush your lashes and use a nourishing serum to look after them"
+      ],
+      "contraindications": [
+        "Eye infections, conjunctivitis or styes",
+        "Recent eye surgery",
+        "Allergy to the treatment products (a patch test can be done beforehand)",
+        "Very short or very damaged lashes: we'll assess them first"
+      ],
+      "faq": [
+        {
+          "q": "Does it damage your lashes?",
+          "a": "Not with professional products and the right time between sessions. Plus, we finish with a nourishing treatment."
+        },
+        {
+          "q": "Can I wear make-up afterwards?",
+          "a": "Yes, after 24 hours. Many people find they no longer need mascara."
+        },
+        {
+          "q": "Is it the same as extensions?",
+          "a": "No. Extensions add artificial lashes. A lash lift works only with your own lashes."
+        },
+        {
+          "q": "Can guys have it done?",
+          "a": "Of course, it's a treatment for anyone who wants brighter-looking eyes."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Lash lift",
+          "note": ""
+        },
+        {
+          "label": "Lash lift + lash tint",
+          "note": "Most popular"
+        },
+        {
+          "label": "Combo lash lift + brow lamination",
+          "note": "Tint included"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "lashes",
+        "lash lift",
+        "eyes",
+        "natural",
+        "no mascara"
+      ]
+    },
+    {
+      "id": "laminado-cejas",
+      "name": "Brow lamination",
+      "short": "Groomed, tidy, fuller-looking brows for 4-6 weeks. That 'freshly brushed' effect.",
+      "hook": "Magazine-worthy brows, every morning",
+      "whatIs": "Lamination smooths and sets your brow hairs in the direction we want, usually upwards. This makes brows look fuller, tidier and better defined. We complete it with shaping and, if you like, a tint.",
+      "benefits": [
+        {
+          "title": "More volume",
+          "text": "Brushing the hairs upwards makes the brow look fuller."
+        },
+        {
+          "title": "Unruly brows under control",
+          "text": "Hairs that grow in every direction stay in place."
+        },
+        {
+          "title": "Fresher face",
+          "text": "Beautiful brows frame your face and open up your eyes."
+        },
+        {
+          "title": "Less make-up",
+          "text": "No need for gel or pencil to keep them perfect."
+        },
+        {
+          "title": "Tailored shaping",
+          "text": "We adapt the shape to your features."
+        }
+      ],
+      "idealFor": [
+        "Unruly brows, with cowlicks or long hairs",
+        "Brows with gaps you'd like to disguise",
+        "Anyone after a natural, fluffy brow look",
+        "People who want to save time on make-up"
+      ],
+      "howItWorks": [
+        {
+          "title": "Shaping",
+          "text": "We study your face and map out the ideal shape."
+        },
+        {
+          "title": "Smoothing",
+          "text": "We apply the first product so the hairs can be shaped."
+        },
+        {
+          "title": "Setting",
+          "text": "We brush the hairs in the chosen direction and set the shape."
+        },
+        {
+          "title": "Finish",
+          "text": "We remove any stray hairs, apply a tint if you like and a nourishing treatment."
+        }
+      ],
+      "duration": "45 min",
+      "sessions": "Every 4-6 weeks",
+      "results": "The effect is visible as soon as we finish and usually lasts 4-6 weeks, depending on your hair type.",
+      "aftercare": [
+        "Don't get your brows wet for 24 h",
+        "Avoid make-up, saunas and heavy sweating for the first 24 h",
+        "Brush your brows every morning with a spoolie",
+        "Apply a nourishing oil or serum at night"
+      ],
+      "contraindications": [
+        "Irritation, wounds or spots in the area",
+        "Retinoid treatments or recent peels in the area",
+        "Allergy to the products (a patch test can be done beforehand)"
+      ],
+      "faq": [
+        {
+          "q": "Does it work if I have sparse brows?",
+          "a": "It helps them look fuller, although it needs some hair to work with. If there are large bare patches, we'll tell you about other options."
+        },
+        {
+          "q": "Does it look fake?",
+          "a": "It doesn't have to. We adjust the effect to be as natural or as defined as you like."
+        },
+        {
+          "q": "Can it be done together with a lash lift?",
+          "a": "Yes, it's the star combo for eyes that are ready to go."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Brow lamination with shaping",
+          "note": ""
+        },
+        {
+          "label": "Brow lamination + brow tint",
+          "note": ""
+        },
+        {
+          "label": "Combo brow lamination + lash lift",
+          "note": "Tint included"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "brows",
+        "lamination",
+        "eyes",
+        "brow lamination"
+      ]
+    },
+    {
+      "id": "tinte-cejas-pestanas",
+      "name": "Lash and brow tint",
+      "short": "Colour and intensity for your eyes without make-up. Quick, simple and with instant results.",
+      "hook": "More intensity in just 20 minutes",
+      "whatIs": "We apply a tint specially made for brows and lashes that darkens the hairs and makes them more visible. Lashes look longer and brows more defined, without having to wear make-up.",
+      "benefits": [
+        {
+          "title": "Mascara effect without mascara",
+          "text": "The light tips of your lashes are tinted, so they look longer."
+        },
+        {
+          "title": "Defined brows",
+          "text": "Visually fills in gaps and evens out the colour."
+        },
+        {
+          "title": "Super quick",
+          "text": "You'll see the result in about 20 minutes."
+        },
+        {
+          "title": "Perfect for summer",
+          "text": "Ideal for the beach, the pool or sport, with no make-up to run."
+        },
+        {
+          "title": "Colour tailored to you",
+          "text": "We choose the shade that suits your hair and skin."
+        }
+      ],
+      "idealFor": [
+        "People with light or blonde brows or lashes",
+        "Anyone who wants to go make-up-free and still look defined",
+        "Holidays and summer",
+        "As an add-on to a lash lift or brow lamination"
+      ],
+      "howItWorks": [
+        {
+          "title": "Choose the shade",
+          "text": "We pick the colour based on your hair and the effect you're after."
+        },
+        {
+          "title": "Protect",
+          "text": "We protect the surrounding skin so it doesn't stain."
+        },
+        {
+          "title": "Apply",
+          "text": "We apply the tint and leave it to work for a few minutes."
+        },
+        {
+          "title": "Remove",
+          "text": "We clean off the tint and check the result."
+        }
+      ],
+      "duration": "15 – 30 min",
+      "sessions": "Every 3-6 weeks",
+      "results": "You'll notice it straight away. On brows the colour lasts about 3-4 weeks, and on lashes up to 6.",
+      "aftercare": [
+        "Avoid getting the area wet for a few hours",
+        "Don't use oil-based make-up removers for the first few days, as they can lighten the shade",
+        "Protect your brows from the sun so the colour lasts longer"
+      ],
+      "contraindications": [
+        "Allergy to tints: we do a patch test 48 h beforehand if it's your first time",
+        "Eye infections or irritation",
+        "Wounds or irritation in the area"
+      ],
+      "faq": [
+        {
+          "q": "Do I need an allergy test?",
+          "a": "If it's your first time or you have sensitive skin, yes. It's quick and gives us peace of mind."
+        },
+        {
+          "q": "Can I tint just my brows or just my lashes?",
+          "a": "Of course, you can have either one separately or both together."
+        },
+        {
+          "q": "Can you tell it's a tint?",
+          "a": "Not if we choose the right shade. We aim for a natural look."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Brow tint",
+          "note": ""
+        },
+        {
+          "label": "Lash tint",
+          "note": ""
+        },
+        {
+          "label": "Brow + lash tint",
+          "note": ""
+        },
+        {
+          "label": "Brow shaping with tweezers + tint",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "tint",
+        "brows",
+        "lashes",
+        "eyes",
+        "colour"
+      ]
+    },
+    {
+      "id": "masaje-relajante",
+      "name": "Relaxing massage",
+      "short": "Gentle, enveloping movements to release tension and switch off from everything.",
+      "hook": "Hit pause: this time is all yours",
+      "whatIs": "It's a massage with oils and gentle, rhythmic movements that help relax both muscles and mind. We adjust the pressure to what you feel like and can focus on your back, neck or full body.",
+      "benefits": [
+        {
+          "title": "Less stress",
+          "text": "Helps you slow down and feel calmer."
+        },
+        {
+          "title": "Looser muscles",
+          "text": "Eases that feeling of tension in the neck, shoulders and back."
+        },
+        {
+          "title": "Better rest",
+          "text": "Many people sleep better on the night of their massage."
+        },
+        {
+          "title": "Nourished skin",
+          "text": "The oils leave your skin soft and hydrated."
+        },
+        {
+          "title": "A perfect gift",
+          "text": "Ideal as a present for birthdays or special occasions."
+        }
+      ],
+      "idealFor": [
+        "Stressful times, exams or heavy workloads",
+        "People who spend hours sitting down or in front of screens",
+        "Anyone looking for some self-care time",
+        "A gift for someone special"
+      ],
+      "howItWorks": [
+        {
+          "title": "Quick chat",
+          "text": "Tell us which areas are bothering you and what pressure you prefer."
+        },
+        {
+          "title": "Atmosphere",
+          "text": "Soft lighting, relaxing music and a cosy, warm couch."
+        },
+        {
+          "title": "Massage",
+          "text": "Slow, enveloping movements with oil."
+        },
+        {
+          "title": "Back to calm",
+          "text": "We give you a few minutes to get up at your own pace and offer you some water."
+        }
+      ],
+      "duration": "30 or 60 min",
+      "sessions": "Whenever you need it; once a month is a good self-care routine",
+      "results": "You'll feel relaxed as soon as it's over. Having massages regularly helps you hold on to that feeling of wellbeing.",
+      "aftercare": [
+        "Drink water after the massage",
+        "Try not to rush off straight afterwards",
+        "Avoid heavy meals just beforehand"
+      ],
+      "contraindications": [
+        "Fever, flu or infections",
+        "Recent injuries, fractures or inflammation",
+        "Skin problems or wounds in the areas to be massaged",
+        "Pregnancy: let us know so we can adapt the massage",
+        "Thrombosis or serious circulation problems"
+      ],
+      "faq": [
+        {
+          "q": "How is it different from a sports massage?",
+          "a": "A relaxing massage is gentle and focuses on wellbeing. A sports massage uses more pressure to work on knots."
+        },
+        {
+          "q": "Do I have to undress completely?",
+          "a": "No. You keep your underwear on and we cover you with towels at all times."
+        },
+        {
+          "q": "Can I give it as a gift?",
+          "a": "Yes, we have gift cards."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Relaxing massage 30 min (back and neck)",
+          "note": ""
+        },
+        {
+          "label": "Relaxing massage 60 min (full body)",
+          "note": ""
+        },
+        {
+          "label": "Package of 5 × 60-min massages",
+          "note": "Shareable"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "massage",
+        "relax",
+        "stress",
+        "wellbeing",
+        "gift"
+      ]
+    },
+    {
+      "id": "masaje-drenante",
+      "name": "Lymphatic drainage massage (manual lymphatic drainage)",
+      "short": "Gentle movements that help eliminate fluid and leave your legs feeling light.",
+      "hook": "Lighter legs, less bloating",
+      "whatIs": "Manual lymphatic drainage is a very gentle, rhythmic massage that stimulates the lymphatic system, which collects excess fluid from the body. It helps reduce that swollen, tired-legs feeling.",
+      "benefits": [
+        {
+          "title": "Less swelling",
+          "text": "Helps eliminate retained fluid."
+        },
+        {
+          "title": "Lighter legs",
+          "text": "Eases heaviness, especially in summer or after long hours on your feet."
+        },
+        {
+          "title": "Really pleasant",
+          "text": "It's a gentle, relaxing massage, with no strong pressure."
+        },
+        {
+          "title": "The perfect complement",
+          "text": "Boosts body treatments such as wood therapy or pressotherapy."
+        },
+        {
+          "title": "Better-looking skin",
+          "text": "Contributes to smoother skin when there's fluid retention."
+        }
+      ],
+      "idealFor": [
+        "People with fluid retention",
+        "A heavy or tired feeling in the legs",
+        "Jobs with long hours standing or sitting",
+        "As support for body treatments"
+      ],
+      "howItWorks": [
+        {
+          "title": "Assessment",
+          "text": "We look at your areas of retention and your goals."
+        },
+        {
+          "title": "Opening the lymph nodes",
+          "text": "We start with the neck and key areas to prepare for drainage."
+        },
+        {
+          "title": "Drainage",
+          "text": "Slow, rhythmic movements following the natural flow of the lymph."
+        },
+        {
+          "title": "Finishing up",
+          "text": "We recommend drinking water and some habits to maintain the effect."
+        }
+      ],
+      "duration": "60 min",
+      "sessions": "A course of 8-10 sessions, 1-2 a week, followed by maintenance",
+      "results": "Many people notice lighter legs from the very first session. With consistency, the feeling of swelling usually improves.",
+      "aftercare": [
+        "Drink plenty of water",
+        "It's normal to need the loo more often afterwards",
+        "Walk and stay active",
+        "Cut down on salt and alcohol for those days"
+      ],
+      "contraindications": [
+        "Thrombosis or phlebitis",
+        "Heart or kidney failure",
+        "Acute infections or fever",
+        "Active cancer (unless medically advised)",
+        "Pregnancy: only with medical approval"
+      ],
+      "faq": [
+        {
+          "q": "Does it help you lose weight?",
+          "a": "It doesn't burn fat. It helps eliminate fluid, which is why you may feel less bloated."
+        },
+        {
+          "q": "Why is it so gentle?",
+          "a": "The lymphatic system sits just beneath the skin; strong pressure doesn't stimulate it any better."
+        },
+        {
+          "q": "Can I combine it with pressotherapy?",
+          "a": "Yes, they complement each other really well."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Lymphatic drainage session 60 min",
+          "note": ""
+        },
+        {
+          "label": "5-session package",
+          "note": ""
+        },
+        {
+          "label": "10-session package",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "drainage",
+        "lymphatic",
+        "fluid retention",
+        "legs",
+        "massage"
+      ]
+    },
+    {
+      "id": "maderoterapia",
+      "name": "Wood therapy (maderoterapia)",
+      "short": "A massage with wooden tools that helps sculpt your silhouette and improve the appearance of orange-peel skin.",
+      "hook": "The massage that sculpts your silhouette",
+      "whatIs": "It's a body massage done with wooden tools of different shapes: rollers, cups and boards. Each piece works the area in a different way to boost circulation, help drain fluid and improve the appearance of cellulite.",
+      "benefits": [
+        {
+          "title": "A more defined silhouette",
+          "text": "Helps shape areas such as the tummy, bottom, saddlebags and legs."
+        },
+        {
+          "title": "Less orange-peel skin",
+          "text": "Improves the appearance of cellulite with consistency."
+        },
+        {
+          "title": "Draining effect",
+          "text": "Helps eliminate fluid so you feel lighter."
+        },
+        {
+          "title": "Firmer skin",
+          "text": "Boosts circulation and leaves skin more toned."
+        },
+        {
+          "title": "Natural, no machines",
+          "text": "Just wood, oils and your therapist's hands."
+        }
+      ],
+      "idealFor": [
+        "Anyone who wants to improve the appearance of cellulite",
+        "People with fluid retention",
+        "Anyone looking to define their silhouette alongside healthy habits",
+        "Before summer or an event"
+      ],
+      "howItWorks": [
+        {
+          "title": "Assessment",
+          "text": "We look at your areas and goals and suggest a plan."
+        },
+        {
+          "title": "Preparation",
+          "text": "We warm up the area with oil and manual movements."
+        },
+        {
+          "title": "Working with wood",
+          "text": "We use each tool according to the area: rollers to drain, cups for cellulite, boards to sculpt."
+        },
+        {
+          "title": "Final drainage",
+          "text": "We finish with movements that help move fluid towards the lymph nodes."
+        }
+      ],
+      "duration": "50 – 60 min",
+      "sessions": "A course of 10-12 sessions, 2 a week, followed by monthly maintenance",
+      "results": "Some people notice smoother skin and less swelling after the first few sessions. Changes to the silhouette usually show from the 4th-6th session and depend on each body and your habits.",
+      "aftercare": [
+        "Drink at least 1.5-2 litres of water a day",
+        "Pair it with exercise and a balanced diet for better results",
+        "Avoid alcohol and too much salt",
+        "Slight redness may appear and fades within hours"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Prominent varicose veins, thrombosis or fragile capillaries",
+        "Wounds, infections or skin problems in the area",
+        "Heart problems or anticoagulant treatment",
+        "Recent surgery in the area"
+      ],
+      "faq": [
+        {
+          "q": "Does it hurt?",
+          "a": "It's an intense massage in some areas, but we adjust the pressure to what you can comfortably take."
+        },
+        {
+          "q": "Will I bruise?",
+          "a": "You shouldn't if it's done properly. If you have sensitive skin, we'll adjust as we go."
+        },
+        {
+          "q": "Does it help you lose weight?",
+          "a": "It isn't a weight-loss treatment. It helps improve the appearance of your silhouette and skin, especially alongside good habits."
+        },
+        {
+          "q": "Can it be combined?",
+          "a": "Yes, with pressotherapy or beauty devices the results are usually more complete."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Wood therapy session",
+          "note": ""
+        },
+        {
+          "label": "5-session package",
+          "note": ""
+        },
+        {
+          "label": "10-session package",
+          "note": "Most recommended"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "wood therapy",
+        "cellulite",
+        "silhouette",
+        "draining",
+        "body"
+      ]
+    },
+    {
+      "id": "presoterapia",
+      "name": "Pressotherapy",
+      "short": "Air-pressure boots that help drain fluid and leave your legs feeling ultra-light.",
+      "hook": "Relax while your legs de-puff",
+      "whatIs": "You put on boots (and, if you like, a wrap for your tummy and arms) that inflate and deflate section by section. That pressure helps move fluid and stimulates circulation. All you have to do is lie back and relax.",
+      "benefits": [
+        {
+          "title": "Lighter legs",
+          "text": "Eases that heavy, tired feeling."
+        },
+        {
+          "title": "Less retention",
+          "text": "Helps eliminate excess fluid."
+        },
+        {
+          "title": "Zero effort",
+          "text": "You're lying down, so you can read, rest or scroll on your phone."
+        },
+        {
+          "title": "Boosts other treatments",
+          "text": "It's the ideal complement to wood therapy or beauty devices."
+        },
+        {
+          "title": "Feels like a massage",
+          "text": "The rhythmic compression is really relaxing."
+        }
+      ],
+      "idealFor": [
+        "People with fluid retention or tired legs",
+        "Jobs on your feet or long hours sitting",
+        "Sporty people who want their legs to recover",
+        "Anyone combining body treatments"
+      ],
+      "howItWorks": [
+        {
+          "title": "Assessment",
+          "text": "We check there are no contraindications."
+        },
+        {
+          "title": "Fitting",
+          "text": "We put the boots or garments on over your underwear."
+        },
+        {
+          "title": "Programme",
+          "text": "We choose the pressure and programme; the chambers inflate from the feet upwards."
+        },
+        {
+          "title": "Done",
+          "text": "We remove the garments and you're ready to carry on with your day."
+        }
+      ],
+      "duration": "30 – 40 min",
+      "sessions": "A course of 10 sessions, 2-3 a week, followed by maintenance",
+      "results": "You'll feel lighter from the first session. Improvement in fluid retention depends on consistency and habits.",
+      "aftercare": [
+        "Drink water after the session",
+        "Go for a short walk to get your circulation going",
+        "Cut down on salt in your diet"
+      ],
+      "contraindications": [
+        "Thrombosis, phlebitis or severe varicose veins",
+        "Heart or kidney failure, uncontrolled high blood pressure",
+        "Pregnancy",
+        "Wounds or infections on the legs",
+        "Pacemaker or heart problems: check with your doctor first"
+      ],
+      "faq": [
+        {
+          "q": "Does it squeeze a lot?",
+          "a": "You'll feel the pressure, but it's pleasant and we adjust it to suit you."
+        },
+        {
+          "q": "Do I have to undress?",
+          "a": "Light clothing or underwear is fine; we can give you disposable garments if you prefer."
+        },
+        {
+          "q": "Can I have it on its own or is it better combined?",
+          "a": "It works on its own, but combined with wood therapy or manual drainage the effect is boosted."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Pressotherapy session (legs and tummy)",
+          "note": ""
+        },
+        {
+          "label": "5-session package",
+          "note": ""
+        },
+        {
+          "label": "10-session package",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "pressotherapy",
+        "legs",
+        "fluid retention",
+        "circulation",
+        "body"
+      ]
+    },
+    {
+      "id": "aparatologia-corporal",
+      "name": "Body beauty devices (radiofrequency and cavitation)",
+      "short": "Technology to target localised fat, sagging and skin texture in specific areas.",
+      "hook": "Technology that works where you need it most",
+      "whatIs": "We use beauty devices to treat specific areas of the body. Radiofrequency gently heats the deeper layers of the skin to stimulate collagen and improve firmness. Cavitation uses ultrasound to help reduce localised fat. We'll recommend the device or combination based on your goal.",
+      "benefits": [
+        {
+          "title": "Specific areas",
+          "text": "Ideal for those stubborn areas: tummy, flanks, saddlebags or arms."
+        },
+        {
+          "title": "Firmer skin",
+          "text": "Radiofrequency helps improve the appearance of sagging."
+        },
+        {
+          "title": "Helps with localised fat",
+          "text": "Cavitation helps reduce the contour of specific areas."
+        },
+        {
+          "title": "Non-invasive",
+          "text": "No needles and no downtime: you carry on with your day as normal."
+        },
+        {
+          "title": "Comfortable sessions",
+          "text": "A pleasant feeling of warmth or a slight buzzing."
+        }
+      ],
+      "idealFor": [
+        "Anyone with localised fat that won't shift with diet and exercise",
+        "Mild to moderate sagging after weight changes or with age",
+        "People looking for a needle-free option",
+        "As part of a complete body plan"
+      ],
+      "howItWorks": [
+        {
+          "title": "Free initial consultation",
+          "text": "We measure and assess to choose the right technology."
+        },
+        {
+          "title": "Preparation",
+          "text": "We cleanse the area and apply conductive gel."
+        },
+        {
+          "title": "Treatment",
+          "text": "We move the handpiece over the area with controlled movements."
+        },
+        {
+          "title": "Drainage",
+          "text": "We finish with draining movements or pressotherapy to boost the effect."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Between 8 and 10 sessions, 1-2 a week, depending on the area and technology",
+      "results": "Changes are usually noticeable gradually from the 3rd-4th session. Results vary depending on each body, the area and your habits.",
+      "aftercare": [
+        "Drink plenty of water, especially after cavitation",
+        "Do some gentle exercise that day",
+        "Keep to a balanced diet",
+        "The skin may look slightly red for a few minutes"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Pacemaker, prostheses or metal implants in the area",
+        "Active or recent cancer",
+        "Heart, liver or kidney problems",
+        "Wounds, infections or altered sensation in the area",
+        "Copper IUD (for abdominal treatment)"
+      ],
+      "faq": [
+        {
+          "q": "Which device is right for me?",
+          "a": "It depends on your goal: radiofrequency for firmness, cavitation for localised fat. We'll look at it together at the consultation."
+        },
+        {
+          "q": "Does it hurt?",
+          "a": "No. Radiofrequency feels warm and cavitation causes a slight ringing in the ear. It's very bearable."
+        },
+        {
+          "q": "Is it for weight loss?",
+          "a": "No. It's for improving specific areas. To lose weight, it's best combined with healthy habits."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Body radiofrequency (1 area)",
+          "note": ""
+        },
+        {
+          "label": "Cavitation (1 area)",
+          "note": ""
+        },
+        {
+          "label": "Combined cavitation + radiofrequency session",
+          "note": ""
+        },
+        {
+          "label": "8-session combined package",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price. [POR DEFINIR: confirmar aparatos disponibles en el centro]",
+      "tags": [
+        "beauty devices",
+        "radiofrequency",
+        "cavitation",
+        "localised fat",
+        "sagging"
+      ]
+    },
+    {
+      "id": "tratamiento-corporal-reafirmante",
+      "name": "Firming and slimming body treatment",
+      "short": "A tailored body plan combining manual techniques, beauty devices and skincare for firmer skin.",
+      "hook": "Your body plan, designed for you",
+      "whatIs": "It's a personalised protocol that combines several techniques in a single session: exfoliation, massage, beauty devices and firming or slimming products. We adapt it depending on whether your goal is to improve firmness, cellulite or contour.",
+      "benefits": [
+        {
+          "title": "All in one",
+          "text": "Several techniques combined for a more complete result."
+        },
+        {
+          "title": "Made to measure",
+          "text": "Each session is adapted to your areas and goals."
+        },
+        {
+          "title": "Firmer, softer skin",
+          "text": "Helps improve texture and tone."
+        },
+        {
+          "title": "Progress tracking",
+          "text": "We measure and compare to see how you're getting on."
+        },
+        {
+          "title": "A feel-good moment",
+          "text": "As well as looking after your body, it's a really enjoyable time."
+        }
+      ],
+      "idealFor": [
+        "Anyone looking for a complete plan who doesn't know where to start",
+        "Mild to moderate sagging or cellulite",
+        "Getting ready for summer, a wedding or an event",
+        "After weight changes"
+      ],
+      "howItWorks": [
+        {
+          "title": "Diagnosis",
+          "text": "Free initial consultation, measurements and photos to track progress."
+        },
+        {
+          "title": "Exfoliation",
+          "text": "We prepare the skin so it absorbs the active ingredients better."
+        },
+        {
+          "title": "Technology or massage",
+          "text": "We apply the right technique for your goal (radiofrequency, cavitation, wood…)."
+        },
+        {
+          "title": "Wrap or mask",
+          "text": "Firming or slimming products to boost the effect."
+        },
+        {
+          "title": "Review",
+          "text": "Every few sessions we check measurements and adjust the plan."
+        }
+      ],
+      "duration": "60 – 75 min",
+      "sessions": "A plan of 8-10 sessions, 1-2 a week",
+      "results": "The first changes in the skin are usually noticeable after 3-4 sessions. The final result depends on each person and their habits.",
+      "aftercare": [
+        "Moisturise your skin daily with the recommended products",
+        "Drink water and eat well",
+        "Exercise regularly",
+        "Avoid strong sun straight after the session"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Serious circulation problems or thrombosis",
+        "Pacemaker or metal implants (depending on the technology)",
+        "Wounds or skin problems in the area",
+        "Allergy to any of the protocol's products"
+      ],
+      "faq": [
+        {
+          "q": "How is it different from beauty devices alone?",
+          "a": "Here we combine several techniques and skincare in each session, with a plan and progress tracking."
+        },
+        {
+          "q": "Can I choose the areas?",
+          "a": "Yes, we work on the ones that concern you most."
+        },
+        {
+          "q": "When will I see results?",
+          "a": "Skin usually feels softer early on; changes in firmness or contour take several sessions."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Body treatment session",
+          "note": ""
+        },
+        {
+          "label": "5-session package",
+          "note": ""
+        },
+        {
+          "label": "10-session package",
+          "note": "Includes measurement tracking"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "firming",
+        "slimming",
+        "body",
+        "sagging",
+        "cellulite"
+      ]
+    },
+    {
+      "id": "higiene-facial",
+      "name": "Deep cleansing facial",
+      "short": "A thorough cleanse, extraction of impurities and fresh, radiant skin from day one.",
+      "hook": "Truly clean skin",
+      "whatIs": "It's a complete facial cleanse that goes beyond your routine at home. We cleanse, exfoliate, open the pores with steam and extract blackheads and impurities. We finish with a mask and moisturiser to suit your skin type.",
+      "benefits": [
+        {
+          "title": "Cleaner pores",
+          "text": "We remove blackheads and built-up impurities."
+        },
+        {
+          "title": "Radiant skin",
+          "text": "Exfoliation removes dead cells and adds glow."
+        },
+        {
+          "title": "Better absorption",
+          "text": "Your creams work better on clean skin."
+        },
+        {
+          "title": "Tailored to your skin",
+          "text": "Oily, combination, dry or sensitive: we choose the products for you."
+        },
+        {
+          "title": "Ideal to start with",
+          "text": "It's the foundation of any skincare routine."
+        }
+      ],
+      "idealFor": [
+        "Skin with blackheads, enlarged pores or shine",
+        "Teens and young people who want to look after their skin",
+        "Before an important event",
+        "Anyone who wants to keep their skin healthy"
+      ],
+      "howItWorks": [
+        {
+          "title": "Diagnosis and cleansing",
+          "text": "We check your skin type and double cleanse."
+        },
+        {
+          "title": "Exfoliation and steam",
+          "text": "We renew the skin and open the pores."
+        },
+        {
+          "title": "Extraction",
+          "text": "We carefully and hygienically remove impurities."
+        },
+        {
+          "title": "Mask and moisturiser",
+          "text": "We soothe, close the pores and apply sun protection."
+        }
+      ],
+      "duration": "60 min",
+      "sessions": "Once a month to keep your skin in good condition",
+      "results": "Cleaner, more radiant skin from day one. There may be some redness for the first few hours.",
+      "aftercare": [
+        "Don't wear make-up for the next 12 hours",
+        "Avoid direct sun and use SPF 50",
+        "Don't touch or squeeze spots at home",
+        "Keep up your cleansing and moisturising routine"
+      ],
+      "contraindications": [
+        "Very inflamed or infected acne (we'll assess it first)",
+        "Active cold sores",
+        "Sunburn or irritated skin",
+        "Isotretinoin treatment or recent peels"
+      ],
+      "faq": [
+        {
+          "q": "How often should I have it?",
+          "a": "Once a month is ideal, which is how long the skin takes to renew itself."
+        },
+        {
+          "q": "Does it help if I have acne?",
+          "a": "It can help keep your skin clean. If your acne is severe, we'll recommend seeing a dermatologist."
+        },
+        {
+          "q": "Will I come out red?",
+          "a": "There may be slight redness that fades within a few hours."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Deep cleansing facial",
+          "note": ""
+        },
+        {
+          "label": "Cleansing facial + targeted mask or ampoule",
+          "note": ""
+        },
+        {
+          "label": "4 cleansing facials package",
+          "note": "One a month"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "facial",
+        "cleansing",
+        "blackheads",
+        "pores",
+        "skin"
+      ]
+    },
+    {
+      "id": "facial-hidratante-antiedad",
+      "name": "Hydrating and anti-ageing facial with beauty devices",
+      "short": "Deep hydration and technology for dewier, firmer skin with better texture.",
+      "hook": "That healthy-glow look, powered by tech",
+      "whatIs": "It's a facial that combines high-quality skincare with beauty devices, such as facial radiofrequency, ultrasound or electroporation, so the active ingredients reach the skin more effectively. We adapt it to hydrate deeply or to work on expression lines and firmness.",
+      "benefits": [
+        {
+          "title": "Deep hydration",
+          "text": "Skin looks dewier and more rested."
+        },
+        {
+          "title": "More firmness",
+          "text": "Radiofrequency helps stimulate collagen."
+        },
+        {
+          "title": "Softer lines",
+          "text": "Improves the appearance of fine expression lines."
+        },
+        {
+          "title": "Instant glow",
+          "text": "Perfect before an event: you'll notice it from the first session."
+        },
+        {
+          "title": "No needles",
+          "text": "A comfortable treatment with no downtime."
+        }
+      ],
+      "idealFor": [
+        "Dehydrated, dull or tired-looking skin",
+        "First expression lines",
+        "Anyone who wants to prevent ageing",
+        "Before weddings, parties or photos"
+      ],
+      "howItWorks": [
+        {
+          "title": "Cleansing and diagnosis",
+          "text": "We cleanse and see what your skin needs."
+        },
+        {
+          "title": "Gentle exfoliation",
+          "text": "We prepare the skin to receive the active ingredients."
+        },
+        {
+          "title": "Beauty devices",
+          "text": "We apply the right technology alongside targeted serums."
+        },
+        {
+          "title": "Mask and massage",
+          "text": "We finish with a mask, facial massage and sun protection."
+        }
+      ],
+      "duration": "60 – 75 min",
+      "sessions": "A one-off session for an instant glow, or 4-6 sessions every 1-2 weeks for a full treatment",
+      "results": "Skin looks more radiant as soon as we finish. Changes in firmness and texture are usually gradual and vary from skin to skin.",
+      "aftercare": [
+        "Wear sunscreen every day",
+        "Keep your skin hydrated at home with suitable products",
+        "Avoid saunas and intense exercise for the first few hours"
+      ],
+      "contraindications": [
+        "Pregnancy (depending on the technology)",
+        "Pacemaker or metal implants in the face",
+        "Recent fillers or Botox: let us know",
+        "Wounds, active cold sores or irritation",
+        "Active cancer"
+      ],
+      "faq": [
+        {
+          "q": "From what age is it recommended?",
+          "a": "The hydrating part is for any age. The anti-ageing part usually appeals from around 25-30."
+        },
+        {
+          "q": "Which devices do you use?",
+          "a": "It depends on your skin. We'll explain at the initial consultation."
+        },
+        {
+          "q": "Can I wear make-up afterwards?",
+          "a": "It's best to wait a few hours so your skin can make the most of the active ingredients."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Hydrating facial with beauty devices",
+          "note": ""
+        },
+        {
+          "label": "Anti-ageing facial with radiofrequency",
+          "note": ""
+        },
+        {
+          "label": "4-session package",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price. [POR DEFINIR: confirmar aparatos disponibles en el centro]",
+      "tags": [
+        "facial",
+        "hydrating",
+        "anti-ageing",
+        "radiofrequency",
+        "radiance"
+      ]
+    },
+    {
+      "id": "microneedling-dermapen",
+      "name": "Microneedling / Dermapen",
+      "short": "Micro-needles that stimulate skin renewal to improve pores, marks and texture.",
+      "hook": "Renew your skin from within",
+      "whatIs": "The Dermapen is a device with very fine micro-needles that create tiny channels in the skin. The skin responds by repairing itself and producing more collagen. At the same time, we use those channels to apply serums that penetrate much better.",
+      "benefits": [
+        {
+          "title": "Better texture",
+          "text": "Skin looks smoother and more even."
+        },
+        {
+          "title": "Refined pores",
+          "text": "Helps reduce the appearance of enlarged pores."
+        },
+        {
+          "title": "Acne marks",
+          "text": "Improves the appearance of small scars and marks."
+        },
+        {
+          "title": "More radiance",
+          "text": "Gives a renewed, glowing-skin effect."
+        },
+        {
+          "title": "Active ingredients that go further",
+          "text": "Serums penetrate much better during the treatment."
+        }
+      ],
+      "idealFor": [
+        "Skin with acne marks or uneven texture",
+        "Enlarged pores",
+        "Dull skin or first fine lines",
+        "Over-18s"
+      ],
+      "howItWorks": [
+        {
+          "title": "Free initial consultation",
+          "text": "We assess your skin and you sign the informed consent form."
+        },
+        {
+          "title": "Preparation",
+          "text": "A deep cleanse and, if needed, a topical numbing cream."
+        },
+        {
+          "title": "Microneedling",
+          "text": "We pass the Dermapen over each area at the right depth with targeted serums."
+        },
+        {
+          "title": "Soothe",
+          "text": "A soothing mask and sun protection."
+        }
+      ],
+      "duration": "60 – 75 min",
+      "sessions": "Between 3 and 6 sessions, every 4 weeks",
+      "results": "Skin looks more radiant after a few days. Changes in texture and marks are gradual and usually more noticeable from the 2nd-3rd session. It varies from skin to skin.",
+      "aftercare": [
+        "Your skin will be reddish for 24-48 h, as after a day in the sun",
+        "Don't wear make-up for the next 24 h",
+        "Avoid the sun, saunas, swimming pools and intense exercise for 48-72 h",
+        "Use SPF 50 daily and the recommended soothing skincare",
+        "Don't use acids or retinol for 5-7 days"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Active inflamed acne, cold sores or infections in the area",
+        "Isotretinoin treatment in the last 6 months",
+        "Tendency to keloid scarring",
+        "Clotting problems or anticoagulants",
+        "Autoimmune diseases or uncontrolled diabetes"
+      ],
+      "faq": [
+        {
+          "q": "Does it hurt?",
+          "a": "You'll feel a tingling or scratching sensation. With numbing cream it's quite bearable."
+        },
+        {
+          "q": "Can I go to work afterwards?",
+          "a": "Yes, although your face will be reddish that day. Ideally, book it late in the day or before the weekend."
+        },
+        {
+          "q": "What's the best time of year?",
+          "a": "Autumn and winter are ideal because of the sun, but with good protection it can be done all year round."
+        },
+        {
+          "q": "Can it be done on the neck and décolletage?",
+          "a": "Yes, they're available as extra areas."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Facial Dermapen",
+          "note": ""
+        },
+        {
+          "label": "Dermapen face + neck",
+          "note": ""
+        },
+        {
+          "label": "Extra area (neck or décolletage)",
+          "note": ""
+        },
+        {
+          "label": "3 facial sessions package",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "dermapen",
+        "microneedling",
+        "collagen",
+        "pores",
+        "acne marks"
+      ]
+    },
+    {
+      "id": "bb-glow",
+      "name": "BB Glow",
+      "short": "A semi-permanent healthy-glow effect: a more even, radiant tone, like wearing BB cream.",
+      "hook": "Wake up with a natural make-up effect",
+      "whatIs": "It's a treatment that combines very superficial microneedling with a tinted serum matched to your skin tone. The result is a more even, radiant complexion, similar to wearing a light BB cream, which gradually fades over the weeks.",
+      "benefits": [
+        {
+          "title": "More even tone",
+          "text": "Helps disguise redness, small marks and mild dark circles."
+        },
+        {
+          "title": "Radiance",
+          "text": "Skin looks fresh and glowing."
+        },
+        {
+          "title": "Less make-up",
+          "text": "Many people save foundation for special occasions."
+        },
+        {
+          "title": "Better-cared-for skin",
+          "text": "Superficial microneedling also improves texture."
+        },
+        {
+          "title": "Natural",
+          "text": "We choose the exact shade so the result is subtle."
+        }
+      ],
+      "idealFor": [
+        "Skin with uneven tone, redness or small marks",
+        "Dull or tired-looking skin",
+        "Anyone who wants to wear less make-up day to day",
+        "Over-18s"
+      ],
+      "howItWorks": [
+        {
+          "title": "Free initial consultation",
+          "text": "We assess your skin, choose the shade and you sign the consent form."
+        },
+        {
+          "title": "Preparation",
+          "text": "Cleansing and gentle exfoliation."
+        },
+        {
+          "title": "Application",
+          "text": "Superficial microneedling with the tinted serum, area by area."
+        },
+        {
+          "title": "Sealing",
+          "text": "A soothing mask and sun protection."
+        }
+      ],
+      "duration": "60 – 90 min",
+      "sessions": "2 to 4 sessions, every 2-4 weeks, with maintenance every few months",
+      "results": "The effect is visible from the first session and builds with the following ones. It usually lasts several months, although it depends on your skin type, sun exposure and routine.",
+      "aftercare": [
+        "Don't wet your face or wear make-up for the first 24 h",
+        "Avoid the sun, saunas and intense exercise for 48-72 h",
+        "Use SPF 50 every day",
+        "Don't use exfoliants, acids or retinol for a week"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Active acne, severe rosacea or cold sores",
+        "Allergy to any ingredient in the serum (patch test beforehand)",
+        "Recent isotretinoin treatment",
+        "Tendency to keloid scarring or clotting problems"
+      ],
+      "faq": [
+        {
+          "q": "Is it a tattoo?",
+          "a": "No. The pigment stays in the most superficial layers and is gradually eliminated naturally."
+        },
+        {
+          "q": "Does it cover dark circles and marks?",
+          "a": "It helps disguise them if they're mild. It isn't a substitute for a depigmenting treatment."
+        },
+        {
+          "q": "Does it look like a mask?",
+          "a": "No, we look for a shade very close to your own so it looks natural."
+        },
+        {
+          "q": "Does it hurt?",
+          "a": "Very little; it's a very superficial microneedling."
+        }
+      ],
+      "prices": [
+        {
+          "label": "BB Glow session",
+          "note": ""
+        },
+        {
+          "label": "3-session package",
+          "note": "Recommended for the full effect"
+        },
+        {
+          "label": "Maintenance session",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "bb glow",
+        "radiance",
+        "skin tone",
+        "make-up free",
+        "facial"
+      ]
+    },
+    {
+      "id": "bb-lips",
+      "name": "BB Lips",
+      "short": "Lips with a touch of natural colour, more defined and plumper-looking for months.",
+      "hook": "Coloured lips, no lipstick",
+      "whatIs": "It's the lip version of BB Glow. Using very superficial microneedling, we introduce a soft pigment that restores colour and defines the outline. Lips also look more hydrated. It isn't a filler or a tattoo.",
+      "benefits": [
+        {
+          "title": "Natural colour",
+          "text": "Restores the tone of pale or uneven lips."
+        },
+        {
+          "title": "More defined outline",
+          "text": "Lips look more defined and prettier."
+        },
+        {
+          "title": "More hydration",
+          "text": "The active ingredients help them look plump and juicy."
+        },
+        {
+          "title": "Goodbye daily lipstick",
+          "text": "You'll have colour even when you've just rolled out of bed."
+        },
+        {
+          "title": "Temporary",
+          "text": "It gradually fades, with no permanent commitment."
+        }
+      ],
+      "idealFor": [
+        "Pale, dull or uneven-toned lips",
+        "Anyone who wants a natural, make-up-free look",
+        "People who want colour without getting lip micropigmentation",
+        "Over-18s"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consultation and colour choice",
+          "text": "Together we choose the shade that suits you best."
+        },
+        {
+          "title": "Preparation",
+          "text": "We exfoliate the lips and apply a topical numbing cream if needed."
+        },
+        {
+          "title": "Application",
+          "text": "Superficial microneedling with the pigment."
+        },
+        {
+          "title": "Sealing",
+          "text": "Repairing balm and aftercare advice."
+        }
+      ],
+      "duration": "60 min",
+      "sessions": "2 sessions 3-4 weeks apart, with a touch-up when the colour fades",
+      "results": "The colour looks more intense for the first few days and softens afterwards. It usually lasts several months, depending on the person.",
+      "aftercare": [
+        "Apply the repairing balm several times a day",
+        "Don't wear lipstick or eat very spicy or hot food for the first 24-48 h",
+        "Avoid intense kissing, sun and swimming pools for a few days",
+        "Don't pick at any flaky skin"
+      ],
+      "contraindications": [
+        "Active or frequent cold sores (check with us first; you may need treatment beforehand)",
+        "Pregnancy and breastfeeding",
+        "Recent lip fillers (wait at least 4 weeks)",
+        "Wounds or irritation on the lips",
+        "Allergy to any ingredient in the pigment"
+      ],
+      "faq": [
+        {
+          "q": "Does it add volume?",
+          "a": "It isn't a filler, but by defining and adding colour, lips can look fuller."
+        },
+        {
+          "q": "Is it the same as micropigmentation?",
+          "a": "No. BB Lips is more superficial and temporary."
+        },
+        {
+          "q": "Can I choose the colour?",
+          "a": "Yes, within natural shades that flatter your skin."
+        }
+      ],
+      "prices": [
+        {
+          "label": "BB Lips session",
+          "note": ""
+        },
+        {
+          "label": "2-session package",
+          "note": "Recommended"
+        },
+        {
+          "label": "Touch-up",
+          "note": "Within the following 3 months"
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "bb lips",
+        "lips",
+        "colour",
+        "hydration",
+        "facial"
+      ]
+    },
+    {
+      "id": "micropuntura-estrias",
+      "name": "Brazilian micropuncture for stretch marks",
+      "short": "A manual technique that stimulates the skin to improve the appearance of stretch marks, including white ones.",
+      "hook": "A fresh chance for your stretch marks",
+      "whatIs": "Brazilian micropuncture is a highly precise manual technique. Using a very fine needle, each stretch mark is worked point by point, along with a regenerating active ingredient. This creates a small, controlled inflammation that 'wakes up' the skin so it produces collagen and elastin, gradually filling in and repigmenting the stretch mark. Unlike devices, it acts only on the stretch mark and not on the healthy skin.",
+      "benefits": [
+        {
+          "title": "Works on white stretch marks",
+          "text": "One of the few techniques that also treats older stretch marks."
+        },
+        {
+          "title": "Precision treatment",
+          "text": "Only the stretch mark is treated, leaving the surrounding skin untouched."
+        },
+        {
+          "title": "Improves texture and colour",
+          "text": "The stretch mark looks less sunken, with a tone closer to your skin."
+        },
+        {
+          "title": "Stimulates your own skin",
+          "text": "Activates natural collagen production."
+        },
+        {
+          "title": "More confidence",
+          "text": "Helps you feel more comfortable in your body."
+        }
+      ],
+      "idealFor": [
+        "White or red stretch marks on the tummy, hips, bottom, thighs, chest or arms",
+        "Stretch marks after pregnancy, weight changes or teenage growth spurts",
+        "People who have already tried creams without results",
+        "Over-18s"
+      ],
+      "howItWorks": [
+        {
+          "title": "Free initial consultation",
+          "text": "We assess the stretch marks, take photos and you sign the consent form."
+        },
+        {
+          "title": "Preparation",
+          "text": "We cleanse and disinfect the area."
+        },
+        {
+          "title": "Micropuncture",
+          "text": "We work on each stretch mark point by point with the needle and the regenerating active ingredient."
+        },
+        {
+          "title": "Soothe and protect",
+          "text": "We apply a soothing product and explain the aftercare."
+        }
+      ],
+      "duration": "60 – 90 min depending on the area",
+      "sessions": "Usually 3 to 6 sessions per area, with at least 30-45 days between sessions so the skin can regenerate",
+      "results": "Improvement is gradual: it usually shows from the 2nd session, once the skin has had time to regenerate. It doesn't make stretch marks disappear completely; the result depends on how old and how large they are, and on each person's skin.",
+      "aftercare": [
+        "The area will be red and swollen for a few days; it's part of the process",
+        "Small scabs may form: don't pick them off",
+        "Avoid the sun, swimming pools, the beach and saunas for at least 15 days",
+        "Wear loose clothing and use the recommended regenerating cream",
+        "Protect the area with SPF 50 throughout the treatment"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Tanned skin or recent sun exposure",
+        "Uncontrolled diabetes or healing problems",
+        "Tendency to keloids",
+        "Infections, wounds or skin problems in the area",
+        "Anticoagulants or clotting problems"
+      ],
+      "faq": [
+        {
+          "q": "What exactly is Brazilian micropuncture?",
+          "a": "It's a manual technique developed in Brazil that works inside the stretch mark with a very fine needle so the skin regenerates by itself."
+        },
+        {
+          "q": "Does it hurt?",
+          "a": "It's uncomfortable, especially on sensitive areas, but well tolerated. We'll pause whenever you need."
+        },
+        {
+          "q": "Why so long between sessions?",
+          "a": "Because the skin takes weeks to produce new collagen. That time is part of the treatment."
+        },
+        {
+          "q": "What's the best time of year?",
+          "a": "Autumn and winter, because the treated area needs to be kept out of the sun."
+        },
+        {
+          "q": "Do they disappear completely?",
+          "a": "We can't promise that. The aim is to greatly improve their appearance, and in some cases they become barely noticeable."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Small area (e.g. chest or arms)",
+          "note": "Per session"
+        },
+        {
+          "label": "Medium area (e.g. hips or bottom)",
+          "note": "Per session"
+        },
+        {
+          "label": "Large area (e.g. tummy or thighs)",
+          "note": "Per session"
+        },
+        {
+          "label": "3-session package, small area",
+          "note": ""
+        },
+        {
+          "label": "3-session package, large area",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price. The exact price is confirmed at the assessment based on the size and number of stretch marks",
+      "tags": [
+        "micropuncture",
+        "stretch marks",
+        "white stretch marks",
+        "collagen",
+        "body"
+      ]
+    },
+    {
+      "id": "micropuntura-cicatrices",
+      "name": "Brazilian micropuncture for scars",
+      "short": "Helps improve the texture and colour of acne scars, small scars and marks.",
+      "hook": "Soften the marks you carry",
+      "whatIs": "We apply the Brazilian micropuncture technique to the scar. Using a very fine needle and a regenerating active ingredient, we work point by point so the skin reorganises itself and produces new collagen. Little by little, the scar looks flatter, smoother and better blended with the surrounding skin.",
+      "benefits": [
+        {
+          "title": "Less unevenness",
+          "text": "Helps level out sunken scars, such as acne scars."
+        },
+        {
+          "title": "More even colour",
+          "text": "Improves the tone of white or pinkish scars."
+        },
+        {
+          "title": "Total precision",
+          "text": "Only the mark is treated, without affecting healthy skin."
+        },
+        {
+          "title": "Manual technique",
+          "text": "Adapts to each scar, however small or irregular."
+        },
+        {
+          "title": "Natural regeneration",
+          "text": "Your own skin does the work."
+        }
+      ],
+      "idealFor": [
+        "Acne or chickenpox scars",
+        "Small scars from wounds or surgery that have fully healed (over a year old)",
+        "Marks that knock your confidence",
+        "Over-18s"
+      ],
+      "howItWorks": [
+        {
+          "title": "Free initial consultation",
+          "text": "We assess the type of scar and how old it is, and you sign the consent form."
+        },
+        {
+          "title": "Preparation",
+          "text": "Cleansing and disinfecting the area."
+        },
+        {
+          "title": "Micropuncture",
+          "text": "We work on the scar point by point with the regenerating active ingredient."
+        },
+        {
+          "title": "Aftercare",
+          "text": "A soothing product and guidelines for home."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "3 to 6 sessions, with 30-45 days between each one",
+      "results": "Improvement is gradual and more noticeable after several sessions. The result depends on the type of scar, how old it is and each person's skin; it doesn't make the scar disappear completely.",
+      "aftercare": [
+        "Redness and swelling for a few days: this is normal",
+        "Don't pick off the scabs",
+        "Avoid the sun, swimming pools and saunas for at least 15 days",
+        "Use the regenerating cream and SPF 50 every day"
+      ],
+      "contraindications": [
+        "Keloid or hypertrophic (raised) scars",
+        "Scars less than a year old",
+        "Pregnancy and breastfeeding",
+        "Active acne or infections in the area",
+        "Isotretinoin in the last 6 months",
+        "Clotting or healing problems"
+      ],
+      "faq": [
+        {
+          "q": "Does it work on all scars?",
+          "a": "Not on keloid or raised scars. It works best on sunken or flat scars. We'll assess it at the consultation."
+        },
+        {
+          "q": "How old does the scar need to be?",
+          "a": "At least a year old and fully healed."
+        },
+        {
+          "q": "Can it be done on the face?",
+          "a": "Yes, it's very common for acne scars."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Small area (one scar or a small area)",
+          "note": "Per session"
+        },
+        {
+          "label": "Medium area (e.g. cheeks with acne scarring)",
+          "note": "Per session"
+        },
+        {
+          "label": "3-session package, small area",
+          "note": ""
+        },
+        {
+          "label": "3-session package, medium area",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price. The exact price is confirmed at the assessment",
+      "tags": [
+        "micropuncture",
+        "scars",
+        "acne",
+        "marks",
+        "regeneration"
+      ]
+    },
+    {
+      "id": "micropuntura-capilar",
+      "name": "Brazilian micropuncture for hair",
+      "short": "Stimulates the scalp to support growth and strengthen hair in areas with less density.",
+      "hook": "Give your hair a boost",
+      "whatIs": "It's the micropuncture technique applied to the scalp. With controlled micro-perforations in areas with less hair, we stimulate circulation and the follicles, and apply hair actives that penetrate better. The aim is to help strengthen the hair and encourage growth.",
+      "benefits": [
+        {
+          "title": "Stimulates the follicles",
+          "text": "Activates the area so hair grows in better conditions."
+        },
+        {
+          "title": "Fuller-looking hair",
+          "text": "Helps hair look stronger and thicker."
+        },
+        {
+          "title": "Actives that reach the root",
+          "text": "Hair products penetrate much better."
+        },
+        {
+          "title": "Less hair loss",
+          "text": "May help slow hair loss in some cases."
+        },
+        {
+          "title": "For everyone",
+          "text": "Women and men with weakened hair."
+        }
+      ],
+      "idealFor": [
+        "People with areas of lower density or an early receding hairline",
+        "Hair loss due to stress, hormonal changes or the seasons",
+        "Fine or weakened hair",
+        "Women and men over 18"
+      ],
+      "howItWorks": [
+        {
+          "title": "Free initial consultation",
+          "text": "We assess your scalp and ask about the cause of your hair loss."
+        },
+        {
+          "title": "Cleansing",
+          "text": "We cleanse and disinfect the scalp."
+        },
+        {
+          "title": "Micropuncture",
+          "text": "We work on the areas with less density together with hair actives."
+        },
+        {
+          "title": "Guidelines",
+          "text": "We give you care and washing recommendations."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Between 6 and 10 sessions, every 2-4 weeks, followed by maintenance",
+      "results": "Hair needs time: changes usually start to show from the 3rd-4th month. Results vary depending on the cause of hair loss and each person.",
+      "aftercare": [
+        "Don't wash your hair for the next 24 h",
+        "Avoid dyes, bleaching and harsh products for a week",
+        "Avoid direct sun on your head, saunas and swimming pools for a few days",
+        "Don't scratch the area"
+      ],
+      "contraindications": [
+        "Infections, wounds or active dermatitis on the scalp",
+        "Pregnancy and breastfeeding",
+        "Clotting problems or anticoagulants",
+        "Scarring alopecia or hair loss with a medical cause without a specialist's assessment",
+        "Allergy to any of the hair actives"
+      ],
+      "faq": [
+        {
+          "q": "Does it work for alopecia?",
+          "a": "It may help with mild to moderate hair loss. If the loss is heavy or sudden, we recommend seeing a dermatologist to find out the cause."
+        },
+        {
+          "q": "Can you tell after the treatment?",
+          "a": "There may be some redness on the scalp that day, usually hidden by your hair."
+        },
+        {
+          "q": "Is it compatible with other hair treatments?",
+          "a": "Usually, yes. Tell us what you're using and we'll assess it."
+        }
+      ],
+      "prices": [
+        {
+          "label": "Hair micropuncture session",
+          "note": ""
+        },
+        {
+          "label": "6-session package",
+          "note": ""
+        },
+        {
+          "label": "10-session package",
+          "note": ""
+        }
+      ],
+      "priceNote": "Guide price",
+      "tags": [
+        "micropuncture",
+        "hair",
+        "hair loss",
+        "scalp",
+        "density"
+      ]
+    }
+  ]
+}

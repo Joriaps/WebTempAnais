@@ -1,0 +1,98 @@
+{
+  "announcement": {
+    "text": "First time at Imperium? Get 15% off with your Aloha welcome and a free assessment"
+  },
+  "promos": [
+    {
+      "id": "aloha-bienvenida",
+      "title": "Aloha Welcome",
+      "text": "15% off your first treatment and a free assessment before you start. No obligation.",
+      "badge": "-15%",
+      "validity": "Always available for new clients"
+    },
+    {
+      "id": "ohana-amigos",
+      "title": "Ohana: bring your people",
+      "text": "Come with a friend or family member who's new to us and you'll each get 20% off.",
+      "badge": "-20% x2",
+      "validity": "Always available"
+    },
+    {
+      "id": "horas-valle",
+      "title": "Imperium Mornings",
+      "text": "Tuesday to Thursday, 10:00 to 13:00, 10% off manicures, pedicures, massages and facials. Ideal if you work from home, study or work afternoon shifts.",
+      "badge": "-10%",
+      "validity": "Tuesday to Thursday, 10:00 to 13:00, excluding public holidays"
+    },
+    {
+      "id": "cumpleanos",
+      "title": "Your month, your gift",
+      "text": "During your birthday month we'll treat you to an extra at your appointment (a mask, a brow tint or 10 extra minutes of massage). Just let us know when you book.",
+      "badge": "Gift",
+      "validity": "Your birthday month, once a year"
+    },
+    {
+      "id": "laser-otono",
+      "title": "Start laser now and be summer-ready",
+      "text": "Autumn and winter are the best time to start: less sun, less risk of pigmentation and time to complete several sessions. Free patch test.",
+      "badge": "Seasonal",
+      "validity": "November 2026 – February 2027"
+    },
+    {
+      "id": "tarjeta-regalo-navidad",
+      "title": "Christmas gift cards",
+      "text": "Give a treatment or a pack with a personalised gift card. Valid for 6 months, with the option to choose the treatment later.",
+      "badge": "Christmas",
+      "validity": "From 20 November to 6 January"
+    }
+  ],
+  "loyalty": {
+    "name": "Crown Club",
+    "description": "Our digital loyalty card: every visit earns you a crown and, when you complete the card, you get a gift. No fees and no small print.",
+    "steps": [
+      "Ask for your Crown Club card on your first visit (or register it with your phone).",
+      "Earn 1 crown for every appointment of 25 € or more.",
+      "When you reach 8 crowns, choose your gift: 50% off a treatment of up to 50 € or a 30-minute relaxing massage.",
+      "Your crowns don't expire as long as you visit us at least once every 6 months."
+    ]
+  },
+  "leadMagnet": {
+    "title": "Free skin diagnosis",
+    "text": "In 20 minutes we analyse your skin type, pigmentation, pores or stretch marks and give you a clear plan with options and prices in writing. You decide whether to go ahead, no obligation.",
+    "cta": "Book my free diagnosis"
+  },
+  "faqGeneral": [
+    {
+      "q": "How can I book an appointment?",
+      "a": "By WhatsApp, by phone, with the online booking button on the website or by popping into the centre. We'll confirm your appointment by message."
+    },
+    {
+      "q": "What if I can't make my appointment?",
+      "a": "Let us know at least 24 hours in advance and we'll rearrange it free of charge. If you repeatedly don't show up or cancel at shorter notice, we may ask for a deposit for future bookings, because someone else could have used that slot."
+    },
+    {
+      "q": "What payment methods do you accept?",
+      "a": "Cash, card and Bizum. Packs and packages are paid for when you start the treatment; ask us if you'd prefer to pay in two instalments."
+    },
+    {
+      "q": "It's my first time. How does it work?",
+      "a": "Arrive 5 minutes early to fill in a short form. We'll talk about what you're looking for, assess the area or your skin and explain the treatment, the number of sessions and the price before we start. Plus, you get 15% off with your Aloha welcome."
+    },
+    {
+      "q": "Do you treat under-18s?",
+      "a": "Yes, with treatments suitable for their age (manicures, pedicures, brows, cleansing facials, waxing…). Under-16s must be accompanied, and 16- and 17-year-olds need signed permission from a parent or guardian. Some treatments, such as laser, micropuncture or Dermapen, require a specific assessment."
+    },
+    {
+      "q": "Do packs and packages expire?",
+      "a": "Packages and packs are valid for 12 months from purchase, which is plenty of time to complete the sessions at the recommended frequency. They're personal, but you can ask us if you need to transfer them."
+    },
+    {
+      "q": "Do prices include VAT?",
+      "a": "Yes, all published prices include VAT. They're a guide and may vary after the assessment, but we'll always tell you the final price before we start."
+    },
+    {
+      "q": "Do you have gift cards?",
+      "a": "Yes. You can give an amount, a treatment or a pack. Cards are valid for 6 months and the person who receives it can choose the treatment later."
+    }
+  ]
+}

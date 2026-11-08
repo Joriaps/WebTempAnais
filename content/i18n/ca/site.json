@@ -1,0 +1,104 @@
+{
+  "brand": {
+    "tagline": "La teva bellesa, el teu imperi",
+    "description": "Centre d'estètica avançada: manicura, depilació làser, mirada, massatges, maderoteràpia, aparatologia, BB Glow, Dermapen i micropuntura brasilera."
+  },
+  "contact": {
+    "whatsappMessage": "Hola! M'agradaria demanar cita a Imperium Beauty Studio",
+    "whatsappTreatmentMessage": "Hola! M'agradaria informació i cita per a: {treatment}",
+    "address": "[POR DEFINIR] Carrer Exemple, 1",
+    "hours": [
+      { "days": "De dilluns a divendres", "time": "9:30 – 19:30" },
+      { "days": "Dissabtes", "time": "9:30 – 14:30" },
+      { "days": "Diumenges i festius", "time": "Tancat" }
+    ],
+    "bookingLabel": "Reserva en línia"
+  },
+  "nav": [
+    { "label": "Tractaments" },
+    { "label": "Preus" },
+    { "label": "Packs Aloha & Ohana" },
+    { "label": "Contacte" }
+  ],
+  "hero": {
+    "eyebrow": "Estètica avançada · Bellesa · Benestar",
+    "title": "L'art de",
+    "titleAccent": "cuidar-te",
+    "subtitle": "Ungles, mirada, làser, massatges i tractaments facials i corporals d'última generació. T'ho expliquem tot, sense lletra petita, perquè triïs el que de debò et queda bé.",
+    "ctaPrimary": { "label": "Demana la teva cita" },
+    "ctaSecondary": { "label": "Veure tractaments" }
+  },
+  "stats": [
+    { "value": "+25", "label": "tractaments" },
+    { "value": "1a", "label": "consulta gratis" },
+    { "value": "-15%", "label": "amb el teu pack Aloha" }
+  ],
+  "about": {
+    "eyebrow": "Qui som",
+    "title": "Més de 10 anys cuidant-te,",
+    "titleAccent": "i aprenent cada dia",
+    "paragraphs": [
+      "Fa més d'una dècada que ens dediquem a l'estètica i continuem aprenent cada dia. Ens formem de manera contínua per treballar amb les tècniques i tecnologies més actuals, perquè cuidar-te bé també és estar al dia.",
+      "Cuidem cada servei fins a l'últim detall i t'atenem de manera individual: escoltem el que busques, valorem el teu cas i adaptem cada tractament a tu. T'acompanyem en tot el procés amb un únic objectiu: aconseguir el millor resultat possible per a tu.",
+      "Volem que cada visita sigui un moment teu, en què et sentis com a casa: un tracte proper i de confiança, amb l'exigència i la cura de qui estima el que fa."
+    ],
+    "highlights": [
+      {
+        "title": "+10 anys d'experiència",
+        "text": "Una dècada d'ofici que es nota en cada detall."
+      },
+      {
+        "title": "Formació contínua",
+        "text": "Al dia de les últimes tècniques i tecnologies."
+      },
+      {
+        "title": "Atenció individual",
+        "text": "Un pla pensat per a tu, sense presses i amb seguiment."
+      }
+    ]
+  },
+  "whyUs": [
+    {
+      "title": "Professionals certificades",
+      "text": "Formació contínua i protocols d'higiene i seguretat en cada tractament."
+    },
+    {
+      "title": "Tecnologia actual",
+      "text": "Aparatologia d'última generació per a resultats visibles amb el màxim confort."
+    },
+    {
+      "title": "Un pla per a tu",
+      "text": "Valorem la teva pell i els teus objectius abans de començar. Sense pressions, sense lletra petita."
+    },
+    {
+      "title": "Un ambient que relaxa",
+      "text": "Un espai pensat per desconnectar, per a qualsevol edat i estil."
+    }
+  ],
+  "testimonials": {
+    "items": [
+      {
+        "name": "Exemple de ressenya",
+        "text": "Substituir per ressenyes reals de clients (per exemple, de Google).",
+        "treatment": "Lifting de pestanyes"
+      },
+      {
+        "name": "Exemple de ressenya",
+        "text": "Substituir per ressenyes reals de clients (per exemple, de Google).",
+        "treatment": "Depilació làser"
+      },
+      {
+        "name": "Exemple de ressenya",
+        "text": "Substituir per ressenyes reals de clients (per exemple, de Google).",
+        "treatment": "Maderoteràpia"
+      }
+    ]
+  },
+  "seo": {
+    "defaultDescription": "Centre d'estètica avançada a [ciutat]: manicura, semipermanent, depilació làser i cera, lifting de pestanyes, laminat de celles, massatges, maderoteràpia, pressoteràpia, BB Glow, Dermapen i micropuntura brasilera."
+  },
+  "legal": {
+    "privacyText": "He llegit i accepto la política de privacitat. Farem servir les teves dades només per respondre la teva sol·licitud.",
+    "priceDisclaimer": "Preus orientatius amb IVA inclòs. Poden variar segons la valoració prèvia. Consulta'ns sense compromís."
+  }
+}

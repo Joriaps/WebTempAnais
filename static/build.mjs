@@ -21,8 +21,8 @@ const CONTENT = process.env.CONTENT_DIR ? resolve(process.env.CONTENT_DIR) : joi
 const FIXTURES = join(HERE, 'fixtures');
 const SRC = join(HERE, 'src');
 const DIST = join(HERE, 'dist');
-const warnings = [];
-const warn = (m) => warnings.push(m);
+const warnings = new Set(); // sin duplicados (cada idioma repetiría los mismos avisos)
+const warn = (m) => warnings.add(m);
 
 /* ==========================================================================
    1. Datos
@@ -48,51 +48,169 @@ const siteSrc = loadData('site', { required: true });
 const trSrc = loadData('treatments');
 const pkSrc = loadData('packs');
 const mkSrc = loadData('marketing');
+const BASE = { site: siteSrc.data ?? {}, treatments: trSrc.data ?? {}, packs: pkSrc.data ?? {}, marketing: mkSrc.data ?? {} };
 
-const site = siteSrc.data;
-const brand = site.brand ?? {};
-const contact = site.contact ?? {};
-const social = site.social ?? {};
-const seo = site.seo ?? {};
-const legal = site.legal ?? {};
-const theme = site.theme ?? { colors: {}, fonts: {} };
+/* Idiomas: el español es la base (raíz /); ca y en en subcarpetas con los mismos slugs. */
+const LANGS = [
+  { code: 'es', prefix: '', name: 'Español', short: 'ES', locale: 'es_ES', intl: 'es-ES' },
+  { code: 'ca', prefix: 'ca/', name: 'Català', short: 'CA', locale: 'ca_ES', intl: 'ca-ES' },
+  { code: 'en', prefix: 'en/', name: 'English', short: 'EN', locale: 'en_GB', intl: 'en-GB' },
+];
 
-const categories = [...(trSrc.data.categories ?? [])].sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
-const treatments = (trSrc.data.treatments ?? []).filter((t) => t && t.id);
-const packs = pkSrc.data ?? {};
-const mk = mkSrc.data ?? {};
-const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
-const trById = Object.fromEntries(treatments.map((t) => [t.id, t]));
-const byCat = (id) => treatments.filter((t) => t.category === id);
+// Datos que nunca se traducen (content/i18n/LEEME.md, regla 5-6)
+const theme = BASE.site.theme ?? { colors: {}, fonts: {} };
+const baseContact = BASE.site.contact ?? {};
+const social = BASE.site.social ?? {};
 
-for (const t of treatments) {
-  if (!catById[t.category]) warn(`Tratamiento "${t.id}" usa categoría inexistente "${t.category}"`);
+for (const t of BASE.treatments.treatments ?? []) {
+  if (!t || !t.id) continue;
+  if (!(BASE.treatments.categories ?? []).some((c) => c.id === t.category)) warn(`Tratamiento "${t.id}" usa categoría inexistente "${t.category}"`);
   if (!/^[a-z0-9-]+$/.test(t.id)) warn(`Tratamiento "${t.id}": el id debería ser un slug (a-z, 0-9, guiones)`);
 }
 
-let SITE_URL = (seo.siteUrl || process.env.SITE_URL || '').trim(); // site.json manda; SITE_URL (CI) si está vacío
+let SITE_URL = (BASE.site.seo?.siteUrl || process.env.SITE_URL || '').trim(); // site.json manda; SITE_URL (CI) si está vacío
 if (SITE_URL && !SITE_URL.endsWith('/')) SITE_URL += '/';
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 const VERSION = Date.now().toString(36);
 
 /* ==========================================================================
-   2. Textos de interfaz (microcopy estructural; el contenido va en content/)
+   2. Traducciones (content/i18n/) — reglas de fusión de content/i18n/LEEME.md
    ========================================================================== */
-const UI = {
-  skip: 'Saltar al contenido',
-  menuOpen: 'Abrir menú', menuClose: 'Cerrar menú',
-  bookCta: 'Pide cita',
-  from: 'desde', consult: 'Consultar',
-  seeFicha: 'Ver ficha', seeAll: 'Ver todos los tratamientos', seeMore: 'Ver más',
-  whatsapp: 'WhatsApp', whatsappLong: 'Escríbenos por WhatsApp', call: 'Llamar', form: 'Formulario de contacto',
-  newTab: '(se abre en una pestaña nueva)',
-  home: 'Inicio',
-  painLabels: ['Sin molestia', 'Muy leve', 'Leve', 'Moderada', 'Intensa', 'Muy intensa'],
-  reviewsNotice: 'Reseñas de ejemplo: se sustituirán por opiniones reales de clientas. No son testimonios verificados.',
-  imageSlot: 'Foto pendiente',
-  scrollHint: 'Desliza para descubrir',
-};
-const PAIN = (n) => UI.painLabels[Math.max(0, Math.min(5, Number(n) || 0))];
+const I18N = join(CONTENT, 'i18n');
+const NEVER_KEYS = new Set([
+  'id', 'treatmentId', 'category', 'href', 'icon', 'price', 'oldPrice', 'priceFrom', 'order', 'painLevel',
+  'featured', 'highlight', 'active', 'from', 'immersive', 'isPlaceholder',
+  'theme', 'colors', 'fonts', 'image', 'ogImage', 'siteUrl', 'locale',
+  'phone', 'whatsapp', 'email', 'postalCode', 'mapsUrl', 'mapsEmbed', 'bookingUrl', 'formEndpoint',
+]);
+const NEVER_PATHS = new Set(['brand.name', 'brand.shortName', 'seo.titleSuffix', 'brand.logoText', 'brand.logoAccent', 'aloha.name', 'ohana.name', 'social']);
+const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+const hasText = (s) => typeof s === 'string' && /\p{L}/u.test(s.replace(/\[POR[ -]DEFINIR\]/gi, ''));
+
+/**
+ * Fusiona la traducción `tr` sobre la base española `base`.
+ * - Objetos: clave a clave. Listas con `id`: por id. Listas de objetos sin id: por posición.
+ * - Listas de textos: se sustituyen enteras. Números, booleanos y claves protegidas: siempre del español.
+ * `st` acumula lo que falta para el resumen de consola. `protect=false` (ui.json) no aplica NEVER_KEYS.
+ */
+function mergeI18n(base, tr, path, st, protect = true) {
+  if (Array.isArray(base)) {
+    if (tr !== undefined && !Array.isArray(tr)) { st.type.push(path); tr = undefined; }
+    const objs = base.some(isObj);
+    if (objs && base.some((b) => isObj(b) && 'id' in b)) {
+      const byId = new Map((tr || []).filter(isObj).map((x) => [x.id, x]));
+      for (const id of byId.keys()) if (!base.some((b) => isObj(b) && b.id === id)) st.unknown.push(`${path}[${id}]`);
+      return base.map((b) => (isObj(b) ? mergeI18n(b, byId.get(b.id), `${path}[${b.id}]`, st, protect) : b));
+    }
+    if (objs) {
+      if (tr && tr.length !== base.length) st.len.push(`${path} (${tr.length} de ${base.length})`);
+      return base.map((b, i) => mergeI18n(b, tr ? tr[i] : undefined, `${path}[${i}]`, st, protect));
+    }
+    // Lista de textos: se sustituye entera
+    if (tr && tr.length && tr.every((x) => typeof x === 'string')) {
+      if (tr.length !== base.length) st.len.push(`${path} (${tr.length} de ${base.length})`);
+      return tr;
+    }
+    if (base.some(hasText)) st.missing.push(path);
+    return base;
+  }
+  if (isObj(base)) {
+    if (tr !== undefined && !isObj(tr)) { st.type.push(path); tr = undefined; }
+    const out = {};
+    for (const [k, v] of Object.entries(base)) {
+      const p = path ? `${path}.${k}` : k;
+      const skip = protect && (NEVER_KEYS.has(k) || NEVER_PATHS.has(p));
+      out[k] = skip ? v : mergeI18n(v, tr ? tr[k] : undefined, p, st, protect);
+    }
+    return out;
+  }
+  if (typeof base === 'string') {
+    if (typeof tr === 'string' && tr.trim()) return tr;
+    if (hasText(base)) st.missing.push(path);
+    return base;
+  }
+  return base; // números, booleanos, null: siempre del español
+}
+
+const sample = (list, n = 4) => list.slice(0, n).join(', ') + (list.length > n ? `, … (+${list.length - n})` : '');
+function reportI18n(label, st) {
+  if (st.missing.length) warn(`i18n ${label}: ${st.missing.length} texto(s) sin traducir (se usa el español), p. ej.: ${sample(st.missing)}`);
+  if (st.len.length) warn(`i18n ${label}: ${st.len.length} lista(s) con distinto nº de elementos que el español: ${sample(st.len)}`);
+  if (st.unknown.length) warn(`i18n ${label}: id(s) que no existen en el español (se ignoran): ${sample(st.unknown)}`);
+  if (st.type.length) warn(`i18n ${label}: tipo distinto al español (se ignora): ${sample(st.type)}`);
+}
+const newStats = () => ({ missing: [], len: [], unknown: [], type: [] });
+
+/** Contenido de un idioma: el español fusionado con content/i18n/<lang>/<archivo>.json. */
+function loadLangContent(lang) {
+  if (lang === 'es') return BASE;
+  const out = {};
+  for (const name of Object.keys(BASE)) {
+    const file = join(I18N, lang, `${name}.json`);
+    if (!existsSync(file)) { warn(`i18n ${lang}: falta content/i18n/${lang}/${name}.json → se usa el español`); out[name] = BASE[name]; continue; }
+    let tr;
+    try { tr = readJson(file); } catch (e) { warn(`i18n ${lang}: content/i18n/${lang}/${name}.json no es JSON válido (${e.message}) → se usa el español`); out[name] = BASE[name]; continue; }
+    const st = newStats();
+    out[name] = mergeI18n(BASE[name], tr, '', st);
+    reportI18n(`${lang}/${name}.json`, st);
+  }
+  return out;
+}
+
+/* Textos fijos de la interfaz: content/i18n/ui.json → { es: {...}, ca: {...}, en: {...} } */
+const UI_FILE = join(I18N, 'ui.json');
+if (!existsSync(UI_FILE)) throw new Error('Falta content/i18n/ui.json (textos fijos de la interfaz)');
+const UI_ALL = readJson(UI_FILE);
+if (!isObj(UI_ALL.es)) throw new Error('content/i18n/ui.json no tiene la sección "es"');
+function loadUi(lang) {
+  if (lang === 'es') return UI_ALL.es;
+  if (!isObj(UI_ALL[lang])) { warn(`i18n ui.json: falta la sección "${lang}" → se usa el español`); return UI_ALL.es; }
+  const st = newStats();
+  const out = mergeI18n(UI_ALL.es, UI_ALL[lang], '', st, false);
+  reportI18n(`ui.json (${lang})`, st);
+  return out;
+}
+
+/* Estado del idioma en curso (lo fija setLang antes de generar cada idioma) */
+let L, LP = '', LANG_UP = '', UI = {};
+let site, brand, contact, seo, legal, categories, treatments, packs, mk, catById, trById, featured, activePromos;
+function setLang(lang) {
+  L = LANGS.find((x) => x.code === lang);
+  LP = L.prefix;
+  LANG_UP = LP ? '../' : ''; // de la raíz del idioma a la raíz de dist (css, js, assets compartidos)
+  UI = loadUi(lang);
+  const D = loadLangContent(lang);
+  site = D.site; brand = site.brand ?? {}; contact = site.contact ?? {}; seo = site.seo ?? {}; legal = site.legal ?? {};
+  categories = [...(D.treatments.categories ?? [])].sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+  treatments = (D.treatments.treatments ?? []).filter((t) => t && t.id);
+  packs = D.packs ?? {};
+  mk = D.marketing ?? {};
+  catById = Object.fromEntries(categories.map((c) => [c.id, c]));
+  trById = Object.fromEntries(treatments.map((t) => [t.id, t]));
+  featured = (() => { const f = treatments.filter((t) => t.featured); return (f.length ? f : treatments).slice(0, 6); })();
+  activePromos = arr(mk.promos).filter((p) => p.active !== false);
+}
+const byCat = (id) => treatments.filter((t) => t.category === id);
+
+/** Texto de interfaz (plano, sin escapar). `key` con puntos: 'form.name'. {var} se sustituye. */
+const uiGet = (key) => key.split('.').reduce((o, k) => (o == null ? undefined : o[k]), UI);
+const sub = (s, vars = {}) => String(s ?? '').replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k] ?? '') : m));
+function tx(key, vars) {
+  const v = uiGet(key);
+  if (v === undefined) { warn(`ui.json: falta la clave "${key}"`); return key; }
+  return sub(v, vars);
+}
+/** Texto de interfaz escapado para HTML (vars en texto plano). */
+const u = (key, vars) => esc(tx(key, vars));
+/** Texto de interfaz enriquecido: **negrita**, *acento*, [POR DEFINIR] resaltado. Las vars deben ser HTML ya escapado. */
+function rich(key, vars = {}) {
+  const v = uiGet(key);
+  if (v === undefined) { warn(`ui.json: falta la clave "${key}"`); return esc(key); }
+  const html = esc(v).replace(/\[POR[ -]DEFINIR\]/gi, (m) => `<span class="todo">${m}</span>`)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<span class="accent">$1</span>');
+  return sub(html, vars);
+}
+const PAIN = (n) => arr(UI.painLabels)[Math.max(0, Math.min(5, Number(n) || 0))] ?? '';
 
 /* ==========================================================================
    3. Utilidades
@@ -103,20 +221,22 @@ const fill = (s) => esc(s).replace(/\[POR[ -]DEFINIR\]/gi, (m) => `<span class="
 const arr = (x) => (Array.isArray(x) ? x.filter((v) => v !== null && v !== undefined && v !== '') : []);
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const money = (v) => {
-  if (isNum(v) && v > 0) return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: Number.isInteger(v) ? 0 : 2, maximumFractionDigits: 2 }).format(v);
+  if (isNum(v) && v > 0) return new Intl.NumberFormat(L.intl, { style: 'currency', currency: 'EUR', minimumFractionDigits: Number.isInteger(v) ? 0 : 2, maximumFractionDigits: 2 }).format(v);
   if (typeof v === 'string' && v.trim()) return esc(v);
-  return UI.consult;
+  return u('consult');
 };
 const saving = (price, old) => (isNum(price) && isNum(old) && old > price ? { amount: +(old - price).toFixed(2), pct: Math.round(((old - price) / old) * 100) } : null);
-const savingHtml = (s) => (s ? `<span class="save">Ahorras ${money(s.amount)} (−${s.pct}%)</span>` : '');
+const savingHtml = (s) => (s ? `<span class="save">${sub(esc(tx('saving')), { amount: money(s.amount), pct: s.pct })}</span>` : '');
 const priceFromOf = (t) => (isNum(t.priceFrom) && t.priceFrom > 0 ? t.priceFrom : Math.min(...arr(t.prices).map((p) => p.price).filter((p) => isNum(p) && p > 0), Infinity));
 const icon = (name, cls = '') => `<svg class="icon ${cls}" aria-hidden="true" focusable="false"><use href="#i-${esc(name)}"></use></svg>`;
 const digits = (s) => String(s ?? '').replace(/\D/g, '');
-const WA = digits(contact.whatsapp);
+const WA = digits(baseContact.whatsapp);
 const waUrl = (text) => `https://wa.me/${WA}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
-const waFor = (name) => (contact.whatsappTreatmentMessage || '¡Hola! Me gustaría información y cita para: {treatment}').replace('{treatment}', name);
-const tel = contact.phone ? `tel:${String(contact.phone).replace(/[^\d+]/g, '')}` : '';
+const waFor = (name) => (contact.whatsappTreatmentMessage || tx('waTreatment')).replace('{treatment}', name);
+const tel = baseContact.phone ? `tel:${String(baseContact.phone).replace(/[^\d+]/g, '')}` : '';
 const abs = (p) => (SITE_URL ? new URL(p, SITE_URL).href : null);
+/** URL absoluta de una página del idioma en curso (path sin prefijo de idioma). */
+const pageUrl = (path, lang = L) => (SITE_URL ? new URL(lang.prefix + path, SITE_URL).href : null);
 /** Enlaces del contenido ("tratamientos/", "#reservar", "https://…") → relativos a la página. */
 const link = (href, root) => {
   if (!href) return root || './';
@@ -147,7 +267,8 @@ function findImage(field, autoBase) {
   }
   return null;
 }
-const imgSrc = (src, root) => (ext(src) ? src : root + src);
+/** Ruta de un recurso compartido (assets/, css/, js/ viven en la raíz de dist para los tres idiomas). */
+const imgSrc = (src, root) => (ext(src) ? src : root + LANG_UP + src);
 
 /* ==========================================================================
    4. Color: variables CSS + variantes accesibles calculadas (WCAG 2.2 AA)
@@ -246,7 +367,7 @@ function sparkles(cls = 'deco-sparkles', count = 14) {
   return `<svg class="${cls}" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">${pts.slice(0, count).map(([x, y, s]) => `<path class="sparkle" transform="translate(${x * 10} ${y * 6}) scale(${s})" d="${SPARK}"/>`).join('')}</svg>`;
 }
 function imgSlot(pathHint) {
-  return `<div class="img-slot" aria-hidden="true">${palm('img-slot__art', 'white')}<span class="img-slot__label">${icon('image')} ${UI.imageSlot} · ${esc(pathHint)}</span></div>`;
+  return `<div class="img-slot" aria-hidden="true">${palm('img-slot__art', 'white')}<span class="img-slot__label">${icon('image')} ${u('imageSlot')} ·${esc(pathHint)}</span></div>`;
 }
 function logoMark(cls = 'logo__mark') {
   const id = `lg${++uid}`;
@@ -264,7 +385,7 @@ function businessLd() {
     '@context': 'https://schema.org', '@type': 'BeautySalon',
     '@id': SITE_URL ? `${SITE_URL}#negocio` : undefined,
     name: brand.name, description: brand.description, slogan: brand.tagline,
-    url: SITE_URL || undefined, telephone: contact.phone || undefined, email: contact.email || undefined,
+    url: pageUrl('') || undefined, telephone: contact.phone || undefined, email: contact.email || undefined,
     image: seo.ogImage ? abs(seo.ogImage) || undefined : undefined,
     priceRange: '€€', currenciesAccepted: 'EUR',
     address: { '@type': 'PostalAddress', streetAddress: contact.address, addressLocality: contact.city, postalCode: contact.postalCode, addressCountry: 'ES' },
@@ -273,36 +394,56 @@ function businessLd() {
   };
 }
 
-function waBtn(text, label = UI.whatsapp, cls = 'btn btn--wa') {
-  return `<a class="${cls}" href="${esc(waUrl(text))}" target="_blank" rel="noopener">${icon('whatsapp')}<span>${esc(label)}</span><span class="visually-hidden"> ${UI.newTab}</span></a>`;
+function waBtn(text, label = tx('whatsapp'), cls = 'btn btn--wa') {
+  return `<a class="${cls}" href="${esc(waUrl(text))}" target="_blank" rel="noopener">${icon('whatsapp')}<span>${esc(label)}</span><span class="visually-hidden"> ${u('newTab')}</span></a>`;
 }
 function callBtn(cls = 'btn btn--ghost') {
-  return tel ? `<a class="${cls}" href="${tel}">${icon('phone')}<span>${UI.call}</span></a>` : '';
+  return tel ? `<a class="${cls}" href="${tel}">${icon('phone')}<span>${u('call')}</span></a>` : '';
 }
 function bookingBtn(cls = 'btn btn--green') {
-  return contact.bookingUrl ? `<a class="${cls}" href="${esc(contact.bookingUrl)}" target="_blank" rel="noopener">${icon('calendar')}<span>${esc(contact.bookingLabel || 'Reserva online')}</span><span class="visually-hidden"> ${UI.newTab}</span></a>` : '';
+  return contact.bookingUrl ? `<a class="${cls}" href="${esc(contact.bookingUrl)}" target="_blank" rel="noopener">${icon('calendar')}<span>${esc(contact.bookingLabel || tx('bookOnline'))}</span><span class="visually-hidden"> ${u('newTab')}</span></a>` : '';
 }
 
-function header(root, current, hasReservar = true) {
+/**
+ * Selector de idioma: enlaza a la MISMA página en cada idioma.
+ * `here` = { root (raíz del sitio relativa a la página), path (sin prefijo) }.
+ */
+function langSwitch(here, cls = '') {
+  const items = LANGS.map((x) => {
+    const cur = x.code === L.code;
+    const href = here.siteRoot + x.prefix + here.path || './';
+    return `<li><a href="${esc(href)}" lang="${x.code}" hreflang="${x.code}"${cur ? ' aria-current="true"' : ''}><abbr title="${esc(x.name)}" aria-hidden="true">${x.short}</abbr><span class="visually-hidden">${esc(x.name)}</span></a></li>`;
+  }).join('<li aria-hidden="true" class="lang-switch__sep">·</li>');
+  return `<nav class="lang-switch ${cls}" aria-label="${u('langNav')}"><ul>${items}</ul></nav>`;
+}
+
+/** Elementos del menú: «Quiénes somos» (ancla de portada, si existe site.about) + site.nav. */
+function navEntries(root, current) {
+  const list = [];
+  if (site.about) list.push({ label: tx('navAbout'), href: current === '#home' ? '#quienes-somos' : `${root || './'}#quienes-somos`, cur: false, ext: false });
+  for (const n of arr(site.nav)) list.push({ label: n.label, href: link(n.href, root), cur: !!current && n.href.replace(/^\/+/, '') === current, ext: ext(n.href) });
+  return list;
+}
+
+function header(root, current, hasReservar = true, here) {
   const a = mk.announcement;
   const announce = a && a.active && a.text
     ? `<div class="announce"><div class="container">${icon('sparkle')}<p style="margin:0">${a.href ? `<a href="${esc(link(a.href, root))}"${extAttrs(a.href)}>${esc(a.text)}</a>` : esc(a.text)}</p></div></div>` : '';
-  const navItems = arr(site.nav).map((n) => {
-    const cur = current && n.href.replace(/^\/+/, '') === current;
-    return `<li><a class="nav__link" href="${esc(link(n.href, root))}"${cur ? ' aria-current="page"' : ''}${extAttrs(n.href)}>${esc(n.label)}</a></li>`;
-  }).join('');
-  const cta = contact.bookingUrl ? bookingBtn('btn btn--sm header-cta') : `<a class="btn btn--sm header-cta" href="${hasReservar ? '#reservar' : root + 'contacto/'}">${icon('calendar')}<span>${UI.bookCta}</span></a>`;
+  const navItems = navEntries(root, current).map((n) => `<li><a class="nav__link" href="${esc(n.href)}"${n.cur ? ' aria-current="page"' : ''}${n.ext ? ' target="_blank" rel="noopener"' : ''}>${esc(n.label)}</a></li>`).join('');
+  const cta = contact.bookingUrl ? bookingBtn('btn btn--sm header-cta') : `<a class="btn btn--sm header-cta" href="${hasReservar ? '#reservar' : root + 'contacto/'}">${icon('calendar')}<span>${u('bookCta')}</span></a>`;
   return `${announce}
 <header class="site-header">
   <div class="container site-header__bar">
-    <a class="logo" href="${root || './'}" aria-label="${esc(brand.name)} — ${UI.home}">${logoMark()}<span><span class="logo__text">${esc(brand.logoText || brand.name)}</span><span class="logo__accent">${esc(brand.logoAccent || '')}</span></span></a>
-    <nav id="site-nav" class="nav" aria-label="Principal">
+    <a class="logo" href="${root || './'}" aria-label="${esc(brand.name)} — ${u('home')}">${logoMark()}<span><span class="logo__text">${esc(brand.logoText || brand.name)}</span><span class="logo__accent">${esc(brand.logoAccent || '')}</span></span></a>
+    <nav id="site-nav" class="nav" aria-label="${u('navMain')}">
       <ul class="nav__list">${navItems}</ul>
-      <div class="nav__mobile-cta">${waBtn(contact.whatsappMessage, UI.whatsappLong, 'btn btn--wa btn--block')}${callBtn('btn btn--ghost btn--block')}${bookingBtn('btn btn--green btn--block')}</div>
+      ${langSwitch(here, 'lang-switch--mobile')}
+      <div class="nav__mobile-cta">${waBtn(contact.whatsappMessage, tx('whatsappLong'), 'btn btn--wa btn--block')}${callBtn('btn btn--ghost btn--block')}${bookingBtn('btn btn--green btn--block')}</div>
     </nav>
     <div class="header-actions">
+      ${langSwitch(here, 'lang-switch--desktop')}
       ${cta}
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="${UI.menuOpen}" data-label-open="${UI.menuOpen}" data-label-close="${UI.menuClose}">${icon('menu', 'icon-open')}${icon('close', 'icon-close')}</button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="${u('menuOpen')}" data-label-open="${u('menuOpen')}" data-label-close="${u('menuClose')}">${icon('menu', 'icon-open')}${icon('close', 'icon-close')}</button>
     </div>
   </div>
 </header>`;
@@ -313,31 +454,32 @@ function hoursDl(cls = 'hours') {
   return h.length ? `<dl class="${cls}">${h.map((x) => `<dt>${esc(x.days)}</dt><dd>${esc(x.time)}</dd>`).join('')}</dl>` : '';
 }
 
-function footer(root) {
+function footer(root, current, here) {
   const soc = [['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['facebook', 'Facebook']].filter(([k]) => social[k])
-    .map(([k, l]) => `<a href="${esc(social[k])}" target="_blank" rel="noopener" aria-label="${l} ${UI.newTab}">${icon(k)}</a>`).join('');
+    .map(([k, l]) => `<a href="${esc(social[k])}" target="_blank" rel="noopener" aria-label="${l} ${u('newTab')}">${icon(k)}</a>`).join('');
   return `<footer class="site-footer">
   ${leaf('footer-deco', 'sage')}
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a class="logo" href="${root || './'}" aria-label="${esc(brand.name)} — ${UI.home}">${logoMark()}<span><span class="logo__text">${esc(brand.logoText || brand.name)}</span><span class="logo__accent">${esc(brand.logoAccent || '')}</span></span></a>
+        <a class="logo" href="${root || './'}" aria-label="${esc(brand.name)} — ${u('home')}">${logoMark()}<span><span class="logo__text">${esc(brand.logoText || brand.name)}</span><span class="logo__accent">${esc(brand.logoAccent || '')}</span></span></a>
         <p style="margin-top:1rem">${esc(brand.tagline)}</p>
         ${soc ? `<div class="social">${soc}</div>` : ''}
       </div>
-      <div><h2>Explora</h2><ul class="footer-list">${arr(site.nav).map((n) => `<li><a href="${esc(link(n.href, root))}">${esc(n.label)}</a></li>`).join('')}</ul></div>
-      <div><h2>Contacto</h2><ul class="footer-list">
+      <div><h2>${u('footer.explore')}</h2><ul class="footer-list">${navEntries(root, current).map((n) => `<li><a href="${esc(n.href)}">${esc(n.label)}</a></li>`).join('')}</ul></div>
+      <div><h2>${u('footer.contact')}</h2><ul class="footer-list">
         ${tel ? `<li><a href="${tel}">${icon('phone')}${fill(contact.phoneDisplay || contact.phone)}</a></li>` : ''}
-        ${WA ? `<li><a href="${esc(waUrl(contact.whatsappMessage))}" target="_blank" rel="noopener">${icon('whatsapp')}WhatsApp<span class="visually-hidden"> ${UI.newTab}</span></a></li>` : ''}
+        ${WA ? `<li><a href="${esc(waUrl(contact.whatsappMessage))}" target="_blank" rel="noopener">${icon('whatsapp')}${u('whatsapp')}<span class="visually-hidden"> ${u('newTab')}</span></a></li>` : ''}
         ${contact.email ? `<li><a href="mailto:${esc(contact.email)}">${icon('mail')}${fill(contact.email)}</a></li>` : ''}
         <li><span style="display:inline-flex;gap:.45rem;padding-block:.6rem">${icon('pin')}<span>${fill(contact.address)}${contact.city ? `, ${fill(contact.city)}` : ''}</span></span></li>
       </ul></div>
-      <div><h2>Horario</h2>${hoursDl()}</div>
+      <div><h2>${u('footer.hours')}</h2>${hoursDl()}</div>
     </div>
     <div class="footer-bottom">
       <p style="margin:0">© <span data-year>${new Date().getFullYear()}</span> ${esc(brand.name)}${legal.companyName ? ` · ${fill(legal.companyName)}` : ''}</p>
+      ${langSwitch(here, 'lang-switch--footer')}
       <ul class="footer-list" style="display:flex;flex-wrap:wrap;gap:0 1.25rem">
-        <li><a href="${root}privacidad/">Privacidad</a></li><li><a href="${root}aviso-legal/">Aviso legal</a></li><li><a href="${root}cookies/">Cookies</a></li>
+        <li><a href="${root}privacidad/">${u('footer.privacy')}</a></li><li><a href="${root}aviso-legal/">${u('footer.legal')}</a></li><li><a href="${root}cookies/">${u('footer.cookies')}</a></li>
       </ul>
     </div>
   </div>
@@ -346,24 +488,24 @@ function footer(root) {
 
 function fabs() {
   return `<div class="fab-stack">
-  ${tel ? `<a class="fab fab--call" href="${tel}" aria-label="${UI.call} ${esc(contact.phoneDisplay || contact.phone)}">${icon('phone')}</a>` : ''}
-  ${WA ? `<a class="fab fab--wa" href="${esc(waUrl(contact.whatsappMessage))}" target="_blank" rel="noopener" aria-label="${UI.whatsappLong} ${UI.newTab}">${icon('whatsapp')}<span class="fab__label" aria-hidden="true">${UI.whatsapp}</span></a>` : ''}
+  ${tel ? `<a class="fab fab--call" href="${tel}" aria-label="${u('call')} ${esc(contact.phoneDisplay || contact.phone)}">${icon('phone')}</a>` : ''}
+  ${WA ? `<a class="fab fab--wa" href="${esc(waUrl(contact.whatsappMessage))}" target="_blank" rel="noopener" aria-label="${u('whatsappLong')} ${u('newTab')}">${icon('whatsapp')}<span class="fab__label" aria-hidden="true">${u('whatsapp')}</span></a>` : ''}
 </div>`;
 }
 
-function ctaReservar(root, { waText, title = '¿Te reservamos un hueco?', text } = {}) {
+function ctaReservar(root, { waText, title, text } = {}) {
   return `<section class="section" id="reservar" aria-labelledby="reservar-title">
   <div class="container">
     <div class="cta-band reveal">
       ${leaf('cta-band__deco cta-band__deco--l', 'sage')}${palm('cta-band__deco cta-band__deco--r', 'pink')}
-      <p class="eyebrow">Reserva fácil</p>
-      <h2 id="reservar-title">${esc(title)}</h2>
-      <p>${esc(text || 'Escríbenos por WhatsApp, llámanos o déjanos tus datos. Te respondemos rápido y te asesoramos sin compromiso.')}</p>
+      <p class="eyebrow">${u('cta.eyebrow')}</p>
+      <h2 id="reservar-title">${esc(title || tx('cta.title'))}</h2>
+      <p>${esc(text || tx('cta.text'))}</p>
       <div class="btn-row">
-        ${waBtn(waText || contact.whatsappMessage, UI.whatsappLong)}
+        ${waBtn(waText || contact.whatsappMessage, tx('whatsappLong'))}
         ${bookingBtn()}
         ${callBtn()}
-        <a class="btn btn--ghost" href="${root}contacto/">${icon('mail')}<span>${UI.form}</span></a>
+        <a class="btn btn--ghost" href="${root}contacto/">${icon('mail')}<span>${u('formLink')}</span></a>
       </div>
     </div>
   </div>
@@ -373,57 +515,63 @@ function ctaReservar(root, { waText, title = '¿Te reservamos un hueco?', text }
 /* ==========================================================================
    7. Layout
    ========================================================================== */
-const pages = []; // para sitemap
+const pages = new Set(); // rutas (sin prefijo de idioma) para el sitemap; las mismas en los tres idiomas
 function layout({ path, title, description, body, ld = [], current = '', ogType = 'website', noindex = false, base = '', cta = {}, ogImage, rootOverride }) {
   const depth = path ? path.split('/').filter(Boolean).length : 0;
-  const root = rootOverride ?? '../'.repeat(depth);
+  const root = rootOverride ?? '../'.repeat(depth);   // raíz del idioma (enlaces a páginas)
+  const aroot = rootOverride ?? root + LANG_UP;         // raíz de dist (css, js, assets compartidos)
+  const here = { siteRoot: aroot, path: path === '404.html' ? '' : path }; // selector de idioma (404 → portadas)
   const fullTitle = title ? `${title}${seo.titleSuffix || ''}` : `${brand.name} — ${brand.tagline}`;
   const desc = (description || seo.defaultDescription || brand.description || '').slice(0, 300);
-  const url = SITE_URL ? new URL(path, SITE_URL).href : '';
+  const url = noindex ? '' : pageUrl(path) || '';
   const og = ogImage || seo.ogImage;
-  const ogAbs = og ? (ext(og) ? og : abs(og) || root + og) : '';
+  const ogAbs = og ? (ext(og) ? og : abs(og) || aroot + og) : '';
   const fontsUrl = theme.fonts?.googleFontsUrl;
+  // hreflang: URL absoluta si hay SITE_URL; si no, relativa (sirve en local y la valida check-links)
+  const alt = (x) => (SITE_URL ? pageUrl(here.path, x) : aroot + x.prefix + here.path || './');
+  const alternates = noindex ? '' : [...LANGS.map((x) => `<link rel="alternate" hreflang="${x.code}" href="${esc(alt(x))}">`), `<link rel="alternate" hreflang="x-default" href="${esc(alt(LANGS[0]))}">`].join('\n') + '\n';
+  const pageLd = { '@context': 'https://schema.org', '@type': 'WebPage', name: fullTitle, description: desc || undefined, inLanguage: L.code, url: url || undefined, isPartOf: { '@type': 'WebSite', name: brand.name, url: pageUrl('') || undefined, inLanguage: L.code } };
   return `<!doctype html>
-<html lang="es" class="no-js">
+<html lang="${L.code}" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ${base ? `<base href="${esc(base)}">\n` : ''}<title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(desc)}">
-${noindex ? '<meta name="robots" content="noindex">\n' : ''}${url && !noindex ? `<link rel="canonical" href="${esc(url)}">\n` : ''}<meta name="theme-color" content="${esc(C.cream)}">
-<link rel="icon" href="${root}assets/favicon.svg" type="image/svg+xml">
-${fontsUrl ? `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="${esc(fontsUrl)}">\n` : ''}<link rel="stylesheet" href="${root}css/theme.css?v=${VERSION}">
-<link rel="stylesheet" href="${root}css/main.css?v=${VERSION}">
+${noindex ? '<meta name="robots" content="noindex">\n' : ''}${url ? `<link rel="canonical" href="${esc(url)}">\n` : ''}${alternates}<meta name="theme-color" content="${esc(C.cream)}">
+<link rel="icon" href="${aroot}assets/favicon.svg" type="image/svg+xml">
+${fontsUrl ? `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="${esc(fontsUrl)}">\n` : ''}<link rel="stylesheet" href="${aroot}css/theme.css?v=${VERSION}">
+<link rel="stylesheet" href="${aroot}css/main.css?v=${VERSION}">
 <meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="${esc(brand.name)}">
 <meta property="og:title" content="${esc(fullTitle)}">
 <meta property="og:description" content="${esc(desc)}">
-<meta property="og:locale" content="${esc(seo.locale || 'es_ES')}">
-${url ? `<meta property="og:url" content="${esc(url)}">\n` : ''}${ogAbs ? `<meta property="og:image" content="${esc(ogAbs)}">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n` : ''}<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="${L.locale}">
+${LANGS.filter((x) => x !== L).map((x) => `<meta property="og:locale:alternate" content="${x.locale}">\n`).join('')}${url ? `<meta property="og:url" content="${esc(url)}">\n` : ''}${ogAbs ? `<meta property="og:image" content="${esc(ogAbs)}">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n` : ''}<meta name="twitter:card" content="summary_large_image">
 <script>(function(d){d.className=d.className.replace('no-js','js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.className+=' motion-ok';}catch(e){}})(document.documentElement);</script>
-${[businessLd(), ...ld].map(jsonLd).join('\n')}
+${[businessLd(), pageLd, ...ld].map(jsonLd).join('\n')}
 </head>
 <body>
 ${SPRITE}
-<a class="skip-link" href="#main">${UI.skip}</a>
-${header(root, current, cta !== false || path === '' || path === 'contacto/')}
+<a class="skip-link" href="#main">${u('skip')}</a>
+${header(root, current, cta !== false || path === '' || path === 'contacto/', here)}
 <main id="main" tabindex="-1">
 ${body(root)}
 ${cta === false ? '' : ctaReservar(root, cta)}
 </main>
-${footer(root)}
+${footer(root, current, here)}
 ${fabs()}
-<script src="${root}js/main.js?v=${VERSION}" defer></script>
+<script src="${aroot}js/main.js?v=${VERSION}" defer></script>
 </body>
 </html>
 `;
 }
 
 function writePage(path, html, { sitemap = true, file } = {}) {
-  const out = file ? join(DIST, file) : join(DIST, path, 'index.html');
+  const out = file ? join(DIST, file) : join(DIST, LP, path, 'index.html');
   mkdirSync(dirname(out), { recursive: true });
   writeFileSync(out, html);
-  if (sitemap) pages.push(path);
+  if (sitemap) pages.add(path);
 }
 
 function pageHero({ root, crumbs = [], eyebrow, title, lead, extra = '', id = 'page-title' }) {
@@ -441,17 +589,17 @@ function pageHero({ root, crumbs = [], eyebrow, title, lead, extra = '', id = 'p
 </section>`;
 }
 function breadcrumbs(root, crumbs) {
-  const all = [{ label: UI.home, href: root || './' }, ...crumbs];
-  return `<nav class="breadcrumbs" aria-label="Migas de pan"><ol>${all.map((c, i) => i === all.length - 1 ? `<li><span aria-current="page">${esc(c.label)}</span></li>` : `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ol></nav>`;
+  const all = [{ label: tx('home'), href: root || './' }, ...crumbs];
+  return `<nav class="breadcrumbs" aria-label="${u('breadcrumbs')}"><ol>${all.map((c, i) => i === all.length - 1 ? `<li><span aria-current="page">${esc(c.label)}</span></li>` : `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ol></nav>`;
 }
 function breadcrumbLd(crumbs) {
   if (!SITE_URL) return null;
-  const all = [{ label: UI.home, path: '' }, ...crumbs];
-  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: all.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: new URL(c.path, SITE_URL).href })) };
+  const all = [{ label: tx('home'), path: '' }, ...crumbs];
+  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: all.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: pageUrl(c.path) })) };
 }
 function faqLd(items) {
   const f = arr(items).filter((x) => x.q && x.a);
-  return f.length ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: f.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) } : null;
+  return f.length ? { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: L.code, mainEntity: f.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) } : null;
 }
 function faqList(items) {
   return `<div class="faq">${arr(items).map((f) => `<details class="reveal"><summary>${esc(f.q)}</summary><div class="faq__a"><p>${esc(f.a)}</p></div></details>`).join('')}</div>`;
@@ -467,57 +615,59 @@ function treatmentCard(t, root, i = 0) {
   ${cat ? `<span class="card__cat">${esc(cat.name)}</span>` : ''}
   <h3><a class="card__link" href="${root}tratamientos/${esc(t.id)}/">${esc(t.name)}</a></h3>
   <p>${esc(t.short)}</p>
-  <div class="card__meta">${t.duration ? `<span>${icon('clock')}${esc(t.duration)}</span>` : ''}${isFinite(pf) ? `<span class="card__price">${UI.from} ${money(pf)}</span>` : ''}</div>
-  <span class="card__more" aria-hidden="true">${UI.seeFicha} ${icon('arrow')}</span>
+  <div class="card__meta">${t.duration ? `<span>${icon('clock')}${esc(t.duration)}</span>` : ''}${isFinite(pf) ? `<span class="card__price">${u('from')} ${money(pf)}</span>` : ''}</div>
+  <span class="card__more" aria-hidden="true">${u('seeFicha')} ${icon('arrow')}</span>
 </article>`;
 }
 
 function contactInfo(root) {
   return `<ul class="info-list">
-    <li><span class="card__icon tone-1">${icon('pin')}</span><span><strong>Dirección</strong>${fill(contact.address)}${contact.postalCode ? `, ${fill(contact.postalCode)}` : ''} ${fill(contact.city)}${contact.mapsUrl ? `<br><a href="${esc(contact.mapsUrl)}" target="_blank" rel="noopener">Cómo llegar<span class="visually-hidden"> ${UI.newTab}</span></a>` : ''}</span></li>
-    ${tel ? `<li><span class="card__icon tone-2">${icon('phone')}</span><span><strong>Teléfono</strong><a href="${tel}">${fill(contact.phoneDisplay || contact.phone)}</a></span></li>` : ''}
-    ${WA ? `<li><span class="card__icon tone-3">${icon('whatsapp')}</span><span><strong>WhatsApp</strong><a href="${esc(waUrl(contact.whatsappMessage))}" target="_blank" rel="noopener">Escríbenos<span class="visually-hidden"> ${UI.newTab}</span></a></span></li>` : ''}
-    ${contact.email ? `<li><span class="card__icon tone-4">${icon('mail')}</span><span><strong>Email</strong><a href="mailto:${esc(contact.email)}">${fill(contact.email)}</a></span></li>` : ''}
-    <li><span class="card__icon tone-5">${icon('clock')}</span><span><strong>Horario</strong>${hoursDl()}</span></li>
+    <li><span class="card__icon tone-1">${icon('pin')}</span><span><strong>${u('contactInfo.address')}</strong>${fill(contact.address)}${contact.postalCode ? `, ${fill(contact.postalCode)}` : ''} ${fill(contact.city)}${contact.mapsUrl ? `<br><a href="${esc(contact.mapsUrl)}" target="_blank" rel="noopener">${u('contactInfo.directions')}<span class="visually-hidden"> ${u('newTab')}</span></a>` : ''}</span></li>
+    ${tel ? `<li><span class="card__icon tone-2">${icon('phone')}</span><span><strong>${u('contactInfo.phone')}</strong><a href="${tel}">${fill(contact.phoneDisplay || contact.phone)}</a></span></li>` : ''}
+    ${WA ? `<li><span class="card__icon tone-3">${icon('whatsapp')}</span><span><strong>${u('contactInfo.whatsapp')}</strong><a href="${esc(waUrl(contact.whatsappMessage))}" target="_blank" rel="noopener">${u('writeUs')}<span class="visually-hidden"> ${u('newTab')}</span></a></span></li>` : ''}
+    ${contact.email ? `<li><span class="card__icon tone-4">${icon('mail')}</span><span><strong>${u('contactInfo.email')}</strong><a href="mailto:${esc(contact.email)}">${fill(contact.email)}</a></span></li>` : ''}
+    <li><span class="card__icon tone-5">${icon('clock')}</span><span><strong>${u('contactInfo.hours')}</strong>${hoursDl()}</span></li>
   </ul>`;
 }
-function mapBlock() {
-  if (contact.mapsEmbed) return `<div class="map"><iframe src="${esc(contact.mapsEmbed)}" title="Mapa: ubicación de ${esc(brand.name)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>`;
+function mapBlock(root) {
+  if (contact.mapsEmbed) return `<div class="map"><iframe src="${esc(contact.mapsEmbed)}" title="${u('contactInfo.map', { brand: brand.name })}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>`;
   const img = findImage(contact.image, 'local');
-  return `<div class="map">${img ? `<img src="${esc(img)}" alt="${esc(contact.imageAlt || `Fachada de ${brand.name}`)}" loading="lazy" style="width:100%;height:100%;object-fit:cover">` : imgSlot('static/src/assets/img/local.jpg (o contact.mapsEmbed)')}</div>`;
+  return `<div class="map">${img ? `<img src="${esc(imgSrc(img, root))}" alt="${esc(contact.imageAlt || tx('contactInfo.facade', { brand: brand.name }))}" loading="lazy" style="width:100%;height:100%;object-fit:cover">` : imgSlot('static/src/assets/img/local.jpg (o contact.mapsEmbed)')}</div>`;
 }
 
-/** Formulario: POST a contact.formEndpoint si existe; si no, abre WhatsApp con los datos. */
+/** Formulario: POST a contact.formEndpoint si existe; si no, abre WhatsApp con los datos.
+    Los mensajes de estado viajan en data-msg-* (main.js no lleva textos propios). */
 function formAttrs(kind, intro) {
   const ep = contact.formEndpoint;
-  const common = `data-form="${kind}" data-wa="${WA}" data-wa-intro="${esc(intro)}" data-msg-invalid="Revisa los campos obligatorios marcados." data-msg-ok="¡Gracias! Te responderemos muy pronto." data-msg-error="No se pudo enviar. Prueba por WhatsApp o teléfono." data-msg-wa="Abriendo WhatsApp con tu mensaje…" data-msg-sending="Enviando…" novalidate`;
+  const common = `data-form="${kind}" data-wa="${WA}" data-wa-intro="${esc(intro)}" data-msg-invalid="${u('form.invalid')}" data-msg-ok="${u('form.ok')}" data-msg-error="${u('form.error')}" data-msg-wa="${u('form.wa')}" data-msg-sending="${u('form.sending')}" novalidate`;
   return ep ? `action="${esc(ep)}" method="post" data-endpoint="${esc(ep)}" ${common}` : `action="https://wa.me/${WA}" method="get" target="_blank" ${common}`;
 }
 function privacyCheck(root, id) {
-  return `<div class="check"><input type="checkbox" id="${id}" name="privacidad" value="acepto" required aria-required="true"><label for="${id}">${esc(legal.privacyText || 'He leído y acepto la política de privacidad.')} <a href="${root}privacidad/">Ver política de privacidad</a>. <span aria-hidden="true">*</span></label></div>`;
+  return `<div class="check"><input type="checkbox" id="${id}" name="privacidad" value="acepto" required aria-required="true"><label for="${id}">${esc(legal.privacyText || tx('form.privacyDefault'))} <a href="${root}privacidad/">${u('form.privacyLink')}</a>. <span aria-hidden="true">*</span></label></div>`;
 }
 function contactForm(root, preselect = '') {
   const ep = contact.formEndpoint;
+  const opt = `<span class="opt">${u('form.optional')}</span>`;
   const opts = categories.map((c) => {
     const ts = byCat(c.id); if (!ts.length) return '';
-    return `<optgroup label="${esc(c.name)}">${ts.map((t) => `<option${t.name === preselect ? ' selected' : ''}>${esc(t.name)}</option>`).join('')}</optgroup>`;
+    return `<optgroup label="${esc(c.name)}">${ts.map((x) => `<option${x.name === preselect ? ' selected' : ''}>${esc(x.name)}</option>`).join('')}</optgroup>`;
   }).join('');
-  return `<form class="form form--card" ${formAttrs('contact', contact.whatsappMessage || 'Hola')} aria-labelledby="form-title">
-    <h2 id="form-title" style="font-size:1.6rem">Cuéntanos qué te apetece</h2>
-    <p class="form__hint">Los campos con * son obligatorios.</p>
+  return `<form class="form form--card" ${formAttrs('contact', contact.whatsappMessage || tx('form.hello'))} aria-labelledby="form-title">
+    <h2 id="form-title" style="font-size:1.6rem">${u('form.title')}</h2>
+    <p class="form__hint">${u('form.hint')}</p>
     <div class="form__row">
-      <div class="field"><label for="f-name">Nombre *</label><input id="f-name" name="nombre" autocomplete="name" required aria-required="true" data-wa-label="Nombre"></div>
-      <div class="field"><label for="f-tel">Teléfono *</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required aria-required="true" data-wa-label="Teléfono"></div>
+      <div class="field"><label for="f-name">${u('form.name')} *</label><input id="f-name" name="nombre" autocomplete="name" required aria-required="true" data-wa-label="${u('form.name')}"></div>
+      <div class="field"><label for="f-tel">${u('form.phone')} *</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required aria-required="true" data-wa-label="${u('form.phone')}"></div>
     </div>
     <div class="form__row">
-      <div class="field"><label for="f-email">Email <span class="opt">(opcional)</span></label><input id="f-email" name="email" type="email" autocomplete="email" data-wa-label="Email"></div>
-      <div class="field"><label for="f-pref">Prefiero que me atendáis <span class="opt">(opcional)</span></label><select id="f-pref" name="preferencia" data-wa-label="Preferencia"><option value="">Indiferente</option><option>Por la mañana</option><option>Por la tarde</option></select></div>
+      <div class="field"><label for="f-email">${u('form.email')} ${opt}</label><input id="f-email" name="email" type="email" autocomplete="email" data-wa-label="${u('form.email')}"></div>
+      <div class="field"><label for="f-pref">${u('form.pref')} ${opt}</label><select id="f-pref" name="preferencia" data-wa-label="${u('form.waPref')}"><option value="">${u('form.prefAny')}</option><option>${u('form.prefMorning')}</option><option>${u('form.prefAfternoon')}</option></select></div>
     </div>
-    <div class="field"><label for="f-tr">Tratamiento de interés <span class="opt">(opcional)</span></label><select id="f-tr" name="tratamiento" data-wa-label="Tratamiento"><option value="">Aún no lo sé, quiero asesoramiento</option>${opts}</select></div>
-    <div class="field"><label for="f-msg">Mensaje <span class="opt">(opcional)</span></label><textarea id="f-msg" name="${ep ? 'mensaje' : 'text'}" data-wa-label="Mensaje"></textarea></div>
-    <div class="hp" aria-hidden="true"><label for="f-gotcha">No rellenar</label><input id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+    <div class="field"><label for="f-tr">${u('form.treatment')} ${opt}</label><select id="f-tr" name="tratamiento" data-wa-label="${u('form.waTreatment')}"><option value="">${u('form.treatmentNone')}</option>${opts}</select></div>
+    <div class="field"><label for="f-msg">${u('form.message')} ${opt}</label><textarea id="f-msg" name="${ep ? 'mensaje' : 'text'}" data-wa-label="${u('form.message')}"></textarea></div>
+    <div class="hp" aria-hidden="true"><label for="f-gotcha">${u('form.honeypot')}</label><input id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
     ${privacyCheck(root, 'f-priv')}
-    <button class="btn btn--block" type="submit">${icon(ep ? 'mail' : 'whatsapp')}<span>${ep ? 'Enviar solicitud' : 'Enviar por WhatsApp'}</span></button>
+    <button class="btn btn--block" type="submit">${icon(ep ? 'mail' : 'whatsapp')}<span>${ep ? u('form.submit') : u('form.submitWa')}</span></button>
     <p class="form__status" role="status" aria-live="polite"></p>
   </form>`;
 }
@@ -525,8 +675,6 @@ function contactForm(root, preselect = '') {
 /* ==========================================================================
    8. Páginas
    ========================================================================== */
-const featured = (() => { const f = treatments.filter((t) => t.featured); return (f.length ? f : treatments).slice(0, 6); })();
-const activePromos = arr(mk.promos).filter((p) => p.active !== false);
 
 /* ---------- Inicio: hero inmersivo ----------
    HTML completo y legible sin JS (hero normal). Con JS y sin reduced-motion, main.js
@@ -585,7 +733,7 @@ function heroImmersive(root, h, heroImg) {
           <div class="arch">${heroImg ? `<img src="${esc(imgSrc(heroImg, root))}" alt="${esc(h.imageAlt || '')}" fetchpriority="high">` : imgSlot('static/src/assets/img/hero.jpg')}</div>
         </div>
       </div>
-      <p class="hx__hint" aria-hidden="true"><span>${esc(h.scrollHint || UI.scrollHint)}</span><span class="hx__hint-line"></span></p>
+      <p class="hx__hint" aria-hidden="true"><span>${esc(h.scrollHint || tx('scrollHint'))}</span><span class="hx__hint-line"></span></p>
     </div>
   </div>
 </section>`;
@@ -628,58 +776,60 @@ ${statsHtml}
 
 ${categories.length ? `<section class="section" aria-labelledby="cats-title">
   <div class="container">
-    <div class="section__head"><p class="eyebrow">Qué hacemos</p><h2 id="cats-title">Encuentra tu <span class="accent">tratamiento</span></h2><p>Elige una categoría y descubre cada tratamiento explicado paso a paso.</p></div>
+    <div class="section__head"><p class="eyebrow">${u('homePage.catsEyebrow')}</p><h2 id="cats-title">${rich('homePage.catsTitle')}</h2><p>${u('homePage.catsText')}</p></div>
     <div class="grid grid--3">${categories.map((c, i) => `<article class="card cat-card reveal tone-${(i % 5) + 1}" style="--i:${i % 3}">
       <span class="card__icon">${icon(ic(c.icon))}</span>
       <h3><a class="card__link" href="${root}tratamientos/#${esc(c.id)}">${esc(c.name)}</a></h3>
       ${c.intro ? `<p>${esc(c.intro)}</p>` : ''}
-      <span class="cat-card__count">${byCat(c.id).length} ${byCat(c.id).length === 1 ? 'tratamiento' : 'tratamientos'}</span>
+      <span class="cat-card__count">${u(byCat(c.id).length === 1 ? 'countOne' : 'countMany', { n: byCat(c.id).length })}</span>
     </article>`).join('')}</div>
   </div>
 </section>` : ''}
 
 ${featured.length ? `<section class="section section--white" aria-labelledby="feat-title">
   <div class="container">
-    <div class="section__head"><p class="eyebrow">Los más pedidos</p><h2 id="feat-title">Tratamientos <span class="accent">estrella</span></h2></div>
+    <div class="section__head"><p class="eyebrow">${u('homePage.featEyebrow')}</p><h2 id="feat-title">${rich('homePage.featTitle')}</h2></div>
     <div class="grid grid--3">${featured.map((t, i) => treatmentCard(t, root, i)).join('')}</div>
-    <p style="margin-top:2rem"><a class="link-arrow" href="${root}tratamientos/">${UI.seeAll} ${icon('arrow')}</a></p>
+    <p style="margin-top:2rem"><a class="link-arrow" href="${root}tratamientos/">${u('seeAll')} ${icon('arrow')}</a></p>
   </div>
 </section>` : ''}
 
+${aboutSection()}
+
 ${arr(site.whyUs).length ? `<section class="section" aria-labelledby="why-title">
   <div class="container">
-    <div class="section__head section__head--center"><p class="eyebrow">Por qué nosotras</p><h2 id="why-title">Belleza con <span class="accent">cabeza</span> (y corazón)</h2></div>
+    <div class="section__head section__head--center"><p class="eyebrow">${u('homePage.whyEyebrow')}</p><h2 id="why-title">${rich('homePage.whyTitle')}</h2></div>
     <div class="grid grid--4">${arr(site.whyUs).map((w, i) => `<article class="card why reveal" style="--i:${i}"><span class="card__icon">${icon(ic(w.icon))}</span><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></article>`).join('')}</div>
   </div>
 </section>` : ''}
 
 ${packs.aloha || packs.ohana ? `<section class="section section--nude" aria-labelledby="clubs-title">
   <div class="container">
-    <div class="section__head"><p class="eyebrow">Ventajas exclusivas</p><h2 id="clubs-title">Packs <span class="accent">Aloha</span> &amp; Ohana</h2></div>
+    <div class="section__head"><p class="eyebrow">${u('homePage.clubsEyebrow')}</p><h2 id="clubs-title">${rich('homePage.clubsTitle')}</h2></div>
     <div class="duo">${['aloha', 'ohana'].filter((k) => packs[k]).map((k) => { const p = packs[k]; return `<article class="club club--${k} reveal">
       ${k === 'aloha' ? palm('club__deco', 'white') : leaf('club__deco', 'white')}
       <p class="club__subtitle">${esc(p.subtitle)}</p>
       <h3 class="club__name">${esc(p.name)}</h3>
       <p>${esc(p.description)}</p>
       ${arr(p.perks).length ? `<ul class="checklist">${arr(p.perks).slice(0, 3).map((x) => `<li>${icon('check')}<span>${esc(x)}</span></li>`).join('')}</ul>` : ''}
-      <p><a class="btn btn--ink" href="${root}packs/#${k}">${esc(p.cta || UI.seeMore)} ${icon('arrow')}</a></p>
+      <p><a class="btn btn--ink" href="${root}packs/#${k}">${esc(p.cta || tx('seeMore'))} ${icon('arrow')}</a></p>
     </article>`; }).join('')}</div>
   </div>
 </section>` : ''}
 
 ${activePromos.length ? `<section class="section" aria-labelledby="promos-title">
   <div class="container">
-    <div class="section__head"><p class="eyebrow">Solo por tiempo limitado</p><h2 id="promos-title">Promos que <span class="accent">enamoran</span></h2></div>
+    <div class="section__head"><p class="eyebrow">${u('homePage.promosEyebrow')}</p><h2 id="promos-title">${rich('homePage.promosTitle')}</h2></div>
     <div class="grid grid--3">${activePromos.map(promoCard).join('')}</div>
   </div>
 </section>` : ''}
 
 ${arr(testi.items).length ? `<section class="section section--white" aria-labelledby="reviews-title">
   <div class="container">
-    <div class="section__head"><p class="eyebrow">Opiniones</p><h2 id="reviews-title">Lo que dicen <span class="accent">de nosotras</span></h2></div>
-    ${testi.isPlaceholder ? `<div class="notice" role="note">${icon('info')}<p><strong>Ejemplo.</strong> ${UI.reviewsNotice}</p></div>` : ''}
+    <div class="section__head"><p class="eyebrow">${u('homePage.reviewsEyebrow')}</p><h2 id="reviews-title">${rich('homePage.reviewsTitle')}</h2></div>
+    ${testi.isPlaceholder ? `<div class="notice" role="note">${icon('info')}<p>${rich('reviewsNotice')}</p></div>` : ''}
     <div class="grid grid--3">${arr(testi.items).map((r, i) => `<figure class="card review reveal${testi.isPlaceholder ? ' review--placeholder' : ''}" style="--i:${i}">
-      ${testi.isPlaceholder ? '<span class="tag-example">Ejemplo</span>' : `<span class="stars" role="img" aria-label="5 de 5 estrellas">${icon('star').repeat(5)}</span>`}
+      ${testi.isPlaceholder ? `<span class="tag-example">${u('example')}</span>` : `<span class="stars" role="img" aria-label="${u('stars')}">${icon('star').repeat(5)}</span>`}
       <blockquote><p style="margin:0">${esc(r.text)}</p></blockquote>
       <figcaption><strong>${esc(r.name)}</strong>${r.treatment ? esc(r.treatment) : ''}</figcaption>
     </figure>`).join('')}</div>
@@ -690,13 +840,13 @@ ${lm && lm.title ? `<section class="section" aria-labelledby="lead-title">
   <div class="container">
     <div class="lead-box reveal">
       ${sparkles('lead-box__deco', 6)}
-      <div><p class="eyebrow">Regalo</p><h2 id="lead-title">${esc(lm.title)}</h2><p>${esc(lm.text)}</p></div>
+      <div><p class="eyebrow">${u('homePage.leadEyebrow')}</p><h2 id="lead-title">${esc(lm.title)}</h2><p>${esc(lm.text)}</p></div>
       <form class="form" ${formAttrs('lead', lm.title)} aria-labelledby="lead-title">
-        <div class="field"><label for="l-email">Tu email *</label><input id="l-email" name="email" type="email" autocomplete="email" required aria-required="true" data-wa-label="Email"></div>
-        <div class="hp" aria-hidden="true"><label for="l-gotcha">No rellenar</label><input id="l-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+        <div class="field"><label for="l-email">${u('form.leadEmail')} *</label><input id="l-email" name="email" type="email" autocomplete="email" required aria-required="true" data-wa-label="${u('form.email')}"></div>
+        <div class="hp" aria-hidden="true"><label for="l-gotcha">${u('form.honeypot')}</label><input id="l-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
         <input type="hidden" name="origen" value="lead-magnet">
         ${privacyCheck(root, 'l-priv')}
-        <button class="btn" type="submit">${icon('gift')}<span>${esc(lm.cta || 'Quiero recibirla')}</span></button>
+        <button class="btn" type="submit">${icon('gift')}<span>${esc(lm.cta || tx('form.leadCta'))}</span></button>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -705,24 +855,42 @@ ${lm && lm.title ? `<section class="section" aria-labelledby="lead-title">
 
 ${arr(mk.faqGeneral).length ? `<section class="section section--sage" aria-labelledby="faq-title">
   <div class="container container--narrow">
-    <div class="section__head section__head--center"><p class="eyebrow">Dudas frecuentes</p><h2 id="faq-title">Preguntas <span class="accent">frecuentes</span></h2></div>
+    <div class="section__head section__head--center"><p class="eyebrow">${u('homePage.faqEyebrow')}</p><h2 id="faq-title">${rich('homePage.faqTitle')}</h2></div>
     ${faqList(mk.faqGeneral)}
   </div>
 </section>` : ''}
 `;
   const contactSection = (root) => `<section class="section section--white" id="contacto" aria-labelledby="contact-title">
   <div class="container">
-    <div class="section__head"><p class="eyebrow">Visítanos</p><h2 id="contact-title">Ven a <span class="accent">conocernos</span></h2></div>
-    <div class="contact-grid"><div>${contactInfo(root)}<div class="btn-row">${waBtn(contact.whatsappMessage, UI.whatsappLong)}${callBtn()}</div></div>${mapBlock()}</div>
+    <div class="section__head"><p class="eyebrow">${u('homePage.contactEyebrow')}</p><h2 id="contact-title">${rich('homePage.contactTitle')}</h2></div>
+    <div class="contact-grid"><div>${contactInfo(root)}<div class="btn-row">${waBtn(contact.whatsappMessage, tx('whatsappLong'))}${callBtn()}</div></div>${mapBlock(root)}</div>
   </div>
 </section>`;
   // En portada: CTA reservar antes del bloque de contacto
   const html = layout({
-    path: '', title: '', description: seo.defaultDescription, current: '',
+    path: '', title: '', description: seo.defaultDescription, current: '#home',
     body: (root) => body(root) + ctaReservar(root) + contactSection(root), cta: false,
     ld: [faqLd(mk.faqGeneral)].filter(Boolean),
   });
   writePage('', html);
+}
+
+/** «Quiénes somos» (site.about): texto + claves destacadas. Si no hay `about`, no se muestra. */
+function aboutSection() {
+  const a = site.about;
+  if (!a || !(a.title || arr(a.paragraphs).length)) return '';
+  const hl = arr(a.highlights);
+  return `<section class="section section--white about" id="quienes-somos" aria-labelledby="about-title">
+  ${leaf('about__deco', 'sage')}
+  <div class="container about__grid">
+    <div class="about__text reveal">
+      ${a.eyebrow ? `<p class="eyebrow">${esc(a.eyebrow)}</p>` : ''}
+      <h2 id="about-title">${esc(a.title)}${a.titleAccent ? ` <span class="accent">${esc(a.titleAccent)}</span>` : ''}</h2>
+      <div class="prose">${arr(a.paragraphs).map((p) => `<p>${fill(p)}</p>`).join('')}</div>
+    </div>
+    ${hl.length ? `<ul class="about__highlights">${hl.map((x, i) => `<li class="card about__item reveal tone-${(i % 5) + 1}" style="--i:${i}"><span class="card__icon">${icon(ic(x.icon))}</span><div><h3>${esc(x.title)}</h3>${x.text ? `<p>${esc(x.text)}</p>` : ''}</div></li>`).join('')}</ul>` : ''}
+  </div>
+</section>`;
 }
 
 function promoCard(p, i = 0) {
@@ -736,15 +904,15 @@ function promoCard(p, i = 0) {
 /* ---------- Catálogo ---------- */
 function pageCatalog() {
   const html = layout({
-    path: 'tratamientos/', current: 'tratamientos/', title: 'Tratamientos',
-    description: `Catálogo de tratamientos de ${brand.name}: ${categories.map((c) => c.name).join(', ')}. Explicados paso a paso, con duración y precio orientativo.`,
-    ld: [breadcrumbLd([{ label: 'Tratamientos', path: 'tratamientos/' }])].filter(Boolean),
+    path: 'tratamientos/', current: 'tratamientos/', title: tx('catalog.title'),
+    description: tx('catalog.description', { brand: brand.name, cats: categories.map((c) => c.name).join(', ') }),
+    ld: [breadcrumbLd([{ label: tx('catalog.title'), path: 'tratamientos/' }])].filter(Boolean),
     body: (root) => `
-${pageHero({ root, crumbs: [{ label: 'Tratamientos' }], eyebrow: 'Catálogo', title: `Todos nuestros <span class="accent">tratamientos</span>`, lead: 'Cada tratamiento tiene su ficha: qué es, para quién, cómo es la sesión, cuidados, contraindicaciones y precio orientativo.' })}
-<section class="section" aria-label="Listado de tratamientos">
+${pageHero({ root, crumbs: [{ label: tx('catalog.title') }], eyebrow: tx('catalog.eyebrow'), title: rich('catalog.heading'), lead: tx('catalog.lead') })}
+<section class="section" aria-label="${u('catalog.listLabel')}">
   <div class="container">
-    <div class="filters js-only" role="group" aria-label="Filtrar por categoría" data-filter-bar>
-      <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">Todos</button>
+    <div class="filters js-only" role="group" aria-label="${u('catalog.filterLabel')}" data-filter-bar data-count-one="${u('countOne')}" data-count-many="${u('countMany')}">
+      <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">${u('catalog.all')}</button>
       ${categories.filter((c) => byCat(c.id).length).map((c) => `<button class="filter-btn" type="button" data-filter="${esc(c.id)}" aria-pressed="false">${icon(ic(c.icon))}${esc(c.name)}</button>`).join('')}
     </div>
     <p id="filter-status" class="visually-hidden" role="status" aria-live="polite"></p>
@@ -752,7 +920,7 @@ ${pageHero({ root, crumbs: [{ label: 'Tratamientos' }], eyebrow: 'Catálogo', ti
       <div class="cat-group__head"><span class="card__icon tone-2">${icon(ic(c.icon))}</span><div><h2 id="h-${esc(c.id)}">${esc(c.name)}</h2>${c.intro ? `<p>${esc(c.intro)}</p>` : ''}</div></div>
       <div class="grid grid--3">${byCat(c.id).map((t, i) => treatmentCard(t, root, i)).join('')}</div>
     </section>`).join('')}
-    ${treatments.filter((t) => !catById[t.category]).length ? `<section class="cat-group" data-cat-group="otros" aria-labelledby="h-otros"><h2 id="h-otros">Otros</h2><div class="grid grid--3">${treatments.filter((t) => !catById[t.category]).map((t, i) => treatmentCard(t, root, i)).join('')}</div></section>` : ''}
+    ${treatments.filter((t) => !catById[t.category]).length ? `<section class="cat-group" data-cat-group="otros" aria-labelledby="h-otros"><h2 id="h-otros">${u('catalog.others')}</h2><div class="grid grid--3">${treatments.filter((t) => !catById[t.category]).map((t, i) => treatmentCard(t, root, i)).join('')}</div></section>` : ''}
   </div>
 </section>`,
   });
@@ -773,60 +941,61 @@ function pageTreatment(t) {
     return [...same, ...rest].slice(0, 3);
   })();
   const S = []; // secciones presentes (para el subíndice)
+  const T = (k, v) => tx(`treatment.${k}`, v); // `t` es el tratamiento en esta función
   const sec = (id, title, iconName, inner, cls = '') => { S.push([id, title]); return `<section class="ficha-section reveal ${cls}" id="${id}" aria-labelledby="${id}-t"><h2 id="${id}-t"><span class="card__icon">${icon(iconName)}</span>${esc(title)}</h2>${inner}</section>`; };
 
   const prices = arr(t.prices);
-  const priceRows = prices.length ? prices.map((p) => `<tr><th scope="row">${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</th><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">Antes </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${p.from ? 'desde ' : ''}${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('')
-    : `<tr><th scope="row">${esc(t.name)}</th><td class="num"><span class="price">${isFinite(pf) ? `${UI.from} ${money(pf)}` : UI.consult}</span></td></tr>`;
+  const priceRows = prices.length ? prices.map((p) => `<tr><th scope="row">${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</th><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">${u('before')} </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${p.from ? `${u('from')} ` : ''}${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('')
+    : `<tr><th scope="row">${esc(t.name)}</th><td class="num"><span class="price">${isFinite(pf) ? `${u('from')} ${money(pf)}` : u('consult')}</span></td></tr>`;
 
   const sections = [
-    t.whatIs ? sec('que-es', '¿Qué es?', 'info', `<div class="prose"><p>${esc(t.whatIs)}</p></div>`) : '',
-    arr(t.benefits).length ? sec('beneficios', 'Beneficios y ventajas', 'sparkle', `<div class="grid grid--3">${arr(t.benefits).map((b, i) => `<article class="card tone-${(i % 5) + 1}"><span class="card__icon">${icon('check')}</span><h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></article>`).join('')}</div>`) : '',
-    arr(t.idealFor).length ? sec('para-quien', '¿Para quién es?', 'heart', `<div class="panel"><ul class="checklist">${arr(t.idealFor).map((x) => `<li>${icon('check')}<span>${esc(x)}</span></li>`).join('')}</ul></div>`) : '',
-    arr(t.howItWorks).length ? sec('sesion', '¿Cómo es la sesión?', 'clock', `<ol class="steps">${arr(t.howItWorks).map((s) => `<li><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></li>`).join('')}</ol>`) : '',
-    t.results ? sec('resultados', 'Resultados', 'star', `<div class="results">${icon('glow')}<div><p>${esc(t.results)}</p><p class="small" style="margin-top:.5rem">Los resultados varían según cada persona. Te lo explicamos en la valoración previa.</p></div></div>`) : '',
+    t.whatIs ? sec('que-es', T('whatIs'), 'info', `<div class="prose"><p>${esc(t.whatIs)}</p></div>`) : '',
+    arr(t.benefits).length ? sec('beneficios', T('benefits'), 'sparkle', `<div class="grid grid--3">${arr(t.benefits).map((b, i) => `<article class="card tone-${(i % 5) + 1}"><span class="card__icon">${icon('check')}</span><h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></article>`).join('')}</div>`) : '',
+    arr(t.idealFor).length ? sec('para-quien', T('idealFor'), 'heart', `<div class="panel"><ul class="checklist">${arr(t.idealFor).map((x) => `<li>${icon('check')}<span>${esc(x)}</span></li>`).join('')}</ul></div>`) : '',
+    arr(t.howItWorks).length ? sec('sesion', T('session'), 'clock', `<ol class="steps">${arr(t.howItWorks).map((s) => `<li><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></li>`).join('')}</ol>`) : '',
+    t.results ? sec('resultados', T('results'), 'star', `<div class="results">${icon('glow')}<div><p>${esc(t.results)}</p><p class="small" style="margin-top:.5rem">${esc(T('resultsNote'))}</p></div></div>`) : '',
     (arr(t.aftercare).length || arr(t.contraindications).length) ? (() => {
-      S.push(['cuidados', 'Cuidados y contraindicaciones']);
+      S.push(['cuidados', T('careAndContra')]);
       return `<div class="ficha-section two-col reveal" id="cuidados">
-        ${arr(t.aftercare).length ? `<section class="panel" aria-labelledby="cuidados-t"><h2 id="cuidados-t">${icon('leaf')}Cuidados posteriores</h2><ul class="dotlist">${arr(t.aftercare).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></section>` : ''}
-        ${arr(t.contraindications).length ? `<section class="panel panel--warn" id="contraindicaciones" aria-labelledby="contra-t"><h2 id="contra-t">${icon('alert')}Contraindicaciones</h2><ul class="dotlist">${arr(t.contraindications).map((x) => `<li>${esc(x)}</li>`).join('')}</ul><p class="small" style="margin:1rem 0 0">Si tienes dudas sobre tu caso, consúltanos antes de reservar.</p></section>` : ''}
+        ${arr(t.aftercare).length ? `<section class="panel" aria-labelledby="cuidados-t"><h2 id="cuidados-t">${icon('leaf')}${esc(T('aftercare'))}</h2><ul class="dotlist">${arr(t.aftercare).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></section>` : ''}
+        ${arr(t.contraindications).length ? `<section class="panel panel--warn" id="contraindicaciones" aria-labelledby="contra-t"><h2 id="contra-t">${icon('alert')}${esc(T('contraindications'))}</h2><ul class="dotlist">${arr(t.contraindications).map((x) => `<li>${esc(x)}</li>`).join('')}</ul><p class="small" style="margin:1rem 0 0">${esc(T('contraNote'))}</p></section>` : ''}
       </div>`;
     })() : '',
-    arr(t.faq).length ? sec('preguntas', 'Preguntas frecuentes', 'info', faqList(t.faq)) : '',
-    sec('precios', 'Precios', 'gift', `<div class="price-table"><div class="table-scroll"><table><caption class="visually-hidden">Precios de ${esc(t.name)}</caption><thead><tr><th scope="col">Opción</th><th scope="col" class="num">Precio</th></tr></thead><tbody>${priceRows}</tbody></table></div></div>
+    arr(t.faq).length ? sec('preguntas', T('faq'), 'info', faqList(t.faq)) : '',
+    sec('precios', T('prices'), 'gift', `<div class="price-table"><div class="table-scroll"><table><caption class="visually-hidden">${esc(T('pricesCaption', { name: t.name }))}</caption><thead><tr><th scope="col">${esc(T('option'))}</th><th scope="col" class="num">${esc(T('price'))}</th></tr></thead><tbody>${priceRows}</tbody></table></div></div>
       <p class="disclaimer">${icon('info')}<span>${esc(t.priceNote ? `${t.priceNote}. ` : '')}${esc(legal.priceDisclaimer)}</span></p>
-      <div class="btn-row" style="margin-top:1.25rem">${waBtn(waText, `Reservar ${t.name}`)}${bookingBtn()}${callBtn()}</div>`),
+      <div class="btn-row" style="margin-top:1.25rem">${waBtn(waText, T('book', { name: t.name }))}${bookingBtn()}${callBtn()}</div>`),
   ].join('\n');
 
   const facts = [
-    t.duration ? ['clock', 'Duración', esc(t.duration)] : null,
-    t.sessions ? ['calendar', 'Sesiones', esc(t.sessions)] : null,
-    Number.isFinite(pain) ? ['heart', 'Molestia', `${esc(PAIN(pain))}<span class="pain" role="img" aria-label="${pain} de 5">${[1, 2, 3, 4, 5].map((n) => `<span class="${n <= pain ? 'on' : ''}"></span>`).join('')}</span>`] : null,
-    isFinite(pf) ? ['gift', 'Precio', `${UI.from} ${money(pf)}`] : null,
+    t.duration ? ['clock', esc(T('duration')), esc(t.duration)] : null,
+    t.sessions ? ['calendar', esc(T('sessions')), esc(t.sessions)] : null,
+    Number.isFinite(pain) ? ['heart', esc(T('pain')), `${esc(PAIN(pain))}<span class="pain" role="img" aria-label="${u('painOf', { n: pain })}">${[1, 2, 3, 4, 5].map((n) => `<span class="${n <= pain ? 'on' : ''}"></span>`).join('')}</span>`] : null,
+    isFinite(pf) ? ['gift', esc(T('price')), `${u('from')} ${money(pf)}`] : null,
   ].filter(Boolean);
 
   const ld = [
     {
       '@context': 'https://schema.org', '@type': 'Service', name: t.name, description: t.whatIs || t.short,
-      serviceType: cat?.name, url: SITE_URL ? new URL(path, SITE_URL).href : undefined,
+      serviceType: cat?.name, url: pageUrl(path) || undefined,
       image: img ? abs(img) || undefined : undefined,
       provider: { '@type': 'BeautySalon', name: brand.name, '@id': SITE_URL ? `${SITE_URL}#negocio` : undefined },
       areaServed: contact.city && !/POR DEFINIR/i.test(contact.city) ? contact.city : undefined,
-      offers: prices.filter((p) => isNum(p.price) && p.price > 0).map((p) => ({ '@type': 'Offer', name: p.label, price: p.price, priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: SITE_URL ? new URL(path, SITE_URL).href : undefined })),
+      offers: prices.filter((p) => isNum(p.price) && p.price > 0).map((p) => ({ '@type': 'Offer', name: p.label, price: p.price, priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: pageUrl(path) || undefined })),
     },
     faqLd(t.faq),
-    breadcrumbLd([{ label: 'Tratamientos', path: 'tratamientos/' }, { label: t.name, path }]),
+    breadcrumbLd([{ label: tx('catalog.title'), path: 'tratamientos/' }, { label: t.name, path }]),
   ].filter(Boolean);
 
   const html = layout({
     path, current: 'tratamientos/', title: t.name, ogType: 'article', ogImage: img && !ext(img) ? img : undefined,
     description: [t.short, t.hook].filter(Boolean).join(' ').slice(0, 160) || seo.defaultDescription,
-    cta: { waText, title: `¿Reservamos tu sesión de ${t.name}?` },
+    cta: { waText, title: tx('cta.treatmentTitle', { name: t.name }) },
     ld,
     body: (root) => {
       const hero = pageHero({
         root, id: 'ficha-title',
-        crumbs: [{ label: 'Tratamientos', href: `${root}tratamientos/` }, ...(cat ? [{ label: cat.name, href: `${root}tratamientos/#${cat.id}` }] : []), { label: t.name }],
+        crumbs: [{ label: tx('catalog.title'), href: `${root}tratamientos/` }, ...(cat ? [{ label: cat.name, href: `${root}tratamientos/#${cat.id}` }] : []), { label: t.name }],
         eyebrow: cat?.name, title: esc(t.name),
         extra: '',
       });
@@ -836,13 +1005,13 @@ function pageTreatment(t) {
           ${t.hook ? `<p class="lead" style="font-family:var(--font-heading);font-style:italic;color:var(--c-ink);font-size:clamp(1.25rem,1.1rem + .8vw,1.65rem)">${esc(t.hook)}</p>` : ''}
           ${t.short ? `<p class="lead">${esc(t.short)}</p>` : ''}
           ${facts.length ? `<ul class="facts">${facts.map(([i, l, v]) => `<li class="fact"><span class="fact__label">${icon(i)}${l}</span><span class="fact__value">${v}</span></li>`).join('')}</ul>` : ''}
-          <div class="btn-row">${waBtn(waText, 'Reservar por WhatsApp')}${bookingBtn()}<a class="btn btn--ghost" href="#precios">Ver precios</a></div>
+          <div class="btn-row">${waBtn(waText, T('bookWa'))}${bookingBtn()}<a class="btn btn--ghost" href="#precios">${esc(T('seePrices'))}</a></div>
         </div>
         <div class="media">${img ? `<img src="${esc(imgSrc(img, root))}" alt="${esc(t.imageAlt || t.name)}" fetchpriority="high">` : imgSlot(`static/src/assets/img/tratamientos/${t.id}.jpg`)}</div>
       </div>`;
       const heroHtml = hero.replace('</h1>', `</h1>${heroInner}`);
-      const subnav = `<nav class="ficha-nav" aria-label="En esta ficha"><div class="container"><ul>${S.map(([id, l]) => `<li><a href="#${id}">${esc(l)}</a></li>`).join('')}</ul></div></nav>`;
-      const rel = related.length ? `<section class="section section--white" aria-labelledby="rel-title"><div class="container"><div class="section__head"><p class="eyebrow">Combina bien con</p><h2 id="rel-title">Tratamientos <span class="accent">relacionados</span></h2></div><div class="grid grid--3">${related.map((x, i) => treatmentCard(x, root, i)).join('')}</div></div></section>` : '';
+      const subnav = `<nav class="ficha-nav" aria-label="${esc(T('subnav'))}"><div class="container"><ul>${S.map(([id, l]) => `<li><a href="#${id}">${esc(l)}</a></li>`).join('')}</ul></div></nav>`;
+      const rel = related.length ? `<section class="section section--white" aria-labelledby="rel-title"><div class="container"><div class="section__head"><p class="eyebrow">${esc(T('relEyebrow'))}</p><h2 id="rel-title">${rich('treatment.relTitle')}</h2></div><div class="grid grid--3">${related.map((x, i) => treatmentCard(x, root, i)).join('')}</div></div></section>` : '';
       return `${heroHtml}\n${subnav}\n<div class="section"><div class="container">${sections}</div></div>\n${rel}`;
     },
   });
@@ -854,21 +1023,21 @@ function pagePrices() {
   const cats = categories.filter((c) => byCat(c.id).length);
   const table = (c) => {
     const rows = byCat(c.id).map((t) => {
-      const ps = arr(t.prices).length ? arr(t.prices) : [{ label: t.priceFrom ? 'Desde' : '—', price: t.priceFrom }];
-      return ps.map((p, i) => `<tr>${i === 0 ? `<th scope="rowgroup" rowspan="${ps.length}"><a href="../tratamientos/${esc(t.id)}/">${esc(t.name)}</a>${t.priceNote ? `<br><span class="small">${esc(t.priceNote)}</span>` : ''}</th>` : ''}<td>${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</td><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">Antes </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${p.from ? 'desde ' : ''}${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('');
+      const ps = arr(t.prices).length ? arr(t.prices) : [{ label: t.priceFrom ? tx('prices.fromLabel') : '—', price: t.priceFrom }];
+      return ps.map((p, i) => `<tr>${i === 0 ? `<th scope="rowgroup" rowspan="${ps.length}"><a href="../tratamientos/${esc(t.id)}/">${esc(t.name)}</a>${t.priceNote ? `<br><span class="small">${esc(t.priceNote)}</span>` : ''}</th>` : ''}<td>${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</td><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">${u('before')} </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${p.from ? `${u('from')} ` : ''}${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('');
     }).join('');
-    return `<div class="price-table"><div class="table-scroll"><table><caption class="visually-hidden">Precios: ${esc(c.name)}</caption><thead><tr><th scope="col">Tratamiento</th><th scope="col">Opción</th><th scope="col" class="num">Precio</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+    return `<div class="price-table"><div class="table-scroll"><table><caption class="visually-hidden">${u('prices.caption', { name: c.name })}</caption><thead><tr><th scope="col">${u('prices.treatment')}</th><th scope="col">${u('prices.option')}</th><th scope="col" class="num">${u('prices.price')}</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
   };
   const html = layout({
-    path: 'precios/', current: 'precios/', title: 'Precios',
-    description: `Precios orientativos de ${brand.name}: ${cats.map((c) => c.name).join(', ')}. Packs y bonos con descuento.`,
-    ld: [breadcrumbLd([{ label: 'Precios', path: 'precios/' }])].filter(Boolean),
+    path: 'precios/', current: 'precios/', title: tx('prices.title'),
+    description: tx('prices.description', { brand: brand.name, cats: cats.map((c) => c.name).join(', ') }),
+    ld: [breadcrumbLd([{ label: tx('prices.title'), path: 'precios/' }])].filter(Boolean),
     body: (root) => `
-${pageHero({ root, crumbs: [{ label: 'Precios' }], eyebrow: 'Tarifas', title: `Precios <span class="accent">claros</span>, sin sorpresas`, lead: legal.priceDisclaimer })}
-<section class="section" aria-label="Tablas de precios">
+${pageHero({ root, crumbs: [{ label: tx('prices.title') }], eyebrow: tx('prices.eyebrow'), title: rich('prices.heading'), lead: legal.priceDisclaimer })}
+<section class="section" aria-label="${u('prices.tablesLabel')}">
   <div class="container">
     <div class="tabs" data-tabs>
-      <div class="tabs__list" role="tablist" aria-label="Categorías de precios" hidden>
+      <div class="tabs__list" role="tablist" aria-label="${u('prices.tabsLabel')}" hidden>
         ${cats.map((c, i) => `<button class="tabs__tab" type="button" role="tab" id="tab-${esc(c.id)}" aria-controls="precios-${esc(c.id)}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${icon(ic(c.icon))}${esc(c.name)}</button>`).join('')}
       </div>
       ${cats.map((c) => `<div class="tabs__panel" id="precios-${esc(c.id)}" aria-labelledby="tab-${esc(c.id)}">
@@ -877,7 +1046,7 @@ ${pageHero({ root, crumbs: [{ label: 'Precios' }], eyebrow: 'Tarifas', title: `P
       </div>`).join('')}
     </div>
     <p class="disclaimer">${icon('info')}<span>${esc(legal.priceDisclaimer)}</span></p>
-    <p><a class="link-arrow" href="${root}packs/">Ahorra con packs y bonos ${icon('arrow')}</a></p>
+    <p><a class="link-arrow" href="${root}packs/">${u('prices.packsLink')} ${icon('arrow')}</a></p>
   </div>
 </section>`,
   });
@@ -893,38 +1062,38 @@ function pagePacks() {
     const img = findImage(p.image, k);
     return `<article class="club club--${k} reveal" id="${k}" aria-labelledby="${k}-t">
       ${k === 'aloha' ? palm('club__deco', 'white') : leaf('club__deco', 'white')}
-      ${img ? `<div class="media"><img src="${esc(img.startsWith('http') ? img : '../' + img)}" alt="${esc(p.imageAlt || '')}" loading="lazy"></div>` : ''}
+      ${img ? `<div class="media"><img src="${esc(imgSrc(img, '../'))}" alt="${esc(p.imageAlt || '')}" loading="lazy"></div>` : ''}
       <p class="club__subtitle">${esc(p.subtitle)}</p>
       <h2 class="club__name" id="${k}-t">${esc(p.name)}</h2>
       <p>${esc(p.description)}</p>
       ${arr(p.perks).length ? `<ul class="checklist">${arr(p.perks).map((x) => `<li>${icon('check')}<span>${esc(x)}</span></li>`).join('')}</ul>` : ''}
-      ${p.conditions ? `<p class="club__conditions"><strong>Condiciones:</strong> ${esc(p.conditions)}</p>` : ''}
-      <p>${waBtn(waFor(`pack ${p.name}`), p.cta || `Quiero ${p.name}`, 'btn btn--ink')}</p>
+      ${p.conditions ? `<p class="club__conditions"><strong>${u('packs.conditions')}</strong> ${esc(p.conditions)}</p>` : ''}
+      <p>${waBtn(waFor(tx('waPack', { name: p.name })), p.cta || tx('packs.want', { name: p.name }), 'btn btn--ink')}</p>
     </article>`;
   };
   const loyalty = mk.loyalty;
   const html = layout({
-    path: 'packs/', current: 'packs/', title: 'Packs Aloha & Ohana, packs y bonos',
-    description: `Packs Aloha y Ohana, packs combinados y bonos de sesiones con descuento en ${brand.name}.`,
-    ld: [breadcrumbLd([{ label: 'Packs', path: 'packs/' }]), ...list.filter((p) => isNum(p.price)).map((p) => ({ '@context': 'https://schema.org', '@type': 'Offer', name: p.name, description: p.description, price: p.price, priceCurrency: 'EUR', seller: { '@type': 'BeautySalon', name: brand.name } }))].filter(Boolean),
+    path: 'packs/', current: 'packs/', title: tx('packs.title'),
+    description: tx('packs.description', { brand: brand.name }),
+    ld: [breadcrumbLd([{ label: tx('packs.crumb'), path: 'packs/' }]), ...list.filter((p) => isNum(p.price)).map((p) => ({ '@context': 'https://schema.org', '@type': 'Offer', name: p.name, description: p.description, price: p.price, priceCurrency: 'EUR', seller: { '@type': 'BeautySalon', name: brand.name } }))].filter(Boolean),
     body: (root) => `
-${pageHero({ root, crumbs: [{ label: 'Packs' }], eyebrow: 'Ahorra y disfruta', title: `Packs <span class="accent">Aloha</span> &amp; Ohana`, lead: 'Ventajas de bienvenida, planes para venir con tu gente, packs combinados y bonos de sesiones.' })}
-<section class="section" aria-label="Aloha y Ohana"><div class="container"><div class="duo">${club('aloha')}${club('ohana')}</div></div></section>
+${pageHero({ root, crumbs: [{ label: tx('packs.crumb') }], eyebrow: tx('packs.eyebrow'), title: rich('packs.heading'), lead: tx('packs.lead') })}
+<section class="section" aria-label="${u('packs.clubsLabel')}"><div class="container"><div class="duo">${club('aloha')}${club('ohana')}</div></div></section>
 
 ${list.length ? `<section class="section section--white" aria-labelledby="packs-title">
   <div class="container">
-    <div class="section__head"><p class="eyebrow">Combina y ahorra</p><h2 id="packs-title">Nuestros <span class="accent">packs</span></h2></div>
+    <div class="section__head"><p class="eyebrow">${u('packs.packsEyebrow')}</p><h2 id="packs-title">${rich('packs.packsTitle')}</h2></div>
     <div class="grid grid--3">${list.map((p, i) => { const s = saving(p.price, p.oldPrice); return `<article class="card pack reveal${p.highlight ? ' pack--highlight' : ''}" id="${esc(p.id)}" style="--i:${i % 3}">
       ${p.badge ? `<span class="pack__badge">${esc(p.badge)}</span>` : ''}
       <h3>${esc(p.name)}</h3><p>${esc(p.description)}</p>
       ${arr(p.items).length ? `<ul class="checklist">${arr(p.items).map((x) => `<li>${icon('check')}<span>${esc(x)}</span></li>`).join('')}</ul>` : ''}
-      <div class="pack__price">${isNum(p.oldPrice) && s ? `<del><span class="visually-hidden">Antes </span>${money(p.oldPrice)}</del>` : ''}<span class="now">${money(p.price)}</span>${savingHtml(s)}</div>
-      ${waBtn(waFor(p.name), p.cta || 'Reservar pack', p.highlight ? 'btn btn--wa btn--block' : 'btn btn--ghost btn--block')}
+      <div class="pack__price">${isNum(p.oldPrice) && s ? `<del><span class="visually-hidden">${u('before')} </span>${money(p.oldPrice)}</del>` : ''}<span class="now">${money(p.price)}</span>${savingHtml(s)}</div>
+      ${waBtn(waFor(p.name), p.cta || tx('packs.bookPack'), p.highlight ? 'btn btn--wa btn--block' : 'btn btn--ghost btn--block')}
     </article>`; }).join('')}</div>
 
     <div class="price-table reveal" style="margin-top:3rem"><div class="table-scroll"><table>
-      <caption>Comparativa de packs</caption>
-      <thead><tr><th scope="col">Pack</th><th scope="col">Incluye</th><th scope="col" class="num">Precio normal</th><th scope="col" class="num">Precio pack</th><th scope="col" class="num">Ahorro</th></tr></thead>
+      <caption>${u('packs.compare')}</caption>
+      <thead><tr><th scope="col">${u('packs.colPack')}</th><th scope="col">${u('packs.colIncludes')}</th><th scope="col" class="num">${u('packs.colNormal')}</th><th scope="col" class="num">${u('packs.colPackPrice')}</th><th scope="col" class="num">${u('packs.colSaving')}</th></tr></thead>
       <tbody>${list.map((p) => { const s = saving(p.price, p.oldPrice); return `<tr><th scope="row">${esc(p.name)}</th><td>${arr(p.items).map(esc).join(' + ')}</td><td class="num">${isNum(p.oldPrice) ? `<del>${money(p.oldPrice)}</del>` : '—'}</td><td class="num"><span class="price">${money(p.price)}</span></td><td class="num">${s ? savingHtml(s) : '—'}</td></tr>`; }).join('')}</tbody>
     </table></div></div>
   </div>
@@ -932,21 +1101,21 @@ ${list.length ? `<section class="section section--white" aria-labelledby="packs-
 
 ${bonos.length ? `<section class="section" aria-labelledby="bonos-title">
   <div class="container">
-    <div class="section__head"><p class="eyebrow">Para constantes</p><h2 id="bonos-title">Bonos de <span class="accent">sesiones</span></h2><p>Los tratamientos por sesiones salen mejor de precio con bono.</p></div>
+    <div class="section__head"><p class="eyebrow">${u('packs.bonosEyebrow')}</p><h2 id="bonos-title">${rich('packs.bonosTitle')}</h2><p>${u('packs.bonosText')}</p></div>
     <div class="price-table reveal"><div class="table-scroll"><table>
-      <caption class="visually-hidden">Bonos de sesiones</caption>
-      <thead><tr><th scope="col">Bono</th><th scope="col" class="num">Sesiones</th><th scope="col" class="num">Precio</th><th scope="col" class="num">Por sesión</th><th scope="col" class="num">Ahorro</th></tr></thead>
-      <tbody>${bonos.map((b) => { const t = trById[b.treatmentId]; const s = saving(b.price, b.oldPrice); if (b.treatmentId && !t) warn(`Bono "${b.label}" apunta a tratamiento inexistente "${b.treatmentId}"`); return `<tr><th scope="row">${t ? `<a href="${root}tratamientos/${esc(t.id)}/">${esc(b.label || t.name)}</a>` : esc(b.label)}</th><td class="num">${esc(b.sessions)}</td><td class="num">${isNum(b.oldPrice) && s ? `<del><span class="visually-hidden">Antes </span>${money(b.oldPrice)}</del>` : ''}<span class="price">${money(b.price)}</span></td><td class="num">${isNum(b.price) && b.sessions ? money(+(b.price / b.sessions).toFixed(2)) : '—'}</td><td class="num">${s ? savingHtml(s) : '—'}</td></tr>`; }).join('')}</tbody>
+      <caption class="visually-hidden">${u('packs.bonosCaption')}</caption>
+      <thead><tr><th scope="col">${u('packs.colBono')}</th><th scope="col" class="num">${u('packs.colSessions')}</th><th scope="col" class="num">${u('packs.colPrice')}</th><th scope="col" class="num">${u('packs.colPerSession')}</th><th scope="col" class="num">${u('packs.colSaving')}</th></tr></thead>
+      <tbody>${bonos.map((b) => { const t = trById[b.treatmentId]; const s = saving(b.price, b.oldPrice); if (b.treatmentId && !t) warn(`Bono "${b.label}" apunta a tratamiento inexistente "${b.treatmentId}"`); return `<tr><th scope="row">${t ? `<a href="${root}tratamientos/${esc(t.id)}/">${esc(b.label || t.name)}</a>` : esc(b.label)}</th><td class="num">${esc(b.sessions)}</td><td class="num">${isNum(b.oldPrice) && s ? `<del><span class="visually-hidden">${u('before')} </span>${money(b.oldPrice)}</del>` : ''}<span class="price">${money(b.price)}</span></td><td class="num">${isNum(b.price) && b.sessions ? money(+(b.price / b.sessions).toFixed(2)) : '—'}</td><td class="num">${s ? savingHtml(s) : '—'}</td></tr>`; }).join('')}</tbody>
     </table></div></div>
     <p class="disclaimer">${icon('info')}<span>${esc(legal.priceDisclaimer)}</span></p>
   </div>
 </section>` : ''}
 
-${activePromos.length ? `<section class="section section--white" aria-labelledby="promos-title"><div class="container"><div class="section__head"><p class="eyebrow">Ahora mismo</p><h2 id="promos-title">Promociones <span class="accent">activas</span></h2></div><div class="grid grid--3">${activePromos.map(promoCard).join('')}</div></div></section>` : ''}
+${activePromos.length ? `<section class="section section--white" aria-labelledby="promos-title"><div class="container"><div class="section__head"><p class="eyebrow">${u('packs.promosEyebrow')}</p><h2 id="promos-title">${rich('packs.promosTitle')}</h2></div><div class="grid grid--3">${activePromos.map(promoCard).join('')}</div></div></section>` : ''}
 
 ${loyalty && loyalty.name ? `<section class="section section--ink" aria-labelledby="loyal-title">
   <div class="container">
-    <div class="section__head"><p class="eyebrow">Fidelización</p><h2 id="loyal-title">${esc(loyalty.name)}</h2><p>${esc(loyalty.description)}</p></div>
+    <div class="section__head"><p class="eyebrow">${u('packs.loyaltyEyebrow')}</p><h2 id="loyal-title">${esc(loyalty.name)}</h2><p>${esc(loyalty.description)}</p></div>
     ${arr(loyalty.steps).length ? `<ol class="loyalty-steps">${arr(loyalty.steps).map((s) => `<li>${esc(s)}</li>`).join('')}</ol>` : ''}
   </div>
 </section>` : ''}`,
@@ -957,15 +1126,15 @@ ${loyalty && loyalty.name ? `<section class="section section--ink" aria-labelled
 /* ---------- Contacto ---------- */
 function pageContact() {
   const html = layout({
-    path: 'contacto/', current: 'contacto/', title: 'Contacto y reservas',
-    description: `Pide cita en ${brand.name} por WhatsApp, teléfono o formulario. Dirección, horario y cómo llegar.`,
-    ld: [breadcrumbLd([{ label: 'Contacto', path: 'contacto/' }])].filter(Boolean),
+    path: 'contacto/', current: 'contacto/', title: tx('contactPage.title'),
+    description: tx('contactPage.description', { brand: brand.name }),
+    ld: [breadcrumbLd([{ label: tx('contactPage.crumb'), path: 'contacto/' }])].filter(Boolean),
     cta: false,
     body: (root) => `
-${pageHero({ root, crumbs: [{ label: 'Contacto' }], eyebrow: 'Hablemos', title: `Pide tu <span class="accent">cita</span>`, lead: 'Respondemos rápido. Si no sabes qué tratamiento elegir, te asesoramos gratis.', extra: `<div class="btn-row">${waBtn(contact.whatsappMessage, UI.whatsappLong)}${bookingBtn()}${callBtn()}</div>` })}
-<section class="section" id="reservar" aria-label="Formulario y datos de contacto">
+${pageHero({ root, crumbs: [{ label: tx('contactPage.crumb') }], eyebrow: tx('contactPage.eyebrow'), title: rich('contactPage.heading'), lead: tx('contactPage.lead'), extra: `<div class="btn-row">${waBtn(contact.whatsappMessage, tx('whatsappLong'))}${bookingBtn()}${callBtn()}</div>` })}
+<section class="section" id="reservar" aria-label="${u('contactPage.sectionLabel')}">
   <div class="container contact-grid">
-    <div>${contactInfo(root)}${mapBlock()}</div>
+    <div>${contactInfo(root)}${mapBlock(root)}</div>
     ${contactForm(root)}
   </div>
 </section>`,
@@ -973,71 +1142,72 @@ ${pageHero({ root, crumbs: [{ label: 'Contacto' }], eyebrow: 'Hablemos', title: 
   writePage('contacto/', html);
 }
 
-/* ---------- Legal (plantillas) ---------- */
+/* ---------- Legal (plantillas; textos en content/i18n/ui.json → legal) ---------- */
 function pageLegal(path, title, sectionsHtml) {
   const html = layout({
-    path, title, description: `${title} de ${brand.name}.`, cta: false,
+    path, title, description: tx('legal.description', { title, brand: brand.name }), cta: false,
     body: (root) => `${pageHero({ root, crumbs: [{ label: title }], title: esc(title), lead: '' })}
 <section class="section"><div class="container container--narrow legal">
-  <div class="notice notice--warn" role="note">${icon('alert')}<p><strong>Plantilla orientativa.</strong> Los textos marcados como <span class="todo">[POR DEFINIR]</span> deben completarse y revisarse por un profesional antes de publicar.</p></div>
+  <div class="notice notice--warn" role="note">${icon('alert')}<p>${rich('legal.notice')}</p></div>
   ${sectionsHtml(root)}
-  <p class="small">Última actualización: ${BUILD_DATE}</p>
+  <p class="small">${u('legal.updated', { date: BUILD_DATE })}</p>
 </div></section>`,
   });
   writePage(path, html);
 }
 const titular = () => `<ul>
-  <li><strong>Titular:</strong> ${fill(legal.companyName || '[POR DEFINIR]')}</li>
-  <li><strong>NIF/CIF:</strong> ${fill(legal.nif || '[POR DEFINIR]')}</li>
-  <li><strong>Domicilio:</strong> ${fill(contact.address)}, ${fill(contact.postalCode)} ${fill(contact.city)}</li>
-  <li><strong>Email:</strong> ${fill(contact.email)}</li>
-  <li><strong>Teléfono:</strong> ${fill(contact.phoneDisplay || contact.phone)}</li>
+  <li><strong>${u('legal.holder')}:</strong> ${fill(legal.companyName || '[POR DEFINIR]')}</li>
+  <li><strong>${u('legal.nif')}:</strong> ${fill(legal.nif || '[POR DEFINIR]')}</li>
+  <li><strong>${u('legal.domicile')}:</strong> ${fill(contact.address)}, ${fill(contact.postalCode)} ${fill(contact.city)}</li>
+  <li><strong>${u('legal.email')}:</strong> ${fill(contact.email)}</li>
+  <li><strong>${u('legal.phone')}:</strong> ${fill(contact.phoneDisplay || contact.phone)}</li>
 </ul>`;
+const h2 = (k) => `<h2>${u(k)}</h2>`;
+const pp = (k, v) => `<p>${rich(k, v)}</p>`;
 
 function pagesLegal() {
-  pageLegal('privacidad/', 'Política de privacidad', (root) => `
-  <h2>1. Responsable del tratamiento</h2>${titular()}
-  <h2>2. Qué datos tratamos y para qué</h2>
-  <p>Tratamos los datos que nos facilitas a través del formulario de contacto, WhatsApp, teléfono o email (nombre, teléfono, email y el contenido de tu mensaje) con la finalidad de atender tu solicitud, gestionar citas y, si lo solicitas, enviarte la información pedida.</p>
-  <h2>3. Base legal</h2>
-  <p>Tu consentimiento al enviar la solicitud (art. 6.1.a RGPD) y, en su caso, la ejecución de la relación de servicio (art. 6.1.b RGPD).</p>
-  <h2>4. Conservación</h2><p>Conservaremos los datos el tiempo necesario para atender tu solicitud y, después, durante los plazos legales aplicables. <span class="todo">[POR DEFINIR]</span></p>
-  <h2>5. Destinatarios</h2>
-  <p>No cedemos datos a terceros salvo obligación legal. Proveedores que pueden tratar datos por cuenta nuestra: alojamiento web (GitHub Pages), ${contact.formEndpoint ? 'servicio de formularios' : 'WhatsApp (Meta Platforms) si eliges ese canal'}, ${contact.bookingUrl ? 'software de reservas, ' : ''}<span class="todo">[POR DEFINIR]</span>.</p>
-  <h2>6. Tus derechos</h2>
-  <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a ${fill(contact.email)}. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>`);
+  const providers = [contact.formEndpoint ? u('legal.privacy.provForm') : u('legal.privacy.provWa'), contact.bookingUrl ? u('legal.privacy.provBooking') : ''].filter(Boolean).join(', ');
+  pageLegal('privacidad/', tx('legal.privacy.title'), () => `
+  ${h2('legal.privacy.s1')}${titular()}
+  ${h2('legal.privacy.s2')}${pp('legal.privacy.p2')}
+  ${h2('legal.privacy.s3')}${pp('legal.privacy.p3')}
+  ${h2('legal.privacy.s4')}${pp('legal.privacy.p4')}
+  ${h2('legal.privacy.s5')}${pp('legal.privacy.p5', { providers })}
+  ${h2('legal.privacy.s6')}${pp('legal.privacy.p6', { email: fill(contact.email) })}`);
 
-  pageLegal('aviso-legal/', 'Aviso legal', () => `
-  <h2>1. Datos identificativos</h2>
-  <p>En cumplimiento de la Ley 34/2002 de Servicios de la Sociedad de la Información (LSSI-CE):</p>${titular()}
-  <p>Datos registrales: <span class="todo">[POR DEFINIR]</span></p>
-  <h2>2. Objeto</h2><p>Este sitio web informa sobre los servicios de ${esc(brand.name)}. Los precios mostrados son orientativos. ${esc(legal.priceDisclaimer)}</p>
-  <h2>3. Información sanitaria y estética</h2><p>La información de cada tratamiento es divulgativa y no sustituye una valoración profesional individual. Los resultados pueden variar según cada persona.</p>
-  <h2>4. Propiedad intelectual</h2><p>Los contenidos, marcas y diseños de este sitio pertenecen a su titular o se usan con autorización.</p>
-  <h2>5. Responsabilidad</h2><p>El titular no se hace responsable del mal uso de los contenidos ni de los sitios enlazados de terceros.</p>
-  <h2>6. Legislación aplicable</h2><p>Legislación española. Juzgados y tribunales de <span class="todo">[POR DEFINIR]</span>.</p>`);
+  pageLegal('aviso-legal/', tx('legal.terms.title'), () => `
+  ${h2('legal.terms.s1')}${pp('legal.terms.p1')}${titular()}
+  ${pp('legal.terms.registry')}
+  ${h2('legal.terms.s2')}${pp('legal.terms.p2', { brand: esc(brand.name), disclaimer: esc(legal.priceDisclaimer) })}
+  ${h2('legal.terms.s3')}${pp('legal.terms.p3')}
+  ${h2('legal.terms.s4')}${pp('legal.terms.p4')}
+  ${h2('legal.terms.s5')}${pp('legal.terms.p5')}
+  ${h2('legal.terms.s6')}${pp('legal.terms.p6')}`);
 
-  pageLegal('cookies/', 'Política de cookies', () => `
-  <h2>1. ¿Qué son las cookies?</h2><p>Pequeños archivos que un sitio web guarda en tu navegador.</p>
-  <h2>2. Cookies que usa este sitio</h2>
-  <p>Este sitio <strong>no instala cookies propias de análisis ni de publicidad</strong>. Se cargan tipografías desde Google Fonts, lo que implica una conexión con servidores de Google (sin cookies de seguimiento por nuestra parte).</p>
-  <p>Si en el futuro se añade analítica, mapas incrustados o un software de reservas que use cookies no esenciales, se incorporará un banner de consentimiento y se detallarán aquí. <span class="todo">[POR DEFINIR]</span></p>
-  <h2>3. Cómo gestionarlas</h2><p>Puedes bloquear o borrar las cookies desde la configuración de tu navegador.</p>`);
+  pageLegal('cookies/', tx('legal.cookies.title'), () => `
+  ${h2('legal.cookies.s1')}${pp('legal.cookies.p1')}
+  ${h2('legal.cookies.s2')}${pp('legal.cookies.p2')}${pp('legal.cookies.p2b')}
+  ${h2('legal.cookies.s3')}${pp('legal.cookies.p3')}`);
 }
 
-/* ---------- 404 ---------- */
+/* ---------- 404 (solo en español, en la raíz; con enlaces a las portadas de ca y en) ---------- */
 function page404() {
   const base = SITE_URL ? new URL(SITE_URL).pathname : '/'; // GitHub Pages sirve 404.html en cualquier ruta: rutas desde la base
+  const others = LANGS.filter((x) => x.code !== L.code).map((x) => {
+    const nf = UI_ALL[x.code]?.notFound ?? UI_ALL.es.notFound;
+    return `<li lang="${x.code}">${esc(nf.title)} · <a href="${x.prefix}" hreflang="${x.code}">${esc(nf.back)} <span class="visually-hidden">(${esc(x.name)})</span></a></li>`;
+  }).join('');
   const html = layout({
-    path: '404.html', title: 'Página no encontrada', description: 'La página que buscas no existe.', noindex: true, base, rootOverride: '', cta: false,
+    path: '404.html', title: tx('notFound.title'), description: tx('notFound.description'), noindex: true, base, rootOverride: '', cta: false,
     body: (root) => `<section class="hero" aria-labelledby="nf-title">
   <div class="hero__layer" data-speed="0.2">${blob('deco-blob-a', 'pink', 'coral', 0)}</div>
   <div class="hero__layer" data-speed="0.4">${palm('deco-leaf-a', 'sage')}${sparkles('deco-sparkles', 8)}</div>
   <div class="container not-found"><div>
     <p class="big" aria-hidden="true">404</p>
-    <h1 id="nf-title">Ups, esta página se fue de spa</h1>
-    <p class="lead">No encontramos lo que buscas, pero seguro que algo de esto te encanta.</p>
-    <div class="btn-row" style="justify-content:center"><a class="btn" href="${root || './'}">Volver al inicio</a><a class="btn btn--ghost" href="${root}tratamientos/">${UI.seeAll}</a></div>
+    <h1 id="nf-title">${u('notFound.heading')}</h1>
+    <p class="lead">${u('notFound.lead')}</p>
+    <div class="btn-row" style="justify-content:center"><a class="btn" href="${root || './'}">${u('notFound.back')}</a><a class="btn btn--ghost" href="${root}tratamientos/">${u('seeAll')}</a></div>
+    <ul class="not-found__langs">${others}</ul>
   </div></div>
 </section>`,
   });
@@ -1092,17 +1262,22 @@ function assets() {
 }
 
 function seoFiles() {
+  const list = [...pages];
   if (SITE_URL) {
+    // Una <url> por página e idioma, con sus alternativas hreflang (xhtml:link)
+    const prio = (p) => (p === '' ? '1.0' : p.split('/').filter(Boolean).length > 1 ? '0.7' : '0.8');
+    const alts = (p) => [...LANGS.map((x) => `<xhtml:link rel="alternate" hreflang="${x.code}" href="${esc(pageUrl(p, x))}"/>`), `<xhtml:link rel="alternate" hreflang="x-default" href="${esc(pageUrl(p, LANGS[0]))}"/>`].join('');
     writeFileSync(join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map((p) => `  <url><loc>${esc(new URL(p, SITE_URL).href)}</loc><lastmod>${BUILD_DATE}</lastmod><priority>${p === '' ? '1.0' : p.split('/').filter(Boolean).length > 1 ? '0.7' : '0.8'}</priority></url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${LANGS.flatMap((x) => list.map((p) => `  <url><loc>${esc(pageUrl(p, x))}</loc>${alts(p)}<lastmod>${BUILD_DATE}</lastmod><priority>${prio(p)}</priority></url>`)).join('\n')}
 </urlset>
 `);
   } else {
     // Sin URL absoluta un sitemap no es válido: se deja una plantilla que indica cómo generarlo.
     writeFileSync(join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <!-- Define seo.siteUrl en content/site.json o la variable SITE_URL al construir para generar las URLs absolutas.
-     Páginas: ${pages.map((p) => p || '(inicio)').join(', ')} -->
+     Idiomas: ${LANGS.map((x) => `${x.code} (/${x.prefix})`).join(', ')}
+     Páginas (en cada idioma): ${list.map((p) => p || '(inicio)').join(', ')} -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>
 `);
     warn('Sin seo.siteUrl ni SITE_URL: no hay canonical ni sitemap con URLs (el workflow de GitHub Pages lo define automáticamente).');
@@ -1111,23 +1286,26 @@ ${pages.map((p) => `  <url><loc>${esc(new URL(p, SITE_URL).href)}</loc><lastmod>
 }
 
 /* ==========================================================================
-   10. Ejecutar
+   10. Ejecutar: el sitio completo una vez por idioma (es en dist/, ca en dist/ca/, en en dist/en/)
    ========================================================================== */
 const t0 = Date.now();
 rmSync(DIST, { recursive: true, force: true });
 mkdirSync(DIST, { recursive: true });
-assets();
-pageHome();
-pageCatalog();
-treatments.forEach(pageTreatment);
-pagePrices();
-pagePacks();
-pageContact();
-pagesLegal();
-page404();
+for (const lang of LANGS) {
+  setLang(lang.code);
+  if (lang.code === 'es') assets();
+  pageHome();
+  pageCatalog();
+  treatments.forEach(pageTreatment);
+  pagePrices();
+  pagePacks();
+  pageContact();
+  pagesLegal();
+  if (lang.code === 'es') page404();
+}
 seoFiles();
 
-console.log(`✔ static/dist generado en ${Date.now() - t0} ms — ${pages.length + 1} páginas (${treatments.length} fichas)`);
+console.log(`✔ static/dist generado en ${Date.now() - t0} ms — ${pages.size} páginas × ${LANGS.length} idiomas (${LANGS.map((x) => `${x.code}: /${x.prefix}`).join(', ')}) + 404 · ${treatments.length} fichas`);
 console.log(`  Datos: ${[siteSrc, trSrc, pkSrc, mkSrc].map((s) => s.source).join(' · ')}`);
 if (SITE_URL) console.log(`  URL base: ${SITE_URL}`);
 for (const w of warnings) console.warn(`  ⚠ ${w}`);

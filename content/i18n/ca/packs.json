@@ -1,0 +1,132 @@
+{
+  "aloha": {
+    "subtitle": "La teva benvinguda a Imperium",
+    "description": "És la primera vegada que vens? Et rebem amb un 15% de descompte en el teu primer tractament i una valoració gratuïta perquè sàpigues exactament què et convé abans de pagar res.",
+    "perks": [
+      "15% de descompte en el teu primer tractament (qualsevol de la carta)",
+      "Valoració gratuïta de la pell o de la zona abans de començar",
+      "Prova de tolerància gratis en làser, Dermapen i micropuntura",
+      "T'expliquem el preu i el nombre de sessions per escrit, sense compromís"
+    ],
+    "conditions": "Només per a clients que ens visiten per primera vegada. Un ús per persona, en un únic tractament. No acumulable amb altres promocions ni aplicable a packs o bons ja rebaixats. Menors d'edat, amb autorització de la mare, el pare o el tutor.",
+    "cta": "Vull la meva benvinguda Aloha"
+  },
+  "ohana": {
+    "subtitle": "Porta la teva gent, guanyeu totes dues",
+    "description": "A Imperium som família. Si portes una amiga, un amic, la teva parella o un familiar que no ens conegui, tots dos us emporteu un 20% de descompte: la persona que t'acompanya en la seva primera visita i tu en la teva propera cita.",
+    "perks": [
+      "20% per al teu amic/ga o familiar en el seu primer tractament",
+      "20% per a tu en el teu següent tractament",
+      "Sense límit: cada persona nova que portis és un nou 20% per a tu",
+      "Podeu venir junts el mateix dia i compartir cabina si hi ha disponibilitat"
+    ],
+    "conditions": "La persona convidada ha de ser clienta nova i dir el teu nom en reservar. El teu 20% s'activa quan ella completa la seva primera cita i caduca als 3 mesos. Un descompte per tractament, no acumulable amb Aloha ni amb altres promocions ni aplicable a packs o bons.",
+    "cta": "Reservar amb la meva Ohana"
+  },
+  "packs": [
+    {
+      "id": "pack-mirada-perfecta",
+      "name": "Pack Mirada Perfecta",
+      "badge": "Top a les xarxes",
+      "description": "Pestanyes amunt i celles pentinades durant setmanes. Desperta't a punt sense rímel ni llapis.",
+      "items": [
+        "Lifting de pestanyes amb tint",
+        "Laminat de celles amb tint i disseny"
+      ],
+      "cta": "Reservar Mirada Perfecta"
+    },
+    {
+      "id": "pack-manos-pies",
+      "name": "Pack Mans & Peus",
+      "badge": "Bàsic imprescindible",
+      "description": "Mans i peus impecables en una sola visita, amb esmaltat semipermanent de llarga durada.",
+      "items": [
+        "Manicura semipermanent amb retirada",
+        "Semipermanent de peus amb retirada"
+      ],
+      "cta": "Reservar Mans & Peus"
+    },
+    {
+      "id": "pack-silueta",
+      "name": "Pack Silueta",
+      "badge": "Recomanat",
+      "description": "La combinació estrella per modelar i desinflar: maderoteràpia per treballar la zona i pressoteràpia per drenar.",
+      "items": [
+        "5 sessions de maderoteràpia corporal",
+        "5 sessions de pressoteràpia",
+        "Valoració i mesurament inicial i final"
+      ],
+      "cta": "Començar el meu Pack Silueta"
+    },
+    {
+      "id": "pack-glow-facial",
+      "name": "Pack Glow Facial",
+      "badge": "Efecte bona cara",
+      "description": "Pell neta, lluminosa i amb un to més uniforme. Primer preparem la pell i després apliquem BB Glow.",
+      "items": [
+        "Higiene facial profunda",
+        "1 sessió de BB Glow"
+      ],
+      "cta": "Reservar Glow Facial"
+    },
+    {
+      "id": "pack-verano-laser",
+      "name": "Pack Estiu Làser",
+      "badge": "Comença a la tardor",
+      "description": "Les tres zones més demanades en una sola sessió. Començar a la tardor o a l'hivern és ideal per arribar a l'estiu amb la major part del tractament fet.",
+      "items": [
+        "Depilació làser d'aixelles",
+        "Depilació làser d'engonals",
+        "Depilació làser de cames completes"
+      ],
+      "cta": "Reservar Estiu Làser"
+    },
+    {
+      "id": "pack-relax",
+      "name": "Pack Relax",
+      "badge": "Ideal per regalar",
+      "description": "Una hora i mitja només per a tu: massatge relaxant de cos sencer i un facial hidratant per sortir com nova.",
+      "items": [
+        "Massatge relaxant de 50 minuts",
+        "Facial hidratant exprés"
+      ],
+      "cta": "Reservar Pack Relax"
+    },
+    {
+      "id": "pack-ligereza",
+      "name": "Pack Cames Lleugeres",
+      "badge": "Adeu pesadesa",
+      "description": "Per a cames cansades, inflades o amb retenció: drenatge manual més pressoteràpia, en tres cites.",
+      "items": [
+        "3 massatges drenants",
+        "3 sessions de pressoteràpia"
+      ],
+      "cta": "Reservar Cames Lleugeres"
+    },
+    {
+      "id": "pack-novias-eventos",
+      "name": "Pack Núvies & Esdeveniments",
+      "badge": "Places per data",
+      "description": "Per a casaments, comunions, graduacions o qualsevol gran dia. Ho planifiquem amb tu setmanes abans perquè tot estigui al seu punt.",
+      "items": [
+        "Higiene facial profunda + BB Glow",
+        "Lifting de pestanyes i laminat de celles amb tint",
+        "Manicura i pedicura semipermanent",
+        "BB Lips",
+        "Calendari personalitzat de cites abans de l'esdeveniment"
+      ],
+      "cta": "Planificar el meu gran dia"
+    }
+  ],
+  "bonos": [
+    { "label": "Làser aixelles" },
+    { "label": "Làser engonals" },
+    { "label": "Làser cames completes" },
+    { "label": "Maderoteràpia corporal" },
+    { "label": "Pressoteràpia" },
+    { "label": "Microagulles Dermapen facial" },
+    { "label": "BB Glow" },
+    { "label": "Micropuntura brasilera estries (zona mitjana)" },
+    { "label": "Micropuntura capil·lar" }
+  ]
+}

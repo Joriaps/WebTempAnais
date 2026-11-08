@@ -1,0 +1,130 @@
+{
+  "brand": {
+    "tagline": "Your beauty, your empire",
+    "description": "Advanced beauty centre: manicures, laser hair removal, lashes and brows, massages, wood therapy, beauty devices, BB Glow, Dermapen and Brazilian micropuncture."
+  },
+  "contact": {
+    "whatsappMessage": "Hi! I'd like to book an appointment at Imperium Beauty Studio",
+    "whatsappTreatmentMessage": "Hi! I'd like some information and an appointment for: {treatment}",
+    "hours": [
+      {
+        "days": "Monday to Friday"
+      },
+      {
+        "days": "Saturdays"
+      },
+      {
+        "days": "Sundays and public holidays",
+        "time": "Closed"
+      }
+    ],
+    "bookingLabel": "Book online"
+  },
+  "nav": [
+    {
+      "label": "Treatments"
+    },
+    {
+      "label": "Prices"
+    },
+    {
+      "label": "Aloha & Ohana Packs"
+    },
+    {
+      "label": "Contact"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Advanced aesthetics · Beauty · Wellbeing",
+    "title": "The art of",
+    "titleAccent": "self-care",
+    "subtitle": "Nails, lashes and brows, laser, massages and the latest facial and body treatments. We explain everything, no small print, so you can choose what really suits you.",
+    "ctaPrimary": {
+      "label": "Book your appointment"
+    },
+    "ctaSecondary": {
+      "label": "See treatments"
+    }
+  },
+  "stats": [
+    {
+      "label": "treatments"
+    },
+    {
+      "value": "1st",
+      "label": "consultation free"
+    },
+    {
+      "label": "with your Aloha pack"
+    }
+  ],
+  "about": {
+    "eyebrow": "About us",
+    "title": "Over 10 years looking after you,",
+    "titleAccent": "and learning every day",
+    "paragraphs": [
+      "We've been devoted to beauty and aesthetics for more than a decade, and we're still learning every day. We train continuously so we can work with the latest techniques and technology, because looking after you properly also means staying up to date.",
+      "We take care of every service down to the last detail and give you individual attention: we listen to what you're looking for, assess your case and tailor each treatment to you. We're with you throughout the whole process with a single goal: achieving the best possible result for you.",
+      "We want every visit to be your moment, where you feel at home: a warm, trusted welcome, with the high standards and loving care of people who love what they do."
+    ],
+    "highlights": [
+      {
+        "title": "10+ years of experience",
+        "text": "A decade of expertise that shows in every detail."
+      },
+      {
+        "title": "Ongoing training",
+        "text": "Up to date with the latest techniques and technology."
+      },
+      {
+        "title": "Individual attention",
+        "text": "A plan designed for you, unhurried and with follow-up."
+      }
+    ]
+  },
+  "whyUs": [
+    {
+      "title": "Certified professionals",
+      "text": "Ongoing training and hygiene and safety protocols in every treatment."
+    },
+    {
+      "title": "Up-to-date technology",
+      "text": "Latest-generation beauty devices for visible results with maximum comfort."
+    },
+    {
+      "title": "A plan just for you",
+      "text": "We assess your skin and your goals before we start. No pressure, no small print."
+    },
+    {
+      "title": "A relaxing atmosphere",
+      "text": "A space designed to help you switch off, for every age and style."
+    }
+  ],
+  "testimonials": {
+    "items": [
+      {
+        "name": "Sample review",
+        "text": "Replace with real customer reviews (for example, from Google).",
+        "treatment": "Lash lift"
+      },
+      {
+        "name": "Sample review",
+        "text": "Replace with real customer reviews (for example, from Google).",
+        "treatment": "Laser hair removal"
+      },
+      {
+        "name": "Sample review",
+        "text": "Replace with real customer reviews (for example, from Google).",
+        "treatment": "Wood therapy"
+      }
+    ]
+  },
+  "seo": {
+    "defaultDescription": "Advanced beauty centre in [city]: manicures, gel polish, laser hair removal and waxing, lash lift, brow lamination, massages, wood therapy, pressotherapy, BB Glow, Dermapen and Brazilian micropuncture.",
+    "locale": "en_GB"
+  },
+  "legal": {
+    "privacyText": "I have read and accept the privacy policy. We'll only use your details to reply to your request.",
+    "priceDisclaimer": "Guide prices including VAT. They may vary after an initial assessment. Ask us, no strings attached."
+  }
+}
