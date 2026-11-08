@@ -1,0 +1,27 @@
+{
+  "_comment": "DATOS DE PRUEBA. Solo se usan si content/packs.json no existe.",
+  "aloha": {
+    "name": "Aloha",
+    "subtitle": "Tu primera vez con nosotras",
+    "description": "Pack de bienvenida para descubrir el centro con ventajas exclusivas.",
+    "perks": ["Valoración gratuita", "-15% en tu primer tratamiento", "Regalo sorpresa"],
+    "conditions": "Válido para nuevas clientas. No acumulable.",
+    "cta": "Quiero mi pack Aloha"
+  },
+  "ohana": {
+    "name": "Ohana",
+    "subtitle": "Ven con tu gente",
+    "description": "Trae a una amiga o familiar y las dos ganáis.",
+    "perks": ["-10% para ti", "-10% para quien traigas"],
+    "conditions": "Una vez por persona invitada.",
+    "cta": "Quiero mi pack Ohana"
+  },
+  "packs": [
+    { "id": "pack-glow", "name": "Pack Glow", "badge": "Más vendido", "description": "Facial y manos listas para un evento.", "items": ["BB Glow", "Manicura semipermanente"], "price": 70, "oldPrice": 78, "highlight": true, "cta": "Reservar pack" },
+    { "id": "pack-pies", "name": "Pack Manos y pies", "badge": "", "description": "Combo completo de cuidado.", "items": ["Manicura semipermanente", "Pedicura spa"], "price": 42, "oldPrice": 48, "highlight": false, "cta": "Reservar pack" }
+  ],
+  "bonos": [
+    { "treatmentId": "depilacion-laser-diodo", "label": "Bono 6 sesiones axilas", "sessions": 6, "price": 120, "oldPrice": 150 },
+    { "treatmentId": "bb-glow", "label": "Bono 3 sesiones BB Glow", "sessions": 3, "price": 160, "oldPrice": 180 }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "_comment": "DATOS DE PRUEBA. Solo se usan si content/treatments.json no existe.",
+  "categories": [
+    { "id": "manos-pies", "name": "Manos y pies", "icon": "nail", "intro": "Manicura, pedicura y esmaltado semipermanente con acabado impecable.", "order": 1 },
+    { "id": "depilacion", "name": "Depilación", "icon": "laser", "intro": "Láser de diodo y cera para una piel suave durante más tiempo.", "order": 2 },
+    { "id": "facial", "name": "Facial", "icon": "face", "intro": "Tratamientos faciales para una piel luminosa y uniforme.", "order": 3 }
+  ],
+  "treatments": [
+    {
+      "id": "manicura-semipermanente",
+      "category": "manos-pies",
+      "name": "Manicura semipermanente",
+      "short": "Uñas perfectas hasta 3 semanas, con brillo intacto y sin desconchones.",
+      "hook": "Uñas de revista durante semanas (sin esperar a que sequen)",
+      "icon": "polish",
+      "featured": true,
+      "whatIs": "Es una manicura completa con esmalte que se cura con lámpara LED. Queda seco al momento y mantiene el brillo y el color durante 2-3 semanas.",
+      "benefits": [
+        { "title": "Dura semanas", "text": "Entre 2 y 3 semanas con el color intacto." },
+        { "title": "Secado inmediato", "text": "Sales del centro sin miedo a estropearlas." },
+        { "title": "Más resistencia", "text": "Protege la uña natural de roturas." },
+        { "title": "Mil colores", "text": "Carta amplia de tonos y acabados." }
+      ],
+      "idealFor": ["Quien quiere uñas bonitas sin retoques diarios", "Eventos, viajes y vacaciones"],
+      "howItWorks": [
+        { "title": "Preparación", "text": "Limamos, damos forma y cuidamos cutículas." },
+        { "title": "Esmaltado", "text": "Base, color y top curados con lámpara LED." },
+        { "title": "Acabado", "text": "Aceite nutritivo para cutículas." }
+      ],
+      "duration": "45 min",
+      "sessions": "Cada 2-3 semanas",
+      "results": "Inmediatos.",
+      "painLevel": 0,
+      "aftercare": ["Usa guantes al fregar", "Hidrata las cutículas a diario"],
+      "contraindications": ["Infecciones o heridas en la uña", "Alergia conocida a los componentes"],
+      "faq": [
+        { "q": "¿Estropea la uña?", "a": "Con una retirada profesional, no." },
+        { "q": "¿Cuánto dura?", "a": "Entre 2 y 3 semanas según el crecimiento de la uña." }
+      ],
+      "priceFrom": 18,
+      "prices": [
+        { "label": "Manicura semipermanente", "price": 18, "oldPrice": null, "note": "" },
+        { "label": "Retirada + nueva aplicación", "price": 22, "oldPrice": 25, "note": "" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["uñas", "manicura"]
+    },
+    {
+      "id": "pedicura-spa",
+      "category": "manos-pies",
+      "name": "Pedicura spa",
+      "short": "Pies suaves y cuidados con exfoliación, hidratación y masaje.",
+      "hook": "Tus pies también merecen un día de spa",
+      "icon": "foot",
+      "featured": false,
+      "whatIs": "Pedicura completa con baño, exfoliación, cuidado de durezas, hidratación y masaje relajante.",
+      "benefits": [
+        { "title": "Piel suave", "text": "Eliminamos durezas y células muertas." },
+        { "title": "Relax", "text": "Masaje final que descarga las piernas." }
+      ],
+      "idealFor": ["Antes del verano", "Pies secos o con durezas"],
+      "howItWorks": [
+        { "title": "Baño", "text": "Baño templado para preparar la piel." },
+        { "title": "Cuidado", "text": "Uñas, cutículas y durezas." },
+        { "title": "Masaje", "text": "Hidratación y masaje." }
+      ],
+      "duration": "60 min",
+      "sessions": "Mensual",
+      "results": "Inmediatos.",
+      "painLevel": 0,
+      "aftercare": ["Hidrata los pies a diario"],
+      "contraindications": ["Heridas abiertas o infecciones en los pies"],
+      "faq": [{ "q": "¿Incluye esmaltado?", "a": "Puedes añadir esmaltado normal o semipermanente." }],
+      "priceFrom": 30,
+      "prices": [{ "label": "Pedicura spa", "price": 30, "oldPrice": null, "note": "" }],
+      "priceNote": "Precio orientativo",
+      "tags": ["pies"]
+    },
+    {
+      "id": "depilacion-laser-diodo",
+      "category": "depilacion",
+      "name": "Depilación láser de diodo",
+      "short": "Adiós al vello de forma progresiva, rápida y cómoda.",
+      "hook": "Olvídate de la cuchilla para siempre*",
+      "icon": "laser",
+      "featured": true,
+      "whatIs": "El láser de diodo actúa sobre el folículo piloso y reduce el vello de forma progresiva sesión a sesión.",
+      "benefits": [
+        { "title": "Rápido", "text": "Sesiones cortas incluso en zonas grandes." },
+        { "title": "Cómodo", "text": "Sistema de frío para mayor confort." },
+        { "title": "Progresivo", "text": "Menos vello y más fino en cada sesión." }
+      ],
+      "idealFor": ["Pieles claras y morenas (previa valoración)", "Quien quiere ahorrar tiempo"],
+      "howItWorks": [
+        { "title": "Valoración", "text": "Estudiamos tu piel y tu vello." },
+        { "title": "Sesión", "text": "Aplicamos el láser por zonas." },
+        { "title": "Calmante", "text": "Gel calmante al terminar." }
+      ],
+      "duration": "15-60 min según zona",
+      "sessions": "6-10 sesiones, cada 4-8 semanas",
+      "results": "Reducción visible desde las primeras sesiones; varía según cada persona.",
+      "painLevel": 2,
+      "aftercare": ["Evita el sol 48 h", "Usa protector solar SPF 50"],
+      "contraindications": ["Embarazo", "Piel bronceada reciente", "Medicación fotosensibilizante"],
+      "faq": [{ "q": "¿Duele?", "a": "Se nota un ligero calor o pinchazo, muy tolerable." }],
+      "priceFrom": 25,
+      "prices": [
+        { "label": "Axilas", "price": 25, "oldPrice": null, "note": "" },
+        { "label": "Piernas completas", "price": 79, "oldPrice": 95, "note": "" }
+      ],
+      "priceNote": "Precio por sesión",
+      "tags": ["láser"]
+    },
+    {
+      "id": "bb-glow",
+      "category": "facial",
+      "name": "BB Glow",
+      "short": "Efecto piel de porcelana: tono más uniforme y luminoso.",
+      "hook": "El efecto «buena cara» que dura semanas",
+      "icon": "glow",
+      "featured": true,
+      "whatIs": "Tratamiento facial que introduce sérums con pigmento en la capa superficial de la piel para unificar el tono y aportar luminosidad.",
+      "benefits": [
+        { "title": "Tono uniforme", "text": "Disimula pequeñas manchas y rojeces." },
+        { "title": "Luminosidad", "text": "Piel jugosa y con brillo natural." }
+      ],
+      "idealFor": ["Pieles apagadas", "Quien quiere usar menos maquillaje"],
+      "howItWorks": [
+        { "title": "Limpieza", "text": "Limpieza y preparación de la piel." },
+        { "title": "Aplicación", "text": "Microagujas superficiales con sérum." },
+        { "title": "Calma", "text": "Mascarilla calmante." }
+      ],
+      "duration": "60 min",
+      "sessions": "3-4 sesiones, cada 2-3 semanas",
+      "results": "Luminosidad desde la primera sesión; se acumula con las siguientes.",
+      "painLevel": 1,
+      "aftercare": ["No maquillarse en 24 h", "Protector solar diario"],
+      "contraindications": ["Acné activo", "Embarazo y lactancia"],
+      "faq": [{ "q": "¿Es un maquillaje permanente?", "a": "No, es semipermanente y se va atenuando con las semanas." }],
+      "priceFrom": 60,
+      "prices": [{ "label": "Sesión BB Glow", "price": 60, "oldPrice": null, "note": "" }],
+      "priceNote": "Precio orientativo",
+      "tags": ["facial"]
+    }
+  ]
+}

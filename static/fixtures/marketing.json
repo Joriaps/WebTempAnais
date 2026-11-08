@@ -1,0 +1,14 @@
+{
+  "_comment": "DATOS DE PRUEBA. Solo se usan si content/marketing.json no existe.",
+  "announcement": { "active": true, "text": "Primera valoración gratis con tu pack Aloha", "href": "packs/" },
+  "promos": [
+    { "id": "promo-otono", "title": "Otoño glow", "text": "-20% en BB Glow durante este mes.", "badge": "-20%", "validity": "Hasta fin de mes", "active": true },
+    { "id": "promo-inactiva", "title": "Promo inactiva", "text": "No debería verse.", "badge": "", "validity": "", "active": false }
+  ],
+  "loyalty": { "name": "Club Imperium", "description": "Suma puntos con cada visita y canjéalos por tratamientos.", "steps": ["Pide tu tarjeta", "Suma un sello por visita", "Canjea tu regalo"] },
+  "leadMagnet": { "title": "Guía gratis: tu rutina glow en 5 pasos", "text": "Déjanos tu email y te la enviamos.", "cta": "Quiero la guía" },
+  "faqGeneral": [
+    { "q": "¿Hacéis valoración previa?", "a": "Sí, la primera valoración es gratuita." },
+    { "q": "¿Cómo pido cita?", "a": "Por WhatsApp, teléfono o el formulario de contacto." }
+  ]
+}

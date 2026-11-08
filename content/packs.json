@@ -1,0 +1,158 @@
+{
+  "aloha": {
+    "name": "Aloha",
+    "subtitle": "Tu bienvenida a Imperium",
+    "description": "¿Es tu primera vez con nosotras? Te recibimos con un 15% de descuento en tu primer tratamiento y una valoración gratuita para que sepas exactamente qué te conviene antes de pagar nada.",
+    "perks": [
+      "15% de descuento en tu primer tratamiento (cualquiera de la carta)",
+      "Valoración gratuita de piel o de zona antes de empezar",
+      "Prueba de tolerancia gratis en láser, dermapen y micropuntura",
+      "Te explicamos precio y nº de sesiones por escrito, sin compromiso"
+    ],
+    "conditions": "Solo para clientes que nos visitan por primera vez. Un uso por persona, en un único tratamiento. No acumulable con otras promociones ni aplicable a packs o bonos ya rebajados. Menores de edad, con autorización de madre, padre o tutor.",
+    "cta": "Quiero mi bienvenida Aloha"
+  },
+  "ohana": {
+    "name": "Ohana",
+    "subtitle": "Trae a tu gente, ganáis las dos",
+    "description": "En Imperium somos familia. Si traes a una amiga, amigo, pareja o familiar que no nos conozca, los dos os lleváis un 20% de descuento: tu acompañante en su primera visita y tú en tu próxima cita.",
+    "perks": [
+      "20% para tu amigo/a o familiar en su primer tratamiento",
+      "20% para ti en tu siguiente tratamiento",
+      "Sin límite: cada persona nueva que traigas es un nuevo 20% para ti",
+      "Podéis venir juntos el mismo día y compartir cabina si hay disponibilidad"
+    ],
+    "conditions": "La persona invitada debe ser cliente nueva y decir tu nombre al reservar. Tu 20% se activa cuando ella completa su primera cita y caduca a los 3 meses. Un descuento por tratamiento, no acumulable con Aloha ni con otras promociones ni aplicable a packs o bonos.",
+    "cta": "Reservar con mi Ohana"
+  },
+  "packs": [
+    {
+      "id": "pack-mirada-perfecta",
+      "name": "Pack Mirada Perfecta",
+      "badge": "Top en redes",
+      "description": "Pestañas arriba y cejas peinadas durante semanas. Despiértate lista sin máscara ni lápiz.",
+      "items": [
+        "Lifting de pestañas con tinte",
+        "Laminado de cejas con tinte y diseño"
+      ],
+      "price": 59,
+      "oldPrice": 75,
+      "highlight": false,
+      "cta": "Reservar Mirada Perfecta"
+    },
+    {
+      "id": "pack-manos-pies",
+      "name": "Pack Manos & Pies",
+      "badge": "Básico imprescindible",
+      "description": "Manos y pies impecables en una sola visita, con esmaltado semipermanente de larga duración.",
+      "items": [
+        "Manicura con esmaltado semipermanente",
+        "Pedicura completa con esmaltado semipermanente"
+      ],
+      "price": 44,
+      "oldPrice": 52,
+      "highlight": false,
+      "cta": "Reservar Manos & Pies"
+    },
+    {
+      "id": "pack-silueta",
+      "name": "Pack Silueta",
+      "badge": "Recomendado",
+      "description": "La combinación estrella para modelar y deshinchar: maderoterapia para trabajar la zona y presoterapia para drenar.",
+      "items": [
+        "5 sesiones de maderoterapia corporal",
+        "5 sesiones de presoterapia",
+        "Valoración y medición inicial y final"
+      ],
+      "price": 299,
+      "oldPrice": 375,
+      "highlight": true,
+      "cta": "Empezar mi Pack Silueta"
+    },
+    {
+      "id": "pack-glow-facial",
+      "name": "Pack Glow Facial",
+      "badge": "Efecto buena cara",
+      "description": "Piel limpia, luminosa y con tono más uniforme. Primero preparamos la piel y después aplicamos BB Glow.",
+      "items": [
+        "Higiene facial profunda",
+        "1 sesión de BB Glow"
+      ],
+      "price": 115,
+      "oldPrice": 140,
+      "highlight": false,
+      "cta": "Reservar Glow Facial"
+    },
+    {
+      "id": "pack-verano-laser",
+      "name": "Pack Verano Láser",
+      "badge": "Empieza en otoño",
+      "description": "Las tres zonas más pedidas en una sola sesión. Empezar en otoño o invierno es ideal para llegar al verano con la mayor parte del tratamiento hecho.",
+      "items": [
+        "Depilación láser de axilas",
+        "Depilación láser de ingles",
+        "Depilación láser de piernas completas"
+      ],
+      "price": 149,
+      "oldPrice": 190,
+      "highlight": false,
+      "cta": "Reservar Verano Láser"
+    },
+    {
+      "id": "pack-relax",
+      "name": "Pack Relax",
+      "badge": "Ideal para regalar",
+      "description": "Una hora y media solo para ti: masaje relajante de cuerpo completo y un facial hidratante para salir como nueva.",
+      "items": [
+        "Masaje relajante de 50 minutos",
+        "Facial hidratante express"
+      ],
+      "price": 62,
+      "oldPrice": 75,
+      "highlight": false,
+      "cta": "Reservar Pack Relax"
+    },
+    {
+      "id": "pack-ligereza",
+      "name": "Pack Piernas Ligeras",
+      "badge": "Adiós pesadez",
+      "description": "Para piernas cansadas, hinchadas o con retención: drenaje manual más presoterapia, en tres citas.",
+      "items": [
+        "3 masajes drenantes",
+        "3 sesiones de presoterapia"
+      ],
+      "price": 185,
+      "oldPrice": 225,
+      "highlight": false,
+      "cta": "Reservar Piernas Ligeras"
+    },
+    {
+      "id": "pack-novias-eventos",
+      "name": "Pack Novias & Eventos",
+      "badge": "Plazas por fecha",
+      "description": "Para bodas, comuniones, graduaciones o cualquier gran día. Lo planificamos contigo semanas antes para que todo esté en su punto.",
+      "items": [
+        "Higiene facial profunda + BB Glow",
+        "Lifting de pestañas y laminado de cejas con tinte",
+        "Manicura y pedicura semipermanente",
+        "BB Lips",
+        "Calendario personalizado de citas antes del evento"
+      ],
+      "price": 289,
+      "oldPrice": 357,
+      "highlight": false,
+      "cta": "Planificar mi gran día"
+    }
+  ],
+  "bonos": [
+    { "treatmentId": "depilacion-laser", "label": "Láser axilas", "sessions": 6, "price": 135, "oldPrice": 180 },
+    { "treatmentId": "depilacion-laser", "label": "Láser ingles", "sessions": 6, "price": 179, "oldPrice": 240 },
+    { "treatmentId": "depilacion-laser", "label": "Láser piernas completas", "sessions": 6, "price": 549, "oldPrice": 720 },
+    { "treatmentId": "maderoterapia", "label": "Maderoterapia corporal", "sessions": 10, "price": 360, "oldPrice": 450 },
+    { "treatmentId": "presoterapia", "label": "Presoterapia", "sessions": 10, "price": 220, "oldPrice": 300 },
+    { "treatmentId": "microneedling-dermapen", "label": "Microneedling Dermapen facial", "sessions": 3, "price": 225, "oldPrice": 270 },
+    { "treatmentId": "bb-glow", "label": "BB Glow", "sessions": 3, "price": 225, "oldPrice": 270 },
+    { "treatmentId": "micropuntura-estrias", "label": "Micropuntura brasileña estrías (zona media)", "sessions": 4, "price": 260, "oldPrice": 320 },
+    { "treatmentId": "micropuntura-capilar", "label": "Micropuntura capilar", "sessions": 6, "price": 430, "oldPrice": 540 }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "announcement": {
+    "active": true,
+    "text": "¿Primera vez en Imperium? Llévate un 15% con tu bienvenida Aloha y valoración gratis",
+    "href": "packs/#aloha"
+  },
+  "promos": [
+    {
+      "id": "aloha-bienvenida",
+      "title": "Bienvenida Aloha",
+      "text": "15% en tu primer tratamiento y valoración gratuita antes de empezar. Sin compromiso.",
+      "badge": "-15%",
+      "validity": "Permanente para clientes nuevos",
+      "active": true
+    },
+    {
+      "id": "ohana-amigos",
+      "title": "Ohana: trae a tu gente",
+      "text": "Ven con una amiga o familiar que no nos conozca y os lleváis un 20% cada una.",
+      "badge": "-20% x2",
+      "validity": "Permanente",
+      "active": true
+    },
+    {
+      "id": "horas-valle",
+      "title": "Mañanas Imperium",
+      "text": "De martes a jueves, de 10:00 a 13:00, un 10% en manicura, pedicura, masajes y faciales. Ideal si teletrabajas, estudias o tienes turno de tarde.",
+      "badge": "-10%",
+      "validity": "Martes a jueves de 10:00 a 13:00, salvo festivos",
+      "active": true
+    },
+    {
+      "id": "cumpleanos",
+      "title": "Tu mes, tu regalo",
+      "text": "Durante el mes de tu cumpleaños te regalamos un extra en tu cita (mascarilla, tinte de cejas o 10 minutos más de masaje). Solo tienes que decírnoslo al reservar.",
+      "badge": "Regalo",
+      "validity": "Mes de tu cumpleaños, una vez al año",
+      "active": true
+    },
+    {
+      "id": "laser-otono",
+      "title": "Empieza el láser ahora y llega lista al verano",
+      "text": "Otoño e invierno son la mejor época para empezar: menos sol, menos riesgo de manchas y tiempo para completar varias sesiones. Prueba de tolerancia gratis.",
+      "badge": "Temporada",
+      "validity": "Noviembre 2026 – febrero 2027",
+      "active": true
+    },
+    {
+      "id": "tarjeta-regalo-navidad",
+      "title": "Tarjetas regalo de Navidad",
+      "text": "Regala un tratamiento o un pack con tarjeta regalo personalizada. Validez de 6 meses y posibilidad de elegir el tratamiento más tarde.",
+      "badge": "Navidad",
+      "validity": "Del 20 de noviembre al 6 de enero",
+      "active": true
+    }
+  ],
+  "loyalty": {
+    "name": "Club Corona",
+    "description": "Nuestra tarjeta de fidelidad digital: cada visita suma una corona y, al completar la tarjeta, te llevas un regalo. Sin cuotas y sin letra pequeña.",
+    "steps": [
+      "Pide tu tarjeta Club Corona en tu primera visita (o regístrala con tu móvil).",
+      "Suma 1 corona por cada cita de 25 € o más.",
+      "Al llegar a 8 coronas, eliges regalo: 50% en un tratamiento de hasta 50 € o un masaje relajante de 30 minutos.",
+      "Las coronas no caducan mientras nos visites al menos una vez cada 6 meses."
+    ]
+  },
+  "leadMagnet": {
+    "title": "Diagnóstico de piel gratis",
+    "text": "En 20 minutos analizamos tu tipo de piel, manchas, poros o estrías y te damos un plan claro con opciones y precios por escrito. Tú decides si empiezas, sin compromiso.",
+    "cta": "Reservar mi diagnóstico gratis"
+  },
+  "faqGeneral": [
+    {
+      "q": "¿Cómo puedo reservar cita?",
+      "a": "Por WhatsApp, por teléfono, con el botón de reserva online de la web o pasando por el centro. Te confirmamos la cita por mensaje."
+    },
+    {
+      "q": "¿Qué pasa si no puedo ir a mi cita?",
+      "a": "Avísanos con al menos 24 horas y la cambiamos sin coste. Si no avisas o cancelas con menos tiempo de forma repetida, podremos pedir una señal para próximas reservas, porque ese hueco lo podría haber aprovechado otra persona."
+    },
+    {
+      "q": "¿Qué formas de pago aceptáis?",
+      "a": "Efectivo, tarjeta y Bizum. Los packs y bonos se abonan al empezar el tratamiento; consúltanos si prefieres pagarlos en dos partes."
+    },
+    {
+      "q": "Es mi primera vez, ¿cómo funciona?",
+      "a": "Llega 5 minutos antes para rellenar una ficha breve. Hablamos de lo que buscas, valoramos la zona o tu piel y te explicamos el tratamiento, el número de sesiones y el precio antes de empezar. Además tienes un 15% con tu bienvenida Aloha."
+    },
+    {
+      "q": "¿Atendéis a menores de edad?",
+      "a": "Sí, en tratamientos adecuados a su edad (manicura, pedicura, cejas, faciales de limpieza, cera…). Los menores de 16 años deben venir acompañados y los de 16 y 17 necesitan autorización firmada de madre, padre o tutor. Algunos tratamientos como el láser, la micropuntura o el dermapen requieren valoración específica."
+    },
+    {
+      "q": "¿Los packs y bonos caducan?",
+      "a": "Los bonos y packs tienen una validez de 12 meses desde la compra, tiempo suficiente para completar las sesiones con la frecuencia recomendada. Son personales, pero puedes consultarnos si necesitas transferirlos."
+    },
+    {
+      "q": "¿Los precios incluyen IVA?",
+      "a": "Sí, todos los precios publicados incluyen IVA. Son orientativos y pueden variar tras la valoración, pero siempre te diremos el precio final antes de empezar."
+    },
+    {
+      "q": "¿Tenéis tarjetas regalo?",
+      "a": "Sí. Puedes regalar un importe, un tratamiento o un pack. Las tarjetas tienen 6 meses de validez y la persona que la recibe puede elegir el tratamiento más adelante."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "imperium-beauty-studio-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web estática de Imperium Beauty Studio generada desde content/*.json",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node static/build.mjs",
+    "serve": "node static/serve.mjs 4321",
+    "check": "node static/check-links.mjs",
+    "dev": "node static/build.mjs && node static/serve.mjs 4321"
+  }
+}

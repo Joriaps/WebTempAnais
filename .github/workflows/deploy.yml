@@ -1,0 +1,46 @@
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - id: pages
+        uses: actions/configure-pages@v5
+      - name: Construir web estática
+        # Si content/site.json → seo.siteUrl está vacío, usa la URL de GitHub Pages (canonical, OG, sitemap)
+        run: node static/build.mjs
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+      - name: Comprobar enlaces internos
+        run: node static/check-links.mjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: static/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

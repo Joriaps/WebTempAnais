@@ -1,0 +1,1333 @@
+{
+  "categories": [
+    { "id": "manos-pies", "name": "Manos y pies", "icon": "nail", "intro": "Uñas bonitas, cuidadas y a tu estilo. Desde una manicura rápida para salir del paso hasta un semipermanente que aguanta semanas sin perder el brillo.", "order": 1 },
+    { "id": "depilacion", "name": "Depilación", "icon": "laser", "intro": "Dile adiós a las cuchillas cada dos días. Láser de diodo para reducir el vello de forma duradera o cera de toda la vida cuando quieres un resultado inmediato.", "order": 2 },
+    { "id": "mirada", "name": "Mirada", "icon": "lash", "intro": "Pestañas con curva, cejas peinadas y con color sin maquillarte cada mañana. Pequeños gestos que cambian tu cara y te ahorran tiempo.", "order": 3 },
+    { "id": "masajes", "name": "Masajes", "icon": "massage", "intro": "Tu momento para desconectar. Masajes para soltar tensión, descansar de verdad o sentir las piernas más ligeras.", "order": 4 },
+    { "id": "corporal", "name": "Corporal", "icon": "body", "intro": "Tratamientos para cuidar tu cuerpo: madera, presión, aparatología y protocolos combinados que te ayudan a sentirte más ligera, firme y a gusto con tu piel.", "order": 5 },
+    { "id": "facial", "name": "Facial", "icon": "face", "intro": "Piel limpia, luminosa y jugosa. Desde una buena limpieza hasta tratamientos con tecnología para mejorar textura, tono y signos de la edad.", "order": 6 },
+    { "id": "micropuntura", "name": "Micropuntura brasileña", "icon": "needle", "intro": "Una técnica manual de precisión que estimula la propia regeneración de la piel. La usamos para mejorar el aspecto de estrías, cicatrices y para apoyar el crecimiento del cabello.", "order": 7 }
+  ],
+  "treatments": [
+    {
+      "id": "manicura",
+      "category": "manos-pies",
+      "name": "Manicura",
+      "short": "Uñas limadas, cutículas perfectas y manos hidratadas. Con o sin esmalte, tú eliges.",
+      "hook": "Manos cuidadas en menos de una hora",
+      "icon": "nail",
+      "featured": false,
+      "whatIs": "Es el cuidado completo de tus manos y uñas. Damos forma a la uña, cuidamos las cutículas e hidratamos la piel. Puedes terminarla al natural o con un esmaltado tradicional del color que más te guste.",
+      "benefits": [
+        { "title": "Aspecto cuidado al momento", "text": "Sales con las uñas limpias, igualadas y con buena forma." },
+        { "title": "Cutículas sanas", "text": "Retiramos el exceso con cuidado para que la uña crezca mejor y se vea más bonita." },
+        { "title": "Manos más suaves", "text": "Terminamos con crema hidratante y un pequeño masaje." },
+        { "title": "Rápida y asequible", "text": "Perfecta para un evento, una entrevista o simplemente para darte un capricho." },
+        { "title": "Para cualquier persona", "text": "Unas manos cuidadas sientan bien a todo el mundo, lleven color o no." }
+      ],
+      "idealFor": [
+        "Quien quiere unas manos cuidadas sin complicarse",
+        "Personas que prefieren uñas naturales o cambiar de color a menudo",
+        "Antes de un evento, una cita o una entrevista",
+        "Primera vez en un centro de estética"
+      ],
+      "howItWorks": [
+        { "title": "Limpieza", "text": "Retiramos restos de esmalte y desinfectamos manos y herramientas." },
+        { "title": "Forma", "text": "Limamos la uña con la forma y el largo que prefieras." },
+        { "title": "Cutículas", "text": "Las ablandamos y retiramos el exceso con suavidad." },
+        { "title": "Hidratación y acabado", "text": "Crema, masaje y, si lo eliges, esmaltado tradicional con brillo final." }
+      ],
+      "duration": "30 – 45 min",
+      "sessions": "Cuando quieras; lo habitual es cada 1-2 semanas",
+      "results": "Se nota al momento. El esmaltado tradicional suele durar de 4 a 7 días según tu ritmo de vida.",
+      "painLevel": 0,
+      "aftercare": [
+        "Si llevas esmalte, espera unos minutos antes de manipular objetos",
+        "Usa guantes para fregar o limpiar",
+        "Hidrata manos y cutículas a diario"
+      ],
+      "contraindications": [
+        "Infecciones por hongos o heridas abiertas en manos o uñas",
+        "Alergia conocida a algún componente de los esmaltes (avísanos y buscamos alternativa)"
+      ],
+      "faq": [
+        { "q": "¿Qué diferencia hay con el semipermanente?", "a": "El esmalte tradicional seca al aire y dura unos días. El semipermanente se fija con lámpara y aguanta 2-3 semanas con brillo." },
+        { "q": "¿Puedo traer mi propio esmalte?", "a": "Claro, aunque tenemos una carta de colores amplia para que elijas." },
+        { "q": "¿Es solo para mujeres?", "a": "No, para nada. Mucha gente viene solo a por el cuidado sin color." }
+      ],
+      "priceFrom": 15,
+      "prices": [
+        { "label": "Manicura básica (sin esmalte)", "price": 15, "oldPrice": null, "note": "" },
+        { "label": "Manicura con esmaltado tradicional", "price": 18, "oldPrice": null, "note": "" },
+        { "label": "Bono 5 manicuras con esmaltado", "price": 80, "oldPrice": 90, "note": "Válido 3 meses" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["uñas", "manos", "manicura", "esmalte", "cuidado"]
+    },
+    {
+      "id": "pedicura",
+      "category": "manos-pies",
+      "name": "Pedicura",
+      "short": "Pies suaves, uñas cuidadas y sensación de ligereza. Versión básica o spa con exfoliación y masaje.",
+      "hook": "Tus pies también merecen un respiro",
+      "icon": "foot",
+      "featured": false,
+      "whatIs": "Es el cuidado estético de pies y uñas. Cortamos y limamos las uñas, cuidamos las cutículas y suavizamos durezas. En la versión spa añadimos baño relajante, exfoliación, mascarilla y masaje.",
+      "benefits": [
+        { "title": "Pies más suaves", "text": "Reducimos durezas y la piel áspera de talones y plantas." },
+        { "title": "Uñas bonitas", "text": "Cortadas, limadas y listas para lucir sandalias." },
+        { "title": "Descanso real", "text": "La versión spa incluye un masaje que alivia la sensación de cansancio." },
+        { "title": "Higiene y bienestar", "text": "Un pie cuidado se siente más cómodo en el día a día." },
+        { "title": "Con o sin color", "text": "Puedes terminar con esmalte tradicional o pasarte a semipermanente." }
+      ],
+      "idealFor": [
+        "Antes del verano o de unas vacaciones",
+        "Personas que pasan muchas horas de pie",
+        "Quien tiene durezas leves o talones secos",
+        "Cualquiera que quiera un rato de relax"
+      ],
+      "howItWorks": [
+        { "title": "Baño", "text": "Remojamos los pies para ablandar la piel." },
+        { "title": "Uñas y cutículas", "text": "Corte, limado y cuidado de cutículas." },
+        { "title": "Durezas", "text": "Suavizamos las zonas ásperas con lima y productos específicos." },
+        { "title": "Exfoliación y mascarilla (spa)", "text": "Renovamos la piel y la nutrimos en profundidad." },
+        { "title": "Masaje y acabado", "text": "Crema hidratante, masaje y esmaltado si lo eliges." }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Cada 3-5 semanas para mantener los pies cuidados",
+      "results": "Notarás los pies más suaves y cuidados desde el primer día. El efecto dura más si hidratas en casa.",
+      "painLevel": 0,
+      "aftercare": [
+        "Hidrata los pies a diario, sobre todo los talones",
+        "Si llevas esmalte, usa calzado abierto un rato después",
+        "Seca bien entre los dedos tras la ducha"
+      ],
+      "contraindications": [
+        "Hongos, verrugas o heridas en los pies",
+        "Uñas encarnadas con infección (mejor acudir antes al podólogo)",
+        "Personas con diabetes: avísanos para adaptar el tratamiento y consultar con tu podólogo"
+      ],
+      "faq": [
+        { "q": "¿Es lo mismo que ir al podólogo?", "a": "No. La pedicura es estética. Si tienes uñas encarnadas, dolor o problemas en los pies, el especialista es el podólogo." },
+        { "q": "¿Qué incluye la pedicura spa?", "a": "Todo lo de la básica más exfoliación, mascarilla nutritiva y un masaje más largo." },
+        { "q": "¿Puedo añadir semipermanente?", "a": "Sí, puedes combinarla con esmaltado semipermanente de pies." }
+      ],
+      "priceFrom": 25,
+      "prices": [
+        { "label": "Pedicura básica", "price": 25, "oldPrice": null, "note": "Con esmaltado tradicional opcional" },
+        { "label": "Pedicura spa", "price": 35, "oldPrice": null, "note": "Exfoliación, mascarilla y masaje" },
+        { "label": "Pedicura spa + semipermanente pies", "price": 45, "oldPrice": 50, "note": "" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["pies", "pedicura", "spa", "uñas", "relax"]
+    },
+    {
+      "id": "esmaltado-semipermanente",
+      "category": "manos-pies",
+      "name": "Esmaltado semipermanente",
+      "short": "Color con brillo que aguanta 2-3 semanas sin desconcharse. Para manos y pies.",
+      "hook": "Uñas perfectas durante semanas, sin retoques",
+      "icon": "polish",
+      "featured": true,
+      "whatIs": "Es un esmalte especial que se seca con una lámpara LED. Queda totalmente seco al salir, con mucho brillo, y dura entre 2 y 3 semanas sin desconcharse. Incluye preparación de la uña y cutículas.",
+      "benefits": [
+        { "title": "Dura de verdad", "text": "Entre 2 y 3 semanas con el color intacto, según tu ritmo de vida." },
+        { "title": "Seco al instante", "text": "Sales sin miedo a estropearlo: nada de esperar a que seque." },
+        { "title": "Brillo de primer día", "text": "El acabado se mantiene brillante hasta la retirada." },
+        { "title": "Mil colores y diseños", "text": "Desde nude elegante hasta tonos atrevidos o decoraciones sencillas." },
+        { "title": "Protege la uña", "text": "Ayuda a que las uñas finas se rompan menos mientras lo llevas." }
+      ],
+      "idealFor": [
+        "Quien no tiene tiempo para pintarse las uñas a menudo",
+        "Vacaciones, viajes, bodas y eventos",
+        "Personas con uñas que se abren o se rompen con facilidad",
+        "Amantes del color y las tendencias"
+      ],
+      "howItWorks": [
+        { "title": "Preparación", "text": "Damos forma, cuidamos cutículas y matificamos la superficie de la uña." },
+        { "title": "Base", "text": "Aplicamos una base que ayuda a que el color se adhiera bien." },
+        { "title": "Color", "text": "Dos capas finas del tono elegido, cada una secada con lámpara LED." },
+        { "title": "Top coat", "text": "Capa final de brillo y protección, y aceite de cutículas para terminar." }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Cada 2-3 semanas. La retirada debe hacerse en el centro para cuidar la uña",
+      "results": "Resultado inmediato. Suele durar 2-3 semanas; a partir de ahí se nota el crecimiento en la base.",
+      "painLevel": 0,
+      "aftercare": [
+        "No lo arranques: la retirada profesional protege tu uña natural",
+        "Usa guantes al limpiar con productos agresivos",
+        "Aplica aceite de cutículas varias veces por semana",
+        "No uses las uñas como herramienta para abrir latas o etiquetas"
+      ],
+      "contraindications": [
+        "Hongos o infecciones en las uñas",
+        "Uñas muy dañadas o despegadas (valoramos antes de aplicar)",
+        "Alergia conocida a los acrilatos o componentes del gel"
+      ],
+      "faq": [
+        { "q": "¿Estropea las uñas?", "a": "Bien aplicado y retirado en el centro, no debería. El daño suele venir de arrancarlo en casa." },
+        { "q": "¿La retirada está incluida?", "a": "La retirada tiene precio aparte. Si te haces un nuevo semipermanente con nosotras, la retirada va incluida." },
+        { "q": "¿Puedo hacérmelo en manos y pies a la vez?", "a": "Sí, y tienes precio especial combinado." },
+        { "q": "¿Cuánto dura en los pies?", "a": "En los pies crece más despacio, así que suele durar incluso más: 3-5 semanas." }
+      ],
+      "priceFrom": 22,
+      "prices": [
+        { "label": "Semipermanente manos (con manicura)", "price": 22, "oldPrice": null, "note": "" },
+        { "label": "Semipermanente pies (con arreglo de uñas)", "price": 25, "oldPrice": null, "note": "" },
+        { "label": "Semipermanente manos + pies", "price": 42, "oldPrice": 47, "note": "" },
+        { "label": "Retirada de semipermanente", "price": 8, "oldPrice": null, "note": "Gratis si repites semipermanente en el centro" },
+        { "label": "Bono 5 semipermanentes de manos", "price": 99, "oldPrice": 110, "note": "Válido 4 meses" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["semipermanente", "uñas", "esmaltado", "manos", "pies", "color"]
+    },
+    {
+      "id": "depilacion-laser",
+      "category": "depilacion",
+      "name": "Depilación láser de diodo",
+      "short": "Reduce el vello de forma progresiva y duradera, sesión a sesión, en cualquier zona del cuerpo.",
+      "hook": "Olvídate de las cuchillas y la cera",
+      "icon": "laser",
+      "featured": true,
+      "whatIs": "El láser de diodo emite una luz que se dirige al pigmento del pelo y debilita el folículo, la raíz donde nace. Con varias sesiones el vello crece cada vez menos, más fino y más claro. Es uno de los métodos más usados para reducir el vello a largo plazo.",
+      "benefits": [
+        { "title": "Reducción duradera", "text": "Sesión a sesión el vello se debilita y aparece mucho menos." },
+        { "title": "Adiós a granitos y pelos enquistados", "text": "Ayuda a reducir la irritación típica de la cuchilla y la cera." },
+        { "title": "Sesiones rápidas", "text": "Las zonas pequeñas se hacen en pocos minutos." },
+        { "title": "Muy tolerable", "text": "El diodo incorpora frío en el cabezal para que la sesión sea más cómoda." },
+        { "title": "Ahorro a la larga", "text": "Menos cuchillas, cremas y citas de cera durante años." },
+        { "title": "Para todos", "text": "Zonas y packs para mujeres y hombres." }
+      ],
+      "idealFor": [
+        "Quien está cansado de depilarse cada pocos días",
+        "Personas con pelos enquistados o irritación tras la cuchilla",
+        "Mujeres y hombres con vello oscuro o castaño (es donde mejor funciona)",
+        "Mayores de 16 años (menores con autorización de madre, padre o tutor)"
+      ],
+      "howItWorks": [
+        { "title": "Consulta previa gratuita", "text": "Valoramos tu piel y tu vello, hacemos una prueba y firmas el consentimiento." },
+        { "title": "Preparación", "text": "Vienes con la zona rasurada (con cuchilla, nunca con cera) y sin cremas." },
+        { "title": "Sesión", "text": "Pasamos el cabezal por la zona. Notarás frío y un ligero calor o pinchacito." },
+        { "title": "Cuidados", "text": "Aplicamos una crema calmante y te damos los consejos para los días siguientes." }
+      ],
+      "duration": "10 – 60 min según la zona",
+      "sessions": "Normalmente entre 6 y 10 sesiones, cada 4-8 semanas según la zona, y algún repaso puntual de mantenimiento",
+      "results": "Muchas personas notan menos vello desde las primeras sesiones. El resultado final depende del tipo de pelo, de la piel y de factores hormonales, por eso varía en cada caso.",
+      "painLevel": 2,
+      "aftercare": [
+        "Evita el sol directo y las cabinas de bronceado al menos 7 días antes y después",
+        "Usa protector solar SPF 50 en zonas expuestas",
+        "No uses cera ni pinzas entre sesiones; solo cuchilla o crema",
+        "Evita sauna, piscina y deporte intenso 24-48 h",
+        "Hidrata la zona con crema calmante o aloe vera"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Piel bronceada recientemente o quemaduras solares",
+        "Medicamentos fotosensibilizantes (algunos antibióticos, isotretinoína, etc.)",
+        "Heridas, infecciones o lesiones activas en la zona",
+        "Tatuajes en la zona a tratar",
+        "Epilepsia fotosensible o enfermedades de la piel activas: consulta antes"
+      ],
+      "faq": [
+        { "q": "¿Duele?", "a": "La mayoría lo describe como un pinchacito o una goma elástica con calor. El cabezal enfría la piel y es bastante llevadero." },
+        { "q": "¿Funciona en pelo rubio, pelirrojo o canoso?", "a": "El láser busca el pigmento oscuro, así que en vello muy claro o blanco los resultados son muy limitados. Te lo diremos con sinceridad en la consulta." },
+        { "q": "¿Es definitiva?", "a": "Hablamos de reducción duradera: el vello baja mucho, pero los cambios hormonales pueden hacer que aparezca algo nuevo y se necesite algún repaso." },
+        { "q": "¿Puedo hacerlo en verano?", "a": "Sí, en zonas que no tomen el sol y con protección solar. En zonas expuestas valoramos cada caso." },
+        { "q": "¿Por qué hay que rasurar antes?", "a": "Para que la luz llegue a la raíz y no queme el pelo de la superficie. Con cera arrancarías la raíz y el láser no tendría dónde actuar." }
+      ],
+      "priceFrom": 15,
+      "prices": [
+        { "label": "Labio superior o mentón", "price": 15, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Axilas", "price": 25, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Ingles (línea del bikini)", "price": 30, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Ingle brasileña / íntegra", "price": 40, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Brazos completos", "price": 60, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Medias piernas", "price": 60, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Espalda completa", "price": 70, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Piernas completas", "price": 95, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Pack cuerpo completo", "price": 149, "oldPrice": 199, "note": "Por sesión. Zonas incluidas a confirmar en consulta" },
+        { "label": "Bono 6 sesiones axilas", "price": 120, "oldPrice": 150, "note": "" },
+        { "label": "Bono 6 sesiones axilas + ingle brasileña", "price": 299, "oldPrice": 390, "note": "" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["láser", "diodo", "depilación", "vello", "hombre", "mujer"]
+    },
+    {
+      "id": "depilacion-cera",
+      "category": "depilacion",
+      "name": "Depilación con cera",
+      "short": "Piel lisa al momento y durante varias semanas. Cera tibia o caliente según la zona.",
+      "hook": "Piel suave desde hoy mismo",
+      "icon": "wax",
+      "featured": false,
+      "whatIs": "La cera arranca el vello desde la raíz, así que la piel queda lisa durante 3-4 semanas. Usamos cera tibia en zonas amplias y cera caliente en zonas pequeñas o sensibles, que agarra mejor el pelo corto y es más suave con la piel.",
+      "benefits": [
+        { "title": "Resultado inmediato", "text": "Sales con la piel lisa en el momento." },
+        { "title": "Dura semanas", "text": "Al quitar la raíz, el vello tarda 3-4 semanas en volver." },
+        { "title": "Vale para todo tipo de vello", "text": "Funciona en vello claro, rubio o canoso, donde el láser no llega." },
+        { "title": "Vello más fino con el tiempo", "text": "Con la constancia, muchas personas notan que el pelo sale más débil." },
+        { "title": "Precio económico", "text": "Ideal para un momento puntual o como alternativa al láser." }
+      ],
+      "idealFor": [
+        "Quien necesita un resultado rápido para un evento o un viaje",
+        "Personas con vello claro o canoso",
+        "Quien todavía no se decide por el láser",
+        "Mujeres y hombres"
+      ],
+      "howItWorks": [
+        { "title": "Preparación", "text": "Limpiamos la zona y aplicamos un producto que protege la piel." },
+        { "title": "Aplicación", "text": "Extendemos la cera a la temperatura adecuada a favor del vello." },
+        { "title": "Retirada", "text": "Retiramos con un gesto rápido a contrapelo, sujetando la piel para que moleste menos." },
+        { "title": "Calmar", "text": "Quitamos restos y aplicamos aceite o loción calmante." }
+      ],
+      "duration": "10 – 45 min según la zona",
+      "sessions": "Cada 3-5 semanas, cuando el vello mida unos 4-5 mm",
+      "results": "Piel lisa al momento durante 3-4 semanas, según el ritmo de crecimiento de cada persona.",
+      "painLevel": 3,
+      "aftercare": [
+        "Evita el sol, la sauna y el agua muy caliente 24 h",
+        "No uses desodorante con alcohol en axilas recién depiladas",
+        "Exfolia suavemente 2 veces por semana a partir del tercer día para evitar pelos enquistados",
+        "Hidrata la piel a diario"
+      ],
+      "contraindications": [
+        "Varices marcadas o problemas circulatorios en la zona",
+        "Heridas, quemaduras solares o piel irritada",
+        "Tratamientos con retinoides o isotretinoína",
+        "Diabetes: consúltanos antes"
+      ],
+      "faq": [
+        { "q": "¿Qué largo debe tener el vello?", "a": "Lo ideal son unos 4-5 mm, más o menos 2-3 semanas sin depilar con cuchilla." },
+        { "q": "¿Cera o láser?", "a": "La cera da resultado inmediato pero hay que repetir siempre. El láser reduce el vello a largo plazo. Te ayudamos a elegir." },
+        { "q": "¿Duele mucho?", "a": "Molesta en el momento del tirón, sobre todo las primeras veces. Con la constancia se tolera cada vez mejor." }
+      ],
+      "priceFrom": 6,
+      "prices": [
+        { "label": "Labio superior o cejas", "price": 6, "oldPrice": null, "note": "" },
+        { "label": "Axilas", "price": 9, "oldPrice": null, "note": "" },
+        { "label": "Ingles", "price": 12, "oldPrice": null, "note": "" },
+        { "label": "Ingle brasileña / íntegra", "price": 20, "oldPrice": null, "note": "" },
+        { "label": "Brazos", "price": 14, "oldPrice": null, "note": "" },
+        { "label": "Medias piernas", "price": 15, "oldPrice": null, "note": "" },
+        { "label": "Espalda o pecho", "price": 18, "oldPrice": null, "note": "" },
+        { "label": "Piernas completas", "price": 25, "oldPrice": null, "note": "" },
+        { "label": "Piernas completas + ingles + axilas", "price": 40, "oldPrice": 46, "note": "Combo" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["cera", "depilación", "vello", "piel suave"]
+    },
+    {
+      "id": "lifting-pestanas",
+      "category": "mirada",
+      "name": "Lifting de pestañas",
+      "short": "Tus pestañas naturales, con curva y más largas a la vista durante 6-8 semanas. Sin rizador.",
+      "hook": "Despierta con la mirada hecha",
+      "icon": "lash",
+      "featured": true,
+      "whatIs": "Es un tratamiento que eleva y riza tus propias pestañas desde la raíz, sin extensiones ni pegamento. Usamos unos moldes de silicona y productos que fijan la forma. Si quieres, lo combinamos con tinte para que se vean más oscuras e intensas.",
+      "benefits": [
+        { "title": "Pestañas 100 % tuyas", "text": "Sin extensiones: es tu pestaña natural con más curva." },
+        { "title": "Mirada más abierta", "text": "La curva hace que los ojos se vean más grandes y despiertos." },
+        { "title": "Adiós al rizador", "text": "Te ahorras tiempo cada mañana y hasta el rímel si añades tinte." },
+        { "title": "Dura semanas", "text": "El efecto se mantiene unas 6-8 semanas, lo que tarda la pestaña en renovarse." },
+        { "title": "Sin mantenimiento", "text": "Puedes dormir, nadar o ir al gimnasio sin preocuparte." }
+      ],
+      "idealFor": [
+        "Personas con pestañas rectas o que apuntan hacia abajo",
+        "Quien quiere un look natural sin extensiones",
+        "Deportistas y amantes de la playa y la piscina",
+        "Quien busca ahorrar tiempo en su rutina"
+      ],
+      "howItWorks": [
+        { "title": "Limpieza", "text": "Desmaquillamos y limpiamos bien las pestañas." },
+        { "title": "Moldes", "text": "Elegimos el tamaño de molde según el largo de tus pestañas y la curva que buscas." },
+        { "title": "Elevación y fijación", "text": "Aplicamos los productos por fases mientras descansas con los ojos cerrados." },
+        { "title": "Tinte y nutrición", "text": "Opcionalmente teñimos y terminamos con un sérum nutritivo." }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Cada 6-8 semanas para mantener el efecto",
+      "results": "Se ve al momento. La curva se mantiene unas 6-8 semanas, según el ciclo natural de tus pestañas.",
+      "painLevel": 0,
+      "aftercare": [
+        "No mojes las pestañas durante las primeras 24 h",
+        "Evita vapor, sauna y rímel las primeras 24 h",
+        "No frotes los ojos ni duermas boca abajo la primera noche",
+        "Peina las pestañas y usa un sérum nutritivo para cuidarlas"
+      ],
+      "contraindications": [
+        "Infecciones oculares, conjuntivitis u orzuelos",
+        "Cirugía ocular reciente",
+        "Alergia a los productos del tratamiento (se puede hacer prueba previa)",
+        "Pestañas muy cortas o muy dañadas: valoramos antes"
+      ],
+      "faq": [
+        { "q": "¿Daña las pestañas?", "a": "Con productos profesionales y respetando los tiempos entre sesiones, no. Además, terminamos con un nutritivo." },
+        { "q": "¿Me puedo maquillar después?", "a": "Sí, a partir de las 24 horas. Muchas personas ya no necesitan rímel." },
+        { "q": "¿Es lo mismo que las extensiones?", "a": "No. Las extensiones añaden pelo artificial. El lifting trabaja solo con tus pestañas." },
+        { "q": "¿Pueden hacérselo los chicos?", "a": "Claro, es un tratamiento para cualquier persona que quiera una mirada más despierta." }
+      ],
+      "priceFrom": 40,
+      "prices": [
+        { "label": "Lifting de pestañas", "price": 40, "oldPrice": null, "note": "" },
+        { "label": "Lifting + tinte de pestañas", "price": 45, "oldPrice": 52, "note": "El más pedido" },
+        { "label": "Combo lifting + laminado de cejas", "price": 70, "oldPrice": 80, "note": "Tinte incluido" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["pestañas", "lifting", "mirada", "natural", "sin rímel"]
+    },
+    {
+      "id": "laminado-cejas",
+      "category": "mirada",
+      "name": "Laminado de cejas",
+      "short": "Cejas peinadas, ordenadas y con más volumen durante 4-6 semanas. Efecto 'recién peinadas'.",
+      "hook": "Cejas de revista, cada mañana",
+      "icon": "brow",
+      "featured": false,
+      "whatIs": "El laminado alisa y fija el pelo de las cejas en la dirección que queremos, normalmente hacia arriba. Así las cejas se ven más pobladas, ordenadas y con forma. Lo completamos con diseño y, si quieres, tinte.",
+      "benefits": [
+        { "title": "Más volumen", "text": "Al peinar el pelo hacia arriba, la ceja se ve más poblada." },
+        { "title": "Cejas rebeldes bajo control", "text": "Los pelos que crecen en todas direcciones se quedan en su sitio." },
+        { "title": "Rostro más fresco", "text": "Unas cejas bonitas enmarcan la cara y abren la mirada." },
+        { "title": "Menos maquillaje", "text": "No necesitas gel ni lápiz para que estén perfectas." },
+        { "title": "Diseño a medida", "text": "Adaptamos la forma a tus facciones." }
+      ],
+      "idealFor": [
+        "Cejas rebeldes, con remolinos o pelos largos",
+        "Cejas con huecos que quieres disimular",
+        "Quien busca el estilo de ceja natural y despeinado",
+        "Personas que quieren ahorrar tiempo de maquillaje"
+      ],
+      "howItWorks": [
+        { "title": "Diseño", "text": "Estudiamos tu rostro y marcamos la forma ideal." },
+        { "title": "Alisado", "text": "Aplicamos el primer producto para que el pelo se deje moldear." },
+        { "title": "Fijación", "text": "Peinamos en la dirección elegida y fijamos la forma." },
+        { "title": "Acabado", "text": "Depilamos lo que sobra, aplicamos tinte si quieres y un nutritivo." }
+      ],
+      "duration": "45 min",
+      "sessions": "Cada 4-6 semanas",
+      "results": "El efecto se ve al terminar y suele durar 4-6 semanas, según tu tipo de pelo.",
+      "painLevel": 1,
+      "aftercare": [
+        "No mojes las cejas durante 24 h",
+        "Evita maquillaje, sauna y sudor intenso las primeras 24 h",
+        "Peina las cejas cada mañana con un cepillito",
+        "Aplica aceite o sérum nutritivo por la noche"
+      ],
+      "contraindications": [
+        "Irritación, heridas o granitos en la zona",
+        "Tratamientos con retinoides o peelings recientes en la zona",
+        "Alergia a los productos (se puede hacer prueba previa)"
+      ],
+      "faq": [
+        { "q": "¿Sirve si tengo pocas cejas?", "a": "Ayuda a que se vean más pobladas, aunque necesita algo de pelo para trabajar. Si hay mucha calva, te contamos otras opciones." },
+        { "q": "¿Queda artificial?", "a": "No tiene por qué. Ajustamos el efecto para que sea tan natural o marcado como prefieras." },
+        { "q": "¿Se puede hacer junto al lifting de pestañas?", "a": "Sí, es el combo estrella para tener la mirada lista." }
+      ],
+      "priceFrom": 35,
+      "prices": [
+        { "label": "Laminado de cejas con diseño", "price": 35, "oldPrice": null, "note": "" },
+        { "label": "Laminado + tinte de cejas", "price": 40, "oldPrice": 45, "note": "" },
+        { "label": "Combo laminado + lifting de pestañas", "price": 70, "oldPrice": 80, "note": "Tinte incluido" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["cejas", "laminado", "mirada", "brow lamination"]
+    },
+    {
+      "id": "tinte-cejas-pestanas",
+      "category": "mirada",
+      "name": "Tinte de cejas y pestañas",
+      "short": "Color e intensidad para tu mirada sin maquillaje. Rápido, sencillo y con efecto inmediato.",
+      "hook": "Más intensidad en solo 20 minutos",
+      "icon": "tint",
+      "featured": false,
+      "whatIs": "Aplicamos un tinte específico para cejas y pestañas que oscurece el pelo y lo hace más visible. Las pestañas parecen más largas y las cejas más definidas, sin tener que maquillarte.",
+      "benefits": [
+        { "title": "Efecto rímel sin rímel", "text": "Las puntas claras de las pestañas se tiñen y parecen más largas." },
+        { "title": "Cejas definidas", "text": "Rellena visualmente huecos y unifica el color." },
+        { "title": "Muy rápido", "text": "En unos 20 minutos tienes el resultado." },
+        { "title": "Perfecto para verano", "text": "Ideal para playa, piscina o deporte sin maquillaje que se corra." },
+        { "title": "Color a tu medida", "text": "Elegimos el tono que va con tu pelo y tu piel." }
+      ],
+      "idealFor": [
+        "Personas con cejas o pestañas claras o rubias",
+        "Quien quiere ir sin maquillaje y verse con la cara definida",
+        "Vacaciones y verano",
+        "Como complemento al lifting o al laminado"
+      ],
+      "howItWorks": [
+        { "title": "Elegir tono", "text": "Escogemos el color según tu pelo y el efecto que buscas." },
+        { "title": "Proteger", "text": "Protegemos la piel alrededor para que no se manche." },
+        { "title": "Aplicar", "text": "Aplicamos el tinte y lo dejamos actuar unos minutos." },
+        { "title": "Retirar", "text": "Limpiamos y revisamos el resultado." }
+      ],
+      "duration": "15 – 30 min",
+      "sessions": "Cada 3-6 semanas",
+      "results": "Se nota en el momento. En las cejas el color dura unas 3-4 semanas y en las pestañas hasta 6.",
+      "painLevel": 0,
+      "aftercare": [
+        "Evita mojar la zona durante unas horas",
+        "No uses desmaquillantes con aceite los primeros días, pueden aclarar el tono",
+        "Protege las cejas del sol para que el color dure más"
+      ],
+      "contraindications": [
+        "Alergia a los tintes: hacemos prueba de sensibilidad 48 h antes si es tu primera vez",
+        "Infecciones o irritación ocular",
+        "Heridas o irritación en la zona"
+      ],
+      "faq": [
+        { "q": "¿Necesito prueba de alergia?", "a": "Si es tu primera vez o tienes piel sensible, sí. Es rápida y nos quedamos más tranquilas." },
+        { "q": "¿Puedo teñir solo las cejas o solo las pestañas?", "a": "Claro, tienes las dos opciones por separado o juntas." },
+        { "q": "¿Se nota que es tinte?", "a": "No si elegimos bien el tono. Buscamos un efecto natural." }
+      ],
+      "priceFrom": 10,
+      "prices": [
+        { "label": "Tinte de cejas", "price": 10, "oldPrice": null, "note": "" },
+        { "label": "Tinte de pestañas", "price": 12, "oldPrice": null, "note": "" },
+        { "label": "Tinte de cejas + pestañas", "price": 19, "oldPrice": 22, "note": "" },
+        { "label": "Diseño de cejas con pinza + tinte", "price": 18, "oldPrice": null, "note": "" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["tinte", "cejas", "pestañas", "mirada", "color"]
+    },
+    {
+      "id": "masaje-relajante",
+      "category": "masajes",
+      "name": "Masaje relajante",
+      "short": "Movimientos suaves y envolventes para soltar tensión y desconectar de todo.",
+      "hook": "Pulsa pausa: este rato es solo tuyo",
+      "icon": "massage",
+      "featured": false,
+      "whatIs": "Es un masaje con aceites y maniobras suaves y rítmicas que ayudan a relajar los músculos y la mente. Ajustamos la presión a lo que te apetezca y podemos centrarnos en espalda, cuello o todo el cuerpo.",
+      "benefits": [
+        { "title": "Menos estrés", "text": "Ayuda a bajar revoluciones y a sentirte más tranquila/o." },
+        { "title": "Músculos más sueltos", "text": "Alivia la sensación de tensión en cuello, hombros y espalda." },
+        { "title": "Mejor descanso", "text": "Muchas personas duermen mejor la noche del masaje." },
+        { "title": "Piel nutrida", "text": "Los aceites dejan la piel suave e hidratada." },
+        { "title": "Un regalo perfecto", "text": "Ideal para regalar en cumpleaños o fechas especiales." }
+      ],
+      "idealFor": [
+        "Épocas de estrés, exámenes o mucho trabajo",
+        "Personas que pasan horas sentadas o frente a pantallas",
+        "Quien busca un momento de autocuidado",
+        "Regalar a alguien especial"
+      ],
+      "howItWorks": [
+        { "title": "Charla breve", "text": "Nos cuentas qué zonas te molestan y qué presión prefieres." },
+        { "title": "Ambiente", "text": "Luz suave, música relajante y camilla calentita." },
+        { "title": "Masaje", "text": "Maniobras lentas y envolventes con aceite." },
+        { "title": "Vuelta a la calma", "text": "Te dejamos unos minutos para levantarte sin prisas y te ofrecemos agua." }
+      ],
+      "duration": "30 o 60 min",
+      "sessions": "Cuando lo necesites; una vez al mes es una buena rutina de autocuidado",
+      "results": "La sensación de relajación se nota al terminar. Repetirlo de forma regular ayuda a mantener esa sensación de bienestar.",
+      "painLevel": 0,
+      "aftercare": [
+        "Bebe agua después del masaje",
+        "Intenta no tener prisa justo después",
+        "Evita comidas copiosas inmediatamente antes"
+      ],
+      "contraindications": [
+        "Fiebre, gripe o infecciones",
+        "Lesiones recientes, fracturas o inflamaciones",
+        "Problemas de piel o heridas en las zonas a masajear",
+        "Embarazo: avísanos para adaptar el masaje",
+        "Trombosis o problemas circulatorios graves"
+      ],
+      "faq": [
+        { "q": "¿Qué diferencia hay con un masaje deportivo?", "a": "El relajante busca el bienestar y es suave. El deportivo trabaja con más presión sobre contracturas." },
+        { "q": "¿Tengo que desvestirme del todo?", "a": "No. Te quedas en ropa interior y te cubrimos con toallas en todo momento." },
+        { "q": "¿Puedo regalarlo?", "a": "Sí, tenemos tarjetas regalo." }
+      ],
+      "priceFrom": 30,
+      "prices": [
+        { "label": "Masaje relajante 30 min (espalda y cuello)", "price": 30, "oldPrice": null, "note": "" },
+        { "label": "Masaje relajante 60 min (cuerpo completo)", "price": 50, "oldPrice": null, "note": "" },
+        { "label": "Bono 5 masajes de 60 min", "price": 225, "oldPrice": 250, "note": "Compartible" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["masaje", "relax", "estrés", "bienestar", "regalo"]
+    },
+    {
+      "id": "masaje-drenante",
+      "category": "masajes",
+      "name": "Masaje drenante (drenaje linfático manual)",
+      "short": "Maniobras suaves que ayudan a eliminar líquidos y dejan las piernas ligeras.",
+      "hook": "Piernas ligeras, cuerpo deshinchado",
+      "icon": "drain",
+      "featured": false,
+      "whatIs": "El drenaje linfático manual es un masaje muy suave y rítmico que estimula el sistema linfático, el encargado de recoger el exceso de líquido del cuerpo. Ayuda a reducir la sensación de hinchazón y de piernas cansadas.",
+      "benefits": [
+        { "title": "Menos hinchazón", "text": "Ayuda a eliminar líquidos retenidos." },
+        { "title": "Piernas ligeras", "text": "Alivia la pesadez, sobre todo en verano o tras muchas horas de pie." },
+        { "title": "Muy agradable", "text": "Es un masaje suave y relajante, sin presión fuerte." },
+        { "title": "Complemento perfecto", "text": "Potencia tratamientos corporales como la maderoterapia o la presoterapia." },
+        { "title": "Mejor aspecto de la piel", "text": "Contribuye a una piel más lisa cuando hay retención." }
+      ],
+      "idealFor": [
+        "Personas con retención de líquidos",
+        "Sensación de piernas pesadas o cansadas",
+        "Trabajos de muchas horas de pie o sentado",
+        "Como apoyo a tratamientos corporales"
+      ],
+      "howItWorks": [
+        { "title": "Valoración", "text": "Vemos tus zonas de retención y tus objetivos." },
+        { "title": "Apertura de ganglios", "text": "Empezamos por cuello y zonas clave para preparar el drenaje." },
+        { "title": "Drenaje", "text": "Maniobras lentas y rítmicas en la dirección natural de la linfa." },
+        { "title": "Cierre", "text": "Te recomendamos beber agua y algunos hábitos para mantener el efecto." }
+      ],
+      "duration": "60 min",
+      "sessions": "Un ciclo de 8-10 sesiones, 1-2 por semana, y luego mantenimiento",
+      "results": "Muchas personas notan las piernas más ligeras desde la primera sesión. Con constancia la sensación de hinchazón suele mejorar.",
+      "painLevel": 0,
+      "aftercare": [
+        "Bebe abundante agua",
+        "Es normal tener más ganas de ir al baño después",
+        "Camina y mantente activa/o",
+        "Reduce la sal y el alcohol esos días"
+      ],
+      "contraindications": [
+        "Trombosis o flebitis",
+        "Insuficiencia cardiaca o renal",
+        "Infecciones agudas o fiebre",
+        "Cáncer activo (salvo indicación médica)",
+        "Embarazo: solo con autorización médica"
+      ],
+      "faq": [
+        { "q": "¿Adelgaza?", "a": "No quema grasa. Ayuda a eliminar líquidos, por eso puedes sentirte más deshinchada/o." },
+        { "q": "¿Por qué es tan suave?", "a": "El sistema linfático está justo bajo la piel; con presión fuerte no se estimula mejor." },
+        { "q": "¿Lo puedo combinar con presoterapia?", "a": "Sí, se complementan muy bien." }
+      ],
+      "priceFrom": 50,
+      "prices": [
+        { "label": "Sesión de drenaje linfático 60 min", "price": 50, "oldPrice": null, "note": "" },
+        { "label": "Bono 5 sesiones", "price": 225, "oldPrice": 250, "note": "" },
+        { "label": "Bono 10 sesiones", "price": 400, "oldPrice": 500, "note": "" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["drenaje", "linfático", "retención", "piernas", "masaje"]
+    },
+    {
+      "id": "maderoterapia",
+      "category": "corporal",
+      "name": "Maderoterapia",
+      "short": "Masaje con utensilios de madera que ayuda a moldear la silueta y mejorar el aspecto de la piel de naranja.",
+      "hook": "El masaje que moldea tu silueta",
+      "icon": "wood",
+      "featured": true,
+      "whatIs": "Es un masaje corporal que se hace con utensilios de madera de distintas formas: rodillos, copas y tablas. Cada pieza trabaja la zona de una manera para activar la circulación, ayudar a drenar líquidos y mejorar el aspecto de la celulitis.",
+      "benefits": [
+        { "title": "Silueta más definida", "text": "Ayuda a modelar zonas como abdomen, glúteos, cartucheras y piernas." },
+        { "title": "Menos piel de naranja", "text": "Mejora el aspecto de la celulitis con constancia." },
+        { "title": "Efecto drenante", "text": "Contribuye a eliminar líquidos y a sentirte más ligera/o." },
+        { "title": "Piel más firme", "text": "Activa la circulación y deja la piel más tonificada." },
+        { "title": "Natural y sin aparatos", "text": "Solo madera, aceites y las manos de tu profesional." }
+      ],
+      "idealFor": [
+        "Quien quiere mejorar el aspecto de la celulitis",
+        "Personas con retención de líquidos",
+        "Quien busca definir su silueta junto a hábitos saludables",
+        "Antes de verano o de un evento"
+      ],
+      "howItWorks": [
+        { "title": "Valoración", "text": "Analizamos zonas y objetivos y te proponemos un plan." },
+        { "title": "Preparación", "text": "Calentamos la zona con aceite y maniobras manuales." },
+        { "title": "Trabajo con madera", "text": "Usamos cada utensilio según la zona: rodillos para drenar, copas para la celulitis, tablas para moldear." },
+        { "title": "Drenaje final", "text": "Terminamos con movimientos que ayudan a llevar los líquidos hacia los ganglios." }
+      ],
+      "duration": "50 – 60 min",
+      "sessions": "Un ciclo de 10-12 sesiones, 2 por semana, y luego mantenimiento mensual",
+      "results": "Hay quien nota la piel más lisa y menos hinchazón tras las primeras sesiones. Los cambios de silueta suelen apreciarse a partir de la 4ª-6ª sesión y dependen de cada cuerpo y de tus hábitos.",
+      "painLevel": 2,
+      "aftercare": [
+        "Bebe al menos 1,5-2 litros de agua al día",
+        "Acompaña con ejercicio y alimentación equilibrada para mejores resultados",
+        "Evita el alcohol y el exceso de sal",
+        "Pueden aparecer pequeñas rojeces que desaparecen en horas"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Varices marcadas, trombosis o fragilidad capilar",
+        "Heridas, infecciones o problemas de piel en la zona",
+        "Problemas cardiacos o tratamientos anticoagulantes",
+        "Cirugía reciente en la zona"
+      ],
+      "faq": [
+        { "q": "¿Duele?", "a": "Es un masaje intenso en algunas zonas, pero adaptamos la presión a lo que toleres." },
+        { "q": "¿Salen moratones?", "a": "No debería si se hace bien. Si tienes la piel sensible, lo vamos ajustando." },
+        { "q": "¿Sirve para adelgazar?", "a": "No es un tratamiento para perder peso. Ayuda a mejorar el aspecto de la silueta y la piel, sobre todo junto a buenos hábitos." },
+        { "q": "¿Se puede combinar?", "a": "Sí, con presoterapia o aparatología el resultado suele ser más completo." }
+      ],
+      "priceFrom": 45,
+      "prices": [
+        { "label": "Sesión de maderoterapia", "price": 45, "oldPrice": null, "note": "" },
+        { "label": "Bono 5 sesiones", "price": 200, "oldPrice": 225, "note": "" },
+        { "label": "Bono 10 sesiones", "price": 360, "oldPrice": 450, "note": "El más recomendado" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["maderoterapia", "celulitis", "silueta", "drenante", "corporal"]
+    },
+    {
+      "id": "presoterapia",
+      "category": "corporal",
+      "name": "Presoterapia",
+      "short": "Botas de presión de aire que ayudan a drenar líquidos y dejan las piernas ligerísimas.",
+      "hook": "Relájate mientras tus piernas se deshinchan",
+      "icon": "pressure",
+      "featured": false,
+      "whatIs": "Te pones unas botas (y si quieres, faja para abdomen y brazos) que se inflan y desinflan por zonas. Esa presión ayuda a mover los líquidos y estimula la circulación. Solo tienes que tumbarte y relajarte.",
+      "benefits": [
+        { "title": "Piernas ligeras", "text": "Alivia la sensación de pesadez y cansancio." },
+        { "title": "Menos retención", "text": "Ayuda a eliminar el exceso de líquidos." },
+        { "title": "Cero esfuerzo", "text": "Estás tumbada/o, puedes leer, descansar o mirar el móvil." },
+        { "title": "Potencia otros tratamientos", "text": "Es el complemento ideal de la maderoterapia o la aparatología." },
+        { "title": "Sensación de masaje", "text": "La compresión rítmica resulta muy relajante." }
+      ],
+      "idealFor": [
+        "Personas con retención o piernas cansadas",
+        "Trabajos de pie o muchas horas sentado",
+        "Deportistas que quieren recuperar piernas",
+        "Quien combina tratamientos corporales"
+      ],
+      "howItWorks": [
+        { "title": "Valoración", "text": "Comprobamos que no haya contraindicaciones." },
+        { "title": "Colocación", "text": "Te ponemos las botas o prendas por encima de la ropa interior." },
+        { "title": "Programa", "text": "Elegimos presión y programa; las cámaras se inflan de pies hacia arriba." },
+        { "title": "Final", "text": "Retiramos las prendas y listo para seguir tu día." }
+      ],
+      "duration": "30 – 40 min",
+      "sessions": "Ciclo de 10 sesiones, 2-3 por semana, y luego mantenimiento",
+      "results": "La sensación de ligereza se nota desde la primera sesión. La mejora de la retención depende de la constancia y de los hábitos.",
+      "painLevel": 0,
+      "aftercare": [
+        "Bebe agua después de la sesión",
+        "Camina un poco para activar la circulación",
+        "Reduce la sal en tu alimentación"
+      ],
+      "contraindications": [
+        "Trombosis, flebitis o varices graves",
+        "Insuficiencia cardiaca o renal, hipertensión no controlada",
+        "Embarazo",
+        "Heridas o infecciones en las piernas",
+        "Marcapasos o problemas cardiacos: consulta médica previa"
+      ],
+      "faq": [
+        { "q": "¿Aprieta mucho?", "a": "Se nota presión, pero es agradable y la regulamos a tu gusto." },
+        { "q": "¿Tengo que desvestirme?", "a": "Basta con ropa ligera o ropa interior; te damos ropa desechable si quieres." },
+        { "q": "¿Puedo hacerla sola o mejor combinada?", "a": "Funciona sola, pero combinada con maderoterapia o drenaje manual el efecto se potencia." }
+      ],
+      "priceFrom": 25,
+      "prices": [
+        { "label": "Sesión de presoterapia (piernas y abdomen)", "price": 25, "oldPrice": null, "note": "" },
+        { "label": "Bono 5 sesiones", "price": 110, "oldPrice": 125, "note": "" },
+        { "label": "Bono 10 sesiones", "price": 200, "oldPrice": 250, "note": "" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["presoterapia", "piernas", "retención", "circulación", "corporal"]
+    },
+    {
+      "id": "aparatologia-corporal",
+      "category": "corporal",
+      "name": "Aparatología corporal (radiofrecuencia y cavitación)",
+      "short": "Tecnología para trabajar grasa localizada, flacidez y textura de la piel en zonas concretas.",
+      "hook": "Tecnología que trabaja donde más lo necesitas",
+      "icon": "device",
+      "featured": false,
+      "whatIs": "Usamos aparatos de estética para tratar zonas concretas del cuerpo. La radiofrecuencia calienta suavemente las capas profundas de la piel para estimular el colágeno y mejorar la firmeza. La cavitación usa ultrasonidos para ayudar a reducir la grasa localizada. Te recomendamos el aparato o la combinación según tu objetivo.",
+      "benefits": [
+        { "title": "Zonas concretas", "text": "Ideal para esas zonas que cuestan más: abdomen, flancos, cartucheras o brazos." },
+        { "title": "Piel más firme", "text": "La radiofrecuencia ayuda a mejorar el aspecto de la flacidez." },
+        { "title": "Ayuda con la grasa localizada", "text": "La cavitación contribuye a reducir el contorno en zonas puntuales." },
+        { "title": "No invasivo", "text": "Sin agujas ni tiempo de recuperación: sigues tu día con normalidad." },
+        { "title": "Sesiones cómodas", "text": "Sensación de calor agradable o un leve zumbido." }
+      ],
+      "idealFor": [
+        "Quien tiene grasa localizada que no se va con dieta y ejercicio",
+        "Flacidez leve o moderada tras cambios de peso o con la edad",
+        "Personas que buscan una opción sin agujas",
+        "Como parte de un plan corporal completo"
+      ],
+      "howItWorks": [
+        { "title": "Consulta previa gratuita", "text": "Medimos y valoramos para elegir la tecnología adecuada." },
+        { "title": "Preparación", "text": "Limpiamos la zona y aplicamos gel conductor." },
+        { "title": "Tratamiento", "text": "Pasamos el cabezal por la zona con movimientos controlados." },
+        { "title": "Drenaje", "text": "Terminamos con maniobras drenantes o presoterapia para potenciar el efecto." }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Entre 8 y 10 sesiones, 1-2 por semana, según la zona y la tecnología",
+      "results": "Los cambios suelen notarse de forma progresiva a partir de la 3ª-4ª sesión. El resultado varía según cada cuerpo, la zona y los hábitos.",
+      "painLevel": 1,
+      "aftercare": [
+        "Bebe abundante agua, sobre todo tras la cavitación",
+        "Haz algo de ejercicio suave ese día",
+        "Mantén una alimentación equilibrada",
+        "La piel puede quedar algo rojiza unos minutos"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Marcapasos, prótesis o implantes metálicos en la zona",
+        "Cáncer activo o reciente",
+        "Problemas cardiacos, hepáticos o renales",
+        "Heridas, infecciones o alteraciones de la sensibilidad en la zona",
+        "DIU de cobre (para tratamiento abdominal)"
+      ],
+      "faq": [
+        { "q": "¿Qué aparato me conviene?", "a": "Depende de tu objetivo: radiofrecuencia para firmeza, cavitación para grasa localizada. Lo vemos juntas/os en la consulta." },
+        { "q": "¿Duele?", "a": "No. La radiofrecuencia da calor y la cavitación un leve pitido en el oído. Es muy llevadero." },
+        { "q": "¿Es para perder peso?", "a": "No. Es para mejorar zonas concretas. Para perder peso, lo ideal es combinarlo con hábitos saludables." }
+      ],
+      "priceFrom": 45,
+      "prices": [
+        { "label": "Radiofrecuencia corporal (1 zona)", "price": 45, "oldPrice": null, "note": "" },
+        { "label": "Cavitación (1 zona)", "price": 45, "oldPrice": null, "note": "" },
+        { "label": "Sesión combinada cavitación + radiofrecuencia", "price": 60, "oldPrice": null, "note": "" },
+        { "label": "Bono 8 sesiones combinadas", "price": 400, "oldPrice": 480, "note": "" }
+      ],
+      "priceNote": "Precio orientativo. [POR DEFINIR: confirmar aparatos disponibles en el centro]",
+      "tags": ["aparatología", "radiofrecuencia", "cavitación", "grasa localizada", "flacidez"]
+    },
+    {
+      "id": "tratamiento-corporal-reafirmante",
+      "category": "corporal",
+      "name": "Tratamiento corporal reafirmante y reductor",
+      "short": "Plan corporal a medida que combina técnicas manuales, aparatología y cosmética para una piel más firme.",
+      "hook": "Tu plan corporal, diseñado para ti",
+      "icon": "body",
+      "featured": false,
+      "whatIs": "Es un protocolo personalizado que combina varias técnicas en una misma sesión: exfoliación, masaje, aparatología y productos reafirmantes o reductores. Lo adaptamos según si tu objetivo es mejorar la firmeza, la celulitis o el contorno.",
+      "benefits": [
+        { "title": "Todo en uno", "text": "Varias técnicas combinadas para un resultado más completo." },
+        { "title": "Hecho a tu medida", "text": "Cada sesión se adapta a tus zonas y objetivos." },
+        { "title": "Piel más firme y suave", "text": "Ayuda a mejorar la textura y la tonicidad." },
+        { "title": "Seguimiento", "text": "Medimos y comparamos para ver tu evolución." },
+        { "title": "Momento de bienestar", "text": "Además de cuidar tu cuerpo, es un rato muy agradable." }
+      ],
+      "idealFor": [
+        "Quien busca un plan completo y no sabe por dónde empezar",
+        "Flacidez o celulitis leve o moderada",
+        "Preparación para verano, una boda o un evento",
+        "Después de cambios de peso"
+      ],
+      "howItWorks": [
+        { "title": "Diagnóstico", "text": "Consulta previa gratuita, medidas y fotos para el seguimiento." },
+        { "title": "Exfoliación", "text": "Preparamos la piel para que absorba mejor los activos." },
+        { "title": "Tecnología o masaje", "text": "Aplicamos la técnica adecuada a tu objetivo (radiofrecuencia, cavitación, madera…)." },
+        { "title": "Envoltura o mascarilla", "text": "Productos reafirmantes o reductores para potenciar el efecto." },
+        { "title": "Revisión", "text": "Cada pocas sesiones revisamos medidas y ajustamos el plan." }
+      ],
+      "duration": "60 – 75 min",
+      "sessions": "Un plan de 8-10 sesiones, 1-2 por semana",
+      "results": "Los primeros cambios en la piel suelen notarse tras 3-4 sesiones. El resultado final depende de cada persona y de sus hábitos.",
+      "painLevel": 1,
+      "aftercare": [
+        "Hidrata la piel a diario con la cosmética recomendada",
+        "Bebe agua y cuida la alimentación",
+        "Haz ejercicio de forma regular",
+        "Evita el sol intenso justo después de la sesión"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Problemas circulatorios graves o trombosis",
+        "Marcapasos o implantes metálicos (según la tecnología)",
+        "Heridas o problemas de piel en la zona",
+        "Alergia a algún cosmético del protocolo"
+      ],
+      "faq": [
+        { "q": "¿En qué se diferencia de la aparatología sola?", "a": "Aquí combinamos varias técnicas y cosmética en cada sesión, con un plan y seguimiento." },
+        { "q": "¿Puedo elegir las zonas?", "a": "Sí, trabajamos las que más te preocupen." },
+        { "q": "¿Cuándo veré resultados?", "a": "Suele notarse la piel más suave pronto; los cambios de firmeza o contorno llevan varias sesiones." }
+      ],
+      "priceFrom": 60,
+      "prices": [
+        { "label": "Sesión de tratamiento corporal", "price": 60, "oldPrice": null, "note": "" },
+        { "label": "Bono 5 sesiones", "price": 270, "oldPrice": 300, "note": "" },
+        { "label": "Bono 10 sesiones", "price": 500, "oldPrice": 600, "note": "Incluye seguimiento de medidas" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["reafirmante", "reductor", "corporal", "flacidez", "celulitis"]
+    },
+    {
+      "id": "higiene-facial",
+      "category": "facial",
+      "name": "Higiene facial profunda",
+      "short": "Limpieza a fondo, extracción de impurezas y piel fresca y luminosa desde el primer día.",
+      "hook": "Tu piel, limpia de verdad",
+      "icon": "face",
+      "featured": false,
+      "whatIs": "Es una limpieza facial completa que va más allá de la rutina de casa. Limpiamos, exfoliamos, abrimos los poros con vapor y extraemos puntos negros e impurezas. Terminamos con mascarilla e hidratación según tu tipo de piel.",
+      "benefits": [
+        { "title": "Poros más limpios", "text": "Retiramos puntos negros e impurezas acumuladas." },
+        { "title": "Piel luminosa", "text": "La exfoliación elimina células muertas y aporta brillo." },
+        { "title": "Mejor absorción", "text": "Tus cremas funcionan mejor sobre una piel limpia." },
+        { "title": "Adaptada a tu piel", "text": "Grasa, mixta, seca o sensible: elegimos los productos para ti." },
+        { "title": "Ideal para empezar", "text": "Es la base de cualquier rutina facial." }
+      ],
+      "idealFor": [
+        "Pieles con puntos negros, poros dilatados o brillos",
+        "Adolescentes y jóvenes que quieren cuidar su piel",
+        "Antes de un evento importante",
+        "Cualquier persona que quiera mantener su piel sana"
+      ],
+      "howItWorks": [
+        { "title": "Diagnóstico y limpieza", "text": "Vemos tu tipo de piel y limpiamos en doble paso." },
+        { "title": "Exfoliación y vapor", "text": "Renovamos la piel y abrimos los poros." },
+        { "title": "Extracción", "text": "Retiramos impurezas con cuidado e higiene." },
+        { "title": "Mascarilla e hidratación", "text": "Calmamos, cerramos poros y aplicamos protección solar." }
+      ],
+      "duration": "60 min",
+      "sessions": "Una al mes para mantener la piel en buen estado",
+      "results": "Piel más limpia y luminosa desde el primer día. Puede haber algo de rojez las primeras horas.",
+      "painLevel": 1,
+      "aftercare": [
+        "No te maquilles en las 12 horas siguientes",
+        "Evita el sol directo y usa SPF 50",
+        "No toques ni aprietes granitos en casa",
+        "Mantén tu rutina de limpieza e hidratación"
+      ],
+      "contraindications": [
+        "Acné muy inflamado o con infección (valoramos antes)",
+        "Herpes activo",
+        "Quemaduras solares o piel irritada",
+        "Tratamientos con isotretinoína o peelings recientes"
+      ],
+      "faq": [
+        { "q": "¿Cada cuánto debo hacerla?", "a": "Una vez al mes es lo ideal, que es lo que tarda la piel en renovarse." },
+        { "q": "¿Sirve si tengo acné?", "a": "Puede ayudar a mantener la piel limpia. Si el acné es intenso, te recomendaremos consultar con dermatología." },
+        { "q": "¿Saldré roja?", "a": "Puede haber una ligera rojez que desaparece en pocas horas." }
+      ],
+      "priceFrom": 45,
+      "prices": [
+        { "label": "Higiene facial profunda", "price": 45, "oldPrice": null, "note": "" },
+        { "label": "Higiene facial + mascarilla específica o ampolla", "price": 55, "oldPrice": null, "note": "" },
+        { "label": "Bono 4 higienes faciales", "price": 160, "oldPrice": 180, "note": "Una al mes" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["facial", "limpieza", "puntos negros", "poros", "piel"]
+    },
+    {
+      "id": "facial-hidratante-antiedad",
+      "category": "facial",
+      "name": "Facial hidratante y antiedad con aparatología",
+      "short": "Hidratación profunda y tecnología para una piel más jugosa, firme y con mejor textura.",
+      "hook": "Efecto buena cara, con tecnología",
+      "icon": "glow",
+      "featured": false,
+      "whatIs": "Es un tratamiento facial que combina cosmética de alta calidad con aparatología, como radiofrecuencia facial, ultrasonidos o electroporación, para que los activos lleguen mejor a la piel. Lo adaptamos para hidratar en profundidad o trabajar líneas de expresión y firmeza.",
+      "benefits": [
+        { "title": "Hidratación profunda", "text": "La piel se ve más jugosa y descansada." },
+        { "title": "Más firmeza", "text": "La radiofrecuencia ayuda a estimular el colágeno." },
+        { "title": "Líneas más suaves", "text": "Mejora el aspecto de las líneas finas de expresión." },
+        { "title": "Efecto flash", "text": "Perfecto antes de un evento: se nota desde la primera sesión." },
+        { "title": "Sin agujas", "text": "Tratamiento cómodo, sin tiempo de recuperación." }
+      ],
+      "idealFor": [
+        "Pieles deshidratadas, apagadas o cansadas",
+        "Primeras líneas de expresión",
+        "Quien quiere prevenir el envejecimiento",
+        "Antes de bodas, fiestas o fotos"
+      ],
+      "howItWorks": [
+        { "title": "Limpieza y diagnóstico", "text": "Limpiamos y vemos qué necesita tu piel." },
+        { "title": "Exfoliación suave", "text": "Preparamos la piel para recibir los activos." },
+        { "title": "Aparatología", "text": "Aplicamos la tecnología adecuada junto a sérums específicos." },
+        { "title": "Mascarilla y masaje", "text": "Terminamos con mascarilla, masaje facial y protección solar." }
+      ],
+      "duration": "60 – 75 min",
+      "sessions": "Una sesión puntual para un efecto flash, o 4-6 sesiones cada 1-2 semanas para un tratamiento completo",
+      "results": "La piel se ve más luminosa al terminar. Los cambios en firmeza y textura suelen ser progresivos y varían según cada piel.",
+      "painLevel": 0,
+      "aftercare": [
+        "Usa protector solar a diario",
+        "Mantén la hidratación en casa con productos adecuados",
+        "Evita sauna y deporte intenso las primeras horas"
+      ],
+      "contraindications": [
+        "Embarazo (según la tecnología)",
+        "Marcapasos o implantes metálicos en la cara",
+        "Rellenos o bótox recientes: avísanos",
+        "Heridas, herpes activo o irritaciones",
+        "Cáncer activo"
+      ],
+      "faq": [
+        { "q": "¿Desde qué edad se recomienda?", "a": "La parte hidratante es para cualquier edad. La parte antiedad suele interesar a partir de los 25-30." },
+        { "q": "¿Qué aparatos usáis?", "a": "Depende de tu piel. Te lo explicamos en la consulta previa." },
+        { "q": "¿Puedo maquillarme después?", "a": "Mejor esperar unas horas para que la piel aproveche los activos." }
+      ],
+      "priceFrom": 60,
+      "prices": [
+        { "label": "Facial hidratante con aparatología", "price": 60, "oldPrice": null, "note": "" },
+        { "label": "Facial antiedad con radiofrecuencia", "price": 70, "oldPrice": null, "note": "" },
+        { "label": "Bono 4 sesiones", "price": 210, "oldPrice": 240, "note": "" }
+      ],
+      "priceNote": "Precio orientativo. [POR DEFINIR: confirmar aparatos disponibles en el centro]",
+      "tags": ["facial", "hidratante", "antiedad", "radiofrecuencia", "luminosidad"]
+    },
+    {
+      "id": "microneedling-dermapen",
+      "category": "facial",
+      "name": "Microneedling / Dermapen",
+      "short": "Microagujas que estimulan la renovación de la piel para mejorar poros, marcas y textura.",
+      "hook": "Renueva tu piel desde dentro",
+      "icon": "needle",
+      "featured": true,
+      "whatIs": "El Dermapen es un dispositivo con microagujas muy finas que crean pequeños canales en la piel. La piel responde reparándose y produciendo más colágeno. A la vez, aprovechamos esos canales para aplicar sérums que penetran mucho mejor.",
+      "benefits": [
+        { "title": "Mejor textura", "text": "La piel se ve más lisa y uniforme." },
+        { "title": "Poros más finos", "text": "Ayuda a reducir el aspecto de los poros dilatados." },
+        { "title": "Marcas de acné", "text": "Mejora el aspecto de pequeñas cicatrices y marcas." },
+        { "title": "Más luminosidad", "text": "Aporta un efecto de piel renovada y con brillo." },
+        { "title": "Activos que llegan más lejos", "text": "Los sérums penetran mucho mejor durante el tratamiento." }
+      ],
+      "idealFor": [
+        "Pieles con marcas de acné o textura irregular",
+        "Poros dilatados",
+        "Piel apagada o con primeras líneas",
+        "Mayores de 18 años"
+      ],
+      "howItWorks": [
+        { "title": "Consulta previa gratuita", "text": "Valoramos tu piel y firmas el consentimiento informado." },
+        { "title": "Preparación", "text": "Limpieza profunda y, si hace falta, crema anestésica tópica." },
+        { "title": "Microneedling", "text": "Pasamos el Dermapen por zonas con la profundidad adecuada y sérums específicos." },
+        { "title": "Calmar", "text": "Mascarilla calmante y protección solar." }
+      ],
+      "duration": "60 – 75 min",
+      "sessions": "Entre 3 y 6 sesiones, cada 4 semanas",
+      "results": "La piel se ve más luminosa tras unos días. Los cambios en textura y marcas son progresivos y suelen apreciarse mejor a partir de la 2ª-3ª sesión. Varía según cada piel.",
+      "painLevel": 2,
+      "aftercare": [
+        "La piel estará rojiza 24-48 h, como tras un día de sol",
+        "No te maquilles en las 24 h siguientes",
+        "Evita sol, sauna, piscina y deporte intenso 48-72 h",
+        "Usa SPF 50 a diario y la cosmética calmante recomendada",
+        "No uses ácidos ni retinol durante 5-7 días"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Acné activo inflamado, herpes o infecciones en la zona",
+        "Tratamiento con isotretinoína en los últimos 6 meses",
+        "Tendencia a cicatrices queloides",
+        "Problemas de coagulación o anticoagulantes",
+        "Enfermedades autoinmunes o diabetes no controlada"
+      ],
+      "faq": [
+        { "q": "¿Duele?", "a": "Se nota un hormigueo o rascado. Con crema anestésica es bastante llevadero." },
+        { "q": "¿Puedo ir a trabajar después?", "a": "Sí, aunque tendrás la cara rojiza ese día. Lo ideal es hacerlo a última hora o antes del fin de semana." },
+        { "q": "¿En qué época es mejor?", "a": "Otoño e invierno son ideales por el sol, pero con buena protección se puede hacer todo el año." },
+        { "q": "¿Se puede hacer en cuello y escote?", "a": "Sí, tienes zonas extra." }
+      ],
+      "priceFrom": 80,
+      "prices": [
+        { "label": "Dermapen facial", "price": 80, "oldPrice": null, "note": "" },
+        { "label": "Dermapen cara + cuello", "price": 100, "oldPrice": null, "note": "" },
+        { "label": "Zona extra (cuello o escote)", "price": 30, "oldPrice": null, "note": "" },
+        { "label": "Bono 3 sesiones faciales", "price": 210, "oldPrice": 240, "note": "" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["dermapen", "microneedling", "colágeno", "poros", "marcas de acné"]
+    },
+    {
+      "id": "bb-glow",
+      "category": "facial",
+      "name": "BB Glow",
+      "short": "Efecto 'buena cara' semipermanente: tono más uniforme y luminoso, como con una BB cream.",
+      "hook": "Despierta con efecto maquillaje natural",
+      "icon": "glow",
+      "featured": true,
+      "whatIs": "Es un tratamiento que combina microneedling muy superficial con un sérum con pigmento del color de tu piel. El resultado es un tono más uniforme y luminoso, parecido a llevar una BB cream ligera, que se va atenuando poco a poco con las semanas.",
+      "benefits": [
+        { "title": "Tono más uniforme", "text": "Ayuda a disimular rojeces, manchitas y ojeras leves." },
+        { "title": "Luminosidad", "text": "La piel se ve fresca y radiante." },
+        { "title": "Menos maquillaje", "text": "Muchas personas dejan la base para ocasiones especiales." },
+        { "title": "Piel más cuidada", "text": "El microneedling superficial mejora también la textura." },
+        { "title": "Natural", "text": "Elegimos el tono exacto para que el resultado sea discreto." }
+      ],
+      "idealFor": [
+        "Pieles con tono irregular, rojeces o pequeñas manchas",
+        "Piel apagada o con aspecto cansado",
+        "Quien quiere reducir el maquillaje diario",
+        "Mayores de 18 años"
+      ],
+      "howItWorks": [
+        { "title": "Consulta previa gratuita", "text": "Valoramos tu piel, elegimos tono y firmas el consentimiento." },
+        { "title": "Preparación", "text": "Limpieza y exfoliación suave." },
+        { "title": "Aplicación", "text": "Microneedling superficial con el sérum de color, por zonas." },
+        { "title": "Sellado", "text": "Mascarilla calmante y protección solar." }
+      ],
+      "duration": "60 – 90 min",
+      "sessions": "De 2 a 4 sesiones, cada 2-4 semanas, y mantenimiento cada pocos meses",
+      "results": "El efecto se ve desde la primera sesión y se intensifica con las siguientes. Suele durar varios meses, aunque depende del tipo de piel, del sol y de la rutina.",
+      "painLevel": 1,
+      "aftercare": [
+        "No mojes ni maquilles la cara en las primeras 24 h",
+        "Evita sol, sauna y deporte intenso 48-72 h",
+        "Usa SPF 50 todos los días",
+        "No uses exfoliantes, ácidos ni retinol durante una semana"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Acné activo, rosácea severa o herpes",
+        "Alergia a algún componente del sérum (prueba previa)",
+        "Tratamiento con isotretinoína reciente",
+        "Tendencia a cicatrices queloides o problemas de coagulación"
+      ],
+      "faq": [
+        { "q": "¿Es un tatuaje?", "a": "No. El pigmento se queda en las capas más superficiales y se va eliminando de forma natural." },
+        { "q": "¿Tapa las ojeras y las manchas?", "a": "Ayuda a disimularlas si son leves. No sustituye a un tratamiento despigmentante." },
+        { "q": "¿Queda efecto máscara?", "a": "No, buscamos un tono muy cercano al tuyo para que se vea natural." },
+        { "q": "¿Duele?", "a": "Muy poco; es un microneedling muy superficial." }
+      ],
+      "priceFrom": 90,
+      "prices": [
+        { "label": "Sesión de BB Glow", "price": 90, "oldPrice": null, "note": "" },
+        { "label": "Bono 3 sesiones", "price": 240, "oldPrice": 270, "note": "Recomendado para el efecto completo" },
+        { "label": "Sesión de mantenimiento", "price": 70, "oldPrice": null, "note": "" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["bb glow", "luminosidad", "tono", "sin maquillaje", "facial"]
+    },
+    {
+      "id": "bb-lips",
+      "category": "facial",
+      "name": "BB Lips",
+      "short": "Labios con un toque de color natural, más definidos y jugosos durante meses.",
+      "hook": "Labios con color, sin pintalabios",
+      "icon": "lips",
+      "featured": false,
+      "whatIs": "Es la versión del BB Glow para labios. Con microneedling muy superficial introducimos un pigmento suave que devuelve el color y define el contorno. Además, los labios se ven más hidratados. No es un relleno ni un tatuaje.",
+      "benefits": [
+        { "title": "Color natural", "text": "Recupera el tono de los labios pálidos o desiguales." },
+        { "title": "Contorno más definido", "text": "Los labios se ven más marcados y bonitos." },
+        { "title": "Más hidratación", "text": "Los activos ayudan a que se vean jugosos." },
+        { "title": "Adiós al pintalabios diario", "text": "Te ves con color incluso recién levantada/o." },
+        { "title": "Temporal", "text": "Se va atenuando poco a poco, sin compromiso permanente." }
+      ],
+      "idealFor": [
+        "Labios pálidos, apagados o con tono desigual",
+        "Quien quiere un look natural sin maquillaje",
+        "Personas que buscan color sin hacerse un micropigmentado",
+        "Mayores de 18 años"
+      ],
+      "howItWorks": [
+        { "title": "Consulta y elección de color", "text": "Elegimos juntas/os el tono que mejor te queda." },
+        { "title": "Preparación", "text": "Exfoliamos los labios y aplicamos anestésico tópico si hace falta." },
+        { "title": "Aplicación", "text": "Microneedling superficial con el pigmento." },
+        { "title": "Sellado", "text": "Bálsamo reparador y recomendaciones." }
+      ],
+      "duration": "60 min",
+      "sessions": "2 sesiones con 3-4 semanas de diferencia y retoque cuando el color baje",
+      "results": "El color se ve más intenso los primeros días y se suaviza después. Suele durar varios meses, según cada persona.",
+      "painLevel": 2,
+      "aftercare": [
+        "Aplica el bálsamo reparador varias veces al día",
+        "No te pintes los labios ni comas muy picante o caliente las primeras 24-48 h",
+        "Evita besos intensos, sol y piscina unos días",
+        "No arranques pielecitas si aparecen"
+      ],
+      "contraindications": [
+        "Herpes labial activo o frecuente (consulta antes, puede necesitar tratamiento previo)",
+        "Embarazo y lactancia",
+        "Rellenos de labios recientes (esperar al menos 4 semanas)",
+        "Heridas o irritación en los labios",
+        "Alergia a algún componente del pigmento"
+      ],
+      "faq": [
+        { "q": "¿Aumenta el volumen?", "a": "No es un relleno, pero al definir y dar color los labios pueden parecer más llenos." },
+        { "q": "¿Es lo mismo que la micropigmentación?", "a": "No. El BB Lips es más superficial y temporal." },
+        { "q": "¿Puedo elegir el color?", "a": "Sí, dentro de tonos naturales que favorecen tu piel." }
+      ],
+      "priceFrom": 90,
+      "prices": [
+        { "label": "Sesión de BB Lips", "price": 90, "oldPrice": null, "note": "" },
+        { "label": "Bono 2 sesiones", "price": 160, "oldPrice": 180, "note": "Recomendado" },
+        { "label": "Retoque", "price": 50, "oldPrice": null, "note": "En los 3 meses siguientes" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["bb lips", "labios", "color", "hidratación", "facial"]
+    },
+    {
+      "id": "micropuntura-estrias",
+      "category": "micropuntura",
+      "name": "Micropuntura brasileña para estrías",
+      "short": "Técnica manual que estimula la piel para mejorar el aspecto de las estrías, también las blancas.",
+      "hook": "Una nueva oportunidad para tus estrías",
+      "icon": "needle",
+      "featured": false,
+      "whatIs": "La micropuntura brasileña es una técnica manual y de mucha precisión. Con una aguja muy fina se trabaja punto a punto dentro de cada estría, junto a un activo regenerador. Esto genera una pequeña inflamación controlada que 'despierta' la piel para que produzca colágeno y elastina, y así la estría se va rellenando y repigmentando. A diferencia de los aparatos, actúa solo sobre la estría y no sobre la piel sana.",
+      "benefits": [
+        { "title": "Funciona en estrías blancas", "text": "Una de las pocas técnicas que trabaja también las estrías antiguas." },
+        { "title": "Tratamiento de precisión", "text": "Solo se trabaja la estría, respetando la piel de alrededor." },
+        { "title": "Mejora textura y color", "text": "La estría se ve menos hundida y con un tono más parecido a tu piel." },
+        { "title": "Estimula tu propia piel", "text": "Activa la producción natural de colágeno." },
+        { "title": "Más seguridad contigo", "text": "Te ayuda a sentirte más a gusto con tu cuerpo." }
+      ],
+      "idealFor": [
+        "Estrías blancas o rojas en abdomen, caderas, glúteos, muslos, pecho o brazos",
+        "Estrías tras embarazos, cambios de peso o el estirón de la adolescencia",
+        "Personas que ya han probado cremas sin resultado",
+        "Mayores de 18 años"
+      ],
+      "howItWorks": [
+        { "title": "Consulta previa gratuita", "text": "Valoramos las estrías, hacemos fotos y firmas el consentimiento." },
+        { "title": "Preparación", "text": "Limpiamos y desinfectamos la zona." },
+        { "title": "Micropuntura", "text": "Trabajamos cada estría punto a punto con la aguja y el activo regenerador." },
+        { "title": "Calmar y proteger", "text": "Aplicamos un producto calmante y te explicamos los cuidados." }
+      ],
+      "duration": "60 – 90 min según la zona",
+      "sessions": "Normalmente de 3 a 6 sesiones por zona, con al menos 30-45 días entre sesiones para que la piel se regenere",
+      "results": "La mejora es progresiva: suele apreciarse a partir de la 2ª sesión, cuando la piel ha tenido tiempo de regenerarse. No hacen desaparecer la estría por completo; el resultado depende de su antigüedad, su tamaño y de cada piel.",
+      "painLevel": 3,
+      "aftercare": [
+        "La zona quedará roja e hinchada unos días; es parte del proceso",
+        "Pueden salir pequeñas costritas: no las arranques",
+        "Evita sol, piscina, playa y sauna durante al menos 15 días",
+        "Usa ropa holgada y la crema regeneradora recomendada",
+        "Protege la zona con SPF 50 durante todo el tratamiento"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Piel bronceada o exposición solar reciente",
+        "Diabetes no controlada o problemas de cicatrización",
+        "Tendencia a queloides",
+        "Infecciones, heridas o problemas de piel en la zona",
+        "Anticoagulantes o problemas de coagulación"
+      ],
+      "faq": [
+        { "q": "¿Qué es exactamente la micropuntura brasileña?", "a": "Es una técnica manual creada en Brasil que trabaja dentro de la estría con una aguja muy fina para que la piel se regenere sola." },
+        { "q": "¿Duele?", "a": "Es molesto, sobre todo en zonas sensibles, pero se tolera bien. Vamos parando cuando lo necesites." },
+        { "q": "¿Por qué tanto tiempo entre sesiones?", "a": "Porque la piel tarda semanas en fabricar colágeno nuevo. Ese tiempo es parte del tratamiento." },
+        { "q": "¿Cuál es la mejor época?", "a": "Otoño e invierno, porque hay que evitar el sol en la zona tratada." },
+        { "q": "¿Desaparecen del todo?", "a": "No podemos prometerlo. El objetivo es mejorar mucho su aspecto, y en algunos casos se notan muy poco." }
+      ],
+      "priceFrom": 90,
+      "prices": [
+        { "label": "Zona pequeña (p. ej. pecho o brazos)", "price": 90, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Zona mediana (p. ej. caderas o glúteos)", "price": 120, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Zona grande (p. ej. abdomen o muslos)", "price": 150, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Bono 3 sesiones zona pequeña", "price": 240, "oldPrice": 270, "note": "" },
+        { "label": "Bono 3 sesiones zona grande", "price": 399, "oldPrice": 450, "note": "" }
+      ],
+      "priceNote": "Precio orientativo. El precio exacto se confirma en la valoración según el tamaño y el número de estrías",
+      "tags": ["micropuntura", "estrías", "estrías blancas", "colágeno", "corporal"]
+    },
+    {
+      "id": "micropuntura-cicatrices",
+      "category": "micropuntura",
+      "name": "Micropuntura brasileña para cicatrices",
+      "short": "Ayuda a mejorar el relieve y el color de cicatrices de acné, pequeñas cicatrices y marcas.",
+      "hook": "Suaviza las marcas que te acompañan",
+      "icon": "needle",
+      "featured": false,
+      "whatIs": "Aplicamos la técnica de micropuntura brasileña sobre la cicatriz. Con una aguja muy fina y un activo regenerador, trabajamos punto a punto para que la piel se reorganice y produzca colágeno nuevo. Así, poco a poco, la cicatriz se ve más plana, suave e integrada con la piel de alrededor.",
+      "benefits": [
+        { "title": "Menos relieve", "text": "Ayuda a nivelar cicatrices hundidas, como las de acné." },
+        { "title": "Color más uniforme", "text": "Mejora el tono de cicatrices blancas o rosadas." },
+        { "title": "Precisión total", "text": "Se trabaja solo la marca, sin afectar a la piel sana." },
+        { "title": "Técnica manual", "text": "Se adapta a cada cicatriz, por pequeña o irregular que sea." },
+        { "title": "Regeneración natural", "text": "Tu propia piel hace el trabajo." }
+      ],
+      "idealFor": [
+        "Cicatrices de acné o varicela",
+        "Pequeñas cicatrices de heridas o cirugías ya curadas (más de un año)",
+        "Marcas que te restan seguridad",
+        "Mayores de 18 años"
+      ],
+      "howItWorks": [
+        { "title": "Consulta previa gratuita", "text": "Valoramos el tipo de cicatriz y su antigüedad, y firmas el consentimiento." },
+        { "title": "Preparación", "text": "Limpieza y desinfección de la zona." },
+        { "title": "Micropuntura", "text": "Trabajamos sobre la cicatriz punto a punto con el activo regenerador." },
+        { "title": "Cuidados", "text": "Producto calmante y pautas para casa." }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "De 3 a 6 sesiones, con 30-45 días entre cada una",
+      "results": "La mejora es progresiva y se aprecia mejor tras varias sesiones. El resultado depende del tipo de cicatriz, de su antigüedad y de cada piel; no hace desaparecer la cicatriz por completo.",
+      "painLevel": 3,
+      "aftercare": [
+        "Rojez e inflamación unos días: es normal",
+        "No arranques las costritas",
+        "Evita sol, piscina y sauna al menos 15 días",
+        "Usa la crema regeneradora y SPF 50 a diario"
+      ],
+      "contraindications": [
+        "Cicatrices queloides o hipertróficas (en relieve)",
+        "Cicatrices de menos de un año",
+        "Embarazo y lactancia",
+        "Acné activo o infecciones en la zona",
+        "Isotretinoína en los últimos 6 meses",
+        "Problemas de coagulación o cicatrización"
+      ],
+      "faq": [
+        { "q": "¿Sirve para todas las cicatrices?", "a": "No para las queloides o en relieve. Funciona mejor en cicatrices hundidas o planas. Lo valoramos en la consulta." },
+        { "q": "¿Cuánto tiempo debe tener la cicatriz?", "a": "Al menos un año y estar totalmente curada." },
+        { "q": "¿Se puede hacer en la cara?", "a": "Sí, es muy habitual para cicatrices de acné." }
+      ],
+      "priceFrom": 80,
+      "prices": [
+        { "label": "Zona pequeña (una cicatriz o zona reducida)", "price": 80, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Zona mediana (p. ej. mejillas por acné)", "price": 110, "oldPrice": null, "note": "Por sesión" },
+        { "label": "Bono 3 sesiones zona pequeña", "price": 210, "oldPrice": 240, "note": "" },
+        { "label": "Bono 3 sesiones zona mediana", "price": 290, "oldPrice": 330, "note": "" }
+      ],
+      "priceNote": "Precio orientativo. El precio exacto se confirma en la valoración",
+      "tags": ["micropuntura", "cicatrices", "acné", "marcas", "regeneración"]
+    },
+    {
+      "id": "micropuntura-capilar",
+      "category": "micropuntura",
+      "name": "Micropuntura brasileña capilar",
+      "short": "Estimula el cuero cabelludo para apoyar el crecimiento y fortalecer el cabello en zonas con menos densidad.",
+      "hook": "Dale un empujón a tu pelo",
+      "icon": "hair",
+      "featured": false,
+      "whatIs": "Es la técnica de micropuntura aplicada al cuero cabelludo. Con microperforaciones controladas en las zonas con menos pelo, estimulamos la circulación y los folículos, y aplicamos activos capilares que penetran mejor. El objetivo es ayudar a fortalecer el cabello y favorecer su crecimiento.",
+      "benefits": [
+        { "title": "Estimula los folículos", "text": "Activa la zona para que el cabello crezca en mejores condiciones." },
+        { "title": "Más densidad visual", "text": "Ayuda a que el pelo se vea más fuerte y abundante." },
+        { "title": "Activos que llegan a la raíz", "text": "Los productos capilares penetran mucho mejor." },
+        { "title": "Menos caída", "text": "Puede ayudar a frenar la caída en algunos casos." },
+        { "title": "Para todos", "text": "Mujeres y hombres con cabello debilitado." }
+      ],
+      "idealFor": [
+        "Personas con zonas de menor densidad o entradas incipientes",
+        "Caída por estrés, cambios hormonales o estacional",
+        "Cabello fino o debilitado",
+        "Mujeres y hombres mayores de 18 años"
+      ],
+      "howItWorks": [
+        { "title": "Consulta previa gratuita", "text": "Valoramos el cuero cabelludo y te preguntamos por el origen de la caída." },
+        { "title": "Limpieza", "text": "Limpiamos y desinfectamos el cuero cabelludo." },
+        { "title": "Micropuntura", "text": "Trabajamos las zonas con menos densidad junto con activos capilares." },
+        { "title": "Pautas", "text": "Te damos recomendaciones de cuidado y lavado." }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Entre 6 y 10 sesiones, cada 2-4 semanas, y luego mantenimiento",
+      "results": "El cabello necesita tiempo: los cambios suelen empezar a notarse a partir del 3er-4º mes. Los resultados varían según la causa de la caída y cada persona.",
+      "painLevel": 2,
+      "aftercare": [
+        "No te laves el pelo en las 24 h siguientes",
+        "Evita tintes, decoloraciones y productos agresivos durante una semana",
+        "Evita el sol directo en la cabeza, sauna y piscina unos días",
+        "No rasques la zona"
+      ],
+      "contraindications": [
+        "Infecciones, heridas o dermatitis activa en el cuero cabelludo",
+        "Embarazo y lactancia",
+        "Problemas de coagulación o anticoagulantes",
+        "Alopecias cicatriciales o de causa médica sin valoración del especialista",
+        "Alergia a algún activo capilar"
+      ],
+      "faq": [
+        { "q": "¿Sirve para la alopecia?", "a": "Puede ayudar en caídas leves o moderadas. Si la caída es intensa o repentina, te recomendamos consultar con dermatología para conocer la causa." },
+        { "q": "¿Se ve después del tratamiento?", "a": "Puede haber algo de rojez en el cuero cabelludo ese día, normalmente tapada por el propio pelo." },
+        { "q": "¿Es compatible con otros tratamientos capilares?", "a": "Suele serlo. Cuéntanos qué usas y lo valoramos." }
+      ],
+      "priceFrom": 70,
+      "prices": [
+        { "label": "Sesión de micropuntura capilar", "price": 70, "oldPrice": null, "note": "" },
+        { "label": "Bono 6 sesiones", "price": 360, "oldPrice": 420, "note": "" },
+        { "label": "Bono 10 sesiones", "price": 560, "oldPrice": 700, "note": "" }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": ["micropuntura", "capilar", "caída del cabello", "pelo", "densidad"]
+    }
+  ]
+}

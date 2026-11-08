@@ -1,0 +1,100 @@
+{
+  "brand": {
+    "name": "Imperium Beauty Studio",
+    "shortName": "Imperium",
+    "tagline": "Tu belleza, tu imperio",
+    "description": "Centro de estética avanzada: manicura, depilación láser, mirada, masajes, maderoterapia, aparatología, BB Glow, dermapen y micropuntura brasileña.",
+    "logoText": "Imperium",
+    "logoAccent": "Beauty Studio"
+  },
+  "contact": {
+    "phone": "+34000000000",
+    "phoneDisplay": "[POR DEFINIR] 000 000 000",
+    "whatsapp": "34000000000",
+    "whatsappMessage": "¡Hola! Me gustaría pedir cita en Imperium Beauty Studio",
+    "whatsappTreatmentMessage": "¡Hola! Me gustaría información y cita para: {treatment}",
+    "email": "hola@[POR-DEFINIR].com",
+    "address": "[POR DEFINIR] Calle Ejemplo, 1",
+    "city": "[POR DEFINIR]",
+    "postalCode": "00000",
+    "mapsUrl": "",
+    "mapsEmbed": "",
+    "hours": [
+      { "days": "Lunes a viernes", "time": "10:00 – 20:00" },
+      { "days": "Sábados", "time": "10:00 – 14:00" },
+      { "days": "Domingos", "time": "Cerrado" }
+    ],
+    "bookingUrl": "",
+    "bookingLabel": "Reserva online",
+    "formEndpoint": ""
+  },
+  "social": {
+    "instagram": "",
+    "tiktok": "",
+    "facebook": ""
+  },
+  "theme": {
+    "colors": {
+      "cream": "#FBF4EE",
+      "nude": "#F1DDD0",
+      "pink": "#F4B6C2",
+      "coral": "#F07C6C",
+      "sage": "#B9CDB4",
+      "green": "#3F6B57",
+      "gold": "#C9A24B",
+      "ink": "#2B2024",
+      "white": "#FFFFFF"
+    },
+    "fonts": {
+      "heading": "'Fraunces', Georgia, serif",
+      "body": "'DM Sans', system-ui, sans-serif",
+      "googleFontsUrl": "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap"
+    }
+  },
+  "nav": [
+    { "label": "Tratamientos", "href": "tratamientos/" },
+    { "label": "Precios", "href": "precios/" },
+    { "label": "Packs Aloha & Ohana", "href": "packs/" },
+    { "label": "Contacto", "href": "contacto/" }
+  ],
+  "hero": {
+    "eyebrow": "Estética avanzada · Belleza · Bienestar",
+    "title": "Brilla a tu manera,",
+    "titleAccent": "reina tu imperio",
+    "subtitle": "Uñas, mirada, láser, masajes y tratamientos faciales y corporales de última generación. Te explicamos todo, sin letra pequeña, para que elijas lo que de verdad te sienta bien.",
+    "ctaPrimary": { "label": "Pide tu cita", "href": "#reservar" },
+    "ctaSecondary": { "label": "Ver tratamientos", "href": "tratamientos/" }
+  },
+  "stats": [
+    { "value": "+25", "label": "tratamientos" },
+    { "value": "1ª", "label": "consulta gratis" },
+    { "value": "-15%", "label": "con tu pack Aloha" }
+  ],
+  "whyUs": [
+    { "icon": "shield", "title": "Profesionales certificadas", "text": "Formación continua y protocolos de higiene y seguridad en cada tratamiento." },
+    { "icon": "sparkle", "title": "Tecnología actual", "text": "Aparatología de última generación para resultados visibles con el máximo confort." },
+    { "icon": "heart", "title": "Un plan para ti", "text": "Valoramos tu piel y tus objetivos antes de empezar. Sin presiones, sin letra pequeña." },
+    { "icon": "leaf", "title": "Ambiente que relaja", "text": "Un espacio pensado para desconectar, para cualquier edad y estilo." }
+  ],
+  "testimonials": {
+    "isPlaceholder": true,
+    "items": [
+      { "name": "Ejemplo de reseña", "text": "Sustituir por reseñas reales de clientes (por ejemplo, de Google).", "treatment": "Lifting de pestañas" },
+      { "name": "Ejemplo de reseña", "text": "Sustituir por reseñas reales de clientes (por ejemplo, de Google).", "treatment": "Depilación láser" },
+      { "name": "Ejemplo de reseña", "text": "Sustituir por reseñas reales de clientes (por ejemplo, de Google).", "treatment": "Maderoterapia" }
+    ]
+  },
+  "seo": {
+    "titleSuffix": " | Imperium Beauty Studio",
+    "defaultDescription": "Centro de estética avanzada en [ciudad]: manicura, semipermanente, depilación láser y cera, lifting de pestañas, laminado de cejas, masajes, maderoterapia, presoterapia, BB Glow, dermapen y micropuntura brasileña.",
+    "ogImage": "assets/og-image.png",
+    "locale": "es_ES",
+    "siteUrl": ""
+  },
+  "legal": {
+    "companyName": "[POR DEFINIR]",
+    "nif": "[POR DEFINIR]",
+    "privacyText": "He leído y acepto la política de privacidad. Usaremos tus datos solo para responder a tu solicitud.",
+    "priceDisclaimer": "Precios orientativos con IVA incluido. Pueden variar según valoración previa. Consúltanos sin compromiso."
+  }
+}
