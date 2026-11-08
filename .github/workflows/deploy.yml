@@ -1,46 +1,39 @@
-name: Publicar en GitHub Pages
+name: Publicar en GitHub Pages (rama gh-pages)
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - id: pages
-        uses: actions/configure-pages@v5
+          node-version: 22
       - name: Construir web estática
-        # Si content/site.json → seo.siteUrl está vacío, usa la URL de GitHub Pages (canonical, OG, sitemap)
+        # Si content/site.json → seo.siteUrl está vacío, usa la URL de GitHub Pages del repositorio
         run: node static/build.mjs
         env:
-          SITE_URL: ${{ steps.pages.outputs.base_url }}
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
       - name: Comprobar enlaces internos
         run: node static/check-links.mjs
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: static/dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publicar en la rama gh-pages
+        run: |
+          cd static/dist
+          touch .nojekyll
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Publicar ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages
