@@ -796,7 +796,7 @@ function bodymapSection(root) {
   return `<section class="section bm" id="zonas" aria-labelledby="bm-title" data-bodymap data-three="${esc(THREE_URL)}" data-nav="${u('bodymap.nav')}" data-goto="${u('bodymap.goTo')}" data-counter="${u('bodymap.counter')}" data-hint="${u('bodymap.hint')}" data-overview="${u('bodymap.overview')}">
   <a class="bm__skip" href="#bm-end">${u('bodymap.skip')}</a>
   <div class="container">
-    <div class="section__head section__head--center bm__head">${bm.eyebrow ? `<p class="eyebrow">${esc(bm.eyebrow)}</p>` : ''}<h2 id="bm-title">${esc(bm.title)}${bm.titleAccent ? ` <span class="accent">${esc(bm.titleAccent)}</span>` : ''}</h2>${bm.intro ? `<p class="bm__intro">${esc(bm.intro)}</p>` : ''}</div>
+    <div class="section__head section__head--center bm__head">${bm.eyebrow ? `<p class="eyebrow">${esc(bm.eyebrow)}</p>` : ''}<h2 id="bm-title">${esc(bm.title)}${bm.titleAccent ? ` <span class="accent">${esc(bm.titleAccent)}</span>` : ''}</h2>${bm.intro ? `<p class="bm__intro">${esc(bm.intro)}</p>` : ''}<p class="bm__jump"><a class="link-arrow" href="#bm-end">${u('bodymap.jump')} ${icon('arrow')}</a></p></div>
     <div class="bm__static">
       <div class="bm__figure">${bodymapSilhouette(zones)}</div>
       <div class="bm__zones">
@@ -857,8 +857,6 @@ ${categories.length ? `<section class="section" aria-labelledby="cats-title">
     </article>`).join('')}</div>
   </div>
 </section>` : ''}
-
-${bodymapSection(root)}
 
 ${featured.length ? `<section class="section section--white" aria-labelledby="feat-title">
   <div class="container">
@@ -983,6 +981,7 @@ function pageCatalog() {
     ld: [breadcrumbLd([{ label: tx('catalog.title'), path: 'tratamientos/' }])].filter(Boolean),
     body: (root) => `
 ${pageHero({ root, crumbs: [{ label: tx('catalog.title') }], eyebrow: tx('catalog.eyebrow'), title: rich('catalog.heading'), lead: tx('catalog.lead') })}
+${bodymapSection(root)}
 <section class="section" aria-label="${u('catalog.listLabel')}">
   <div class="container">
     <div class="filters js-only" role="group" aria-label="${u('catalog.filterLabel')}" data-filter-bar data-count-one="${u('countOne')}" data-count-many="${u('countMany')}">

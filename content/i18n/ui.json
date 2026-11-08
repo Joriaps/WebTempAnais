@@ -22,7 +22,14 @@
     "call": "Llamar",
     "formLink": "Formulario de contacto",
     "newTab": "(se abre en una pestaña nueva)",
-    "painLabels": ["Sin molestia", "Muy leve", "Leve", "Moderada", "Intensa", "Muy intensa"],
+    "painLabels": [
+      "Sin molestia",
+      "Muy leve",
+      "Leve",
+      "Moderada",
+      "Intensa",
+      "Muy intensa"
+    ],
     "painOf": "{n} de 5",
     "stars": "5 de 5 estrellas",
     "example": "Ejemplo",
@@ -97,7 +104,8 @@
       "hint": "Desliza para recorrer el cuerpo",
       "overview": "Vista general",
       "treatments": "Tratamientos para esta zona",
-      "staticHint": "Abre cada zona para ver qué trabajamos en ella y sus tratamientos."
+      "staticHint": "Abre cada zona para ver qué trabajamos en ella y sus tratamientos.",
+      "jump": "Ir directamente a todos los tratamientos"
     },
     "homePage": {
       "catsEyebrow": "Qué hacemos",
@@ -297,7 +305,14 @@
     "call": "Truca",
     "formLink": "Formulari de contacte",
     "newTab": "(s'obre en una pestanya nova)",
-    "painLabels": ["Sense molèstia", "Molt lleu", "Lleu", "Moderada", "Intensa", "Molt intensa"],
+    "painLabels": [
+      "Sense molèstia",
+      "Molt lleu",
+      "Lleu",
+      "Moderada",
+      "Intensa",
+      "Molt intensa"
+    ],
     "painOf": "{n} de 5",
     "stars": "5 de 5 estrelles",
     "example": "Exemple",
@@ -372,7 +387,8 @@
       "hint": "Llisca per recórrer el cos",
       "overview": "Vista general",
       "treatments": "Tractaments per a aquesta zona",
-      "staticHint": "Obre cada zona per veure què hi treballem i els seus tractaments."
+      "staticHint": "Obre cada zona per veure què hi treballem i els seus tractaments.",
+      "jump": "Ves directament a tots els tractaments"
     },
     "homePage": {
       "catsEyebrow": "Què fem",
@@ -572,7 +588,14 @@
     "call": "Call",
     "formLink": "Contact form",
     "newTab": "(opens in a new tab)",
-    "painLabels": ["No discomfort", "Very mild", "Mild", "Moderate", "Intense", "Very intense"],
+    "painLabels": [
+      "No discomfort",
+      "Very mild",
+      "Mild",
+      "Moderate",
+      "Intense",
+      "Very intense"
+    ],
     "painOf": "{n} out of 5",
     "stars": "5 out of 5 stars",
     "example": "Example",
@@ -647,7 +670,8 @@
       "hint": "Scroll to explore the body",
       "overview": "Overview",
       "treatments": "Treatments for this area",
-      "staticHint": "Open each area to see what we work on and its treatments."
+      "staticHint": "Open each area to see what we work on and its treatments.",
+      "jump": "Go straight to all treatments"
     },
     "homePage": {
       "catsEyebrow": "What we do",

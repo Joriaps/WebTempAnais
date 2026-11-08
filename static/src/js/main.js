@@ -90,6 +90,16 @@
     };
     requestAnimationFrame(function () { requestAnimationFrame(fixHash); });
     window.addEventListener('load', fixHash, { once: true });
+    // Secciones que se montan tarde (recorrido 3D) cambian la altura: se recoloca
+    // mientras la persona no haya interactuado, durante los primeros segundos.
+    if ('ResizeObserver' in window) {
+      var userMoved = false;
+      var stopFix = function () { userMoved = true; };
+      ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, stopFix, { once: true, passive: true }); });
+      var hashRO = new ResizeObserver(function () { if (!userMoved) fixHash(); });
+      hashRO.observe(document.body);
+      setTimeout(function () { hashRO.disconnect(); }, 6000);
+    }
   }
 
   reduceMQ.addEventListener('change', function (e) {
