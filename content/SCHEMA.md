@@ -138,3 +138,6 @@ Notas:
 - `subtitle`, `ctaPrimary`, `ctaSecondary` y `stats` aparecen al final del recorrido con entrada escalonada. Con el teclado, al llegar a los botones la escena salta directamente al final.
 - Con `prefers-reduced-motion` o sin JavaScript se muestra un hero estático (sin escena fijada ni partículas) con todo el contenido visible.
 - La foto del arco sigue siendo `image` / `imageAlt` (o `static/src/assets/img/hero.jpg`).
+
+### Líneas de precio "desde"
+En `treatments[].prices[]` se puede añadir `"from": true` para mostrar "desde X €" (p. ej. decoraciones con precio según diseño).

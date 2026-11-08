@@ -776,7 +776,7 @@ function pageTreatment(t) {
   const sec = (id, title, iconName, inner, cls = '') => { S.push([id, title]); return `<section class="ficha-section reveal ${cls}" id="${id}" aria-labelledby="${id}-t"><h2 id="${id}-t"><span class="card__icon">${icon(iconName)}</span>${esc(title)}</h2>${inner}</section>`; };
 
   const prices = arr(t.prices);
-  const priceRows = prices.length ? prices.map((p) => `<tr><th scope="row">${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</th><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">Antes </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('')
+  const priceRows = prices.length ? prices.map((p) => `<tr><th scope="row">${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</th><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">Antes </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${p.from ? 'desde ' : ''}${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('')
     : `<tr><th scope="row">${esc(t.name)}</th><td class="num"><span class="price">${isFinite(pf) ? `${UI.from} ${money(pf)}` : UI.consult}</span></td></tr>`;
 
   const sections = [
@@ -855,7 +855,7 @@ function pagePrices() {
   const table = (c) => {
     const rows = byCat(c.id).map((t) => {
       const ps = arr(t.prices).length ? arr(t.prices) : [{ label: t.priceFrom ? 'Desde' : '—', price: t.priceFrom }];
-      return ps.map((p, i) => `<tr>${i === 0 ? `<th scope="rowgroup" rowspan="${ps.length}"><a href="../tratamientos/${esc(t.id)}/">${esc(t.name)}</a>${t.priceNote ? `<br><span class="small">${esc(t.priceNote)}</span>` : ''}</th>` : ''}<td>${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</td><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">Antes </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('');
+      return ps.map((p, i) => `<tr>${i === 0 ? `<th scope="rowgroup" rowspan="${ps.length}"><a href="../tratamientos/${esc(t.id)}/">${esc(t.name)}</a>${t.priceNote ? `<br><span class="small">${esc(t.priceNote)}</span>` : ''}</th>` : ''}<td>${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</td><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">Antes </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${p.from ? 'desde ' : ''}${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('');
     }).join('');
     return `<div class="price-table"><div class="table-scroll"><table><caption class="visually-hidden">Precios: ${esc(c.name)}</caption><thead><tr><th scope="col">Tratamiento</th><th scope="col">Opción</th><th scope="col" class="num">Precio</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
   };

@@ -126,7 +126,7 @@
         },
         {
           "q": "¿Qué es el tratamiento de parafina?",
-          "a": "Es un baño de parafina templada que envuelve las manos, junto con exfoliación y masaje, para dejarlas muy suaves e hidratadas. Necesitamos prepararla, así que avísanos con tiempo al reservar."
+          "a": "Es un baño de parafina templada que envuelve las manos, junto con exfoliación y masaje, para dejarlas muy suaves e hidratadas. Necesitamos prepararla, por eso requiere aviso previo."
         },
         {
           "q": "¿Puedo traer mi propio esmalte?",
@@ -149,13 +149,13 @@
           "label": "Manicura tradicional con parafina + color normal · 1 h",
           "price": 35,
           "oldPrice": null,
-          "note": "Incluye exfoliación y masaje. Avísanos con tiempo al reservar"
+          "note": "Incluye exfoliación y masaje. Requiere aviso previo"
         },
         {
           "label": "Tratamiento de parafina · 15 min",
           "price": 15,
           "oldPrice": null,
-          "note": "Parafina + masaje + exfoliación. Avísanos con tiempo al reservar"
+          "note": "Parafina + masaje + exfoliación. Requiere aviso previo"
         },
         {
           "label": "Cortar + limar manos · 15 min",
@@ -187,7 +187,7 @@
       "hook": "Tus pies también merecen un respiro",
       "icon": "foot",
       "featured": false,
-      "whatIs": "Es el cuidado estético de pies y uñas. Cortamos y limamos las uñas, cuidamos las cutículas y suavizamos durezas. La pedicura spa añade semipermanente (con retirada incluida), baño relajante, exfoliación, mascarilla y masaje.",
+      "whatIs": "Es el cuidado estético de pies y uñas. Cortamos y limamos las uñas, cuidamos las cutículas y suavizamos durezas. La pedicura spa añade semipermanente con retirada de color, exfoliación, mascarilla y masaje.",
       "benefits": [
         {
           "title": "Pies más suaves",
@@ -218,8 +218,8 @@
       ],
       "howItWorks": [
         {
-          "title": "Baño",
-          "text": "Remojamos los pies para ablandar la piel."
+          "title": "Preparación",
+          "text": "Limpiamos y desinfectamos los pies y las herramientas."
         },
         {
           "title": "Uñas y cutículas",
@@ -259,7 +259,7 @@
         },
         {
           "q": "¿Qué incluye la pedicura spa?",
-          "a": "Todo lo de la clásica más semipermanente con retirada incluida, exfoliación, mascarilla nutritiva y un masaje más largo."
+          "a": "Todo lo de la clásica más semipermanente, retirada de color, exfoliación, mascarilla nutritiva y masaje."
         },
         {
           "q": "¿Y si solo quiero color duradero en los pies?",
@@ -278,7 +278,7 @@
           "label": "Pedicura spa con semipermanente · 1 h",
           "price": 38,
           "oldPrice": null,
-          "note": "Incluye retirada, baño, exfoliación, mascarilla y masaje"
+          "note": "Incluye retirada de color, exfoliación, mascarilla y masaje"
         },
         {
           "label": "Cortar + limar pies · 15 min",
@@ -421,34 +421,11 @@
           "note": "Incluye cortar, limar e hidratación"
         },
         {
-          "label": "Extra francesa normal · +10-15 min",
+          "label": "Decoraciones, refuerzo y efectos (francesa, cromado, ojo de gato…)",
           "price": 2,
+          "from": true,
           "oldPrice": null,
-          "note": "Manos y pies"
-        },
-        {
-          "label": "Extra francesa elaborada · +10-15 min",
-          "price": 4,
-          "oldPrice": null,
-          "note": "Según el diseño. Manos y pies"
-        },
-        {
-          "label": "Extra cromado",
-          "price": 4,
-          "oldPrice": null,
-          "note": "Manos y pies"
-        },
-        {
-          "label": "Extra ojo de gato",
-          "price": 4,
-          "oldPrice": null,
-          "note": "Manos y pies"
-        },
-        {
-          "label": "Extra refuerzo",
-          "price": 2,
-          "oldPrice": null,
-          "note": "Manos y pies"
+          "note": "Consultar precio según el diseño. Manos y pies"
         }
       ],
       "priceNote": "Precio orientativo",
@@ -469,7 +446,7 @@
       "hook": "Olvídate de las cuchillas y la cera",
       "icon": "laser",
       "featured": true,
-      "whatIs": "El láser de diodo emite una luz que se dirige al pigmento del pelo y debilita el folículo, la raíz donde nace. Con varias sesiones el vello crece cada vez menos, más fino y más claro. Es uno de los métodos más usados para reducir el vello a largo plazo.",
+      "whatIs": "El láser de diodo emite un haz de luz que se dirige al pigmento del pelo y debilita el folículo, la raíz donde nace. Con varias sesiones el vello crece cada vez menos, más fino y más claro. Es uno de los métodos más usados para reducir el vello a largo plazo.",
       "benefits": [
         {
           "title": "Reducción duradera",
@@ -521,7 +498,7 @@
         }
       ],
       "duration": "10 – 60 min según la zona",
-      "sessions": "Normalmente entre 6 y 10 sesiones, cada 4-8 semanas según la zona, y algún repaso puntual de mantenimiento",
+      "sessions": "Una sesión cada 4 semanas. Suelen ser entre 6 y 12 sesiones y, después, sesiones de repaso y mantenimiento",
       "results": "Muchas personas notan menos vello desde las primeras sesiones. El resultado final depende del tipo de pelo, de la piel y de factores hormonales, por eso varía en cada caso.",
       "painLevel": 2,
       "aftercare": [
