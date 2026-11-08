@@ -89,6 +89,16 @@
       "leadCta": "Quiero recibirla",
       "hello": "Hola"
     },
+    "bodymap": {
+      "skip": "Saltar el recorrido por zonas",
+      "nav": "Zonas del cuerpo",
+      "goTo": "Ir a la zona: {zone}",
+      "counter": "Zona {n} de {total}",
+      "hint": "Desliza para recorrer el cuerpo",
+      "overview": "Vista general",
+      "treatments": "Tratamientos para esta zona",
+      "staticHint": "Abre cada zona para ver qué trabajamos en ella y sus tratamientos."
+    },
     "homePage": {
       "catsEyebrow": "Qué hacemos",
       "catsTitle": "Encuentra tu *tratamiento*",
@@ -143,8 +153,12 @@
       "sessions": "Sesiones",
       "pain": "Molestia",
       "subnav": "En esta ficha",
-      "relEyebrow": "Combina bien con",
-      "relTitle": "Tratamientos *relacionados*"
+      "relEyebrow": "También te puede interesar",
+      "relTitle": "Tratamientos *relacionados*",
+      "mechanism": "Cómo actúa",
+      "mechanismEyebrow": "Lo que ocurre en tu piel",
+      "combines": "Combina con",
+      "combinesIntro": "Tratamientos que potencian el resultado o lo complementan. Te ayudamos a crear tu plan en la valoración."
     },
     "prices": {
       "title": "Precios",
@@ -350,6 +364,16 @@
       "leadCta": "La vull rebre",
       "hello": "Hola"
     },
+    "bodymap": {
+      "skip": "Salta el recorregut per zones",
+      "nav": "Zones del cos",
+      "goTo": "Ves a la zona: {zone}",
+      "counter": "Zona {n} de {total}",
+      "hint": "Llisca per recórrer el cos",
+      "overview": "Vista general",
+      "treatments": "Tractaments per a aquesta zona",
+      "staticHint": "Obre cada zona per veure què hi treballem i els seus tractaments."
+    },
     "homePage": {
       "catsEyebrow": "Què fem",
       "catsTitle": "Troba el teu *tractament*",
@@ -404,8 +428,12 @@
       "sessions": "Sessions",
       "pain": "Molèstia",
       "subnav": "En aquesta fitxa",
-      "relEyebrow": "Combina bé amb",
-      "relTitle": "Tractaments *relacionats*"
+      "relEyebrow": "També et pot interessar",
+      "relTitle": "Tractaments *relacionats*",
+      "mechanism": "Com actua",
+      "mechanismEyebrow": "El que passa a la teva pell",
+      "combines": "Combina amb",
+      "combinesIntro": "Tractaments que potencien el resultat o el complementen. T'ajudem a crear el teu pla a la valoració."
     },
     "prices": {
       "title": "Preus",
@@ -611,6 +639,16 @@
       "leadCta": "Send it to me",
       "hello": "Hi"
     },
+    "bodymap": {
+      "skip": "Skip the body tour",
+      "nav": "Body areas",
+      "goTo": "Go to area: {zone}",
+      "counter": "Area {n} of {total}",
+      "hint": "Scroll to explore the body",
+      "overview": "Overview",
+      "treatments": "Treatments for this area",
+      "staticHint": "Open each area to see what we work on and its treatments."
+    },
     "homePage": {
       "catsEyebrow": "What we do",
       "catsTitle": "Find your *treatment*",
@@ -665,8 +703,12 @@
       "sessions": "Sessions",
       "pain": "Discomfort",
       "subnav": "On this page",
-      "relEyebrow": "Pairs well with",
-      "relTitle": "Related *treatments*"
+      "relEyebrow": "You may also like",
+      "relTitle": "Related *treatments*",
+      "mechanism": "How it works",
+      "mechanismEyebrow": "What happens in your skin",
+      "combines": "Pairs well with",
+      "combinesIntro": "Treatments that boost or complement the results. We'll help you build your plan at your consultation."
     },
     "prices": {
       "title": "Prices",

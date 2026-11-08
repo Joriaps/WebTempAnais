@@ -59,23 +59,28 @@
       "hook": "Manos cuidadas en menos de una hora",
       "icon": "nail",
       "featured": false,
-      "whatIs": "Es el cuidado completo de tus manos y uñas. Damos forma a la uña, cuidamos las cutículas, exfoliamos e hidratamos la piel con un masaje, y terminamos con el color normal que elijas. Si quieres un extra de suavidad, añade el tratamiento de parafina.",
+      "whatIs": "Es un ritual completo de cuidado para manos y uñas. Limamos y damos forma a la uña según tus manos, trabajamos la cutícula con delicadeza, exfoliamos para retirar la piel apagada e hidratamos con un masaje que deja las manos suaves y descansadas. Terminamos con el color normal que elijas. Si buscas un extra de nutrición, añade el tratamiento de parafina.",
+      "mechanism": "El trabajo de la cutícula mantiene limpio el borde por el que crece la uña y favorece que luzca más ordenada. La exfoliación retira las células muertas de la capa más superficial de la piel, de modo que la crema hidratante penetra mejor. El masaje activa la circulación local y aporta sensación de calor y confort. La parafina templada crea una película oclusiva que reduce la pérdida de agua y potencia la absorción de los activos hidratantes.",
       "benefits": [
         {
           "title": "Aspecto cuidado al momento",
-          "text": "Sales con las uñas limpias, igualadas y con buena forma."
+          "text": "Uñas limpias, igualadas y con una forma que favorece a tus manos."
         },
         {
-          "title": "Cutículas sanas",
-          "text": "Retiramos el exceso con cuidado para que la uña crezca mejor y se vea más bonita."
+          "title": "Cutículas sanas y ordenadas",
+          "text": "Las trabajamos con cuidado para que la uña crezca limpia y se vea más bonita."
         },
         {
-          "title": "Manos más suaves",
-          "text": "Terminamos con crema hidratante y un pequeño masaje."
+          "title": "Manos suaves e hidratadas",
+          "text": "La exfoliación y el masaje devuelven suavidad y confort a la piel."
+        },
+        {
+          "title": "Extra de nutrición con parafina",
+          "text": "Ideal para manos secas o castigadas por el frío, el agua o el gel desinfectante."
         },
         {
           "title": "Rápida y asequible",
-          "text": "Perfecta para un evento, una entrevista o simplemente para darte un capricho."
+          "text": "Perfecta antes de un evento, una entrevista o simplemente para darte un capricho."
         },
         {
           "title": "Para cualquier persona",
@@ -111,9 +116,11 @@
       "results": "Se nota al momento. El esmaltado tradicional suele durar de 4 a 7 días según tu ritmo de vida.",
       "painLevel": 0,
       "aftercare": [
-        "Si llevas esmalte, espera unos minutos antes de manipular objetos",
-        "Usa guantes para fregar o limpiar",
-        "Hidrata manos y cutículas a diario"
+        "Si llevas esmalte, espera unos minutos antes de manipular objetos o meter las manos en el bolso",
+        "Usa guantes para fregar o limpiar con productos químicos",
+        "Hidrata manos y cutículas a diario, sobre todo después de lavarte las manos",
+        "Lima las uñas siempre en una sola dirección para que no se abran",
+        "Aplica una capa de brillo a los 3-4 días para alargar la duración del color"
       ],
       "contraindications": [
         "Infecciones por hongos o heridas abiertas en manos o uñas",
@@ -177,6 +184,11 @@
         "manicura",
         "esmalte",
         "cuidado"
+      ],
+      "combinesWith": [
+        "esmaltado-semipermanente",
+        "pedicura",
+        "masaje-relajante"
       ]
     },
     {
@@ -187,27 +199,32 @@
       "hook": "Tus pies también merecen un respiro",
       "icon": "foot",
       "featured": false,
-      "whatIs": "Es el cuidado estético de pies y uñas. Cortamos y limamos las uñas, cuidamos las cutículas y suavizamos durezas. La pedicura spa añade semipermanente con retirada de color, exfoliación, mascarilla y masaje.",
+      "whatIs": "Es el cuidado estético completo de pies y uñas. Cortamos y limamos las uñas, trabajamos las cutículas y suavizamos durezas y talones ásperos para que el pie se vea y se sienta cuidado. La pedicura spa va un paso más allá: incluye semipermanente con retirada de color, exfoliación, mascarilla nutritiva y masaje.",
+      "mechanism": "Los pies soportan presión y roce constantes, y la piel responde engrosando la capa córnea, lo que forma durezas. Al reducir ese exceso de forma progresiva y exfoliar, la piel recupera flexibilidad y suavidad. La mascarilla y la crema aportan lípidos y agua que ayudan a reparar la barrera cutánea, y el masaje estimula la circulación en una zona que suele estar cansada.",
       "benefits": [
         {
           "title": "Pies más suaves",
           "text": "Reducimos durezas y la piel áspera de talones y plantas."
         },
         {
-          "title": "Uñas bonitas",
+          "title": "Uñas bonitas y cuidadas",
           "text": "Cortadas, limadas y listas para lucir sandalias."
         },
         {
           "title": "Descanso real",
-          "text": "La versión spa incluye un masaje que alivia la sensación de cansancio."
+          "text": "La versión spa incluye un masaje que alivia la sensación de pies cansados."
         },
         {
-          "title": "Higiene y bienestar",
-          "text": "Un pie cuidado se siente más cómodo en el día a día."
+          "title": "Piel nutrida",
+          "text": "Exfoliación y mascarilla devuelven elasticidad a la piel seca."
+        },
+        {
+          "title": "Comodidad en el día a día",
+          "text": "Un pie cuidado se siente más ligero dentro del calzado."
         },
         {
           "title": "Con o sin color",
-          "text": "Puedes terminar con esmalte tradicional o pasarte a semipermanente."
+          "text": "Termina con esmalte tradicional o pásate a semipermanente."
         }
       ],
       "idealFor": [
@@ -243,9 +260,11 @@
       "results": "Notarás los pies más suaves y cuidados desde el primer día. El efecto dura más si hidratas en casa.",
       "painLevel": 0,
       "aftercare": [
-        "Hidrata los pies a diario, sobre todo los talones",
-        "Si llevas esmalte, usa calzado abierto un rato después",
-        "Seca bien entre los dedos tras la ducha"
+        "Hidrata los pies a diario, insistiendo en talones y zonas con durezas",
+        "Si llevas esmalte normal, usa calzado abierto un rato después",
+        "Seca bien entre los dedos tras la ducha",
+        "Corta las uñas rectas para evitar que se encarnen",
+        "Usa calzado transpirable y cómodo para mantener el resultado más tiempo"
       ],
       "contraindications": [
         "Hongos, verrugas o heridas en los pies",
@@ -294,6 +313,11 @@
         "spa",
         "uñas",
         "relax"
+      ],
+      "combinesWith": [
+        "esmaltado-semipermanente",
+        "manicura",
+        "presoterapia"
       ]
     },
     {
@@ -304,7 +328,8 @@
       "hook": "Uñas perfectas durante semanas, sin retoques",
       "icon": "polish",
       "featured": true,
-      "whatIs": "Es un esmalte especial que se seca con una lámpara LED. Queda totalmente seco al salir, con mucho brillo, y dura entre 2 y 3 semanas sin desconcharse. Incluye la retirada del anterior y la preparación de la uña. Si tu uña es fina o irregular, la nivelación la deja lisa y más resistente. Y si quieres darle un toque, añade francesa, cromado u ojo de gato.",
+      "whatIs": "Es un esmalte en gel que se polimeriza (se seca) con una lámpara LED. Sales con las uñas totalmente secas, con un brillo intenso que dura entre 2 y 3 semanas sin desconcharse. Incluye la retirada del anterior y la preparación profesional de la uña. Si tu uña es fina o irregular, la nivelación la deja lisa y más resistente. Y si quieres darle un toque, añade francesa, cromado u ojo de gato.",
+      "mechanism": "La preparación retira el brillo natural de la lámina y la deja limpia para que la base se adhiera de forma uniforme. Bajo la luz LED, el gel se endurece capa a capa y forma una película flexible y resistente que protege la superficie de la uña frente a pequeños golpes. La nivelación añade un grosor extra que reparte la tensión y ayuda a que las uñas finas se doblen y se rompan menos mientras lo llevas.",
       "benefits": [
         {
           "title": "Dura de verdad",
@@ -320,11 +345,15 @@
         },
         {
           "title": "Mil colores y diseños",
-          "text": "Desde nude elegante hasta tonos atrevidos o decoraciones sencillas."
+          "text": "Desde nude elegante hasta tonos atrevidos, francesa, cromado u ojo de gato."
         },
         {
           "title": "Protege la uña",
           "text": "Ayuda a que las uñas finas se rompan menos mientras lo llevas."
+        },
+        {
+          "title": "Retirada profesional incluida",
+          "text": "Cuidamos tu uña natural en cada cambio de color."
         }
       ],
       "idealFor": [
@@ -359,7 +388,8 @@
         "No lo arranques: la retirada profesional protege tu uña natural",
         "Usa guantes al limpiar con productos agresivos",
         "Aplica aceite de cutículas varias veces por semana",
-        "No uses las uñas como herramienta para abrir latas o etiquetas"
+        "No uses las uñas como herramienta para abrir latas o etiquetas",
+        "Si se levanta un borde, no lo despegues: pide cita para repararlo"
       ],
       "contraindications": [
         "Hongos o infecciones en las uñas",
@@ -436,6 +466,10 @@
         "manos",
         "pies",
         "color"
+      ],
+      "combinesWith": [
+        "manicura",
+        "pedicura"
       ]
     },
     {
@@ -446,26 +480,27 @@
       "hook": "Olvídate de las cuchillas y la cera",
       "icon": "laser",
       "featured": true,
-      "whatIs": "El láser de diodo emite un haz de luz que se dirige al pigmento del pelo y debilita el folículo, la raíz donde nace. Con varias sesiones el vello crece cada vez menos, más fino y más claro. Es uno de los métodos más usados para reducir el vello a largo plazo.",
+      "whatIs": "El láser de diodo emite una luz de longitud de onda muy concreta que es absorbida por la melanina, el pigmento del pelo. Esa energía se transforma en calor en el folículo, la estructura donde nace el vello, y lo debilita sin dañar la piel de alrededor. Sesión a sesión el vello crece cada vez menos, más fino y más claro. Es uno de los métodos más utilizados para reducir el vello de forma duradera, en mujeres y hombres.",
+      "mechanism": "La luz del diodo viaja a través de la piel y la absorbe el pigmento del tallo del pelo, que la conduce hasta el folículo. Allí el calor debilita las células responsables del crecimiento, sobre todo cuando el pelo está en fase activa (anágena). Como no todos los pelos están en esa fase a la vez, se necesitan varias sesiones espaciadas para ir alcanzándolos. El cabezal refrigerado protege la epidermis y hace la sesión más cómoda.",
       "benefits": [
         {
-          "title": "Reducción duradera",
+          "title": "Reducción progresiva y duradera",
           "text": "Sesión a sesión el vello se debilita y aparece mucho menos."
         },
         {
-          "title": "Adiós a granitos y pelos enquistados",
-          "text": "Ayuda a reducir la irritación típica de la cuchilla y la cera."
+          "title": "Menos pelos enquistados",
+          "text": "Ayuda a reducir la foliculitis, los granitos y la irritación típica de la cuchilla y la cera."
         },
         {
-          "title": "Sesiones rápidas",
-          "text": "Las zonas pequeñas se hacen en pocos minutos."
+          "title": "Piel más uniforme",
+          "text": "Sin sombra oscura ni rojeces de depilación: una piel con mejor aspecto."
         },
         {
-          "title": "Muy tolerable",
-          "text": "El diodo incorpora frío en el cabezal para que la sesión sea más cómoda."
+          "title": "Sesiones rápidas y tolerables",
+          "text": "El frío del cabezal hace la sesión llevadera; las zonas pequeñas se hacen en minutos."
         },
         {
-          "title": "Ahorro a la larga",
+          "title": "Ahorro de tiempo y dinero",
           "text": "Menos cuchillas, cremas y citas de cera durante años."
         },
         {
@@ -506,7 +541,9 @@
         "Usa protector solar SPF 50 en zonas expuestas",
         "No uses cera ni pinzas entre sesiones; solo cuchilla o crema",
         "Evita sauna, piscina y deporte intenso 24-48 h",
-        "Hidrata la zona con crema calmante o aloe vera"
+        "Hidrata la zona con crema calmante o aloe vera",
+        "Evita desodorantes con alcohol, perfumes y exfoliantes en la zona durante 48 h",
+        "Es normal ver pelos que «salen» en los días siguientes: se están desprendiendo, no los arranques"
       ],
       "contraindications": [
         "Embarazo y lactancia",
@@ -615,6 +652,10 @@
         "vello",
         "hombre",
         "mujer"
+      ],
+      "combinesWith": [
+        "depilacion-cera",
+        "higiene-facial"
       ]
     },
     {
@@ -625,7 +666,8 @@
       "hook": "Piel suave desde hoy mismo",
       "icon": "wax",
       "featured": false,
-      "whatIs": "La cera arranca el vello desde la raíz, así que la piel queda lisa durante 3-4 semanas. Usamos cera tibia en zonas amplias y cera caliente en zonas pequeñas o sensibles, que agarra mejor el pelo corto y es más suave con la piel.",
+      "whatIs": "La cera retira el vello desde la raíz, por lo que la piel queda lisa durante 3-4 semanas. Usamos cera tibia en zonas amplias y cera caliente de baja temperatura en zonas pequeñas o sensibles, que atrapa mejor el pelo corto y es más respetuosa con la piel. Es la opción ideal cuando quieres un resultado inmediato o tienes vello claro.",
+      "mechanism": "La cera se adhiere al tallo del pelo y, al retirarla, lo extrae junto con su bulbo. El folículo necesita tiempo para generar un pelo nuevo, por eso el resultado dura semanas y no días. Con la repetición, en muchas personas el folículo se va debilitando y el vello vuelve más fino. Además, la retirada arrastra parte de las células muertas superficiales, con un ligero efecto exfoliante.",
       "benefits": [
         {
           "title": "Resultado inmediato",
@@ -642,6 +684,10 @@
         {
           "title": "Vello más fino con el tiempo",
           "text": "Con la constancia, muchas personas notan que el pelo sale más débil."
+        },
+        {
+          "title": "Efecto exfoliante suave",
+          "text": "La piel queda más suave y luminosa."
         },
         {
           "title": "Precio económico",
@@ -677,10 +723,11 @@
       "results": "Piel lisa al momento durante 3-4 semanas, según el ritmo de crecimiento de cada persona.",
       "painLevel": 3,
       "aftercare": [
-        "Evita el sol, la sauna y el agua muy caliente 24 h",
+        "Evita el sol, la sauna y el agua muy caliente durante 24 h",
         "No uses desodorante con alcohol en axilas recién depiladas",
+        "Usa ropa holgada ese día para que la piel respire",
         "Exfolia suavemente 2 veces por semana a partir del tercer día para evitar pelos enquistados",
-        "Hidrata la piel a diario"
+        "Hidrata la piel a diario con una crema sin perfume"
       ],
       "contraindications": [
         "Varices marcadas o problemas circulatorios en la zona",
@@ -765,6 +812,11 @@
         "depilación",
         "vello",
         "piel suave"
+      ],
+      "combinesWith": [
+        "depilacion-laser",
+        "laminado-cejas",
+        "tinte-cejas-pestanas"
       ]
     },
     {
@@ -775,7 +827,8 @@
       "hook": "Despierta con la mirada hecha",
       "icon": "lash",
       "featured": true,
-      "whatIs": "Es un tratamiento que eleva y riza tus propias pestañas desde la raíz, sin extensiones ni pegamento. Usamos unos moldes de silicona y productos que fijan la forma. Si quieres, lo combinamos con tinte para que se vean más oscuras e intensas.",
+      "whatIs": "Es un tratamiento que eleva y riza tus propias pestañas desde la raíz, sin extensiones ni pegamento sobre la pestaña. Colocamos unos moldes de silicona adaptados a tu ojo y aplicamos lociones que remodelan y fijan la curva. Si quieres, lo completamos con tinte para que se vean más oscuras, largas e intensas.",
+      "mechanism": "La forma del pelo depende de unos enlaces internos de la queratina. La primera loción relaja de forma controlada esos enlaces para que la pestaña adopte la curva del molde, y la segunda los vuelve a fijar en su nueva posición. El efecto se mantiene hasta que la pestaña completa su ciclo natural y es sustituida por una nueva, normalmente en 6-8 semanas.",
       "benefits": [
         {
           "title": "Pestañas 100 % tuyas",
@@ -796,6 +849,10 @@
         {
           "title": "Sin mantenimiento",
           "text": "Puedes dormir, nadar o ir al gimnasio sin preocuparte."
+        },
+        {
+          "title": "Resultado natural",
+          "text": "Elegimos la curva que mejor va con la forma de tu ojo."
         }
       ],
       "idealFor": [
@@ -828,9 +885,10 @@
       "painLevel": 0,
       "aftercare": [
         "No mojes las pestañas durante las primeras 24 h",
-        "Evita vapor, sauna y rímel las primeras 24 h",
+        "Evita vapor, sauna, maquillaje de ojos y rímel las primeras 24 h",
         "No frotes los ojos ni duermas boca abajo la primera noche",
-        "Peina las pestañas y usa un sérum nutritivo para cuidarlas"
+        "Desmaquíllate con productos sin aceite para no aflojar la curva",
+        "Peina las pestañas y aplica un sérum nutritivo para mantenerlas fuertes"
       ],
       "contraindications": [
         "Infecciones oculares, conjuntivitis u orzuelos",
@@ -884,6 +942,11 @@
         "mirada",
         "natural",
         "sin rímel"
+      ],
+      "combinesWith": [
+        "tinte-cejas-pestanas",
+        "laminado-cejas",
+        "hidrafacial"
       ]
     },
     {
@@ -894,7 +957,8 @@
       "hook": "Cejas de revista, cada mañana",
       "icon": "brow",
       "featured": false,
-      "whatIs": "El laminado alisa y fija el pelo de las cejas en la dirección que queremos, normalmente hacia arriba. Así las cejas se ven más pobladas, ordenadas y con forma. Lo completamos con diseño y, si quieres, tinte.",
+      "whatIs": "El laminado alisa y fija el pelo de las cejas en la dirección que queremos, normalmente hacia arriba y hacia fuera. Así las cejas se ven más pobladas, ordenadas y con forma, con un efecto peinado que dura semanas. Lo completamos con diseño y, si quieres, tinte.",
+      "mechanism": "Igual que en el lifting de pestañas, una primera loción relaja de forma controlada los enlaces de la queratina del pelo para que podamos peinarlo en la dirección deseada. Después, una loción fijadora estabiliza esa nueva posición. Al dirigir el pelo hacia arriba, cubre visualmente los huecos y la ceja gana volumen sin añadir nada.",
       "benefits": [
         {
           "title": "Más volumen",
@@ -915,6 +979,10 @@
         {
           "title": "Diseño a medida",
           "text": "Adaptamos la forma a tus facciones."
+        },
+        {
+          "title": "Dura semanas",
+          "text": "El efecto peinado se mantiene unas 4-6 semanas."
         }
       ],
       "idealFor": [
@@ -949,7 +1017,8 @@
         "No mojes las cejas durante 24 h",
         "Evita maquillaje, sauna y sudor intenso las primeras 24 h",
         "Peina las cejas cada mañana con un cepillito",
-        "Aplica aceite o sérum nutritivo por la noche"
+        "Aplica aceite o sérum nutritivo por la noche para mantener el pelo hidratado",
+        "Evita exfoliantes y ácidos en la zona durante unos días"
       ],
       "contraindications": [
         "Irritación, heridas o granitos en la zona",
@@ -997,6 +1066,11 @@
         "laminado",
         "mirada",
         "brow lamination"
+      ],
+      "combinesWith": [
+        "tinte-cejas-pestanas",
+        "lifting-pestanas",
+        "depilacion-cera"
       ]
     },
     {
@@ -1007,7 +1081,8 @@
       "hook": "Más intensidad en solo 20 minutos",
       "icon": "tint",
       "featured": false,
-      "whatIs": "Aplicamos un tinte específico para cejas y pestañas que oscurece el pelo y lo hace más visible. Las pestañas parecen más largas y las cejas más definidas, sin tener que maquillarte.",
+      "whatIs": "Aplicamos un tinte específico para cejas y pestañas que oscurece el pelo y lo hace más visible. Las pestañas parecen más largas porque se tiñen también las puntas claras, y las cejas se ven más definidas y uniformes, sin necesidad de maquillaje.",
+      "mechanism": "El tinte deposita pigmento en el interior del pelo, que normalmente es más claro en las puntas. Al igualar el color de la raíz a la punta, el pelo se ve en toda su longitud real. El color se va aclarando poco a poco con los lavados y con la renovación natural del pelo.",
       "benefits": [
         {
           "title": "Efecto rímel sin rímel",
@@ -1028,6 +1103,10 @@
         {
           "title": "Color a tu medida",
           "text": "Elegimos el tono que va con tu pelo y tu piel."
+        },
+        {
+          "title": "Combina con todo",
+          "text": "Remata el lifting de pestañas o el laminado de cejas."
         }
       ],
       "idealFor": [
@@ -1060,8 +1139,9 @@
       "painLevel": 0,
       "aftercare": [
         "Evita mojar la zona durante unas horas",
-        "No uses desmaquillantes con aceite los primeros días, pueden aclarar el tono",
-        "Protege las cejas del sol para que el color dure más"
+        "No uses desmaquillantes con aceite los primeros días: pueden aclarar el tono",
+        "Protege las cejas del sol para que el color dure más",
+        "Evita exfoliantes y peelings sobre las cejas"
       ],
       "contraindications": [
         "Alergia a los tintes: hacemos prueba de sensibilidad 48 h antes si es tu primera vez",
@@ -1116,6 +1196,10 @@
         "pestañas",
         "mirada",
         "color"
+      ],
+      "combinesWith": [
+        "lifting-pestanas",
+        "laminado-cejas"
       ]
     },
     {
@@ -1126,7 +1210,8 @@
       "hook": "Pulsa pausa: este rato es solo tuyo",
       "icon": "massage",
       "featured": false,
-      "whatIs": "Es un masaje con aceites y maniobras suaves y rítmicas que ayudan a relajar los músculos y la mente. Ajustamos la presión a lo que te apetezca y podemos centrarnos en espalda, cuello o todo el cuerpo.",
+      "whatIs": "Es un masaje con aceites y maniobras suaves, envolventes y rítmicas que ayudan a liberar la tensión muscular y a calmar la mente. Ajustamos la presión a lo que te apetezca y podemos centrarnos en espalda, cuello y hombros o trabajar todo el cuerpo.",
+      "mechanism": "Las maniobras lentas y repetidas estimulan los receptores de la piel y favorecen que el sistema nervioso pase a un estado de descanso. El masaje aumenta el riego sanguíneo en la zona, lo que ayuda a soltar los músculos contraídos y aporta sensación de calor y alivio. Los aceites nutren la piel y reducen la fricción para que las maniobras sean fluidas.",
       "benefits": [
         {
           "title": "Menos estrés",
@@ -1139,6 +1224,10 @@
         {
           "title": "Mejor descanso",
           "text": "Muchas personas duermen mejor la noche del masaje."
+        },
+        {
+          "title": "Circulación activada",
+          "text": "Sensación de calor, ligereza y bienestar general."
         },
         {
           "title": "Piel nutrida",
@@ -1179,8 +1268,10 @@
       "painLevel": 0,
       "aftercare": [
         "Bebe agua después del masaje",
-        "Intenta no tener prisa justo después",
-        "Evita comidas copiosas inmediatamente antes"
+        "Intenta no tener prisa justo después y regálate un rato tranquilo",
+        "Evita comidas copiosas inmediatamente antes",
+        "Si puedes, espera unas horas para ducharte y que la piel aproveche el aceite",
+        "Una ducha templada o un estiramiento suave por la noche alargan la sensación de relax"
       ],
       "contraindications": [
         "Fiebre, gripe o infecciones",
@@ -1231,6 +1322,11 @@
         "estrés",
         "bienestar",
         "regalo"
+      ],
+      "combinesWith": [
+        "masaje-drenante",
+        "presoterapia",
+        "higiene-facial"
       ]
     },
     {
@@ -1241,11 +1337,12 @@
       "hook": "Piernas ligeras, cuerpo deshinchado",
       "icon": "drain",
       "featured": false,
-      "whatIs": "El drenaje linfático manual es un masaje muy suave y rítmico que estimula el sistema linfático, el encargado de recoger el exceso de líquido del cuerpo. Ayuda a reducir la sensación de hinchazón y de piernas cansadas.",
+      "whatIs": "El drenaje linfático manual es un masaje muy suave, lento y rítmico que estimula el sistema linfático, la red encargada de recoger el exceso de líquido de los tejidos. Ayuda a reducir la sensación de hinchazón, de piernas cansadas y de pesadez, y es un gran aliado de los tratamientos corporales.",
+      "mechanism": "La linfa circula por vasos muy finos que se encuentran justo bajo la piel y no tiene una bomba propia como la sangre. Con presiones ligeras y bombeos en dirección a los ganglios, el masaje favorece que esos vasos se contraigan y transporten el líquido acumulado. Por eso la presión es suave: una presión fuerte comprimiría los vasos en lugar de estimularlos.",
       "benefits": [
         {
           "title": "Menos hinchazón",
-          "text": "Ayuda a eliminar líquidos retenidos."
+          "text": "Ayuda a movilizar los líquidos retenidos."
         },
         {
           "title": "Piernas ligeras",
@@ -1256,12 +1353,16 @@
           "text": "Es un masaje suave y relajante, sin presión fuerte."
         },
         {
-          "title": "Complemento perfecto",
-          "text": "Potencia tratamientos corporales como la maderoterapia o la presoterapia."
-        },
-        {
           "title": "Mejor aspecto de la piel",
           "text": "Contribuye a una piel más lisa cuando hay retención."
+        },
+        {
+          "title": "Potencia otros tratamientos",
+          "text": "Complementa la cavitación, la maderoterapia o la presoterapia."
+        },
+        {
+          "title": "Sensación de bienestar",
+          "text": "Muchas personas notan el cuerpo más ligero desde la primera sesión."
         }
       ],
       "idealFor": [
@@ -1293,10 +1394,11 @@
       "results": "Muchas personas notan las piernas más ligeras desde la primera sesión. Con constancia la sensación de hinchazón suele mejorar.",
       "painLevel": 0,
       "aftercare": [
-        "Bebe abundante agua",
+        "Bebe abundante agua durante el día",
         "Es normal tener más ganas de ir al baño después",
-        "Camina y mantente activa/o",
-        "Reduce la sal y el alcohol esos días"
+        "Camina y mantente activa/o para ayudar a la circulación",
+        "Reduce la sal y el alcohol esos días",
+        "Eleva las piernas un rato por la noche si sueles tenerlas cansadas"
       ],
       "contraindications": [
         "Trombosis o flebitis",
@@ -1347,6 +1449,12 @@
         "retención",
         "piernas",
         "masaje"
+      ],
+      "combinesWith": [
+        "presoterapia",
+        "maderoterapia",
+        "cavitacion",
+        "roll-systemic"
       ]
     },
     {
@@ -1357,7 +1465,8 @@
       "hook": "El masaje que moldea tu silueta",
       "icon": "wood",
       "featured": true,
-      "whatIs": "Es un masaje corporal que se hace con utensilios de madera de distintas formas: rodillos, copas y tablas. Cada pieza trabaja la zona de una manera para activar la circulación, ayudar a drenar líquidos y mejorar el aspecto de la celulitis.",
+      "whatIs": "Es un masaje corporal que se realiza con utensilios de madera de distintas formas: rodillos, copas suecas y tablas moldeadoras. Cada pieza trabaja la zona de una manera concreta para activar la circulación, favorecer el drenaje de líquidos y mejorar el aspecto de la celulitis y la firmeza de la piel.",
+      "mechanism": "La presión y el movimiento de la madera estimulan la microcirculación y el retorno de los líquidos retenidos hacia los vasos linfáticos. Las maniobras amasan y movilizan el tejido subcutáneo, lo que ayuda a suavizar los nódulos de la piel de naranja. Además, el estímulo mecánico mantiene activos los fibroblastos, las células de la dermis que producen colágeno y elastina, y la piel se nota más tonificada.",
       "benefits": [
         {
           "title": "Silueta más definida",
@@ -1378,6 +1487,10 @@
         {
           "title": "Natural y sin aparatos",
           "text": "Solo madera, aceites y las manos de tu profesional."
+        },
+        {
+          "title": "Combina muy bien",
+          "text": "Potencia los resultados de la presoterapia y la aparatología corporal."
         }
       ],
       "idealFor": [
@@ -1411,8 +1524,9 @@
       "aftercare": [
         "Bebe al menos 1,5-2 litros de agua al día",
         "Acompaña con ejercicio y alimentación equilibrada para mejores resultados",
-        "Evita el alcohol y el exceso de sal",
-        "Pueden aparecer pequeñas rojeces que desaparecen en horas"
+        "Evita el alcohol y el exceso de sal durante el tratamiento",
+        "Pueden aparecer pequeñas rojeces que desaparecen en horas",
+        "Hidrata la piel a diario con una crema reafirmante o anticelulítica"
       ],
       "contraindications": [
         "Embarazo y lactancia",
@@ -1467,6 +1581,12 @@
         "silueta",
         "drenante",
         "corporal"
+      ],
+      "combinesWith": [
+        "presoterapia",
+        "masaje-drenante",
+        "radiofrecuencia-corporal",
+        "roll-systemic"
       ]
     },
     {
@@ -1477,7 +1597,8 @@
       "hook": "Relájate mientras tus piernas se deshinchan",
       "icon": "pressure",
       "featured": false,
-      "whatIs": "Te pones unas botas (y si quieres, faja para abdomen y brazos) que se inflan y desinflan por zonas. Esa presión ayuda a mover los líquidos y estimula la circulación. Solo tienes que tumbarte y relajarte.",
+      "whatIs": "Te colocamos unas botas (y, si lo necesitas, faja para abdomen o brazos) con cámaras que se inflan y desinflan de forma secuencial, desde los pies hacia arriba. Esa compresión rítmica ayuda a movilizar los líquidos retenidos y estimula la circulación de retorno. Solo tienes que tumbarte y relajarte.",
+      "mechanism": "La presión de aire reproduce de forma mecánica el efecto de bombeo del drenaje linfático: empuja el líquido acumulado entre las células hacia los vasos linfáticos y venosos para que el organismo lo pueda eliminar. Al hacerlo de forma progresiva y ascendente, favorece el retorno venoso de las piernas. Por eso se nota ligereza desde la primera sesión y es el complemento ideal tras cavitación o maderoterapia.",
       "benefits": [
         {
           "title": "Piernas ligeras",
@@ -1488,16 +1609,20 @@
           "text": "Ayuda a eliminar el exceso de líquidos."
         },
         {
+          "title": "Mejor aspecto de la celulitis",
+          "text": "Al reducir la retención, la piel se ve más lisa."
+        },
+        {
           "title": "Cero esfuerzo",
-          "text": "Estás tumbada/o, puedes leer, descansar o mirar el móvil."
+          "text": "Estás tumbada/o: puedes leer, descansar o mirar el móvil."
         },
         {
           "title": "Potencia otros tratamientos",
-          "text": "Es el complemento ideal de la maderoterapia o la aparatología."
+          "text": "Es el complemento ideal de la cavitación, la maderoterapia o la radiofrecuencia."
         },
         {
-          "title": "Sensación de masaje",
-          "text": "La compresión rítmica resulta muy relajante."
+          "title": "Recuperación deportiva",
+          "text": "Muy agradable después de entrenamientos intensos."
         }
       ],
       "idealFor": [
@@ -1531,7 +1656,9 @@
       "aftercare": [
         "Bebe agua después de la sesión",
         "Camina un poco para activar la circulación",
-        "Reduce la sal en tu alimentación"
+        "Reduce la sal en tu alimentación",
+        "Evita ropa muy ajustada en las horas siguientes",
+        "Eleva las piernas un rato por la noche para prolongar la sensación de ligereza"
       ],
       "contraindications": [
         "Trombosis, flebitis o varices graves",
@@ -1582,93 +1709,106 @@
         "retención",
         "circulación",
         "corporal"
+      ],
+      "combinesWith": [
+        "cavitacion",
+        "maderoterapia",
+        "masaje-drenante",
+        "roll-systemic"
       ]
     },
     {
-      "id": "aparatologia-corporal",
+      "id": "radiofrecuencia-corporal",
       "category": "corporal",
-      "name": "Aparatología corporal (radiofrecuencia y cavitación)",
-      "short": "Tecnología para trabajar grasa localizada, flacidez y textura de la piel en zonas concretas.",
-      "hook": "Tecnología que trabaja donde más lo necesitas",
+      "name": "Radiofrecuencia corporal",
+      "short": "Calor profundo que estimula el colágeno para mejorar la firmeza, la flacidez y el aspecto de la celulitis.",
+      "hook": "Piel más firme, zona a zona",
       "icon": "device",
       "featured": false,
-      "whatIs": "Usamos aparatos de estética para tratar zonas concretas del cuerpo. La radiofrecuencia calienta suavemente las capas profundas de la piel para estimular el colágeno y mejorar la firmeza. La cavitación usa ultrasonidos para ayudar a reducir la grasa localizada. Te recomendamos el aparato o la combinación según tu objetivo.",
+      "whatIs": "La radiofrecuencia corporal aplica energía que se transforma en calor en la dermis y el tejido subcutáneo. Ese calor ayuda a reafirmar la piel, mejorar el aspecto de la flacidez y la celulitis y activar la circulación en zonas como abdomen, brazos, muslos, glúteos o rodillas. Es un tratamiento no invasivo, agradable y sin tiempo de recuperación.",
+      "mechanism": "Con la edad, los cambios de peso o el embarazo, las fibras de colágeno y elastina pierden densidad y la piel se vuelve más laxa. La radiofrecuencia eleva de forma controlada la temperatura de los tejidos: las fibras de colágeno se contraen de forma inmediata y los fibroblastos se activan para producir colágeno y elastina nuevos en las semanas siguientes. El calor también provoca vasodilatación, mejora la microcirculación y el drenaje de líquidos, y favorece el metabolismo de las células grasas, lo que contribuye a una piel más lisa.",
       "benefits": [
         {
-          "title": "Zonas concretas",
-          "text": "Ideal para esas zonas que cuestan más: abdomen, flancos, cartucheras o brazos."
-        },
-        {
           "title": "Piel más firme",
-          "text": "La radiofrecuencia ayuda a mejorar el aspecto de la flacidez."
+          "text": "Ayuda a mejorar el aspecto de la flacidez en abdomen, brazos o muslos."
         },
         {
-          "title": "Ayuda con la grasa localizada",
-          "text": "La cavitación contribuye a reducir el contorno en zonas puntuales."
+          "title": "Mejor aspecto de la celulitis",
+          "text": "Activa la circulación y suaviza la piel de naranja."
         },
         {
-          "title": "No invasivo",
-          "text": "Sin agujas ni tiempo de recuperación: sigues tu día con normalidad."
+          "title": "Estimula el colágeno",
+          "text": "Activa la producción natural de colágeno y elastina."
         },
         {
-          "title": "Sesiones cómodas",
-          "text": "Sensación de calor agradable o un leve zumbido."
+          "title": "Tras cambios de peso o embarazo",
+          "text": "Un apoyo para recuperar la tersura de la piel."
+        },
+        {
+          "title": "Combina con todo",
+          "text": "Potencia la cavitación, el body sculpt o la presoterapia."
+        },
+        {
+          "title": "Agradable y sin recuperación",
+          "text": "Calor envolvente y vuelta inmediata a tu rutina."
         }
       ],
       "idealFor": [
-        "Quien tiene grasa localizada que no se va con dieta y ejercicio",
-        "Flacidez leve o moderada tras cambios de peso o con la edad",
-        "Personas que buscan una opción sin agujas",
-        "Como parte de un plan corporal completo"
+        "Flacidez leve o moderada en abdomen, brazos, muslos o glúteos",
+        "Celulitis y piel de naranja",
+        "Después de una pérdida de peso o tras el embarazo (pasada la cuarentena y la lactancia)",
+        "Quien busca reafirmar sin agujas"
       ],
       "howItWorks": [
         {
           "title": "Consulta previa gratuita",
-          "text": "Medimos y valoramos para elegir la tecnología adecuada."
+          "text": "Valoramos la zona, tomamos medidas y fotos de seguimiento."
         },
         {
           "title": "Preparación",
-          "text": "Limpiamos la zona y aplicamos gel conductor."
+          "text": "Limpiamos y aplicamos un medio conductor."
         },
         {
-          "title": "Tratamiento",
-          "text": "Pasamos el cabezal por la zona con movimientos controlados."
+          "title": "Radiofrecuencia",
+          "text": "Trabajamos la zona con movimientos continuos hasta alcanzar la temperatura adecuada."
         },
         {
-          "title": "Drenaje",
-          "text": "Terminamos con maniobras drenantes o presoterapia para potenciar el efecto."
+          "title": "Drenaje y acabado",
+          "text": "Maniobras drenantes y crema reafirmante para potenciar el efecto."
         }
       ],
-      "duration": "45 – 60 min",
-      "sessions": "Entre 8 y 10 sesiones, 1-2 por semana, según la zona y la tecnología",
-      "results": "Los cambios suelen notarse de forma progresiva a partir de la 3ª-4ª sesión. El resultado varía según cada cuerpo, la zona y los hábitos.",
+      "duration": "40 – 60 min según la zona",
+      "sessions": "Entre 8 y 10 sesiones, 1-2 por semana, y después mantenimiento mensual",
+      "results": "La piel se nota más suave y tersa desde las primeras sesiones. La mejora de firmeza es progresiva y suele apreciarse más a partir de la 4.ª sesión, a medida que se forma colágeno nuevo. Los resultados varían según cada cuerpo y los hábitos.",
       "painLevel": 1,
       "aftercare": [
-        "Bebe abundante agua, sobre todo tras la cavitación",
-        "Haz algo de ejercicio suave ese día",
-        "Mantén una alimentación equilibrada",
-        "La piel puede quedar algo rojiza unos minutos"
+        "Bebe 1,5-2 litros de agua al día para favorecer el drenaje",
+        "La piel puede quedar algo rojiza y caliente durante un rato",
+        "Evita sauna, baños muy calientes y sol intenso las primeras 24 h",
+        "Haz ejercicio regularmente para potenciar la firmeza",
+        "Aplica a diario una crema reafirmante en la zona"
       ],
       "contraindications": [
         "Embarazo y lactancia",
-        "Marcapasos, prótesis o implantes metálicos en la zona",
+        "Marcapasos u otros dispositivos electrónicos implantados",
+        "Prótesis o implantes metálicos en la zona",
+        "DIU de cobre (para tratamiento abdominal)",
         "Cáncer activo o reciente",
-        "Problemas cardiacos, hepáticos o renales",
-        "Heridas, infecciones o alteraciones de la sensibilidad en la zona",
-        "DIU de cobre (para tratamiento abdominal)"
+        "Varices marcadas, trombosis o alteraciones de la sensibilidad en la zona",
+        "Heridas, infecciones o cirugía reciente en la zona"
       ],
       "faq": [
         {
-          "q": "¿Qué aparato me conviene?",
-          "a": "Depende de tu objetivo: radiofrecuencia para firmeza, cavitación para grasa localizada. Lo vemos juntas/os en la consulta."
-        },
-        {
           "q": "¿Duele?",
-          "a": "No. La radiofrecuencia da calor y la cavitación un leve pitido en el oído. Es muy llevadero."
+          "a": "No. Se siente un calor profundo y agradable, como una manta térmica."
         },
         {
-          "q": "¿Es para perder peso?",
-          "a": "No. Es para mejorar zonas concretas. Para perder peso, lo ideal es combinarlo con hábitos saludables."
+          "q": "¿Sirve para perder peso?",
+          "a": "No es un tratamiento para adelgazar: mejora la calidad y la firmeza de la piel. Para el contorno, lo combinamos con cavitación o body sculpt."
+        },
+        {
+          "q": "¿Qué zonas se pueden tratar?",
+          "a": "Abdomen, flancos, brazos, muslos, glúteos, rodillas y zona interna de piernas, entre otras."
         }
       ],
       "priceFrom": 45,
@@ -1679,6 +1819,136 @@
           "oldPrice": null,
           "note": ""
         },
+        {
+          "label": "Radiofrecuencia corporal (2 zonas)",
+          "price": 70,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Bono 8 sesiones (1 zona)",
+          "price": 320,
+          "oldPrice": 360,
+          "note": ""
+        }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": [
+        "radiofrecuencia",
+        "flacidez",
+        "colágeno",
+        "celulitis",
+        "reafirmante",
+        "corporal"
+      ],
+      "combinesWith": [
+        "cavitacion",
+        "presoterapia",
+        "body-sculpt",
+        "micropuntura-estrias"
+      ]
+    },
+    {
+      "id": "cavitacion",
+      "category": "corporal",
+      "name": "Cavitación",
+      "short": "Ultrasonidos de baja frecuencia que ayudan a reducir la grasa localizada en zonas concretas.",
+      "hook": "Trabaja esas zonas que no se van",
+      "icon": "body",
+      "featured": false,
+      "whatIs": "La cavitación es un tratamiento corporal no invasivo que utiliza ultrasonidos de baja frecuencia sobre zonas con grasa localizada, como abdomen, flancos, cartucheras o cara interna de rodillas. Ayuda a reducir el contorno de forma progresiva y se completa siempre con drenaje para ayudar al cuerpo a eliminar lo movilizado.",
+      "mechanism": "Los ultrasonidos de baja frecuencia generan en el tejido adiposo unas microburbujas que se expanden y colapsan (el fenómeno de la cavitación). Esa presión mecánica afecta a la membrana de los adipocitos, las células que almacenan grasa, y facilita que liberen parte de su contenido. Los triglicéridos liberados se transforman y se eliminan por las vías naturales del organismo, sobre todo el sistema linfático y el metabolismo hepático; por eso es tan importante beber agua, moverse y drenar después de cada sesión.",
+      "benefits": [
+        {
+          "title": "Ayuda con la grasa localizada",
+          "text": "Contribuye a reducir el contorno en zonas puntuales."
+        },
+        {
+          "title": "Mejor aspecto de la celulitis",
+          "text": "La piel se ve más lisa al tratar el tejido graso."
+        },
+        {
+          "title": "No invasivo",
+          "text": "Sin agujas, sin anestesia y sin tiempo de recuperación."
+        },
+        {
+          "title": "Zonas concretas",
+          "text": "Abdomen, flancos, cartucheras, muslos, rodillas o brazos."
+        },
+        {
+          "title": "Resultados medibles",
+          "text": "Tomamos medidas para seguir tu evolución sesión a sesión."
+        },
+        {
+          "title": "Combina con drenaje",
+          "text": "Junto a presoterapia o drenaje manual, el efecto se potencia."
+        }
+      ],
+      "idealFor": [
+        "Grasa localizada que no responde a dieta y ejercicio",
+        "Personas con un peso estable que quieren mejorar zonas concretas",
+        "Celulitis con componente graso",
+        "Quien busca una alternativa sin agujas ni cirugía"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta previa gratuita",
+          "text": "Valoramos la zona, tomamos medidas y revisamos contraindicaciones."
+        },
+        {
+          "title": "Preparación",
+          "text": "Aplicamos gel conductor sobre la zona."
+        },
+        {
+          "title": "Cavitación",
+          "text": "Deslizamos el cabezal con movimientos lentos y continuos; notarás un leve zumbido."
+        },
+        {
+          "title": "Drenaje",
+          "text": "Terminamos con presoterapia, maniobras drenantes o radiofrecuencia según tu plan."
+        }
+      ],
+      "duration": "40 – 60 min",
+      "sessions": "Entre 8 y 10 sesiones, con al menos 72 horas entre sesiones en la misma zona",
+      "results": "La reducción del contorno suele notarse de forma progresiva a partir de la 3.ª-4.ª sesión. El resultado depende de cada cuerpo, de la zona y, sobre todo, de los hábitos de alimentación, hidratación y actividad.",
+      "painLevel": 1,
+      "aftercare": [
+        "Bebe 1,5-2 litros de agua el día de la sesión y los siguientes",
+        "Camina o haz ejercicio suave ese día para ayudar a eliminar",
+        "Reduce grasas, azúcares y alcohol durante el tratamiento",
+        "Completa la sesión con drenaje (presoterapia o manual) cuando lo recomendemos",
+        "Respeta al menos 72 horas entre sesiones en la misma zona"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Marcapasos u otros dispositivos electrónicos implantados",
+        "Insuficiencia renal o hepática",
+        "Colesterol o triglicéridos elevados sin control",
+        "Diabetes no controlada",
+        "Cáncer activo o reciente",
+        "Prótesis o implantes metálicos en la zona, DIU de cobre (abdomen)",
+        "Heridas, infecciones o cirugía reciente en la zona"
+      ],
+      "faq": [
+        {
+          "q": "¿Duele?",
+          "a": "No. Se nota un ligero calor y un zumbido o pitido en el oído mientras trabaja el aparato."
+        },
+        {
+          "q": "¿Es para adelgazar?",
+          "a": "No. Ayuda a reducir grasa localizada en zonas concretas. Para perder peso, lo ideal son hábitos saludables."
+        },
+        {
+          "q": "¿Por qué hay que beber tanta agua?",
+          "a": "Porque el cuerpo necesita eliminar por vía linfática y renal lo que se moviliza en la sesión."
+        },
+        {
+          "q": "¿Se puede combinar con radiofrecuencia?",
+          "a": "Sí, y es una de las combinaciones más habituales: la cavitación trabaja la grasa y la radiofrecuencia, la firmeza de la piel."
+        }
+      ],
+      "priceFrom": 45,
+      "prices": [
         {
           "label": "Cavitación (1 zona)",
           "price": 45,
@@ -1698,13 +1968,405 @@
           "note": ""
         }
       ],
-      "priceNote": "Precio orientativo. [POR DEFINIR: confirmar aparatos disponibles en el centro]",
+      "priceNote": "Precio orientativo",
       "tags": [
-        "aparatología",
-        "radiofrecuencia",
         "cavitación",
         "grasa localizada",
-        "flacidez"
+        "contorno",
+        "ultrasonidos",
+        "corporal"
+      ],
+      "combinesWith": [
+        "presoterapia",
+        "radiofrecuencia-corporal",
+        "masaje-drenante",
+        "roll-systemic"
+      ]
+    },
+    {
+      "id": "roll-systemic",
+      "category": "corporal",
+      "name": "Roll systemic",
+      "short": "Masaje mecánico con rodillos y succión que activa la circulación, drena y mejora el aspecto de la celulitis.",
+      "hook": "El masaje que moviliza tu piel en profundidad",
+      "icon": "drain",
+      "featured": false,
+      "whatIs": "El roll systemic es un tratamiento de masaje mecánico corporal: un cabezal con rodillos motorizados y una succión suave pellizca, eleva y desplaza la piel de forma rítmica, reproduciendo la técnica manual del «palpar-rodar» con más intensidad y regularidad. Se utiliza para activar la circulación, favorecer el drenaje de líquidos, suavizar la piel de naranja y mejorar la firmeza.",
+      "mechanism": "La succión forma un pliegue de piel que los rodillos movilizan en todas direcciones. Ese estímulo mecánico activa la microcirculación sanguínea y linfática, lo que favorece el drenaje de los líquidos retenidos entre las células. Al movilizar el tejido subcutáneo, ayuda a ablandar los tabiques fibrosos que «tiran» de la piel en la celulitis y a mejorar su aspecto. Además, la estimulación repetida de la dermis activa a los fibroblastos, que contribuyen a una piel más tonificada.",
+      "benefits": [
+        {
+          "title": "Menos piel de naranja",
+          "text": "Ayuda a suavizar el aspecto de la celulitis con constancia."
+        },
+        {
+          "title": "Efecto drenante",
+          "text": "Activa la circulación linfática y reduce la sensación de retención."
+        },
+        {
+          "title": "Piel más tonificada",
+          "text": "La estimulación mecánica mejora la textura y la firmeza."
+        },
+        {
+          "title": "Piernas más ligeras",
+          "text": "Alivia la pesadez y el cansancio."
+        },
+        {
+          "title": "Potencia otros tratamientos",
+          "text": "Excelente tras cavitación o como preparación para la radiofrecuencia."
+        },
+        {
+          "title": "Agradable y no invasivo",
+          "text": "Sensación de masaje profundo, sin recuperación."
+        }
+      ],
+      "idealFor": [
+        "Celulitis y piel de naranja",
+        "Retención de líquidos y piernas cansadas",
+        "Piel con falta de tono en muslos, glúteos o abdomen",
+        "Como complemento de un plan corporal"
+      ],
+      "howItWorks": [
+        {
+          "title": "Valoración",
+          "text": "Revisamos zonas, objetivo y contraindicaciones."
+        },
+        {
+          "title": "Preparación",
+          "text": "Te damos una malla corporal para que el cabezal deslice de forma higiénica y uniforme."
+        },
+        {
+          "title": "Masaje mecánico",
+          "text": "Trabajamos cada zona siguiendo el recorrido de la circulación, ajustando la intensidad."
+        },
+        {
+          "title": "Final",
+          "text": "Terminamos con maniobras drenantes o crema específica."
+        }
+      ],
+      "duration": "30 – 45 min",
+      "sessions": "Un ciclo de 10-12 sesiones, 2 por semana, y después mantenimiento",
+      "results": "La sensación de ligereza se nota desde la primera sesión. La mejora del aspecto de la celulitis y de la firmeza es progresiva y depende de la constancia y de los hábitos.",
+      "painLevel": 1,
+      "aftercare": [
+        "Bebe 1,5-2 litros de agua al día",
+        "Camina o haz actividad suave para mantener activa la circulación",
+        "Reduce la sal y el alcohol durante el tratamiento",
+        "Puede quedar una leve rojez que desaparece en poco tiempo",
+        "Hidrata la piel con una crema anticelulítica o reafirmante"
+      ],
+      "contraindications": [
+        "Embarazo",
+        "Varices marcadas, trombosis o flebitis",
+        "Fragilidad capilar o tendencia a hematomas",
+        "Tratamientos anticoagulantes",
+        "Heridas, infecciones o problemas de piel en la zona",
+        "Cáncer activo o cirugía reciente en la zona"
+      ],
+      "faq": [
+        {
+          "q": "¿Duele?",
+          "a": "No debería. Se nota un masaje intenso que regulamos a tu gusto."
+        },
+        {
+          "q": "¿Qué diferencia hay con la maderoterapia?",
+          "a": "Ambas movilizan el tejido. La maderoterapia es manual con madera; el roll systemic usa rodillos y succión con una intensidad muy regular."
+        },
+        {
+          "q": "¿Necesito ropa especial?",
+          "a": "Te facilitamos una malla corporal desechable o de uso individual."
+        }
+      ],
+      "priceFrom": 35,
+      "prices": [
+        {
+          "label": "Sesión roll systemic · 30-45 min",
+          "price": 35,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Bono 10 sesiones",
+          "price": 300,
+          "oldPrice": 350,
+          "note": ""
+        }
+      ],
+      "priceNote": "Precio orientativo. [POR CONFIRMAR: modelo/funciones del aparato]",
+      "tags": [
+        "roll systemic",
+        "celulitis",
+        "drenaje",
+        "rodillos",
+        "masaje mecánico",
+        "corporal"
+      ],
+      "combinesWith": [
+        "presoterapia",
+        "cavitacion",
+        "maderoterapia",
+        "radiofrecuencia-corporal"
+      ]
+    },
+    {
+      "id": "diatermia",
+      "category": "corporal",
+      "name": "Diatermia (corporal y facial)",
+      "short": "Calor profundo generado desde dentro del tejido para reafirmar, activar la circulación y mejorar la celulitis. También en rostro.",
+      "hook": "Calor desde dentro para reafirmar cuerpo y rostro",
+      "icon": "device",
+      "featured": false,
+      "whatIs": "La diatermia es una técnica que utiliza corrientes de alta frecuencia para generar calor en el interior de los tejidos (calor endógeno), en lugar de aplicarlo desde fuera. En estética se emplea en modo capacitivo y resistivo para reafirmar la piel, activar la circulación, ayudar a drenar y mejorar el aspecto de la celulitis en el cuerpo. En el rostro, con un cabezal más pequeño y menor intensidad, ayuda a mejorar la firmeza, la luminosidad y las líneas finas.",
+      "mechanism": "La corriente circula entre el cabezal y una placa de retorno, y la resistencia natural de los tejidos la transforma en calor. En modo capacitivo el calor se concentra en las capas más superficiales y ricas en agua, como la dermis; en modo resistivo llega a tejidos más profundos y densos, como la grasa o la fascia. Ese aumento de temperatura provoca vasodilatación, mejora la oxigenación y el drenaje linfático, acelera el metabolismo celular y estimula a los fibroblastos a producir colágeno y elastina, lo que se traduce en una piel más firme y uniforme.",
+      "benefits": [
+        {
+          "title": "Reafirma cuerpo y rostro",
+          "text": "Ayuda a mejorar el aspecto de la flacidez gracias al estímulo del colágeno."
+        },
+        {
+          "title": "Mejor aspecto de la celulitis",
+          "text": "Activa la circulación y el drenaje en las zonas tratadas."
+        },
+        {
+          "title": "Calor profundo",
+          "text": "Actúa desde dentro del tejido, más allá de la superficie."
+        },
+        {
+          "title": "Activa la microcirculación",
+          "text": "Mejora la oxigenación y el tono de la piel."
+        },
+        {
+          "title": "Versátil",
+          "text": "Se adapta a abdomen, piernas, glúteos, brazos o rostro."
+        },
+        {
+          "title": "Agradable y sin recuperación",
+          "text": "Sensación de calor envolvente y relajante."
+        }
+      ],
+      "idealFor": [
+        "Flacidez corporal o facial leve o moderada",
+        "Celulitis y retención de líquidos",
+        "Piel apagada o con falta de tono",
+        "Quien busca un tratamiento reafirmante sin agujas"
+      ],
+      "howItWorks": [
+        {
+          "title": "Valoración",
+          "text": "Revisamos zonas, objetivo y contraindicaciones."
+        },
+        {
+          "title": "Preparación",
+          "text": "Colocamos la placa de retorno y aplicamos crema conductora."
+        },
+        {
+          "title": "Diatermia",
+          "text": "Trabajamos la zona alternando modo capacitivo y resistivo según el objetivo."
+        },
+        {
+          "title": "Acabado",
+          "text": "Masaje drenante y cosmética reafirmante."
+        }
+      ],
+      "duration": "40 – 60 min",
+      "sessions": "Entre 8 y 10 sesiones, 1-2 por semana, y después mantenimiento",
+      "results": "La piel se nota más suave y luminosa desde las primeras sesiones. La mejora de firmeza y del aspecto de la celulitis es progresiva. Los resultados varían según cada persona y sus hábitos.",
+      "painLevel": 0,
+      "aftercare": [
+        "Bebe agua abundante para favorecer el drenaje",
+        "La zona puede quedar caliente y rosada durante un rato",
+        "Evita sauna, baños muy calientes y sol intenso las primeras 24 h",
+        "En rostro, usa SPF 50 a diario y evita maquillarte unas horas",
+        "Acompaña con ejercicio y cosmética reafirmante en casa"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Marcapasos u otros dispositivos electrónicos implantados",
+        "Prótesis o implantes metálicos en la zona, DIU de cobre (abdomen)",
+        "Cáncer activo o reciente",
+        "Fiebre o procesos infecciosos agudos",
+        "Trombosis, varices marcadas o alteraciones de la sensibilidad",
+        "Heridas o cirugía reciente en la zona"
+      ],
+      "faq": [
+        {
+          "q": "¿En qué se diferencia de la radiofrecuencia?",
+          "a": "Ambas generan calor en el tejido. La diatermia trabaja con placa de retorno y alterna modo capacitivo y resistivo para llegar a distintas profundidades."
+        },
+        {
+          "q": "¿Se puede hacer en la cara?",
+          "a": "Sí, con cabezales e intensidades adaptados al rostro."
+        },
+        {
+          "q": "¿Duele?",
+          "a": "No. Se nota calor que regulamos para que sea siempre agradable."
+        }
+      ],
+      "priceFrom": 50,
+      "prices": [
+        {
+          "label": "Diatermia facial · 45 min",
+          "price": 50,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Diatermia corporal (1 zona) · 45-60 min",
+          "price": 55,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Bono 6 sesiones corporales",
+          "price": 290,
+          "oldPrice": 330,
+          "note": ""
+        }
+      ],
+      "priceNote": "Precio orientativo. [POR CONFIRMAR: modelo/funciones del aparato]",
+      "tags": [
+        "diatermia",
+        "calor profundo",
+        "flacidez",
+        "celulitis",
+        "facial",
+        "corporal"
+      ],
+      "combinesWith": [
+        "presoterapia",
+        "body-sculpt",
+        "radiofrecuencia-facial",
+        "cavitacion"
+      ]
+    },
+    {
+      "id": "body-sculpt",
+      "category": "corporal",
+      "name": "Body sculpt",
+      "short": "Estimulación muscular intensa sin esfuerzo para tonificar abdomen, glúteos, brazos o piernas.",
+      "hook": "Tonifica mientras estás tumbada/o",
+      "icon": "body",
+      "featured": false,
+      "whatIs": "El body sculpt es un tratamiento de remodelación corporal que provoca contracciones musculares intensas y repetidas mediante estimulación electromagnética o eléctrica, sin que tengas que hacer ningún esfuerzo. Ayuda a tonificar y definir zonas como abdomen, glúteos, brazos o muslos, y es un gran complemento del ejercicio y de los tratamientos de flacidez y grasa localizada.",
+      "mechanism": "El aplicador genera impulsos que llegan hasta el músculo y le hacen contraerse muchas más veces y de forma más intensa de lo que se consigue con un ejercicio voluntario en el mismo tiempo. El músculo responde adaptándose: mejora su tono y su firmeza, como tras un entrenamiento. Ese trabajo intenso aumenta el gasto energético de la zona y activa la circulación, lo que contribuye a una silueta más definida cuando se acompaña de buenos hábitos.",
+      "benefits": [
+        {
+          "title": "Tono muscular",
+          "text": "Ayuda a tonificar y reafirmar abdomen, glúteos, brazos o piernas."
+        },
+        {
+          "title": "Silueta más definida",
+          "text": "Mejora el aspecto de la zona combinado con hábitos saludables."
+        },
+        {
+          "title": "Sin esfuerzo",
+          "text": "Estás tumbada/o mientras el aparato trabaja el músculo."
+        },
+        {
+          "title": "Glúteos con más firmeza",
+          "text": "Trabaja la musculatura para un aspecto más elevado."
+        },
+        {
+          "title": "Complemento del deporte",
+          "text": "Ideal si entrenas y quieres un extra en una zona concreta."
+        },
+        {
+          "title": "Sin recuperación",
+          "text": "Puedes notar agujetas suaves, pero sigues tu día con normalidad."
+        }
+      ],
+      "idealFor": [
+        "Personas con peso estable que quieren tonificar zonas concretas",
+        "Abdomen con falta de tono tras el embarazo (con alta médica)",
+        "Glúteos, brazos o piernas con poca firmeza",
+        "Quien entrena y busca un extra de definición"
+      ],
+      "howItWorks": [
+        {
+          "title": "Consulta previa gratuita",
+          "text": "Valoramos zonas, objetivo y contraindicaciones."
+        },
+        {
+          "title": "Colocación",
+          "text": "Fijamos el aplicador sobre la zona con una banda."
+        },
+        {
+          "title": "Sesión",
+          "text": "El aparato genera contracciones intensas; ajustamos la intensidad a tu tolerancia."
+        },
+        {
+          "title": "Final",
+          "text": "Retiramos el aplicador y puedes seguir tu día."
+        }
+      ],
+      "duration": "30 min por zona",
+      "sessions": "Entre 6 y 8 sesiones, 2 por semana, y después mantenimiento mensual",
+      "results": "Se nota la zona trabajada desde la primera sesión. La mejora del tono y la definición es progresiva y suele apreciarse a partir de la 4.ª sesión. Los resultados varían según cada cuerpo y los hábitos.",
+      "painLevel": 1,
+      "aftercare": [
+        "Bebe agua después de la sesión",
+        "Es normal notar agujetas suaves al día siguiente",
+        "Mantén una alimentación rica en proteína y equilibrada",
+        "Combínalo con actividad física para potenciar y mantener el resultado",
+        "Respeta 48-72 horas de descanso entre sesiones de la misma zona"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Marcapasos, desfibrilador u otros dispositivos electrónicos implantados",
+        "Implantes metálicos o prótesis en la zona, DIU de cobre (abdomen)",
+        "Epilepsia",
+        "Hernias abdominales o cirugía reciente en la zona",
+        "Cáncer activo, fiebre o enfermedad cardiaca",
+        "Lesiones musculares recientes en la zona"
+      ],
+      "faq": [
+        {
+          "q": "¿Sustituye al gimnasio?",
+          "a": "No. Es un complemento que ayuda a tonificar zonas concretas; el ejercicio y la alimentación siguen siendo la base."
+        },
+        {
+          "q": "¿Qué se siente?",
+          "a": "Contracciones musculares intensas, como un entrenamiento muy concentrado. Ajustamos la intensidad en todo momento."
+        },
+        {
+          "q": "¿Puedo tratar varias zonas?",
+          "a": "Sí, en la misma cita o alternando días."
+        }
+      ],
+      "priceFrom": 50,
+      "prices": [
+        {
+          "label": "Body sculpt (1 zona) · 30 min",
+          "price": 50,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Body sculpt (2 zonas) · 60 min",
+          "price": 80,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Bono 8 sesiones (1 zona)",
+          "price": 350,
+          "oldPrice": 400,
+          "note": ""
+        }
+      ],
+      "priceNote": "Precio orientativo. [POR CONFIRMAR: modelo/funciones del aparato]",
+      "tags": [
+        "body sculpt",
+        "tonificación",
+        "músculo",
+        "glúteos",
+        "abdomen",
+        "corporal"
+      ],
+      "combinesWith": [
+        "radiofrecuencia-corporal",
+        "cavitacion",
+        "presoterapia",
+        "diatermia"
       ]
     },
     {
@@ -1715,7 +2377,8 @@
       "hook": "Tu plan corporal, diseñado para ti",
       "icon": "body",
       "featured": false,
-      "whatIs": "Es un protocolo personalizado que combina varias técnicas en una misma sesión: exfoliación, masaje, aparatología y productos reafirmantes o reductores. Lo adaptamos según si tu objetivo es mejorar la firmeza, la celulitis o el contorno.",
+      "whatIs": "Es un protocolo corporal personalizado que combina, en una misma sesión, exfoliación, técnicas manuales, aparatología y cosmética reafirmante o reductora. Según tu objetivo, elegimos entre radiofrecuencia corporal, cavitación, diatermia, roll systemic, body sculpt, maderoterapia o presoterapia, para trabajar la firmeza, la celulitis o el contorno con un plan y un seguimiento.",
+      "mechanism": "Cada técnica actúa sobre un nivel distinto del tejido. Las tecnologías de calor, como la radiofrecuencia o la diatermia, estimulan el colágeno y la elastina de la dermis; la cavitación actúa sobre la grasa localizada; las técnicas mecánicas y la presoterapia activan la microcirculación y el drenaje linfático, y la estimulación muscular trabaja el tono. Al combinarlas de forma ordenada, los efectos se suman y el resultado es más completo que con una técnica aislada.",
       "benefits": [
         {
           "title": "Todo en uno",
@@ -1727,11 +2390,15 @@
         },
         {
           "title": "Piel más firme y suave",
-          "text": "Ayuda a mejorar la textura y la tonicidad."
+          "text": "Ayuda a mejorar la textura, la tonicidad y el aspecto de la flacidez."
         },
         {
-          "title": "Seguimiento",
-          "text": "Medimos y comparamos para ver tu evolución."
+          "title": "Contorno y celulitis",
+          "text": "Trabajamos la grasa localizada y la retención según lo que necesites."
+        },
+        {
+          "title": "Seguimiento real",
+          "text": "Medimos y comparamos para ver tu evolución y ajustar el plan."
         },
         {
           "title": "Momento de bienestar",
@@ -1755,7 +2422,7 @@
         },
         {
           "title": "Tecnología o masaje",
-          "text": "Aplicamos la técnica adecuada a tu objetivo (radiofrecuencia, cavitación, madera…)."
+          "text": "Aplicamos la técnica adecuada a tu objetivo: radiofrecuencia, cavitación, diatermia, roll systemic, body sculpt o maderoterapia."
         },
         {
           "title": "Envoltura o mascarilla",
@@ -1772,9 +2439,10 @@
       "painLevel": 1,
       "aftercare": [
         "Hidrata la piel a diario con la cosmética recomendada",
-        "Bebe agua y cuida la alimentación",
-        "Haz ejercicio de forma regular",
-        "Evita el sol intenso justo después de la sesión"
+        "Bebe 1,5-2 litros de agua al día, sobre todo los días de sesión",
+        "Haz ejercicio de forma regular: potencia y mantiene los resultados",
+        "Reduce sal, azúcares y alcohol durante el plan",
+        "Evita el sol intenso, la sauna y los baños muy calientes justo después de la sesión"
       ],
       "contraindications": [
         "Embarazo y lactancia",
@@ -1825,6 +2493,12 @@
         "corporal",
         "flacidez",
         "celulitis"
+      ],
+      "combinesWith": [
+        "radiofrecuencia-corporal",
+        "body-sculpt",
+        "presoterapia",
+        "micropuntura-estrias"
       ]
     },
     {
@@ -1835,15 +2509,20 @@
       "hook": "Tu piel, limpia de verdad",
       "icon": "face",
       "featured": false,
-      "whatIs": "Es una limpieza facial completa que va más allá de la rutina de casa. Limpiamos, exfoliamos, abrimos los poros con vapor y extraemos puntos negros e impurezas. Terminamos con mascarilla e hidratación según tu tipo de piel.",
+      "whatIs": "Es una limpieza facial profesional que va mucho más allá de la rutina de casa. Limpiamos en profundidad, exfoliamos, abrimos los poros con vapor y extraemos puntos negros e impurezas de forma higiénica. Terminamos con una mascarilla y una hidratación adaptadas a tu tipo de piel. Es la base de cualquier rutina facial.",
+      "mechanism": "La piel se renueva continuamente y las células muertas, el sebo y la contaminación se acumulan en la superficie y dentro del poro. La exfoliación retira esa capa apagada y el vapor reblandece el contenido de los poros para que la extracción sea más limpia y menos agresiva. Con el poro despejado, la piel respira mejor, se reduce la aparición de imperfecciones y los activos posteriores penetran de forma más eficaz.",
       "benefits": [
         {
           "title": "Poros más limpios",
-          "text": "Retiramos puntos negros e impurezas acumuladas."
+          "text": "Retiramos puntos negros, sebo e impurezas acumuladas."
         },
         {
           "title": "Piel luminosa",
-          "text": "La exfoliación elimina células muertas y aporta brillo."
+          "text": "La exfoliación elimina células muertas y devuelve el brillo."
+        },
+        {
+          "title": "Menos imperfecciones",
+          "text": "Ayuda a prevenir granitos y a equilibrar las pieles grasas."
         },
         {
           "title": "Mejor absorción",
@@ -1855,7 +2534,7 @@
         },
         {
           "title": "Ideal para empezar",
-          "text": "Es la base de cualquier rutina facial."
+          "text": "Prepara la piel para tratamientos con aparatología."
         }
       ],
       "idealFor": [
@@ -1887,10 +2566,11 @@
       "results": "Piel más limpia y luminosa desde el primer día. Puede haber algo de rojez las primeras horas.",
       "painLevel": 1,
       "aftercare": [
-        "No te maquilles en las 12 horas siguientes",
-        "Evita el sol directo y usa SPF 50",
+        "No te maquilles en las 12 horas siguientes para que la piel respire",
+        "Evita el sol directo y usa SPF 50 a diario",
         "No toques ni aprietes granitos en casa",
-        "Mantén tu rutina de limpieza e hidratación"
+        "Evita exfoliantes, ácidos y retinol durante 48 h",
+        "Mantén tu rutina de limpieza mañana y noche, y cambia la funda de la almohada"
       ],
       "contraindications": [
         "Acné muy inflamado o con infección (valoramos antes)",
@@ -1940,6 +2620,11 @@
         "puntos negros",
         "poros",
         "piel"
+      ],
+      "combinesWith": [
+        "hidrafacial",
+        "punta-diamante",
+        "facial-hidratante-antiedad"
       ]
     },
     {
@@ -1950,19 +2635,24 @@
       "hook": "Efecto buena cara, con tecnología",
       "icon": "glow",
       "featured": false,
-      "whatIs": "Es un tratamiento facial que combina cosmética de alta calidad con aparatología, como radiofrecuencia facial, ultrasonidos o electroporación, para que los activos lleguen mejor a la piel. Lo adaptamos para hidratar en profundidad o trabajar líneas de expresión y firmeza.",
+      "whatIs": "Es un tratamiento facial a medida que combina cosmética profesional con la aparatología del centro: hidrafacial (hidrodermoabrasión) para limpiar e hidratar en profundidad, punta de diamante para renovar la textura, radiofrecuencia facial para trabajar la firmeza y el equipo multifunción facial para potenciar cada paso. Lo enfocamos a hidratar y dar luz o a tratar líneas de expresión y pérdida de firmeza.",
+      "mechanism": "Con los años, el ritmo de renovación celular se ralentiza y la producción de colágeno y elastina disminuye de forma natural, aproximadamente desde los 25 años; por eso la piel pierde agua, luz y firmeza. La exfoliación (hidrodermoabrasión o punta de diamante) acelera la renovación y prepara la piel para recibir los activos hidratantes. La radiofrecuencia aporta un calor controlado en la dermis que estimula a los fibroblastos a producir nuevo colágeno, mientras que los sérums con ácido hialurónico ayudan a retener agua en la epidermis.",
       "benefits": [
         {
           "title": "Hidratación profunda",
-          "text": "La piel se ve más jugosa y descansada."
+          "text": "La piel se ve más jugosa, elástica y descansada."
         },
         {
           "title": "Más firmeza",
-          "text": "La radiofrecuencia ayuda a estimular el colágeno."
+          "text": "La radiofrecuencia ayuda a estimular el colágeno y la elastina."
         },
         {
           "title": "Líneas más suaves",
           "text": "Mejora el aspecto de las líneas finas de expresión."
+        },
+        {
+          "title": "Textura más fina",
+          "text": "La exfoliación deja una piel más lisa y uniforme."
         },
         {
           "title": "Efecto flash",
@@ -1982,15 +2672,15 @@
       "howItWorks": [
         {
           "title": "Limpieza y diagnóstico",
-          "text": "Limpiamos y vemos qué necesita tu piel."
+          "text": "Limpiamos y analizamos qué necesita tu piel hoy."
         },
         {
-          "title": "Exfoliación suave",
-          "text": "Preparamos la piel para recibir los activos."
+          "title": "Exfoliación",
+          "text": "Hidrodermoabrasión o punta de diamante, según tu piel, para retirar células muertas y preparar."
         },
         {
-          "title": "Aparatología",
-          "text": "Aplicamos la tecnología adecuada junto a sérums específicos."
+          "title": "Aparatología y activos",
+          "text": "Radiofrecuencia facial o equipo multifunción junto a sérums específicos."
         },
         {
           "title": "Mascarilla y masaje",
@@ -2002,9 +2692,11 @@
       "results": "La piel se ve más luminosa al terminar. Los cambios en firmeza y textura suelen ser progresivos y varían según cada piel.",
       "painLevel": 0,
       "aftercare": [
-        "Usa protector solar a diario",
-        "Mantén la hidratación en casa con productos adecuados",
-        "Evita sauna y deporte intenso las primeras horas"
+        "Usa protector solar SPF 50 a diario, también en invierno",
+        "Mantén la hidratación en casa con los productos recomendados",
+        "Evita maquillarte en las 6-12 horas siguientes",
+        "Evita sauna, sol intenso y deporte intenso las primeras 24 h",
+        "No uses exfoliantes, ácidos ni retinol durante 48-72 h"
       ],
       "contraindications": [
         "Embarazo (según la tecnología)",
@@ -2020,7 +2712,7 @@
         },
         {
           "q": "¿Qué aparatos usáis?",
-          "a": "Depende de tu piel. Te lo explicamos en la consulta previa."
+          "a": "Combinamos hidrafacial (hidrodermoabrasión), punta de diamante, radiofrecuencia facial y nuestro equipo multifunción facial. En la consulta previa elegimos los más adecuados para tu piel."
         },
         {
           "q": "¿Puedo maquillarme después?",
@@ -2048,13 +2740,548 @@
           "note": ""
         }
       ],
-      "priceNote": "Precio orientativo. [POR DEFINIR: confirmar aparatos disponibles en el centro]",
+      "priceNote": "Precio orientativo",
       "tags": [
         "facial",
         "hidratante",
         "antiedad",
         "radiofrecuencia",
         "luminosidad"
+      ],
+      "combinesWith": [
+        "radiofrecuencia-facial",
+        "hidrafacial",
+        "microneedling-dermapen"
+      ]
+    },
+    {
+      "id": "hidrafacial",
+      "category": "facial",
+      "name": "Hidrafacial (hidrodermoabrasión)",
+      "short": "Limpieza, exfoliación, extracción e hidratación en una sola sesión. Piel luminosa al momento y sin rojeces.",
+      "hook": "Tu piel, limpia y jugosa en una sola sesión",
+      "icon": "glow",
+      "featured": false,
+      "whatIs": "La hidrodermoabrasión es un tratamiento facial que limpia, exfolia, extrae impurezas e hidrata la piel en una misma sesión. Un cabezal con punta especial combina una succión suave con la aplicación continua de sérums, así que la piel se renueva mientras se va nutriendo. Es apto para casi todo tipo de pieles, no necesita tiempo de recuperación y deja un efecto «buena cara» inmediato.",
+      "mechanism": "La primera fase retira las células muertas de la capa córnea, la más superficial, que apagan el tono y obstruyen los poros. A continuación, la succión controlada ayuda a extraer sebo e impurezas del interior del poro sin la presión de una extracción manual. Al mismo tiempo, el cabezal infunde sérums con activos hidratantes y antioxidantes, como el ácido hialurónico, que penetran mejor en una piel recién exfoliada. El resultado es una barrera cutánea más hidratada, una superficie más lisa y una piel que refleja mejor la luz.",
+      "benefits": [
+        {
+          "title": "Luminosidad inmediata",
+          "text": "La piel refleja mejor la luz desde el primer momento."
+        },
+        {
+          "title": "Poros más limpios",
+          "text": "La succión ayuda a retirar sebo, puntos negros e impurezas."
+        },
+        {
+          "title": "Hidratación profunda",
+          "text": "Los sérums se aplican durante todo el tratamiento, no solo al final."
+        },
+        {
+          "title": "Textura más fina",
+          "text": "La exfoliación suave deja una superficie más lisa y uniforme."
+        },
+        {
+          "title": "Sin tiempo de recuperación",
+          "text": "Puedes maquillarte al día siguiente y seguir tu rutina."
+        },
+        {
+          "title": "Apto para casi todas las pieles",
+          "text": "Grasa, mixta, seca o apagada; valoramos las sensibles antes."
+        }
+      ],
+      "idealFor": [
+        "Pieles apagadas, deshidratadas o con poros visibles",
+        "Pieles grasas o mixtas con tendencia a puntos negros",
+        "Quien quiere un efecto flash antes de un evento",
+        "Como mantenimiento mensual de la piel",
+        "Preparar la piel antes de tratamientos antiedad"
+      ],
+      "howItWorks": [
+        {
+          "title": "Diagnóstico y limpieza",
+          "text": "Analizamos tu piel y retiramos maquillaje y suciedad superficial."
+        },
+        {
+          "title": "Exfoliación",
+          "text": "El cabezal renueva la capa superficial mientras aplica una solución exfoliante suave."
+        },
+        {
+          "title": "Extracción",
+          "text": "Una succión controlada ayuda a vaciar los poros de sebo e impurezas."
+        },
+        {
+          "title": "Hidratación y activos",
+          "text": "Infundimos sérums hidratantes y antioxidantes adaptados a tu piel."
+        },
+        {
+          "title": "Acabado",
+          "text": "Terminamos con mascarilla o sérum final y protección solar."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Una sesión puntual para un efecto flash, o 4-6 sesiones cada 2-4 semanas y después mantenimiento mensual",
+      "results": "La piel se ve más limpia, luminosa e hidratada al terminar. Con sesiones regulares, la textura y el aspecto de los poros mejoran de forma progresiva. Los resultados varían según cada piel.",
+      "painLevel": 0,
+      "aftercare": [
+        "Evita maquillarte durante las 6-12 horas siguientes para que la piel aproveche los activos",
+        "Usa protector solar SPF 50 a diario",
+        "No uses exfoliantes, ácidos ni retinol durante 48 h",
+        "Evita sauna, piscina y sol intenso las primeras 24 h",
+        "Mantén la hidratación en casa con la cosmética recomendada"
+      ],
+      "contraindications": [
+        "Herpes activo, heridas o infecciones en la cara",
+        "Rosácea muy inflamada o dermatitis activa",
+        "Quemaduras solares recientes",
+        "Tratamiento con isotretinoína en los últimos 6 meses",
+        "Peelings químicos medios o láser en las 2 semanas anteriores",
+        "Alergia conocida a algún componente de los sérums"
+      ],
+      "faq": [
+        {
+          "q": "¿Qué diferencia hay con una higiene facial?",
+          "a": "La higiene facial clásica incluye vapor y extracción manual. La hidrodermoabrasión limpia, extrae e hidrata con el aparato, de forma más suave y sin marcas, y aporta más hidratación."
+        },
+        {
+          "q": "¿Deja la piel roja?",
+          "a": "Normalmente no. Puede aparecer un ligero rubor que desaparece en poco tiempo."
+        },
+        {
+          "q": "¿Cada cuánto puedo hacerlo?",
+          "a": "Como mantenimiento, una vez al mes acompaña el ciclo natural de renovación de la piel. En un tratamiento intensivo, cada 2-4 semanas."
+        },
+        {
+          "q": "¿Es lo mismo que la marca Hydrafacial®?",
+          "a": "Hydrafacial® es una marca registrada de un aparato concreto. El tratamiento genérico se llama hidrodermoabrasión; en la consulta te explicamos el equipo que utilizamos."
+        }
+      ],
+      "priceFrom": 50,
+      "prices": [
+        {
+          "label": "Hidrafacial express · 45 min",
+          "price": 50,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Hidrafacial completo con mascarilla · 60 min",
+          "price": 65,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Bono 4 sesiones completas",
+          "price": 230,
+          "oldPrice": 260,
+          "note": ""
+        }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": [
+        "hidrafacial",
+        "hidrodermoabrasión",
+        "limpieza facial",
+        "hidratación",
+        "luminosidad",
+        "poros"
+      ],
+      "combinesWith": [
+        "radiofrecuencia-facial",
+        "higiene-facial",
+        "lifting-pestanas",
+        "bb-glow"
+      ]
+    },
+    {
+      "id": "punta-diamante",
+      "category": "facial",
+      "name": "Punta de diamante (microdermoabrasión)",
+      "short": "Exfoliación mecánica de precisión que renueva la piel, afina la textura y aporta luz desde la primera sesión.",
+      "hook": "Renueva tu piel capa a capa",
+      "icon": "sparkle",
+      "featured": false,
+      "whatIs": "La punta de diamante es una técnica de microdermoabrasión: un cabezal con superficie de micropartículas de diamante exfolia la piel de forma controlada mientras un sistema de aspiración retira las células muertas. Afina la textura, mejora la luminosidad y deja la piel preparada para que los tratamientos y la cosmética posteriores sean más eficaces.",
+      "mechanism": "La exfoliación mecánica retira de forma uniforme las capas más externas de la capa córnea, formada por células muertas que vuelven la piel áspera y opaca. La aspiración, además de recoger esos residuos, crea un leve efecto de succión que activa la microcirculación de la zona. Ese estímulo superficial envía a la piel una señal de renovación: se acelera el recambio celular y, con sesiones regulares, la superficie se ve más lisa, uniforme y luminosa.",
+      "benefits": [
+        {
+          "title": "Piel más lisa",
+          "text": "Reduce la aspereza y afina la textura."
+        },
+        {
+          "title": "Luminosidad",
+          "text": "Al retirar células muertas, el tono se ve más uniforme y con brillo."
+        },
+        {
+          "title": "Poros más limpios",
+          "text": "Ayuda a despejar el poro y a reducir puntos negros."
+        },
+        {
+          "title": "Mejora marcas leves",
+          "text": "Contribuye a suavizar el aspecto de pequeñas marcas y manchas superficiales."
+        },
+        {
+          "title": "Activos más eficaces",
+          "text": "Las cremas y sérums penetran mejor en una piel renovada."
+        },
+        {
+          "title": "Sin recuperación",
+          "text": "Exfoliación precisa sin químicos y con vuelta inmediata a tu rutina."
+        }
+      ],
+      "idealFor": [
+        "Pieles apagadas, ásperas o con textura irregular",
+        "Poros dilatados y piel grasa o mixta",
+        "Marcas leves de acné o manchas superficiales",
+        "Quien quiere preparar la piel para un tratamiento antiedad",
+        "También en escote, manos o codos ásperos"
+      ],
+      "howItWorks": [
+        {
+          "title": "Limpieza",
+          "text": "Retiramos maquillaje e impurezas y valoramos tu piel."
+        },
+        {
+          "title": "Microdermoabrasión",
+          "text": "Pasamos el cabezal de diamante con la intensidad adecuada para tu piel."
+        },
+        {
+          "title": "Calmar e hidratar",
+          "text": "Aplicamos un sérum o mascarilla calmante e hidratante."
+        },
+        {
+          "title": "Protección",
+          "text": "Terminamos con crema y protector solar."
+        }
+      ],
+      "duration": "40 – 50 min",
+      "sessions": "De 4 a 6 sesiones cada 15-21 días y después una de mantenimiento al mes",
+      "results": "La piel se nota más suave y luminosa al terminar. Las mejoras en textura y marcas superficiales son progresivas y dependen de cada piel.",
+      "painLevel": 1,
+      "aftercare": [
+        "Puede haber un leve enrojecimiento que desaparece en pocas horas",
+        "Usa SPF 50 a diario: la piel recién exfoliada es más sensible al sol",
+        "No uses exfoliantes, ácidos ni retinol durante 3-5 días",
+        "Evita sauna, piscina y sol directo durante 48 h",
+        "Hidrata la piel mañana y noche con productos suaves"
+      ],
+      "contraindications": [
+        "Acné inflamado, herpes activo o infecciones en la zona",
+        "Rosácea, cuperosis marcada o dermatitis activa",
+        "Quemaduras solares o piel muy bronceada",
+        "Tratamiento con isotretinoína en los últimos 6 meses",
+        "Peelings químicos o láser recientes",
+        "Piel muy fina o sensible: valoramos antes"
+      ],
+      "faq": [
+        {
+          "q": "¿Duele?",
+          "a": "No. Se nota como un roce con una ligera succión."
+        },
+        {
+          "q": "¿Qué diferencia hay con el hidrafacial?",
+          "a": "La punta de diamante es una exfoliación mecánica más intensa en textura. El hidrafacial exfolia de forma más suave e hidrata a la vez. Te recomendamos uno u otro según tu piel."
+        },
+        {
+          "q": "¿Puedo hacerla en verano?",
+          "a": "Sí, con protección solar alta y evitando tomar el sol los días posteriores."
+        }
+      ],
+      "priceFrom": 40,
+      "prices": [
+        {
+          "label": "Punta de diamante facial · 40 min",
+          "price": 40,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Higiene facial + punta de diamante · 75 min",
+          "price": 55,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Bono 5 sesiones",
+          "price": 175,
+          "oldPrice": 200,
+          "note": ""
+        }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": [
+        "punta de diamante",
+        "microdermoabrasión",
+        "exfoliación",
+        "textura",
+        "luminosidad"
+      ],
+      "combinesWith": [
+        "higiene-facial",
+        "multifuncion-facial",
+        "radiofrecuencia-facial"
+      ]
+    },
+    {
+      "id": "radiofrecuencia-facial",
+      "category": "facial",
+      "name": "Radiofrecuencia facial",
+      "short": "Calor controlado que estimula tu propio colágeno para una piel más firme, tersa y con mejor óvalo.",
+      "hook": "Despierta el colágeno de tu piel",
+      "icon": "device",
+      "featured": false,
+      "whatIs": "La radiofrecuencia facial es una tecnología que genera un calor suave y controlado en las capas profundas de la piel. Ese calor tensa las fibras de colágeno existentes y estimula la formación de colágeno nuevo, por lo que ayuda a mejorar la firmeza, la flacidez leve, las líneas finas y el contorno del óvalo facial. Es un tratamiento sin agujas, muy agradable y sin tiempo de recuperación.",
+      "mechanism": "A partir de los 25 años, aproximadamente, la piel produce cada año algo menos de colágeno y elastina, las proteínas que le dan firmeza y elasticidad. La energía de radiofrecuencia hace oscilar las moléculas de agua de la dermis y genera calor desde dentro, en torno a los 40 °C. Ese calor provoca una contracción inmediata de las fibras de colágeno (efecto tensor) y activa a los fibroblastos, las células que fabrican colágeno y elastina nuevos en las semanas siguientes. Además, la vasodilatación mejora la oxigenación y el aporte de nutrientes a la piel.",
+      "benefits": [
+        {
+          "title": "Más firmeza",
+          "text": "Ayuda a mejorar el aspecto de la flacidez leve o moderada."
+        },
+        {
+          "title": "Óvalo más definido",
+          "text": "Trabaja contorno mandibular, papada y cuello."
+        },
+        {
+          "title": "Líneas más suaves",
+          "text": "Mejora el aspecto de arrugas finas, patas de gallo y código de barras."
+        },
+        {
+          "title": "Estimula tu propio colágeno",
+          "text": "Activa la renovación natural de la dermis, sin rellenos."
+        },
+        {
+          "title": "Piel más luminosa",
+          "text": "El aumento de riego aporta un tono más vivo desde la primera sesión."
+        },
+        {
+          "title": "Sin agujas ni recuperación",
+          "text": "Sensación de calor agradable; vuelves a tu rutina al momento."
+        }
+      ],
+      "idealFor": [
+        "Pieles a partir de los 30 años que notan menos firmeza",
+        "Flacidez leve o moderada en óvalo, papada o cuello",
+        "Primeras arrugas y líneas de expresión",
+        "Quien busca una opción antiedad sin agujas",
+        "Como mantenimiento para prevenir la pérdida de firmeza"
+      ],
+      "howItWorks": [
+        {
+          "title": "Valoración",
+          "text": "Analizamos tu piel y definimos zonas y objetivo."
+        },
+        {
+          "title": "Limpieza",
+          "text": "Limpiamos la piel y aplicamos un medio conductor."
+        },
+        {
+          "title": "Radiofrecuencia",
+          "text": "Deslizamos el cabezal por zonas hasta alcanzar la temperatura adecuada, controlando siempre tu confort."
+        },
+        {
+          "title": "Acabado",
+          "text": "Masaje, sérum reafirmante y protección solar."
+        }
+      ],
+      "duration": "45 – 60 min",
+      "sessions": "Entre 6 y 8 sesiones, una por semana o cada 15 días, y luego mantenimiento mensual",
+      "results": "Tras la sesión la piel se ve más tersa y luminosa. La mejora de firmeza es progresiva: el colágeno nuevo se forma en las semanas siguientes, por eso suele apreciarse más a partir de la 3.ª-4.ª sesión. Los resultados varían según cada piel.",
+      "painLevel": 0,
+      "aftercare": [
+        "Puede quedar un leve enrojecimiento y calor durante una o dos horas",
+        "Bebe agua y mantén la piel bien hidratada",
+        "Usa protector solar SPF 50 a diario",
+        "Evita sauna, baños muy calientes y sol intenso las primeras 24 h",
+        "Acompaña el tratamiento con un sérum antioxidante o reafirmante en casa"
+      ],
+      "contraindications": [
+        "Embarazo y lactancia",
+        "Marcapasos u otros dispositivos electrónicos implantados",
+        "Implantes metálicos o prótesis en la zona",
+        "Rellenos o hilos tensores recientes: avísanos para valorar plazos",
+        "Cáncer activo o reciente",
+        "Heridas, herpes activo, infecciones o alteraciones de la sensibilidad en la zona"
+      ],
+      "faq": [
+        {
+          "q": "¿Duele?",
+          "a": "No. Se nota un calor profundo y agradable que regulamos en todo momento."
+        },
+        {
+          "q": "¿Desde qué edad se recomienda?",
+          "a": "Como prevención, a partir de los 30 aproximadamente; para flacidez leve o moderada, en cualquier edad adulta."
+        },
+        {
+          "q": "¿Puedo hacerlo si me he puesto ácido hialurónico o bótox?",
+          "a": "Sí, pero conviene respetar unas semanas desde la infiltración. Avísanos en la consulta."
+        },
+        {
+          "q": "¿Cuánto dura el efecto?",
+          "a": "El colágeno nuevo dura meses, pero el envejecimiento continúa, por eso recomendamos mantenimiento."
+        }
+      ],
+      "priceFrom": 50,
+      "prices": [
+        {
+          "label": "Radiofrecuencia facial · rostro · 45 min",
+          "price": 50,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Rostro, cuello y escote · 60 min",
+          "price": 60,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Bono 6 sesiones rostro",
+          "price": 270,
+          "oldPrice": 300,
+          "note": ""
+        }
+      ],
+      "priceNote": "Precio orientativo",
+      "tags": [
+        "radiofrecuencia",
+        "colágeno",
+        "flacidez",
+        "antiedad",
+        "firmeza",
+        "óvalo"
+      ],
+      "combinesWith": [
+        "hidrafacial",
+        "multifuncion-facial",
+        "microneedling-dermapen",
+        "facial-hidratante-antiedad"
+      ]
+    },
+    {
+      "id": "multifuncion-facial",
+      "category": "facial",
+      "name": "Tratamiento facial multifunción",
+      "short": "Un equipo con varios cabezales para limpiar, purificar, oxigenar y nutrir la piel en un protocolo a medida.",
+      "hook": "Varias tecnologías, un solo facial a tu medida",
+      "icon": "device",
+      "featured": false,
+      "whatIs": "Es un tratamiento que utiliza un equipo facial multifunción: un aparato que reúne varios cabezales y técnicas en uno. Según lo que necesite tu piel ese día, combinamos funciones de limpieza profunda, exfoliación, aspiración, efecto purificante y aplicación de activos en un mismo protocolo. Es muy versátil: sirve tanto para pieles grasas con impurezas como para pieles apagadas que necesitan luz y nutrición.",
+      "mechanism": "Cada función del equipo actúa sobre una necesidad distinta. Las funciones de limpieza y desincrustación ayudan a disolver el sebo y la suciedad que obstruyen el poro; la aspiración activa la microcirculación y ayuda a extraer impurezas; la alta frecuencia, si el equipo la incluye, aporta un efecto purificante y oxigenante muy útil en pieles con tendencia acneica; y las corrientes suaves de vehiculización facilitan que los activos penetren mejor. Al encadenarlas en el orden adecuado, la piel queda limpia, equilibrada y receptiva.",
+      "benefits": [
+        {
+          "title": "Protocolo a medida",
+          "text": "Elegimos las funciones según tu piel y tu objetivo de cada sesión."
+        },
+        {
+          "title": "Limpieza profunda",
+          "text": "Ayuda a despejar poros y reducir puntos negros."
+        },
+        {
+          "title": "Piel equilibrada",
+          "text": "Muy indicado para pieles grasas, mixtas o con imperfecciones."
+        },
+        {
+          "title": "Más luminosidad",
+          "text": "Activa la microcirculación y la piel se ve más oxigenada."
+        },
+        {
+          "title": "Activos que penetran mejor",
+          "text": "Los sérums aprovechan el efecto del aparato."
+        },
+        {
+          "title": "Cómodo y sin recuperación",
+          "text": "Un facial agradable que puedes hacer en tu hora libre."
+        }
+      ],
+      "idealFor": [
+        "Pieles grasas, mixtas o con tendencia a imperfecciones",
+        "Pieles apagadas o con poros visibles",
+        "Quien quiere un facial completo con tecnología a buen precio",
+        "Mantenimiento entre tratamientos más intensivos"
+      ],
+      "howItWorks": [
+        {
+          "title": "Diagnóstico",
+          "text": "Valoramos tu piel y elegimos las funciones del equipo."
+        },
+        {
+          "title": "Limpieza y exfoliación",
+          "text": "Preparamos la piel para el tratamiento."
+        },
+        {
+          "title": "Fase de aparatología",
+          "text": "Aplicamos los cabezales seleccionados en el orden adecuado."
+        },
+        {
+          "title": "Activos y mascarilla",
+          "text": "Sérums y mascarilla según tu tipo de piel."
+        },
+        {
+          "title": "Acabado",
+          "text": "Hidratación y protección solar."
+        }
+      ],
+      "duration": "50 – 60 min",
+      "sessions": "Una sesión cada 2-4 semanas, o un ciclo de 4-6 sesiones según el objetivo",
+      "results": "La piel se nota más limpia y luminosa al terminar. Con sesiones regulares, mejora el equilibrio de la piel y el aspecto de los poros. Los resultados varían según cada piel.",
+      "painLevel": 0,
+      "aftercare": [
+        "Evita maquillarte en las 6-12 horas siguientes",
+        "Usa SPF 50 a diario",
+        "No toques ni aprietes granitos en casa",
+        "Evita exfoliantes y ácidos durante 48 h",
+        "Mantén una rutina de limpieza e hidratación adaptada a tu piel"
+      ],
+      "contraindications": [
+        "Embarazo (según las funciones utilizadas)",
+        "Marcapasos u otros dispositivos electrónicos implantados",
+        "Implantes metálicos en la cara",
+        "Epilepsia",
+        "Heridas, herpes activo o infecciones en la zona",
+        "Rosácea o dermatitis activa: valoramos antes"
+      ],
+      "faq": [
+        {
+          "q": "¿Qué funciones tiene el aparato?",
+          "a": "Depende del protocolo de cada día. En la consulta te explicamos qué cabezales usaremos y por qué."
+        },
+        {
+          "q": "¿En qué se diferencia de la higiene facial?",
+          "a": "La higiene facial se basa en la extracción manual. Aquí la tecnología hace gran parte del trabajo de limpieza y potencia los activos."
+        },
+        {
+          "q": "¿Es apto para pieles sensibles?",
+          "a": "Muchas funciones sí, adaptando la intensidad. Lo valoramos antes."
+        }
+      ],
+      "priceFrom": 45,
+      "prices": [
+        {
+          "label": "Facial multifunción · 50-60 min",
+          "price": 45,
+          "oldPrice": null,
+          "note": ""
+        },
+        {
+          "label": "Bono 5 sesiones",
+          "price": 200,
+          "oldPrice": 225,
+          "note": ""
+        }
+      ],
+      "priceNote": "Precio orientativo. [POR CONFIRMAR: modelo/funciones del aparato]",
+      "tags": [
+        "facial",
+        "multifunción",
+        "aparatología",
+        "limpieza",
+        "poros",
+        "luminosidad"
+      ],
+      "combinesWith": [
+        "punta-diamante",
+        "radiofrecuencia-facial",
+        "higiene-facial"
       ]
     },
     {
@@ -2065,7 +3292,8 @@
       "hook": "Renueva tu piel desde dentro",
       "icon": "needle",
       "featured": true,
-      "whatIs": "El Dermapen es un dispositivo con microagujas muy finas que crean pequeños canales en la piel. La piel responde reparándose y produciendo más colágeno. A la vez, aprovechamos esos canales para aplicar sérums que penetran mucho mejor.",
+      "whatIs": "El Dermapen es un dispositivo con microagujas muy finas que crea microcanales controlados en la piel. La piel responde activando sus mecanismos naturales de reparación y produciendo más colágeno y elastina. A la vez, aprovechamos esos canales para aplicar sérums específicos que penetran mucho mejor que en superficie.",
+      "mechanism": "Cada microcanal es una pequeña lesión controlada que la piel interpreta como una señal de reparación. Se liberan factores de crecimiento que activan a los fibroblastos, y en las semanas siguientes se forma colágeno nuevo y mejor organizado; por eso la mejora es progresiva. Los microcanales permanecen abiertos durante un tiempo breve y permiten que activos como el ácido hialurónico o los péptidos lleguen a capas más profundas.",
       "benefits": [
         {
           "title": "Mejor textura",
@@ -2078,6 +3306,10 @@
         {
           "title": "Marcas de acné",
           "text": "Mejora el aspecto de pequeñas cicatrices y marcas."
+        },
+        {
+          "title": "Estimula el colágeno",
+          "text": "Activa la regeneración natural de la piel, sesión a sesión."
         },
         {
           "title": "Más luminosidad",
@@ -2117,11 +3349,12 @@
       "results": "La piel se ve más luminosa tras unos días. Los cambios en textura y marcas son progresivos y suelen apreciarse mejor a partir de la 2ª-3ª sesión. Varía según cada piel.",
       "painLevel": 2,
       "aftercare": [
-        "La piel estará rojiza 24-48 h, como tras un día de sol",
+        "La piel estará rojiza 24-48 h, como tras un día de sol: es parte del proceso",
         "No te maquilles en las 24 h siguientes",
         "Evita sol, sauna, piscina y deporte intenso 48-72 h",
         "Usa SPF 50 a diario y la cosmética calmante recomendada",
-        "No uses ácidos ni retinol durante 5-7 días"
+        "No uses ácidos ni retinol durante 5-7 días",
+        "Lava la cara con agua templada y un limpiador suave, sin frotar"
       ],
       "contraindications": [
         "Embarazo y lactancia",
@@ -2183,6 +3416,11 @@
         "colágeno",
         "poros",
         "marcas de acné"
+      ],
+      "combinesWith": [
+        "hidrafacial",
+        "radiofrecuencia-facial",
+        "bb-glow"
       ]
     },
     {
@@ -2193,7 +3431,8 @@
       "hook": "Despierta con efecto maquillaje natural",
       "icon": "glow",
       "featured": true,
-      "whatIs": "Es un tratamiento que combina microneedling muy superficial con un sérum con pigmento del color de tu piel. El resultado es un tono más uniforme y luminoso, parecido a llevar una BB cream ligera, que se va atenuando poco a poco con las semanas.",
+      "whatIs": "Es un tratamiento que combina microneedling muy superficial con un sérum con pigmento del color de tu piel y activos nutritivos. El resultado es un tono más uniforme y luminoso, parecido a llevar una BB cream ligera, que se va atenuando poco a poco con las semanas.",
+      "mechanism": "El microneedling superficial abre microcanales en la capa más externa de la piel, por donde el sérum pigmentado y los activos se depositan de forma homogénea. El pigmento unifica visualmente el tono, mientras que el pequeño estímulo de las microagujas favorece la renovación celular y la luminosidad. Como la piel se renueva de forma continua, el color se va atenuando de manera progresiva.",
       "benefits": [
         {
           "title": "Tono más uniforme",
@@ -2214,6 +3453,10 @@
         {
           "title": "Natural",
           "text": "Elegimos el tono exacto para que el resultado sea discreto."
+        },
+        {
+          "title": "Temporal y progresivo",
+          "text": "Se va atenuando con las semanas, sin compromiso permanente."
         }
       ],
       "idealFor": [
@@ -2247,8 +3490,9 @@
       "aftercare": [
         "No mojes ni maquilles la cara en las primeras 24 h",
         "Evita sol, sauna y deporte intenso 48-72 h",
-        "Usa SPF 50 todos los días",
-        "No uses exfoliantes, ácidos ni retinol durante una semana"
+        "Usa SPF 50 todos los días para mantener el tono uniforme",
+        "No uses exfoliantes, ácidos ni retinol durante una semana",
+        "Limpia la piel con suavidad, sin frotar, con un limpiador suave"
       ],
       "contraindications": [
         "Embarazo y lactancia",
@@ -2303,6 +3547,11 @@
         "tono",
         "sin maquillaje",
         "facial"
+      ],
+      "combinesWith": [
+        "hidrafacial",
+        "microneedling-dermapen",
+        "bb-lips"
       ]
     },
     {
@@ -2313,7 +3562,8 @@
       "hook": "Labios con color, sin pintalabios",
       "icon": "lips",
       "featured": false,
-      "whatIs": "Es la versión del BB Glow para labios. Con microneedling muy superficial introducimos un pigmento suave que devuelve el color y define el contorno. Además, los labios se ven más hidratados. No es un relleno ni un tatuaje.",
+      "whatIs": "Es la versión del BB Glow para labios. Mediante microneedling muy superficial introducimos un pigmento suave que devuelve el color natural y define el contorno, junto con activos que aportan hidratación. No es un relleno ni un tatuaje: es un efecto temporal y natural.",
+      "mechanism": "Las microagujas crean canales muy superficiales por los que el pigmento y los activos hidratantes se depositan de forma uniforme en el labio. El color unifica tonos pálidos o desiguales y marca el contorno. Al ser tan superficial, el pigmento se va atenuando con la renovación natural de la mucosa, por lo que se retoca cuando el color baja.",
       "benefits": [
         {
           "title": "Color natural",
@@ -2334,6 +3584,10 @@
         {
           "title": "Temporal",
           "text": "Se va atenuando poco a poco, sin compromiso permanente."
+        },
+        {
+          "title": "Resultado discreto",
+          "text": "Elegimos el tono que armoniza con tu piel."
         }
       ],
       "idealFor": [
@@ -2367,8 +3621,9 @@
       "aftercare": [
         "Aplica el bálsamo reparador varias veces al día",
         "No te pintes los labios ni comas muy picante o caliente las primeras 24-48 h",
+        "Bebe con pajita el primer día si notas sensibilidad",
         "Evita besos intensos, sol y piscina unos días",
-        "No arranques pielecitas si aparecen"
+        "No arranques pielecitas si aparecen: se desprenden solas"
       ],
       "contraindications": [
         "Herpes labial activo o frecuente (consulta antes, puede necesitar tratamiento previo)",
@@ -2419,6 +3674,10 @@
         "color",
         "hidratación",
         "facial"
+      ],
+      "combinesWith": [
+        "bb-glow",
+        "lifting-pestanas"
       ]
     },
     {
@@ -2429,7 +3688,8 @@
       "hook": "Una nueva oportunidad para tus estrías",
       "icon": "needle",
       "featured": false,
-      "whatIs": "La micropuntura brasileña es una técnica manual y de mucha precisión. Con una aguja muy fina se trabaja punto a punto dentro de cada estría, junto a un activo regenerador. Esto genera una pequeña inflamación controlada que 'despierta' la piel para que produzca colágeno y elastina, y así la estría se va rellenando y repigmentando. A diferencia de los aparatos, actúa solo sobre la estría y no sobre la piel sana.",
+      "whatIs": "La micropuntura brasileña es una técnica manual de gran precisión. Con una aguja muy fina se trabaja punto a punto dentro de cada estría, junto a un activo regenerador. Así se genera una inflamación controlada que «despierta» la piel para que produzca colágeno y elastina, y la estría se va rellenando y repigmentando. A diferencia de los aparatos, actúa solo sobre la estría y respeta la piel sana.",
+      "mechanism": "Una estría es una rotura de las fibras de colágeno y elastina de la dermis, que deja una zona más fina, hundida y sin pigmento. La micropuntura provoca microlesiones dentro de la estría que activan la cascada de reparación: llegan células y factores de crecimiento, los fibroblastos producen nuevas fibras y los melanocitos pueden repigmentar la zona. Por eso la mejora es progresiva y se necesitan semanas entre sesiones para que la piel se regenere.",
       "benefits": [
         {
           "title": "Funciona en estrías blancas",
@@ -2445,7 +3705,11 @@
         },
         {
           "title": "Estimula tu propia piel",
-          "text": "Activa la producción natural de colágeno."
+          "text": "Activa la producción natural de colágeno y elastina."
+        },
+        {
+          "title": "Resultados progresivos",
+          "text": "La piel sigue mejorando en las semanas posteriores a cada sesión."
         },
         {
           "title": "Más seguridad contigo",
@@ -2485,7 +3749,8 @@
         "Pueden salir pequeñas costritas: no las arranques",
         "Evita sol, piscina, playa y sauna durante al menos 15 días",
         "Usa ropa holgada y la crema regeneradora recomendada",
-        "Protege la zona con SPF 50 durante todo el tratamiento"
+        "Protege la zona con SPF 50 durante todo el tratamiento",
+        "No uses exfoliantes ni cremas con ácidos en la zona hasta la siguiente valoración"
       ],
       "contraindications": [
         "Embarazo y lactancia",
@@ -2557,6 +3822,11 @@
         "estrías blancas",
         "colágeno",
         "corporal"
+      ],
+      "combinesWith": [
+        "radiofrecuencia-corporal",
+        "tratamiento-corporal-reafirmante",
+        "micropuntura-cicatrices"
       ]
     },
     {
@@ -2567,7 +3837,8 @@
       "hook": "Suaviza las marcas que te acompañan",
       "icon": "needle",
       "featured": false,
-      "whatIs": "Aplicamos la técnica de micropuntura brasileña sobre la cicatriz. Con una aguja muy fina y un activo regenerador, trabajamos punto a punto para que la piel se reorganice y produzca colágeno nuevo. Así, poco a poco, la cicatriz se ve más plana, suave e integrada con la piel de alrededor.",
+      "whatIs": "Aplicamos la técnica de micropuntura brasileña sobre la cicatriz. Con una aguja muy fina y un activo regenerador trabajamos punto a punto para que la piel se reorganice y produzca colágeno nuevo. Así, poco a poco, la cicatriz se ve más plana, suave e integrada con la piel de alrededor.",
+      "mechanism": "En una cicatriz, el colágeno se ha formado de manera desordenada y la zona puede quedar hundida, rígida o sin color. Las microperforaciones controladas rompen parte de ese tejido fibroso y reactivan la reparación: los fibroblastos generan colágeno nuevo, más organizado, y la superficie se va nivelando. El activo regenerador acompaña ese proceso y la mejora continúa en las semanas posteriores a cada sesión.",
       "benefits": [
         {
           "title": "Menos relieve",
@@ -2576,6 +3847,10 @@
         {
           "title": "Color más uniforme",
           "text": "Mejora el tono de cicatrices blancas o rosadas."
+        },
+        {
+          "title": "Tejido más flexible",
+          "text": "La cicatriz se nota más suave al tacto."
         },
         {
           "title": "Precisión total",
@@ -2622,7 +3897,8 @@
         "Rojez e inflamación unos días: es normal",
         "No arranques las costritas",
         "Evita sol, piscina y sauna al menos 15 días",
-        "Usa la crema regeneradora y SPF 50 a diario"
+        "Usa la crema regeneradora y SPF 50 a diario",
+        "No maquilles la zona hasta que esté totalmente cerrada"
       ],
       "contraindications": [
         "Cicatrices queloides o hipertróficas (en relieve)",
@@ -2680,6 +3956,11 @@
         "acné",
         "marcas",
         "regeneración"
+      ],
+      "combinesWith": [
+        "micropuntura-estrias",
+        "microneedling-dermapen",
+        "radiofrecuencia-facial"
       ]
     },
     {
@@ -2690,7 +3971,8 @@
       "hook": "Dale un empujón a tu pelo",
       "icon": "hair",
       "featured": false,
-      "whatIs": "Es la técnica de micropuntura aplicada al cuero cabelludo. Con microperforaciones controladas en las zonas con menos pelo, estimulamos la circulación y los folículos, y aplicamos activos capilares que penetran mejor. El objetivo es ayudar a fortalecer el cabello y favorecer su crecimiento.",
+      "whatIs": "Es la técnica de micropuntura aplicada al cuero cabelludo. Con microperforaciones controladas en las zonas con menos densidad estimulamos la circulación y los folículos, y aplicamos activos capilares que penetran mejor. El objetivo es ayudar a fortalecer el cabello y favorecer su crecimiento en mejores condiciones.",
+      "mechanism": "El folículo piloso necesita un buen aporte de sangre y nutrientes para producir un cabello fuerte. Las microperforaciones aumentan el riego en la zona y activan la liberación de factores de crecimiento, un entorno que favorece la actividad del folículo. Además, abren vías temporales para que los activos capilares lleguen hasta la raíz en lugar de quedarse en la superficie.",
       "benefits": [
         {
           "title": "Estimula los folículos",
@@ -2703,6 +3985,10 @@
         {
           "title": "Activos que llegan a la raíz",
           "text": "Los productos capilares penetran mucho mejor."
+        },
+        {
+          "title": "Mejor riego del cuero cabelludo",
+          "text": "Más aporte de nutrientes al folículo."
         },
         {
           "title": "Menos caída",
@@ -2745,7 +4031,8 @@
         "No te laves el pelo en las 24 h siguientes",
         "Evita tintes, decoloraciones y productos agresivos durante una semana",
         "Evita el sol directo en la cabeza, sauna y piscina unos días",
-        "No rasques la zona"
+        "No rasques la zona",
+        "Usa un champú suave y el tratamiento capilar recomendado en casa"
       ],
       "contraindications": [
         "Infecciones, heridas o dermatitis activa en el cuero cabelludo",
@@ -2796,6 +4083,10 @@
         "caída del cabello",
         "pelo",
         "densidad"
+      ],
+      "combinesWith": [
+        "masaje-relajante",
+        "higiene-facial"
       ]
     }
   ]

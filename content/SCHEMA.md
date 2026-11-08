@@ -47,6 +47,7 @@ Valores con `"[POR DEFINIR]"` = dato real pendiente del negocio.
       "icon": "",                      // nombre de icono (ver lista abajo)
       "featured": false,               // aparece en la portada
       "whatIs": "",                    // ¿Qué es? 2-4 frases claras
+      "mechanism": "",                 // (opcional) «Cómo actúa»: 3-5 frases sobre qué estimula en piel/tejido
       "benefits": [ { "title": "", "text": "" } ],   // pros y ventajas (4-6)
       "idealFor": [ "" ],              // ¿Para quién es?
       "howItWorks": [ { "title": "", "text": "" } ], // pasos de la sesión (3-5)
@@ -60,7 +61,8 @@ Valores con `"[POR DEFINIR]"` = dato real pendiente del negocio.
       "priceFrom": 0,                  // número en € (para "desde X €")
       "prices": [ { "label": "", "price": 0, "oldPrice": null, "note": "" } ],
       "priceNote": "Precio orientativo",
-      "tags": [ "" ]
+      "tags": [ "" ],
+      "combinesWith": [ "id-de-otro-tratamiento" ]   // (opcional) 2-4 ids con los que combina bien
     }
   ]
 }
@@ -102,6 +104,10 @@ Todos son **opcionales**: si faltan, la web funciona igual.
 | `site.json → theme.colors` | `whatsapp` | Color de los botones de WhatsApp (por defecto `#25D366`). |
 | `site.json → hero` | `image`, `imageAlt` | Foto principal de la portada (arco del hero). |
 | `treatments.json → treatments[]` | `image`, `imageAlt` | Foto de la ficha y de la tarjeta. |
+| `treatments.json → treatments[]` | `mechanism` | Texto «Cómo actúa» (3-5 frases, tono profesional y sin promesas médicas: colágeno, elastina, renovación celular, microcirculación, drenaje, adipocitos, folículo…). Se muestra en la ficha justo después de «¿Qué es?», en un bloque destacado, y aparece en el subíndice de la ficha. Si falta, no se muestra. |
+| `treatments.json → treatments[]` | `combinesWith` | Lista de 2-4 `id` de otros tratamientos que combinan bien. Se muestran como tarjetas enlazadas en el bloque «Combina con» (tras «Resultados»). Los ids inexistentes se ignoran con aviso en el build. Los tratamientos listados aquí no se repiten en «Tratamientos relacionados» al final de la ficha. Son ids: no se traducen (en `content/i18n/<ca\|en>/treatments.json` no hace falta incluir este campo). |
+
+Títulos de esos bloques (en `content/i18n/ui.json → treatment`): `mechanism`, `mechanismEyebrow`, `combines`, `combinesIntro`.
 | `packs.json → aloha / ohana` | `image`, `imageAlt` | Foto de cada club. |
 
 ### Imágenes (huecos para fotos)
@@ -163,3 +169,28 @@ El menú (cabecera, menú móvil y pie) añade automáticamente «Quiénes somos
 - `404.html` (GitHub Pages) está en español y enlaza a las portadas de `ca` y `en`.
 - `seo.locale` de `site.json` ya no se usa: el `og:locale` sale del idioma de cada página.
 - Precios: mismo número en los tres idiomas; solo cambia el formato (`25 €` en es/ca, `€25` en en).
+
+## `bodymap.json` — mapa corporal de la portada (opcional)
+Sección «Recorrido por zonas» (`#zonas`) de la portada, entre las categorías y los tratamientos destacados. Si el archivo no existe o no tiene `zones`, la sección no aparece.
+```jsonc
+{
+  "eyebrow": "Recorrido por zonas", "title": "Tu cuerpo, zona a zona,", "titleAccent": "con el tratamiento justo",
+  "intro": "",
+  "zones": [
+    {
+      "id": "rostro",                       // slug único (no se traduce)
+      "label": "Rostro",                    // nombre de la zona
+      "text": "",                           // 2-3 frases
+      "treatments": ["higiene-facial"],     // ids de treatments.json (orden = orden de la lista). Los inexistentes se ignoran con aviso en el build
+      "view": { "azimuth": 15, "elevation": 4, "zoom": 4.2 },  // cámara 3D al llegar a la zona
+      "anchor": [0, 1.6, 0.1]               // punto de la zona en la figura (x, y, z en metros)
+    }
+  ]
+}
+```
+- **Orden**: el de `zones` es el del recorrido (scroll) y el de la lista numerada.
+- **`view`**: `azimuth` en grados alrededor de la figura (0 = de frente, 90 = lado izquierdo de la figura / derecha de pantalla, 180 = espalda). Se interpola **sin dar la vuelta corta**: para seguir girando en el mismo sentido usa valores continuos (p. ej. 210 → 320 → 345 → 380). `elevation` en grados (positivo = desde arriba). `zoom` 1 = cuerpo entero; 4-6 = primer plano de la cara.
+- **`anchor`**: figura de ~1,78 de alto, pies en y = 0, cabeza ~1,6-1,73; x positivo = lado izquierdo de la figura; z positivo = delante, negativo = espalda. Ahí va el punto dorado pulsante (y el número en la silueta estática).
+- La figura es procedural (`static/src/js/bodymap-figure.js`, maniquí neutro sin rasgos): la misma geometría sirve para la escena 3D y la silueta SVG.
+- Funcionamiento: sin JS, sin WebGL o con `prefers-reduced-motion` se ve la versión estática (silueta + acordeón con los textos y enlaces). Si no, `js/bodymap.js` carga Three.js (versión fijada desde jsDelivr, solo al acercarse a la sección) y monta la escena fijada: ~0,4 pantallas de scroll por zona, panel con la zona activa (aria-live), puntos de progreso y puntos de la figura clicables.
+- Traducción: `content/i18n/<ca|en>/bodymap.json` con `eyebrow`, `title`, `titleAccent`, `intro` y `zones` (`id`, `label`, `text`; se emparejan por `id`). `treatments`, `view` y `anchor` salen siempre del español. Textos fijos (botones, aria-labels, «Zona {n} de {total}»…): `content/i18n/ui.json → bodymap`.

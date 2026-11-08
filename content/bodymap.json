@@ -1,0 +1,104 @@
+{
+  "eyebrow": "Recorrido por zonas",
+  "title": "Tu cuerpo, zona a zona,",
+  "titleAccent": "con el tratamiento justo",
+  "intro": "Desliza y recorre la figura: en cada zona te contamos qué trabajamos y qué tratamientos encajan contigo. Toca cualquier tratamiento para ver su ficha completa.",
+  "zones": [
+    {
+      "id": "rostro",
+      "label": "Rostro",
+      "text": "El rostro es lo primero que cuidamos y lo que más agradece la constancia. Combinamos limpieza profunda, hidratación y aparatología para devolver luminosidad, uniformar el tono y mejorar la firmeza. Siempre tras un diagnóstico de tu piel.",
+      "treatments": ["higiene-facial", "hidrafacial", "punta-diamante", "radiofrecuencia-facial", "multifuncion-facial", "facial-hidratante-antiedad", "microneedling-dermapen", "bb-glow"],
+      "view": { "azimuth": 15, "elevation": 4, "zoom": 4.2 },
+      "anchor": [0, 1.6, 0.1]
+    },
+    {
+      "id": "mirada",
+      "label": "Mirada: cejas y pestañas",
+      "text": "Una mirada definida cambia la expresión de todo el rostro. Elevamos y curvamos tus pestañas naturales, disciplinamos y damos forma a las cejas y aportamos color para que luzcas despierta sin maquillaje.",
+      "treatments": ["lifting-pestanas", "laminado-cejas", "tinte-cejas-pestanas"],
+      "view": { "azimuth": -12, "elevation": 6, "zoom": 6 },
+      "anchor": [0, 1.645, 0.09]
+    },
+    {
+      "id": "labios",
+      "label": "Labios",
+      "text": "Labios con un tono más uniforme y aspecto jugoso, sin infiltraciones. Trabajamos el color y la hidratación de forma gradual y cuidamos también la zona del labio superior con depilación suave.",
+      "treatments": ["bb-lips", "depilacion-cera"],
+      "view": { "azimuth": 20, "elevation": -2, "zoom": 6 },
+      "anchor": [0, 1.565, 0.085]
+    },
+    {
+      "id": "cuero-cabelludo",
+      "label": "Cuero cabelludo",
+      "text": "Un cabello fuerte empieza en un cuero cabelludo sano. Estimulamos la zona para favorecer su oxigenación y la llegada de activos, como apoyo frente a la caída y la pérdida de densidad.",
+      "treatments": ["micropuntura-capilar"],
+      "view": { "azimuth": 40, "elevation": 38, "zoom": 3.6 },
+      "anchor": [0, 1.72, -0.02]
+    },
+    {
+      "id": "brazos-axilas",
+      "label": "Brazos y axilas",
+      "text": "Piel suave y sin vello, y brazos con un aspecto más firme. Eliminamos el vello de forma duradera y trabajamos la flacidez de la cara interna del brazo con aparatología específica.",
+      "treatments": ["depilacion-laser", "depilacion-cera", "radiofrecuencia-corporal"],
+      "view": { "azimuth": 60, "elevation": 8, "zoom": 2.4 },
+      "anchor": [0.2, 1.22, 0.02]
+    },
+    {
+      "id": "manos",
+      "label": "Manos",
+      "text": "Tus manos hablan por ti cada día. Cuidamos cutículas, forma y esmaltado con productos de calidad y una higiene impecable, para un acabado bonito que dura semanas.",
+      "treatments": ["manicura", "esmaltado-semipermanente"],
+      "view": { "azimuth": 40, "elevation": 10, "zoom": 3.6 },
+      "anchor": [0.29, 0.76, 0.07]
+    },
+    {
+      "id": "abdomen-cintura",
+      "label": "Abdomen y cintura",
+      "text": "La zona donde más se nota la retención y la grasa localizada. Combinamos técnicas que ayudan a reducir volumen, reafirmar la piel y definir la cintura, con un plan adaptado a tus objetivos.",
+      "treatments": ["cavitacion", "radiofrecuencia-corporal", "body-sculpt", "maderoterapia", "tratamiento-corporal-reafirmante", "masaje-drenante"],
+      "view": { "azimuth": 10, "elevation": 5, "zoom": 2.4 },
+      "anchor": [0, 1.06, 0.08]
+    },
+    {
+      "id": "espalda",
+      "label": "Espalda",
+      "text": "Aquí se acumulan la tensión y el estrés del día a día. Liberamos contracturas con masaje y calor profundo, y también eliminamos el vello si lo deseas.",
+      "treatments": ["masaje-relajante", "diatermia", "depilacion-laser"],
+      "view": { "azimuth": 170, "elevation": 10, "zoom": 2 },
+      "anchor": [0, 1.28, -0.095]
+    },
+    {
+      "id": "gluteos-caderas",
+      "label": "Glúteos y caderas",
+      "text": "Trabajamos la firmeza, el contorno y la piel de naranja de glúteos y caderas. Las técnicas manuales y la aparatología se complementan para mejorar la textura y el aspecto de la zona.",
+      "treatments": ["maderoterapia", "body-sculpt", "cavitacion", "roll-systemic", "radiofrecuencia-corporal"],
+      "view": { "azimuth": 210, "elevation": 5, "zoom": 2.3 },
+      "anchor": [0.07, 0.9, -0.115]
+    },
+    {
+      "id": "piernas",
+      "label": "Piernas",
+      "text": "Piernas ligeras, suaves y con mejor aspecto. Activamos la circulación y el drenaje para aliviar la pesadez, trabajamos la celulitis y eliminamos el vello de forma cómoda.",
+      "treatments": ["presoterapia", "masaje-drenante", "roll-systemic", "maderoterapia", "depilacion-laser", "depilacion-cera"],
+      "view": { "azimuth": 320, "elevation": 4, "zoom": 1.6 },
+      "anchor": [0.1, 0.5, 0.05]
+    },
+    {
+      "id": "pies",
+      "label": "Pies",
+      "text": "Unos pies cuidados se notan en cada paso. Eliminamos durezas, cuidamos uñas y cutículas y terminamos con un esmaltado que aguanta el ritmo de tu día.",
+      "treatments": ["pedicura", "esmaltado-semipermanente"],
+      "view": { "azimuth": 345, "elevation": 28, "zoom": 3.2 },
+      "anchor": [0.1, 0.03, 0.08]
+    },
+    {
+      "id": "piel",
+      "label": "Piel: estrías y cicatrices",
+      "text": "Estrías y cicatrices pueden aparecer en muchas zonas del cuerpo y del rostro. Estimulamos la regeneración de la piel para mejorar su color, textura y relieve de forma progresiva y respetuosa.",
+      "treatments": ["micropuntura-estrias", "micropuntura-cicatrices", "microneedling-dermapen"],
+      "view": { "azimuth": 380, "elevation": 6, "zoom": 2 },
+      "anchor": [-0.12, 0.96, 0.07]
+    }
+  ]
+}

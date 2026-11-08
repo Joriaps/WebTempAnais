@@ -114,7 +114,10 @@
       var vh = window.innerHeight;
       var nearEnd = y + vh > document.documentElement.scrollHeight - 160;
       var inHero = y < vh * .55;
-      fabStack.classList.toggle('is-tucked', fabMQ.matches && !nearEnd && (inHero || dy > 0));
+      // Dentro del recorrido 3D por zonas el panel ocupa la parte baja: se apartan los botones.
+      var zonesEl = document.getElementById('zonas'), inZones = false;
+      if (zonesEl) { var zr = zonesEl.getBoundingClientRect(); inZones = zr.top < vh * .5 && zr.bottom > vh * .5; }
+      fabStack.classList.toggle('is-tucked', fabMQ.matches && !nearEnd && (inHero || inZones || dy > 0));
       lastY = y;
     };
     window.addEventListener('scroll', function () { if (!fabTick) { fabTick = true; requestAnimationFrame(function () { updateFab(false); }); } }, { passive: true });

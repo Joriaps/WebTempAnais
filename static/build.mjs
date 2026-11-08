@@ -12,7 +12,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, cpSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { deflateSync } from 'node:zlib';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -48,7 +48,12 @@ const siteSrc = loadData('site', { required: true });
 const trSrc = loadData('treatments');
 const pkSrc = loadData('packs');
 const mkSrc = loadData('marketing');
-const BASE = { site: siteSrc.data ?? {}, treatments: trSrc.data ?? {}, packs: pkSrc.data ?? {}, marketing: mkSrc.data ?? {} };
+// Mapa corporal (opcional): sin archivo o con JSON inválido, la portada no muestra la sección
+let bodymapData = {};
+if (existsSync(join(CONTENT, 'bodymap.json'))) {
+  try { bodymapData = readJson(join(CONTENT, 'bodymap.json')); } catch (e) { warn(`content/bodymap.json no es JSON válido (${e.message}); no se muestra el mapa corporal`); }
+}
+const BASE = { site: siteSrc.data ?? {}, treatments: trSrc.data ?? {}, packs: pkSrc.data ?? {}, marketing: mkSrc.data ?? {}, bodymap: bodymapData };
 
 /* Idiomas: el español es la base (raíz /); ca y en en subcarpetas con los mismos slugs. */
 const LANGS = [
@@ -78,7 +83,7 @@ const VERSION = Date.now().toString(36);
    ========================================================================== */
 const I18N = join(CONTENT, 'i18n');
 const NEVER_KEYS = new Set([
-  'id', 'treatmentId', 'category', 'href', 'icon', 'price', 'oldPrice', 'priceFrom', 'order', 'painLevel',
+  'id', 'treatmentId', 'category', 'href', 'icon', 'price', 'oldPrice', 'priceFrom', 'order', 'painLevel', 'combinesWith',
   'featured', 'highlight', 'active', 'from', 'immersive', 'isPlaceholder',
   'theme', 'colors', 'fonts', 'image', 'ogImage', 'siteUrl', 'locale',
   'phone', 'whatsapp', 'email', 'postalCode', 'mapsUrl', 'mapsEmbed', 'bookingUrl', 'formEndpoint',
@@ -119,7 +124,8 @@ function mergeI18n(base, tr, path, st, protect = true) {
     const out = {};
     for (const [k, v] of Object.entries(base)) {
       const p = path ? `${path}.${k}` : k;
-      const skip = protect && (NEVER_KEYS.has(k) || NEVER_PATHS.has(p));
+      // bodymap.json → zones[].treatments es una lista de ids (no se traduce)
+      const skip = protect && (NEVER_KEYS.has(k) || NEVER_PATHS.has(p) || (k === 'treatments' && Array.isArray(v) && v.every((x) => typeof x === 'string')));
       out[k] = skip ? v : mergeI18n(v, tr ? tr[k] : undefined, p, st, protect);
     }
     return out;
@@ -173,7 +179,7 @@ function loadUi(lang) {
 
 /* Estado del idioma en curso (lo fija setLang antes de generar cada idioma) */
 let L, LP = '', LANG_UP = '', UI = {};
-let site, brand, contact, seo, legal, categories, treatments, packs, mk, catById, trById, featured, activePromos;
+let site, brand, contact, seo, legal, categories, treatments, packs, mk, catById, trById, featured, activePromos, bodymap;
 function setLang(lang) {
   L = LANGS.find((x) => x.code === lang);
   LP = L.prefix;
@@ -185,6 +191,7 @@ function setLang(lang) {
   treatments = (D.treatments.treatments ?? []).filter((t) => t && t.id);
   packs = D.packs ?? {};
   mk = D.marketing ?? {};
+  bodymap = D.bodymap ?? {};
   catById = Object.fromEntries(categories.map((c) => [c.id, c]));
   trById = Object.fromEntries(treatments.map((t) => [t.id, t]));
   featured = (() => { const f = treatments.filter((t) => t.featured); return (f.length ? f : treatments).slice(0, 6); })();
@@ -740,6 +747,71 @@ function heroImmersive(root, h, heroImg) {
 }
 
 /* ---------- Inicio ---------- */
+/* ==========================================================================
+   Mapa corporal (content/bodymap.json): recorrido por zonas del cuerpo.
+   El HTML es completo sin JS (silueta SVG + acordeón con textos y enlaces).
+   js/bodymap.js lo convierte en una escena 3D fijada (Three.js, cargado solo
+   cuando la sección se acerca) si hay WebGL y no hay prefers-reduced-motion.
+   ========================================================================== */
+const THREE_URL = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+const { PRIMS: BM_PRIMS, expand: bmExpand } = await import(pathToFileURL(join(SRC, 'js', 'bodymap-figure.js')).href);
+const bmNum = (v, d = 0) => (isNum(v) ? v : d);
+function bodymapSilhouette(zones) {
+  // Proyección frontal de la misma figura procedural que usa la escena 3D
+  const S = 200, X = (x) => +(100 + x * S).toFixed(1), Y = (y) => +((1.84 - y) * S).toFixed(1), f = (v) => v.toFixed(1);
+  const shapes = bmExpand(BM_PRIMS).map((p) => {
+    if (p.t === 'e') return `<ellipse cx="${X(p.c[0])}" cy="${Y(p.c[1])}" rx="${f(p.r[0] * S)}" ry="${f(p.r[1] * S)}"/>`;
+    const ax = X(p.a[0]), ay = Y(p.a[1]), bx = X(p.b[0]), by = Y(p.b[1]), ra = p.ra * S, rb = p.rb * S;
+    const dx = bx - ax, dy = by - ay, l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+    const pts = [[ax + nx * ra, ay + ny * ra], [bx + nx * rb, by + ny * rb], [bx - nx * rb, by - ny * rb], [ax - nx * ra, ay - ny * ra]].map((q) => q.map(f).join(',')).join(' ');
+    return `<circle cx="${ax}" cy="${ay}" r="${f(ra)}"/><circle cx="${bx}" cy="${by}" r="${f(rb)}"/><polygon points="${pts}"/>`;
+  }).join('');
+  const marks = zones.map((z, i) => (Array.isArray(z.anchor) && z.anchor.length === 3
+    ? `<g class="bm-sil__mark" transform="translate(${X(bmNum(z.anchor[0]))} ${Y(bmNum(z.anchor[1]))})"><circle r="6.5"/><text y="2.6">${i + 1}</text></g>` : '')).join('');
+  return `<svg class="bm-sil" viewBox="22 6 156 370" aria-hidden="true" focusable="false"><defs><linearGradient id="bm-sil-g" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" style="stop-color:var(--c-cream)"/><stop offset="1" style="stop-color:var(--c-nude)"/></linearGradient><g id="bm-sil-shape">${shapes}</g></defs><ellipse class="bm-sil__floor" cx="100" cy="369" rx="46" ry="5"/><use href="#bm-sil-shape" class="bm-sil__line"/><use href="#bm-sil-shape" class="bm-sil__fill"/>${marks}</svg>`;
+}
+function bodymapSection(root) {
+  const bm = bodymap || {};
+  const zones = arr(bm.zones).filter((z) => isObj(z) && z.id && z.label);
+  if (!zones.length) return '';
+  const pad = (n) => String(n).padStart(2, '0');
+  const items = zones.map((z, i) => {
+    const trs = arr(z.treatments).map((id) => {
+      if (!trById[id]) warn(`bodymap.json: la zona "${z.id}" usa el tratamiento inexistente "${id}" (se ignora)`);
+      return trById[id];
+    }).filter(Boolean);
+    const v = isObj(z.view) ? z.view : {};
+    const a = Array.isArray(z.anchor) ? z.anchor : [0, 0.95, 0];
+    return `<li class="bm-zone" id="bm-z-${esc(z.id)}" data-zone="${esc(z.id)}" data-view="${bmNum(v.azimuth)},${bmNum(v.elevation, 5)},${bmNum(v.zoom, 1.5)}" data-anchor="${[0, 1, 2].map((k) => bmNum(a[k])).join(',')}">
+      <details class="bm-zone__details"${i === 0 ? ' open' : ''}>
+        <summary><span class="bm-zone__num" aria-hidden="true">${pad(i + 1)}</span><h3 class="bm-zone__title">${esc(z.label)}</h3><span class="bm-zone__chev" aria-hidden="true"></span></summary>
+        <div class="bm-zone__body">
+          ${z.text ? `<p class="bm-zone__text">${esc(z.text)}</p>` : ''}
+          ${trs.length ? `<p class="bm-zone__tlabel">${u('bodymap.treatments')}</p>
+          <ul class="bm-zone__list">${trs.map((t) => { const pf = priceFromOf(t); return `<li><a href="${root}tratamientos/${esc(t.id)}/"><span class="bm-zone__tname">${esc(t.name)}</span>${isFinite(pf) ? `<span class="bm-zone__price">${u('from')} ${money(pf)}</span>` : ''}${icon('arrow')}</a></li>`; }).join('')}</ul>` : ''}
+        </div>
+      </details>
+    </li>`;
+  }).join('\n    ');
+  return `<section class="section bm" id="zonas" aria-labelledby="bm-title" data-bodymap data-three="${esc(THREE_URL)}" data-nav="${u('bodymap.nav')}" data-goto="${u('bodymap.goTo')}" data-counter="${u('bodymap.counter')}" data-hint="${u('bodymap.hint')}" data-overview="${u('bodymap.overview')}">
+  <a class="bm__skip" href="#bm-end">${u('bodymap.skip')}</a>
+  <div class="container">
+    <div class="section__head section__head--center bm__head">${bm.eyebrow ? `<p class="eyebrow">${esc(bm.eyebrow)}</p>` : ''}<h2 id="bm-title">${esc(bm.title)}${bm.titleAccent ? ` <span class="accent">${esc(bm.titleAccent)}</span>` : ''}</h2>${bm.intro ? `<p class="bm__intro">${esc(bm.intro)}</p>` : ''}</div>
+    <div class="bm__static">
+      <div class="bm__figure">${bodymapSilhouette(zones)}</div>
+      <div class="bm__zones">
+        <p class="bm__hint-static">${u('bodymap.staticHint')}</p>
+        <ol class="bm-list" role="list">
+    ${items}
+        </ol>
+      </div>
+    </div>
+  </div>
+  <span class="bm__end" id="bm-end" tabindex="-1"></span>
+  <script type="module" src="${root}${LANG_UP}js/bodymap.js?v=${VERSION}"></script>
+</section>`;
+}
+
 function pageHome() {
   const h = site.hero || {};
   const heroImg = findImage(h.image, 'hero');
@@ -785,6 +857,8 @@ ${categories.length ? `<section class="section" aria-labelledby="cats-title">
     </article>`).join('')}</div>
   </div>
 </section>` : ''}
+
+${bodymapSection(root)}
 
 ${featured.length ? `<section class="section section--white" aria-labelledby="feat-title">
   <div class="container">
@@ -935,11 +1009,18 @@ function pageTreatment(t) {
   const pf = priceFromOf(t);
   const pain = Number(t.painLevel);
   const waText = waFor(t.name);
+  // «Combina con»: ids de `combinesWith` que existan (se ignoran los desconocidos con aviso)
+  const combines = arr(t.combinesWith).map((id) => {
+    const x = treatments.find((y) => y.id === id && y.id !== t.id);
+    if (!x) warn(`"${t.id}": combinesWith apunta a un tratamiento inexistente "${id}"`);
+    return x;
+  }).filter(Boolean);
   const related = (() => {
-    const same = treatments.filter((x) => x.category === t.category && x.id !== t.id);
-    const rest = featured.filter((x) => x.id !== t.id && !same.includes(x));
+    const same = treatments.filter((x) => x.category === t.category && x.id !== t.id && !combines.includes(x));
+    const rest = featured.filter((x) => x.id !== t.id && !same.includes(x) && !combines.includes(x));
     return [...same, ...rest].slice(0, 3);
   })();
+  const ROOT_PLACEHOLDER = '\u0000ROOT\u0000'; // se sustituye por `root` en body() (enlaces de «Combina con»)
   const S = []; // secciones presentes (para el subíndice)
   const T = (k, v) => tx(`treatment.${k}`, v); // `t` es el tratamiento en esta función
   const sec = (id, title, iconName, inner, cls = '') => { S.push([id, title]); return `<section class="ficha-section reveal ${cls}" id="${id}" aria-labelledby="${id}-t"><h2 id="${id}-t"><span class="card__icon">${icon(iconName)}</span>${esc(title)}</h2>${inner}</section>`; };
@@ -950,10 +1031,12 @@ function pageTreatment(t) {
 
   const sections = [
     t.whatIs ? sec('que-es', T('whatIs'), 'info', `<div class="prose"><p>${esc(t.whatIs)}</p></div>`) : '',
+    t.mechanism ? sec('como-actua', T('mechanism'), 'glow', `<div class="mechanism"><span class="mechanism__eyebrow">${esc(T('mechanismEyebrow'))}</span><p>${esc(t.mechanism)}</p></div>`, 'ficha-section--mechanism') : '',
     arr(t.benefits).length ? sec('beneficios', T('benefits'), 'sparkle', `<div class="grid grid--3">${arr(t.benefits).map((b, i) => `<article class="card tone-${(i % 5) + 1}"><span class="card__icon">${icon('check')}</span><h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></article>`).join('')}</div>`) : '',
     arr(t.idealFor).length ? sec('para-quien', T('idealFor'), 'heart', `<div class="panel"><ul class="checklist">${arr(t.idealFor).map((x) => `<li>${icon('check')}<span>${esc(x)}</span></li>`).join('')}</ul></div>`) : '',
     arr(t.howItWorks).length ? sec('sesion', T('session'), 'clock', `<ol class="steps">${arr(t.howItWorks).map((s) => `<li><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></li>`).join('')}</ol>`) : '',
     t.results ? sec('resultados', T('results'), 'star', `<div class="results">${icon('glow')}<div><p>${esc(t.results)}</p><p class="small" style="margin-top:.5rem">${esc(T('resultsNote'))}</p></div></div>`) : '',
+    combines.length ? sec('combina', T('combines'), 'heart', `<p class="combina__intro">${esc(T('combinesIntro'))}</p><ul class="combina" role="list">${combines.map((x) => `<li><a class="combina__card" href="${ROOT_PLACEHOLDER}tratamientos/${esc(x.id)}/"><span class="card__icon">${icon(ic(x.icon || catById[x.category]?.icon))}</span><span class="combina__text"><span class="combina__name">${esc(x.name)}</span>${x.short ? `<span class="combina__short">${esc(x.short)}</span>` : ''}</span><span class="combina__arrow" aria-hidden="true">${icon('arrow')}</span></a></li>`).join('')}</ul>`) : '',
     (arr(t.aftercare).length || arr(t.contraindications).length) ? (() => {
       S.push(['cuidados', T('careAndContra')]);
       return `<div class="ficha-section two-col reveal" id="cuidados">
@@ -1012,7 +1095,7 @@ function pageTreatment(t) {
       const heroHtml = hero.replace('</h1>', `</h1>${heroInner}`);
       const subnav = `<nav class="ficha-nav" aria-label="${esc(T('subnav'))}"><div class="container"><ul>${S.map(([id, l]) => `<li><a href="#${id}">${esc(l)}</a></li>`).join('')}</ul></div></nav>`;
       const rel = related.length ? `<section class="section section--white" aria-labelledby="rel-title"><div class="container"><div class="section__head"><p class="eyebrow">${esc(T('relEyebrow'))}</p><h2 id="rel-title">${rich('treatment.relTitle')}</h2></div><div class="grid grid--3">${related.map((x, i) => treatmentCard(x, root, i)).join('')}</div></div></section>` : '';
-      return `${heroHtml}\n${subnav}\n<div class="section"><div class="container">${sections}</div></div>\n${rel}`;
+      return `${heroHtml}\n${subnav}\n<div class="section"><div class="container">${sections.split(ROOT_PLACEHOLDER).join(root)}</div></div>\n${rel}`;
     },
   });
   writePage(path, html);

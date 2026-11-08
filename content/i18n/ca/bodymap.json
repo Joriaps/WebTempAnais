@@ -1,0 +1,20 @@
+{
+  "eyebrow": "Recorregut per zones",
+  "title": "El teu cos, zona a zona,",
+  "titleAccent": "amb el tractament just",
+  "intro": "Llisca i recorre la figura: a cada zona t'expliquem què hi treballem i quins tractaments encaixen amb tu. Toca qualsevol tractament per veure'n la fitxa completa.",
+  "zones": [
+    { "id": "rostro", "label": "Rostre", "text": "El rostre és el primer que cuidem i el que més agraeix la constància. Combinem neteja profunda, hidratació i aparatologia per retornar lluminositat, uniformar el to i millorar la fermesa. Sempre després d'un diagnòstic de la teva pell." },
+    { "id": "mirada", "label": "Mirada: celles i pestanyes", "text": "Una mirada definida canvia l'expressió de tot el rostre. Elevem i corbem les teves pestanyes naturals, disciplinem i donem forma a les celles i hi aportem color perquè llueixis desperta sense maquillatge." },
+    { "id": "labios", "label": "Llavis", "text": "Llavis amb un to més uniforme i aspecte sucós, sense infiltracions. Treballem el color i la hidratació de manera gradual i també cuidem la zona del llavi superior amb una depilació suau." },
+    { "id": "cuero-cabelludo", "label": "Cuir cabellut", "text": "Un cabell fort comença en un cuir cabellut sa. Estimulem la zona per afavorir-ne l'oxigenació i l'arribada d'actius, com a suport davant la caiguda i la pèrdua de densitat." },
+    { "id": "brazos-axilas", "label": "Braços i aixelles", "text": "Pell suau i sense pèl, i braços amb un aspecte més ferm. Eliminem el pèl de manera duradora i treballem la flacciditat de la cara interna del braç amb aparatologia específica." },
+    { "id": "manos", "label": "Mans", "text": "Les teves mans parlen per tu cada dia. Cuidem cutícules, forma i esmaltat amb productes de qualitat i una higiene impecable, per a un acabat bonic que dura setmanes." },
+    { "id": "abdomen-cintura", "label": "Abdomen i cintura", "text": "La zona on més es nota la retenció i el greix localitzat. Combinem tècniques que ajuden a reduir volum, reafermar la pell i definir la cintura, amb un pla adaptat als teus objectius." },
+    { "id": "espalda", "label": "Esquena", "text": "Aquí s'acumulen la tensió i l'estrès del dia a dia. Alliberem contractures amb massatge i calor profunda, i també eliminem el pèl si ho vols." },
+    { "id": "gluteos-caderas", "label": "Glutis i malucs", "text": "Treballem la fermesa, el contorn i la pell de taronja de glutis i malucs. Les tècniques manuals i l'aparatologia es complementen per millorar la textura i l'aspecte de la zona." },
+    { "id": "piernas", "label": "Cames", "text": "Cames lleugeres, suaus i amb millor aspecte. Activem la circulació i el drenatge per alleujar la pesadesa, treballem la cel·lulitis i eliminem el pèl de manera còmoda." },
+    { "id": "pies", "label": "Peus", "text": "Uns peus cuidats es noten a cada pas. Eliminem durícies, cuidem ungles i cutícules i acabem amb un esmaltat que aguanta el ritme del teu dia." },
+    { "id": "piel", "label": "Pell: estries i cicatrius", "text": "Les estries i les cicatrius poden aparèixer en moltes zones del cos i del rostre. Estimulem la regeneració de la pell per millorar-ne el color, la textura i el relleu de manera progressiva i respectuosa." }
+  ]
+}

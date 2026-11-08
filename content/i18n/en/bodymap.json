@@ -1,0 +1,20 @@
+{
+  "eyebrow": "Zone by zone",
+  "title": "Your body, area by area,",
+  "titleAccent": "with the right treatment",
+  "intro": "Scroll to explore the figure: for each area we explain what we work on and which treatments suit you. Tap any treatment to see its full details.",
+  "zones": [
+    { "id": "rostro", "label": "Face", "text": "The face is the first thing we care for and the area that most rewards consistency. We combine deep cleansing, hydration and advanced devices to restore radiance, even out skin tone and improve firmness. Always after a diagnosis of your skin." },
+    { "id": "mirada", "label": "Eyes: brows and lashes", "text": "A defined look changes the expression of the whole face. We lift and curl your natural lashes, tame and shape your brows and add colour so you look wide awake without make-up." },
+    { "id": "labios", "label": "Lips", "text": "Lips with a more even tone and a fuller, juicier look, without fillers. We build colour and hydration gradually and also care for the upper lip area with gentle hair removal." },
+    { "id": "cuero-cabelludo", "label": "Scalp", "text": "Strong hair starts with a healthy scalp. We stimulate the area to boost oxygenation and the delivery of active ingredients, as support against hair loss and thinning." },
+    { "id": "brazos-axilas", "label": "Arms and underarms", "text": "Smooth, hair-free skin and firmer-looking arms. We remove hair for the long term and treat sagging on the inner arm with targeted devices." },
+    { "id": "manos", "label": "Hands", "text": "Your hands speak for you every day. We care for cuticles, shape and polish with quality products and impeccable hygiene, for a beautiful finish that lasts for weeks." },
+    { "id": "abdomen-cintura", "label": "Abdomen and waist", "text": "The area where fluid retention and stubborn fat show the most. We combine techniques that help reduce volume, firm the skin and define the waist, with a plan tailored to your goals." },
+    { "id": "espalda", "label": "Back", "text": "This is where everyday tension and stress build up. We release knots with massage and deep heat, and we can also remove unwanted hair if you wish." },
+    { "id": "gluteos-caderas", "label": "Glutes and hips", "text": "We work on firmness, contour and orange-peel skin on the glutes and hips. Manual techniques and devices complement each other to improve the texture and look of the area." },
+    { "id": "piernas", "label": "Legs", "text": "Lighter, smoother, better-looking legs. We boost circulation and drainage to ease heaviness, treat cellulite and remove hair comfortably." },
+    { "id": "pies", "label": "Feet", "text": "Well-cared-for feet show with every step. We remove hard skin, care for nails and cuticles and finish with a polish that keeps up with your day." },
+    { "id": "piel", "label": "Skin: stretch marks and scars", "text": "Stretch marks and scars can appear on many areas of the body and face. We stimulate skin renewal to gradually and gently improve their colour, texture and relief." }
+  ]
+}
