@@ -20,9 +20,18 @@
     "mapsUrl": "",
     "mapsEmbed": "",
     "hours": [
-      { "days": "Lunes a viernes", "time": "10:00 – 20:00" },
-      { "days": "Sábados", "time": "10:00 – 14:00" },
-      { "days": "Domingos", "time": "Cerrado" }
+      {
+        "days": "Lunes a viernes",
+        "time": "9:30 – 19:30"
+      },
+      {
+        "days": "Sábados",
+        "time": "9:30 – 14:30"
+      },
+      {
+        "days": "Domingos y festivos",
+        "time": "Cerrado"
+      }
     ],
     "bookingUrl": "",
     "bookingLabel": "Reserva online",
@@ -52,10 +61,22 @@
     }
   },
   "nav": [
-    { "label": "Tratamientos", "href": "tratamientos/" },
-    { "label": "Precios", "href": "precios/" },
-    { "label": "Packs Aloha & Ohana", "href": "packs/" },
-    { "label": "Contacto", "href": "contacto/" }
+    {
+      "label": "Tratamientos",
+      "href": "tratamientos/"
+    },
+    {
+      "label": "Precios",
+      "href": "precios/"
+    },
+    {
+      "label": "Packs Aloha & Ohana",
+      "href": "packs/"
+    },
+    {
+      "label": "Contacto",
+      "href": "contacto/"
+    }
   ],
   "hero": {
     "immersive": true,
@@ -63,26 +84,69 @@
     "title": "Brilla a tu manera,",
     "titleAccent": "reina tu imperio",
     "subtitle": "Uñas, mirada, láser, masajes y tratamientos faciales y corporales de última generación. Te explicamos todo, sin letra pequeña, para que elijas lo que de verdad te sienta bien.",
-    "ctaPrimary": { "label": "Pide tu cita", "href": "#reservar" },
-    "ctaSecondary": { "label": "Ver tratamientos", "href": "tratamientos/" }
+    "ctaPrimary": {
+      "label": "Pide tu cita",
+      "href": "#reservar"
+    },
+    "ctaSecondary": {
+      "label": "Ver tratamientos",
+      "href": "tratamientos/"
+    }
   },
   "stats": [
-    { "value": "+25", "label": "tratamientos" },
-    { "value": "1ª", "label": "consulta gratis" },
-    { "value": "-15%", "label": "con tu pack Aloha" }
+    {
+      "value": "+25",
+      "label": "tratamientos"
+    },
+    {
+      "value": "1ª",
+      "label": "consulta gratis"
+    },
+    {
+      "value": "-15%",
+      "label": "con tu pack Aloha"
+    }
   ],
   "whyUs": [
-    { "icon": "shield", "title": "Profesionales certificadas", "text": "Formación continua y protocolos de higiene y seguridad en cada tratamiento." },
-    { "icon": "sparkle", "title": "Tecnología actual", "text": "Aparatología de última generación para resultados visibles con el máximo confort." },
-    { "icon": "heart", "title": "Un plan para ti", "text": "Valoramos tu piel y tus objetivos antes de empezar. Sin presiones, sin letra pequeña." },
-    { "icon": "leaf", "title": "Ambiente que relaja", "text": "Un espacio pensado para desconectar, para cualquier edad y estilo." }
+    {
+      "icon": "shield",
+      "title": "Profesionales certificadas",
+      "text": "Formación continua y protocolos de higiene y seguridad en cada tratamiento."
+    },
+    {
+      "icon": "sparkle",
+      "title": "Tecnología actual",
+      "text": "Aparatología de última generación para resultados visibles con el máximo confort."
+    },
+    {
+      "icon": "heart",
+      "title": "Un plan para ti",
+      "text": "Valoramos tu piel y tus objetivos antes de empezar. Sin presiones, sin letra pequeña."
+    },
+    {
+      "icon": "leaf",
+      "title": "Ambiente que relaja",
+      "text": "Un espacio pensado para desconectar, para cualquier edad y estilo."
+    }
   ],
   "testimonials": {
     "isPlaceholder": true,
     "items": [
-      { "name": "Ejemplo de reseña", "text": "Sustituir por reseñas reales de clientes (por ejemplo, de Google).", "treatment": "Lifting de pestañas" },
-      { "name": "Ejemplo de reseña", "text": "Sustituir por reseñas reales de clientes (por ejemplo, de Google).", "treatment": "Depilación láser" },
-      { "name": "Ejemplo de reseña", "text": "Sustituir por reseñas reales de clientes (por ejemplo, de Google).", "treatment": "Maderoterapia" }
+      {
+        "name": "Ejemplo de reseña",
+        "text": "Sustituir por reseñas reales de clientes (por ejemplo, de Google).",
+        "treatment": "Lifting de pestañas"
+      },
+      {
+        "name": "Ejemplo de reseña",
+        "text": "Sustituir por reseñas reales de clientes (por ejemplo, de Google).",
+        "treatment": "Depilación láser"
+      },
+      {
+        "name": "Ejemplo de reseña",
+        "text": "Sustituir por reseñas reales de clientes (por ejemplo, de Google).",
+        "treatment": "Maderoterapia"
+      }
     ]
   },
   "seo": {
