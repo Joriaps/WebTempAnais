@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://joriaps.github.io/WebTempAnais/sitemap.xml
