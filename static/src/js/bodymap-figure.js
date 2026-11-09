@@ -5,9 +5,13 @@
    - js/bodymap.js (navegador): nube de puntos dorada en 3D.
    - static/build.mjs (Node): silueta SVG frontal del modo estático.
    Unidades: metros aprox. (altura ≈ 1,78). Y arriba, Z hacia delante.
+   Es el respaldo del maniquí 3D (assets/models/figure.glb): misma postura en A
+   y mismas alturas; en z el modelo está desplazado FIG_Z (ver bodymap.js).
    Tipos: e = elipsoide { c, r }, c = round cone { a, b, ra, rb }.
    m: true → se duplica en espejo (x → -x). k = suavizado de la unión.
    ========================================================================== */
+/** Desplazamiento en z de esta figura respecto al modelo glTF (las anclas de bodymap.json siguen al modelo). */
+export const FIG_Z = -0.07;
 export const PRIMS = [
   { t: 'e', c: [0, 1.615, 0.005], r: [0.078, 0.102, 0.092], k: 0 },          // cabeza
   { t: 'e', c: [0, 1.64, -0.015], r: [0.08, 0.085, 0.085], k: 0.03 },        // cráneo
@@ -19,9 +23,9 @@ export const PRIMS = [
   { t: 'e', c: [0, 1.08, 0], r: [0.11, 0.13, 0.08], k: 0.07 },               // cintura
   { t: 'e', c: [0, 0.93, -0.01], r: [0.155, 0.11, 0.1], k: 0.06 },           // caderas
   { t: 'e', c: [0.07, 0.89, -0.05], r: [0.08, 0.085, 0.07], k: 0.04, m: true }, // glúteo (suave)
-  { t: 'c', a: [0.19, 1.33, 0], b: [0.235, 1.07, -0.01], ra: 0.046, rb: 0.036, k: 0.025, m: true }, // brazo
-  { t: 'c', a: [0.235, 1.07, -0.01], b: [0.275, 0.83, 0.02], ra: 0.036, rb: 0.026, k: 0.02, m: true }, // antebrazo
-  { t: 'e', c: [0.29, 0.755, 0.03], r: [0.026, 0.065, 0.042], k: 0.02, m: true }, // mano
+  { t: 'c', a: [0.19, 1.33, 0], b: [0.335, 1.19, -0.01], ra: 0.046, rb: 0.036, k: 0.025, m: true }, // brazo (postura en A, como el modelo 3D)
+  { t: 'c', a: [0.335, 1.19, -0.01], b: [0.455, 1.07, 0.02], ra: 0.036, rb: 0.026, k: 0.02, m: true }, // antebrazo
+  { t: 'e', c: [0.49, 1.0, 0.03], r: [0.034, 0.06, 0.042], k: 0.02, m: true }, // mano
   { t: 'c', a: [0.085, 0.9, 0], b: [0.095, 0.52, 0.005], ra: 0.082, rb: 0.05, k: 0.03, m: true }, // muslo
   { t: 'c', a: [0.095, 0.52, 0.005], b: [0.09, 0.1, -0.01], ra: 0.05, rb: 0.03, k: 0.02, m: true }, // pierna
   { t: 'e', c: [0.097, 0.37, -0.018], r: [0.045, 0.1, 0.045], k: 0.03, m: true }, // gemelo

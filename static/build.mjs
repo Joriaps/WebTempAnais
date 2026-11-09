@@ -88,7 +88,7 @@ const NEVER_KEYS = new Set([
   'theme', 'colors', 'fonts', 'image', 'ogImage', 'siteUrl', 'locale',
   'phone', 'whatsapp', 'email', 'postalCode', 'mapsUrl', 'mapsEmbed', 'bookingUrl', 'formEndpoint',
 ]);
-const NEVER_PATHS = new Set(['brand.name', 'brand.shortName', 'seo.titleSuffix', 'brand.logoText', 'brand.logoAccent', 'aloha.name', 'ohana.name', 'social']);
+const NEVER_PATHS = new Set(['brand.name', 'brand.shortName', 'seo.titleSuffix', 'brand.logoText', 'brand.logoAccent', 'aloha.name', 'ohana.name', 'social', 'model']);
 const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const hasText = (s) => typeof s === 'string' && /\p{L}/u.test(s.replace(/\[POR[ -]DEFINIR\]/gi, ''));
 
@@ -753,7 +753,22 @@ function heroImmersive(root, h, heroImg) {
    js/bodymap.js lo convierte en una escena 3D fijada (Three.js, cargado solo
    cuando la sección se acerca) si hay WebGL y no hay prefers-reduced-motion.
    ========================================================================== */
-const THREE_URL = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+const THREE_CDN = 'https://cdn.jsdelivr.net/npm/three@0.160.0/';
+const THREE_URL = THREE_CDN + 'build/three.module.js';
+// Complementos de la misma versión (GLTFLoader importa 'three': se resuelve con el import map de la sección)
+const THREE_GLTF = THREE_CDN + 'examples/jsm/loaders/GLTFLoader.js';
+const THREE_MESHOPT = THREE_CDN + 'examples/jsm/libs/meshopt_decoder.module.js';
+const THREE_ROOMENV = THREE_CDN + 'examples/jsm/environments/RoomEnvironment.js';
+const BM_MODEL = 'assets/models/figure.glb'; // maniquí CC0 (MakeHuman) por defecto, ver static/src/assets/models/CREDITS.md
+/** Modelo 3D del recorrido: bodymap.json → model (ruta relativa a static/src/) o el de por defecto; '' si no existe. */
+function bodymapModel(bm) {
+  const custom = typeof bm.model === 'string' && bm.model.trim() ? bm.model.trim().replace(/^\/+/, '') : '';
+  if (custom) {
+    if (existsSync(join(SRC, custom))) return custom;
+    warn(`bodymap.json: el modelo "${custom}" no existe en static/src/ (se usa el de por defecto)`);
+  }
+  return existsSync(join(SRC, BM_MODEL)) ? BM_MODEL : '';
+}
 const { PRIMS: BM_PRIMS, expand: bmExpand } = await import(pathToFileURL(join(SRC, 'js', 'bodymap-figure.js')).href);
 const bmNum = (v, d = 0) => (isNum(v) ? v : d);
 function bodymapSilhouette(zones) {
@@ -768,7 +783,7 @@ function bodymapSilhouette(zones) {
   }).join('');
   const marks = zones.map((z, i) => (Array.isArray(z.anchor) && z.anchor.length === 3
     ? `<g class="bm-sil__mark" transform="translate(${X(bmNum(z.anchor[0]))} ${Y(bmNum(z.anchor[1]))})"><circle r="6.5"/><text y="2.6">${i + 1}</text></g>` : '')).join('');
-  return `<svg class="bm-sil" viewBox="22 6 156 370" aria-hidden="true" focusable="false"><defs><linearGradient id="bm-sil-g" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" style="stop-color:var(--c-cream)"/><stop offset="1" style="stop-color:var(--c-nude)"/></linearGradient><g id="bm-sil-shape">${shapes}</g></defs><ellipse class="bm-sil__floor" cx="100" cy="369" rx="46" ry="5"/><use href="#bm-sil-shape" class="bm-sil__line"/><use href="#bm-sil-shape" class="bm-sil__fill"/>${marks}</svg>`;
+  return `<svg class="bm-sil" viewBox="-14 6 228 370" aria-hidden="true" focusable="false"><defs><linearGradient id="bm-sil-g" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" style="stop-color:var(--c-cream)"/><stop offset="1" style="stop-color:var(--c-nude)"/></linearGradient><g id="bm-sil-shape">${shapes}</g></defs><ellipse class="bm-sil__floor" cx="100" cy="369" rx="46" ry="5"/><use href="#bm-sil-shape" class="bm-sil__line"/><use href="#bm-sil-shape" class="bm-sil__fill"/>${marks}</svg>`;
 }
 function bodymapSection(root) {
   const bm = bodymap || {};
@@ -793,7 +808,7 @@ function bodymapSection(root) {
       </details>
     </li>`;
   }).join('\n    ');
-  return `<section class="section bm" id="zonas" aria-labelledby="bm-title" data-bodymap data-three="${esc(THREE_URL)}" data-nav="${u('bodymap.nav')}" data-goto="${u('bodymap.goTo')}" data-counter="${u('bodymap.counter')}" data-hint="${u('bodymap.hint')}" data-overview="${u('bodymap.overview')}">
+  return `<section class="section bm" id="zonas" aria-labelledby="bm-title" data-bodymap data-three="${esc(THREE_URL)}"${bodymapModel(bm) ? ` data-model="${root}${LANG_UP}${esc(bodymapModel(bm))}?v=${VERSION}" data-gltf="${esc(THREE_GLTF)}" data-meshopt="${esc(THREE_MESHOPT)}" data-roomenv="${esc(THREE_ROOMENV)}"` : ''} data-nav="${u('bodymap.nav')}" data-goto="${u('bodymap.goTo')}" data-counter="${u('bodymap.counter')}" data-hint="${u('bodymap.hint')}" data-overview="${u('bodymap.overview')}">
   <a class="bm__skip" href="#bm-end">${u('bodymap.skip')}</a>
   <div class="container">
     <div class="section__head section__head--center bm__head">${bm.eyebrow ? `<p class="eyebrow">${esc(bm.eyebrow)}</p>` : ''}<h2 id="bm-title">${esc(bm.title)}${bm.titleAccent ? ` <span class="accent">${esc(bm.titleAccent)}</span>` : ''}</h2>${bm.intro ? `<p class="bm__intro">${esc(bm.intro)}</p>` : ''}<p class="bm__jump"><a class="link-arrow" href="#bm-end">${u('bodymap.jump')} ${icon('arrow')}</a></p></div>
@@ -808,6 +823,7 @@ function bodymapSection(root) {
     </div>
   </div>
   <span class="bm__end" id="bm-end" tabindex="-1"></span>
+  <script type="importmap">{"imports":{"three":"${THREE_URL}"}}</script>
   <script type="module" src="${root}${LANG_UP}js/bodymap.js?v=${VERSION}"></script>
 </section>`;
 }

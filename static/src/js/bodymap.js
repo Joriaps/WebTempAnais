@@ -6,8 +6,14 @@
      fijada, URL en data-three) y se monta una escena fijada (sticky): el scroll
      orbita la cámara de zona en zona. El contenido del panel se copia de los
      elementos .bm-zone del HTML (ningún texto vive en este archivo).
+   - Figura: maniquí de cuerpo completo (assets/models/figure.glb, malla base
+     CC0 de MakeHuman, comprimida con meshopt; ver assets/models/CREDITS.md)
+     con material satinado nude-perla. Se carga con GLTFLoader (misma versión
+     de Three, resuelto con el import map de la página). Si el modelo o el
+     cargador fallan, se usa la figura procedural de bodymap-figure.js como
+     nube de puntos dorada (respaldo).
    ========================================================================== */
-import { sampleSurface, sampleContours, makeSdf, makeGrad } from './bodymap-figure.js';
+import { sampleSurface, sampleContours, makeSdf, makeGrad, FIG_Z } from './bodymap-figure.js';
 
 const sec = document.querySelector('[data-bodymap]');
 if (sec) setup(sec);
@@ -39,7 +45,12 @@ function setup(sec) {
     let THREE;
     try { THREE = await import(sec.dataset.three); } catch (e) { return; } // sin red / CDN: versión estática
     if (mq.matches) return;
-    try { app = await createApp(THREE, sec, zoneEls); } catch (e) { app = null; }
+    // Cargador glTF + decodificador meshopt + entorno de estudio (en paralelo con el montaje)
+    const ds = sec.dataset;
+    const mods = ds.model && ds.gltf
+      ? Promise.all([import(ds.gltf), ds.meshopt ? import(ds.meshopt) : null, ds.roomenv ? import(ds.roomenv).catch(() => null) : null]).catch(() => null)
+      : Promise.resolve(null);
+    try { app = await createApp(THREE, sec, zoneEls, mods); } catch (e) { app = null; }
   }
   const onMq = (e) => { if (e.matches && app) { app.destroy(); app = null; } };
   if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
@@ -85,7 +96,7 @@ void main() {
   float facing = smoothstep(-0.25, 0.35, ndv);
   float rim = pow(1.0 - clamp(ndv, 0.0, 1.0), 2.5);
   float lam = clamp(dot(wn, uLight) * 0.5 + 0.5, 0.0, 1.0);
-  float f = uFocusAmt * (1.0 - smoothstep(0.02, 0.13, distance(position, uFocus)));
+  float f = uFocusAmt * (1.0 - smoothstep(0.02, 0.13, distance(wp.xyz, uFocus)));
   vec3 c = mix(uDeep, uGold, lam);
   c = mix(c, vec3(1.0, 0.93, 0.76), rim * 0.4);
   c = mix(c, uAccent, f * 0.35);
@@ -127,32 +138,75 @@ void main() {
   gl_Position = projectionMatrix * mv;
 }`;
 
-async function createApp(THREE, sec, zoneEls) {
+/* Material del maniquí: satinado nude-perla + borde dorado (fresnel), tinte
+   coral-dorado en la zona activa y aparición de pies a cabeza con filo dorado. */
+function figureMaterial(THREE, col, U) {
+  const pearl = new THREE.Color(col('--c-nude', '#F1DDD0')).lerp(new THREE.Color('#d9ae94'), 0.42);
+  const m = new THREE.MeshPhysicalMaterial({
+    color: pearl, roughness: 0.46, metalness: 0,
+    sheen: 0.55, sheenRoughness: 0.45, sheenColor: new THREE.Color('#f6dfae'),
+    clearcoat: 0.2, clearcoatRoughness: 0.5, envMapIntensity: 0.45,
+  });
+  m.onBeforeCompile = (sh) => {
+    Object.assign(sh.uniforms, U);
+    sh.vertexShader = 'varying vec3 vBmW;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\nvBmW = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.fragmentShader = 'varying vec3 vBmW;\nuniform vec3 uFocus, uAccent, uRim;\nuniform float uFocusAmt, uFocusR, uReveal, uRimAmt;\n' + sh.fragmentShader
+      .replace('#include <color_fragment>', `#include <color_fragment>
+        if (vBmW.y > uReveal) discard;
+        float bmEdge = 1.0 - smoothstep(0.0, 0.04, uReveal - vBmW.y);
+        float bmF = uFocusAmt * (1.0 - smoothstep(uFocusR * 0.2, uFocusR, distance(vBmW, uFocus)));
+        diffuseColor.rgb = mix(diffuseColor.rgb, uAccent, bmF * 0.3);`)
+      .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+        totalEmissiveRadiance += uAccent * bmF * 0.09 + uRim * bmEdge * 1.6;`)
+      .replace('#include <opaque_fragment>', `float bmNdv = clamp(dot(normalize(normal), normalize(vViewPosition)), 0.0, 1.0);
+        outgoingLight += uRim * pow(1.0 - bmNdv, 3.0) * uRimAmt * (0.7 + 0.3 * (1.0 - bmF));
+        #include <opaque_fragment>`);
+  };
+  return m;
+}
+
+/** Sombra de contacto: degradado radial en un plano (sin coste de sombras reales). */
+function contactShadow(THREE) {
+  const c = document.createElement('canvas'); c.width = c.height = 128;
+  const g = c.getContext('2d'), grd = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+  grd.addColorStop(0, 'rgba(70,45,30,0.42)'); grd.addColorStop(0.45, 'rgba(70,45,30,0.16)'); grd.addColorStop(1, 'rgba(70,45,30,0)');
+  g.fillStyle = grd; g.fillRect(0, 0, 128, 128);
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+  const m = new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, toneMapped: false });
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(0.95, 0.6), m);
+  mesh.rotation.x = -Math.PI / 2; mesh.position.y = 0.001; mesh.renderOrder = -1;
+  return { mesh, dispose() { tex.dispose(); m.dispose(); mesh.geometry.dispose(); } };
+}
+
+const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
+
+async function createApp(THREE, sec, zoneEls, modsP) {
   const mobile = window.matchMedia('(max-width: 47.99em), (pointer: coarse)').matches;
   const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const css = getComputedStyle(document.documentElement);
   const col = (n, d) => css.getPropertyValue(n).trim() || d;
   const ds = sec.dataset;
 
-  const sdf = makeSdf(), grad = makeGrad(sdf);
+  let sdf = null, grad = null; // SDF de la figura procedural (solo en el respaldo o para normales iniciales)
+  const procNormal = (a) => { if (!grad) { sdf = makeSdf(); grad = makeGrad(sdf); } return grad(a[0], a[1], a[2] - FIG_Z); };
   const zones = zoneEls.map((li) => {
     const v = (li.dataset.view || '0,5,1.5').split(',').map(Number);
     const a = (li.dataset.anchor || '0,0.95,0').split(',').map(Number);
     const t = li.querySelector('.bm-zone__title');
-    return { id: li.dataset.zone, li, label: t ? t.textContent.trim() : '', body: li.querySelector('.bm-zone__body'), az: v[0] || 0, el: v[1] || 0, zoom: (v[2] || 1.5) * (mobile ? 0.72 : 1), // en móvil, algo más lejos (pantalla estrecha)
-      anchor: a, normal: grad(a[0], a[1], a[2]) };
+    const zoom = v[2] || 1.5;
+    return { id: li.dataset.zone, li, label: t ? t.textContent.trim() : '', body: li.querySelector('.bm-zone__body'), az: v[0] || 0, el: v[1] || 0, zoom: zoom * (mobile ? 0.72 : 1), // en móvil, algo más lejos (pantalla estrecha)
+      anchor: a, normal: [0, 0, 1], radius: clamp(0.5 / zoom, 0.07, 0.3) };
   });
-  const steps = [{ overview: true, label: ds.overview || '', az: -22, el: 6, zoom: mobile ? 0.8 : 1, anchor: [0, 0.9, 0] }].concat(zones);
+  const steps = [{ overview: true, label: ds.overview || '', az: -22, el: 6, zoom: mobile ? 0.74 : 0.9, anchor: [0, 0.88, -0.05], radius: 0.3 }].concat(zones);
   const N = steps.length;
-
-  /* ---------- Geometría (antes de tocar el DOM: si falla, la página no cambia) ---------- */
-  const P = await samplePoints(mobile ? 15000 : 38000);
 
   /* ---------- DOM de la escena ---------- */
   const track = el('div', 'bm__track');
   track.style.setProperty('--bm-steps', N);
-  const stage = el('div', 'bm__stage');
+  const stage = el('div', 'bm__stage', { 'aria-busy': 'true' });
   const canvas = el('canvas', 'bm__canvas', { 'aria-hidden': 'true' });
+  const loader = el('div', 'bm__loader', { 'aria-hidden': 'true' });
+  loader.append(el('span', 'bm__loader-ring'), el('span', 'bm__loader-glow'));
   const hotLayer = el('div', 'bm__hotspots');
   const panel = el('div', 'bm__panel', { 'aria-live': 'polite' });
   const pCounter = el('p', 'bm__counter'), pTitle = el('h3', 'bm__ptitle'), pBody = el('div', 'bm__pbody');
@@ -173,44 +227,62 @@ async function createApp(THREE, sec, zoneEls) {
     hotLayer.append(b); return { b, vis: false, x: 0, y: 0 };
   });
   const hint = el('p', 'bm__hint', { 'aria-hidden': 'true' }); hint.textContent = ds.hint || '';
-  stage.append(canvas, hotLayer, panel, nav, hint);
+  stage.append(canvas, loader, hotLayer, panel, nav, hint);
   track.append(stage);
 
-  /* ---------- Three.js ---------- */
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+  /* ---------- Three.js: render de estudio ---------- */
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: !mobile, powerPreference: 'high-performance' });
   renderer.setClearColor(0x000000, 0);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.92;
+  const shadows = !mobile;
+  if (shadows) { renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap; }
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(35, 1, 0.03, 30);
   const D0 = mobile ? 4.4 : 3.4;
   const gold = new THREE.Color(col('--c-gold', '#C9A24B'));
+  const coral = new THREE.Color(col('--c-coral', '#F07C6C'));
   const common = { uTime: { value: 0 }, uScale: { value: 800 }, uPR: { value: 1 }, uGold: { value: gold } };
+  const disposables = [];
 
-  const g1 = new THREE.BufferGeometry();
-  g1.setAttribute('position', new THREE.BufferAttribute(P.pos, 3));
-  g1.setAttribute('normal', new THREE.BufferAttribute(P.nor, 3));
-  g1.setAttribute('aLine', new THREE.BufferAttribute(P.line, 1));
-  g1.setAttribute('aRand', new THREE.BufferAttribute(P.rnd, 1));
-  const figU = Object.assign({}, common, {
-    uFocus: { value: new THREE.Vector3(0, 1, 0) }, uFocusAmt: { value: 0 },
-    uDeep: { value: new THREE.Color(col('--c-gold-strong', '#7a6025')) },
-    uAccent: { value: new THREE.Color(col('--c-coral', '#F07C6C')) },
-    uLight: { value: new THREE.Vector3(0.45, 0.75, 0.5).normalize() },
-  });
-  const m1 = new THREE.ShaderMaterial({ uniforms: figU, vertexShader: FIG_VS, fragmentShader: DOT_FS, transparent: true, depthWrite: false });
-  scene.add(new THREE.Points(g1, m1));
+  // Luces: principal cálida (con sombra suave en escritorio), relleno rosado y contraluz dorado
+  scene.add(new THREE.HemisphereLight(0xfff4ea, 0xb98f78, 0.22));
+  const key = new THREE.DirectionalLight(0xfff1e2, 1.75);
+  key.position.set(1.2, 5, 2); // alta: sombra corta y suave
+  if (shadows) {
+    key.castShadow = true;
+    key.shadow.mapSize.set(1024, 1024);
+    Object.assign(key.shadow.camera, { left: -1.5, right: 1.5, top: 1.5, bottom: -1.5, near: 1, far: 10 });
+    key.shadow.radius = 6; key.shadow.bias = -0.0006; key.shadow.normalBias = 0.02;
+  }
+  key.target.position.set(0, 0.9, 0);
+  scene.add(key, key.target);
+  const fill = new THREE.DirectionalLight(0xffd6cc, 0.32); fill.position.set(-2.4, 1.2, 1.6); scene.add(fill);
+  const rim = new THREE.DirectionalLight(0xffd9a0, 1.5); rim.position.set(-0.8, 2.4, -2.6); scene.add(rim);
+  const rim2 = new THREE.DirectionalLight(0xffe7c4, 0.8); rim2.position.set(1.8, 1.6, -2.2); scene.add(rim2);
+
+  // Suelo: sombra real (escritorio) + sombra de contacto difusa (siempre)
+  const cs = contactShadow(THREE); scene.add(cs.mesh); disposables.push(cs);
+  let ground = null;
+  if (shadows) {
+    ground = new THREE.Mesh(new THREE.PlaneGeometry(4, 4), new THREE.ShadowMaterial({ opacity: 0.13, color: 0x5a3a28 }));
+    ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+    disposables.push(ground.geometry, ground.material);
+  }
 
   // Polvo dorado ascendente + anillos de pedestal
-  const nDust = mobile ? 140 : 320, nRing = mobile ? 260 : 520;
+  const nDust = mobile ? 110 : 240, nRing = mobile ? 220 : 440;
   const dn = nDust + nRing * 2;
   const dPos = new Float32Array(dn * 3), dRnd = new Float32Array(dn), dDrift = new Float32Array(dn);
   for (let i = 0; i < dn; i++) {
     const r = Math.random(); dRnd[i] = r;
     if (i < nDust) {
-      const rad = 0.28 + Math.random() * 0.75, th = Math.random() * Math.PI * 2;
+      const rad = 0.4 + Math.random() * 0.7, th = Math.random() * Math.PI * 2;
       dPos.set([Math.cos(th) * rad, Math.random() * 2.1, Math.sin(th) * rad], i * 3); dDrift[i] = 1;
     } else {
-      const ring = i < nDust + nRing ? 0.3 : 0.4, th = Math.random() * Math.PI * 2, j = (Math.random() - 0.5) * 0.006;
-      dPos.set([Math.cos(th) * (ring + j), 0.002, Math.sin(th) * (ring + j)], i * 3);
+      const ring = i < nDust + nRing ? 0.42 : 0.54, th = Math.random() * Math.PI * 2, j = (Math.random() - 0.5) * 0.006;
+      dPos.set([Math.cos(th) * (ring + j), 0.003, Math.sin(th) * (ring + j)], i * 3);
     }
   }
   const g2 = new THREE.BufferGeometry();
@@ -219,6 +291,16 @@ async function createApp(THREE, sec, zoneEls) {
   g2.setAttribute('aDrift', new THREE.BufferAttribute(dDrift, 1));
   const m2 = new THREE.ShaderMaterial({ uniforms: common, vertexShader: DECO_VS, fragmentShader: DOT_FS, transparent: true, depthWrite: false });
   scene.add(new THREE.Points(g2, m2));
+  disposables.push(g2, m2);
+
+  // Uniformes compartidos de la figura (malla o respaldo de puntos)
+  const FU = {
+    uFocus: { value: new THREE.Vector3(0, 1, 0) }, uFocusAmt: { value: 0 }, uFocusR: { value: 0.3 },
+    uAccent: { value: coral.clone().lerp(gold, 0.35) }, uRim: { value: new THREE.Color('#e9c27a') },
+    uRimAmt: { value: 0.55 }, uReveal: { value: -0.05 },
+  };
+  let figure = null;   // { kind: 'mesh' | 'points', obj }
+  let revealT0 = -1;   // instante (ms) en que empieza la aparición
 
   /* ---------- Montaje: se cambia a modo 3D conservando la posición de lectura ---------- */
   const before = sec.getBoundingClientRect(), h0 = sec.offsetHeight;
@@ -321,10 +403,17 @@ async function createApp(THREE, sec, zoneEls) {
     if (act !== active) setActive(act);
     const z = steps[act];
     focus.set(z.anchor[0], z.anchor[1], z.anchor[2]);
-    figU.uFocus.value.lerp(focus, cur.fa === 0 ? 1 : Math.min(1, dt * 6));
+    const fk = cur.fa === 0 ? 1 : Math.min(1, dt * 6);
+    FU.uFocus.value.lerp(focus, fk);
+    FU.uFocusR.value += (z.radius - FU.uFocusR.value) * fk;
     cur.fa += ((act > 0 ? 1 : 0) - cur.fa) * Math.min(1, dt * 3);
-    figU.uFocusAmt.value = cur.fa;
+    FU.uFocusAmt.value = cur.fa;
     common.uTime.value = time;
+    if (revealT0 >= 0 && FU.uReveal.value < 1.9) {
+      if (!revealT0) revealT0 = now;
+      FU.uReveal.value = lerp(-0.05, 1.9, smooth(0, 1, (now - revealT0) / 1900));
+      if (FU.uReveal.value >= 1.9 && figure && figure.kind === 'mesh' && shadows) figure.mesh.castShadow = true;
+    }
     hint.classList.toggle('is-hidden', s > 0.35);
 
     renderer.render(scene, camera);
@@ -334,6 +423,7 @@ async function createApp(THREE, sec, zoneEls) {
 
   function placeHotspots() {
     camera.updateMatrixWorld();
+    const ready = !!figure;
     for (let i = 0; i < zones.length; i++) {
       const z = zones[i], h = hots[i];
       v3.set(z.anchor[0], z.anchor[1], z.anchor[2]);
@@ -342,7 +432,7 @@ async function createApp(THREE, sec, zoneEls) {
       const facing = (z.normal[0] * cx + z.normal[1] * cy + z.normal[2] * cz) / cl;
       v3.project(camera);
       const x = (v3.x * 0.5 + 0.5) * M.w, y = (-v3.y * 0.5 + 0.5) * M.wh;
-      const vis = facing > (i + 1 === active ? -0.35 : 0.2) && v3.z < 1 && x > 16 && x < M.w - 16 && y > 16 && y < Math.min(M.wh, M.panelTop) - 16;
+      const vis = ready && facing > (i + 1 === active ? -0.2 : 0.25) && v3.z < 1 && x > 16 && x < M.w - 16 && y > 16 && y < Math.min(M.wh, M.panelTop) - 16;
       if (vis !== h.vis) { h.vis = vis; h.b.hidden = !vis; }
       if (vis && (Math.abs(x - h.x) > 0.3 || Math.abs(y - h.y) > 0.3)) {
         h.x = x; h.y = y; h.b.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
@@ -351,9 +441,9 @@ async function createApp(THREE, sec, zoneEls) {
   }
 
   /* ---------- Bucle: solo con la escena en vista y la pestaña visible ---------- */
-  let raf = 0, running = false, inView = false;
+  let raf = 0, running = false, inView = false, dead = false;
   function update() {
-    const should = inView && !document.hidden;
+    const should = inView && !document.hidden && !dead;
     if (should && !running) { running = true; last = 0; raf = requestAnimationFrame(frame); }
     else if (!should && running) { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
   }
@@ -381,14 +471,112 @@ async function createApp(THREE, sec, zoneEls) {
   resize();
   setActive(0);
 
+  /* ---------- Figura: modelo glTF (o respaldo procedural) ---------- */
+  async function loadModel() {
+    const mods = await modsP;
+    if (!mods || !mods[0]) throw new Error('sin cargador');
+    const [{ GLTFLoader }, mo, re] = mods;
+    if (re && re.RoomEnvironment) { // reflejos suaves de estudio
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      const envScene = new re.RoomEnvironment(renderer);
+      const env = pmrem.fromScene(envScene, 0.04).texture;
+      scene.environment = env; disposables.push(env, pmrem);
+      envScene.traverse((o) => { if (o.isMesh) { o.geometry.dispose(); o.material.dispose(); } });
+    }
+    const gl = new GLTFLoader();
+    if (mo && mo.MeshoptDecoder) gl.setMeshoptDecoder(mo.MeshoptDecoder);
+    const gltf = await withTimeout(gl.loadAsync(ds.model), 20000);
+    if (dead) throw new Error('destruida');
+    const root = gltf.scene;
+    // Sirve cualquier figura humana de pie (Y arriba, mirando a +Z). Se ocultan pelo, pestañas, cejas,
+    // dientes y piezas con transparencia (con el material de escultura quedarían como placas opacas).
+    const extra = /hair|lash|brow|teeth|tongue|pelo|pesta|ceja/i;
+    let mesh = null;
+    root.traverse((o) => {
+      if (!o.isMesh) return;
+      const om = Array.isArray(o.material) ? o.material[0] : o.material;
+      if (extra.test(o.name || '') || extra.test((om && om.name) || '') || (om && (om.transparent || om.alphaTest > 0))) { o.visible = false; return; }
+      if (!mesh || o.geometry.attributes.position.count > mesh.geometry.attributes.position.count) mesh = o; // la malla mayor = cuerpo
+    });
+    if (!mesh) throw new Error('modelo vacío');
+    const hidden = []; root.traverse((o) => { if (o.isMesh && !o.visible) hidden.push(o); });
+    hidden.forEach((o) => { o.removeFromParent(); o.geometry.dispose(); });
+    // Normaliza: pies en y = 0, centrado en x/z, 1,74 de alto (coincide con las anclas de bodymap.json)
+    root.updateMatrixWorld(true);
+    const box = new THREE.Box3().setFromObject(root), size = box.getSize(new THREE.Vector3());
+    const s = 1.74 / (size.y || 1);
+    const pivot = new THREE.Group();
+    root.position.set(-(box.min.x + box.max.x) / 2, -box.min.y, -(box.min.z + box.max.z) / 2);
+    pivot.scale.setScalar(s); pivot.add(root);
+    const mat = figureMaterial(THREE, col, FU);
+    root.traverse((o) => { if (o.isMesh) { (Array.isArray(o.material) ? o.material : [o.material]).forEach((x) => x && x.dispose()); o.material = mat; disposables.push(o.geometry); o.castShadow = false; o.receiveShadow = false; } });
+    disposables.push(mat);
+    pivot.updateMatrixWorld(true);
+    // Normal de la superficie más cercana a cada ancla (visibilidad de los puntos)
+    const pa = mesh.geometry.attributes.position, na = mesh.geometry.attributes.normal;
+    const w = new THREE.Vector3(), nm = new THREE.Matrix3().getNormalMatrix(mesh.matrixWorld), nv = new THREE.Vector3();
+    const best = zones.map(() => ({ d: 1e9, i: -1 }));
+    for (let i = 0; i < pa.count; i++) {
+      w.fromBufferAttribute(pa, i).applyMatrix4(mesh.matrixWorld);
+      for (let j = 0; j < zones.length; j++) {
+        const a = zones[j].anchor, d = (w.x - a[0]) ** 2 + (w.y - a[1]) ** 2 + (w.z - a[2]) ** 2;
+        if (d < best[j].d) { best[j].d = d; best[j].i = i; }
+      }
+    }
+    zones.forEach((z, j) => { if (na && best[j].i >= 0) { nv.fromBufferAttribute(na, best[j].i).applyMatrix3(nm).normalize(); z.normal = [nv.x, nv.y, nv.z]; } });
+    scene.add(pivot);
+    return { kind: 'mesh', obj: pivot, mesh };
+  }
+
+  async function loadFallback() {
+    const P = await samplePoints(mobile ? 15000 : 38000);
+    if (dead) throw new Error('destruida');
+    const g1 = new THREE.BufferGeometry();
+    g1.setAttribute('position', new THREE.BufferAttribute(P.pos, 3));
+    g1.setAttribute('normal', new THREE.BufferAttribute(P.nor, 3));
+    g1.setAttribute('aLine', new THREE.BufferAttribute(P.line, 1));
+    g1.setAttribute('aRand', new THREE.BufferAttribute(P.rnd, 1));
+    const figU = Object.assign({}, common, {
+      uFocus: FU.uFocus, uFocusAmt: FU.uFocusAmt,
+      uDeep: { value: new THREE.Color(col('--c-gold-strong', '#7a6025')) },
+      uAccent: { value: coral },
+      uLight: { value: new THREE.Vector3(0.45, 0.75, 0.5).normalize() },
+    });
+    const m1 = new THREE.ShaderMaterial({ uniforms: figU, vertexShader: FIG_VS, fragmentShader: DOT_FS, transparent: true, depthWrite: false });
+    const pts = new THREE.Points(g1, m1);
+    pts.position.z = FIG_Z;
+    scene.add(pts); disposables.push(g1, m1);
+    zones.forEach((z) => { z.normal = procNormal(z.anchor); });
+    return { kind: 'points', obj: pts };
+  }
+
+  function ready(fig) {
+    figure = fig;
+    if (fig.kind === 'mesh') revealT0 = 0; else FU.uReveal.value = 9;
+    stage.removeAttribute('aria-busy');
+    loader.classList.add('is-done');
+    setTimeout(() => loader.remove(), 900);
+  }
+
+  (async () => {
+    let fig = null;
+    try { fig = await loadModel(); } catch (e) { fig = null; }
+    if (dead) return;
+    if (!fig) { try { fig = await loadFallback(); } catch (e) { if (!dead) destroy(); return; } }
+    if (!dead) ready(fig);
+  })();
+
   function destroy() {
-    running = false; if (raf) cancelAnimationFrame(raf);
+    if (dead) return;
+    dead = true; running = false; if (raf) cancelAnimationFrame(raf);
     vio.disconnect(); if (ro) ro.disconnect();
     document.removeEventListener('visibilitychange', onVis);
     window.removeEventListener('resize', onResize);
     window.removeEventListener('load', measure);
     canvas.removeEventListener('webglcontextlost', onLost);
-    g1.dispose(); g2.dispose(); m1.dispose(); m2.dispose(); renderer.dispose();
+    disposables.forEach((d) => { try { d.dispose(); } catch (e) { /* ya liberado */ } });
+    if (key.shadow && key.shadow.map) key.shadow.map.dispose();
+    renderer.dispose();
     track.remove(); sec.classList.remove('bm--3d'); sec.style.removeProperty('--bm-top');
   }
   return { destroy };

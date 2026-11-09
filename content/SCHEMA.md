@@ -176,6 +176,7 @@ Sección «Recorrido por zonas» (`#zonas`) de la portada, entre las categorías
 {
   "eyebrow": "Recorrido por zonas", "title": "Tu cuerpo, zona a zona,", "titleAccent": "con el tratamiento justo",
   "intro": "",
+  "model": "assets/models/figure.glb",      // opcional: modelo 3D (.glb, ruta relativa a static/src/). Sin él o si no existe: el de por defecto
   "zones": [
     {
       "id": "rostro",                       // slug único (no se traduce)
@@ -190,7 +191,8 @@ Sección «Recorrido por zonas» (`#zonas`) de la portada, entre las categorías
 ```
 - **Orden**: el de `zones` es el del recorrido (scroll) y el de la lista numerada.
 - **`view`**: `azimuth` en grados alrededor de la figura (0 = de frente, 90 = lado izquierdo de la figura / derecha de pantalla, 180 = espalda). Se interpola **sin dar la vuelta corta**: para seguir girando en el mismo sentido usa valores continuos (p. ej. 210 → 320 → 345 → 380). `elevation` en grados (positivo = desde arriba). `zoom` 1 = cuerpo entero; 4-6 = primer plano de la cara.
-- **`anchor`**: figura de ~1,78 de alto, pies en y = 0, cabeza ~1,6-1,73; x positivo = lado izquierdo de la figura; z positivo = delante, negativo = espalda. Ahí va el punto dorado pulsante (y el número en la silueta estática).
-- La figura es procedural (`static/src/js/bodymap-figure.js`, maniquí neutro sin rasgos): la misma geometría sirve para la escena 3D y la silueta SVG.
-- Funcionamiento: sin JS, sin WebGL o con `prefers-reduced-motion` se ve la versión estática (silueta + acordeón con los textos y enlaces). Si no, `js/bodymap.js` carga Three.js (versión fijada desde jsDelivr, solo al acercarse a la sección) y monta la escena fijada: ~0,4 pantallas de scroll por zona, panel con la zona activa (aria-live), puntos de progreso y puntos de la figura clicables.
+- **`anchor`**: punto en la superficie de la figura normalizada: 1,74 de alto, pies en y = 0, centro de la caja envolvente en x = z = 0 (ojos ~1,63, hombros ~1,38, manos ~1,03 en postura en A); x positivo = lado izquierdo de la figura; z positivo = delante (cara ≈ 0,05), negativo = espalda (≈ −0,17). Ahí va el punto dorado pulsante (y el número en la silueta estática).
+- **`model`**: figura 3D de cuerpo completo. Por defecto `assets/models/figure.glb` (maniquí de la malla base CC0 de MakeHuman, comprimido con meshopt; créditos y licencia en `static/src/assets/models/CREDITS.md`). Se puede cambiar por otro .glb de una figura humana **de pie, Y arriba, mirando a +Z** (convención glTF): `js/bodymap.js` lo normaliza por su caja envolvente (1,74 de alto, pies en y = 0, centrado en x/z) y le aplica su propio material, así que `anchor` y `view` siguen valiendo si las proporciones y la postura son parecidas (si no, revisa las anclas). Admite meshopt (EXT_meshopt_compression); Draco no. No se traduce.
+- Si el modelo no carga (sin red, navegador sin import maps, archivo roto), se usa la figura procedural (`static/src/js/bodymap-figure.js`, maniquí neutro en la misma postura en A) como nube de puntos dorada. Esa misma geometría dibuja la silueta SVG de la versión estática.
+- Funcionamiento: sin JS, sin WebGL o con `prefers-reduced-motion` se ve la versión estática (silueta + acordeón con los textos y enlaces). Si no, `js/bodymap.js` carga Three.js y GLTFLoader (versión fijada desde jsDelivr, solo al acercarse a la sección; el HTML trae un import map para `three`) y monta la escena fijada: ~0,4 pantallas de scroll por zona, panel con la zona activa (aria-live), puntos de progreso y puntos de la figura clicables.
 - Traducción: `content/i18n/<ca|en>/bodymap.json` con `eyebrow`, `title`, `titleAccent`, `intro` y `zones` (`id`, `label`, `text`; se emparejan por `id`). `treatments`, `view` y `anchor` salen siempre del español. Textos fijos (botones, aria-labels, «Zona {n} de {total}»…): `content/i18n/ui.json → bodymap`.
