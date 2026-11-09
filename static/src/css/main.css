@@ -500,6 +500,13 @@ table { border-collapse: collapse; width: 100%; }
 .checklist li { display: flex; gap: .6rem; align-items: flex-start; }
 .checklist .icon { color: var(--c-green-strong); margin-top: .2em; }
 .club__conditions { font-size: var(--fs-sm); opacity: .9; }
+/* Tercera tarjeta: fidelidad */
+@media (min-width: 52em) { .duo--3 > :last-child:nth-child(3) { grid-column: 1 / -1; } }
+@media (min-width: 72em) { .duo--3 { grid-template-columns: repeat(3, 1fr); } .duo--3 > :last-child:nth-child(3) { grid-column: auto; } }
+.club--fidelidad { background: linear-gradient(150deg, color-mix(in srgb, var(--c-gold) 45%, var(--c-cream)), color-mix(in srgb, var(--c-nude) 80%, var(--c-cream))); }
+.club__deco--crown { width: 11rem; right: -1.5rem; bottom: -1.5rem; }
+.club .btn { margin-top: auto; }
+.club > p:last-child { margin-top: auto; }
 
 /* ---------- Promos ---------- */
 .promo { border: 2px dashed color-mix(in srgb, var(--c-coral) 70%, transparent); background: color-mix(in srgb, var(--c-white) 80%, var(--c-cream)); }
@@ -708,6 +715,25 @@ table { border-collapse: collapse; width: 100%; }
 .table-scroll { overflow-x: auto; }
 .disclaimer { display: flex; gap: .6rem; align-items: flex-start; font-size: var(--fs-sm); color: var(--c-muted); margin-top: var(--space-5); }
 .disclaimer .icon { margin-top: .2em; }
+.disclaimer--packs { color: var(--c-ink); background: color-mix(in srgb, var(--c-pink) 22%, var(--c-white)); border-radius: var(--r); padding: var(--space-3) var(--space-4); }
+.disclaimer--packs .icon { color: var(--c-coral-strong, var(--c-coral)); }
+.disclaimer--packs a { color: inherit; font-weight: 700; }
+/* Columnas Ella / Él y precio con Aloha / Ohana */
+.price-table .col-disc { color: var(--c-muted); }
+.price-table td.col-aloha, .price-table td.col-ohana { color: var(--c-ink); font-weight: 600; }
+.price-table thead .col-aloha { background: color-mix(in srgb, var(--c-pink) 35%, var(--c-white)); color: var(--c-ink); }
+.price-table thead .col-ohana { background: color-mix(in srgb, var(--c-sage) 45%, var(--c-white)); color: var(--c-ink); }
+.price-table td.col-aloha { background: color-mix(in srgb, var(--c-pink) 10%, var(--c-white)); }
+.price-table td.col-ohana { background: color-mix(in srgb, var(--c-sage) 14%, var(--c-white)); }
+.pair { display: inline-grid; gap: .15rem; justify-items: end; }
+.pair__l { font-size: var(--fs-xs); font-weight: 400; color: var(--c-muted); margin-right: .2rem; }
+/* Banner tarjeta de fidelidad (página de precios) */
+.loyal-banner { display: grid; gap: var(--space-4); align-items: center; margin: var(--space-6) 0 var(--space-5); padding: clamp(1.25rem, 3vw, 2rem); border-radius: var(--r-lg); background: linear-gradient(135deg, color-mix(in srgb, var(--c-gold) 40%, var(--c-cream)), var(--c-cream)); box-shadow: var(--shadow-sm); }
+@media (min-width: 48em) { .loyal-banner { grid-template-columns: auto 1fr auto; } }
+.loyal-banner__icon { display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 50%; background: var(--c-gold); color: var(--on-gold, #2B2024); }
+.loyal-banner h2 { font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem); margin: 0 0 .25rem; }
+.loyal-banner p { margin: 0; }
+.loyal-banner__eyebrow { font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: var(--fs-xs); }
 
 .tabs__list { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: var(--space-5); }
 .tabs__tab {
@@ -1050,4 +1076,9 @@ table { border-collapse: collapse; width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .bm-hot.is-active::after, .bm__hint::after { animation: none; }
   .bm__panel.is-in > * { animation: none; }
+}
+/* Móvil: la columna de la opción se queda fija al deslizar la tabla de precios */
+@media (max-width: 47.99em) {
+  .price-table tbody th[scope="row"], .price-table thead th:first-child { position: sticky; left: 0; z-index: 1; background: var(--c-white); box-shadow: 1px 0 0 color-mix(in srgb, var(--c-nude) 75%, transparent); min-width: 9.5rem; max-width: 11rem; }
+  .price-table thead th:first-child { background: color-mix(in srgb, var(--c-nude) 35%, var(--c-white)); }
 }

@@ -501,51 +501,27 @@
       ],
       "prices": [
         {
-          "label": "Llavi superior o mentó",
-          "note": "Per sessió"
+          "label": "Zona XS",
+          "note": "Arèoles, entrecella, llavi superior, mentó, patilles, pòmuls, orelles, clatell o línia alba"
         },
         {
-          "label": "Aixelles",
-          "note": "Per sessió"
+          "label": "Zona S",
+          "note": "Aixelles, engonals normals, coll, mans o peus"
         },
         {
-          "label": "Engonals (línia del biquini)",
-          "note": "Per sessió"
+          "label": "Zona M",
+          "note": "Avantbraços, espatlles, pubis, intergluti, facial complet o perfilat de barba"
         },
         {
-          "label": "Engonal brasilera / íntegra",
-          "note": "Per sessió"
+          "label": "Zona L",
+          "note": "Mitges cames, braços complets, abdomen, tòrax, esquena superior, lumbosacra o glutis"
         },
         {
-          "label": "Braços complets",
-          "note": "Per sessió"
-        },
-        {
-          "label": "Mitges cames",
-          "note": "Per sessió"
-        },
-        {
-          "label": "Esquena completa",
-          "note": "Per sessió"
-        },
-        {
-          "label": "Cames completes",
-          "note": "Per sessió"
-        },
-        {
-          "label": "Pack cos complet",
-          "note": "Per sessió. Zones incloses per confirmar a la consulta"
-        },
-        {
-          "label": "Bo 6 sessions aixelles",
-          "note": ""
-        },
-        {
-          "label": "Bo 6 sessions aixelles + engonal brasilera",
-          "note": ""
+          "label": "Zona XL",
+          "note": "Cames completes, esquena completa o pit complet"
         }
       ],
-      "priceNote": "Preu orientatiu",
+      "priceNote": "Preu per sessió i zona",
       "tags": [
         "làser",
         "díode",
@@ -1364,7 +1340,7 @@
       "name": "Pressoteràpia",
       "short": "Botes de pressió d'aire que ajuden a drenar líquids i deixen les cames lleugeríssimes.",
       "hook": "Relaxa't mentre les teves cames es desinflen",
-      "whatIs": "Et col·loquem unes botes (i, si cal, una faixa per a l'abdomen o els braços) amb cambres que s'inflen i es desinflen de manera seqüencial, des dels peus cap amunt. Aquesta compressió rítmica ajuda a mobilitzar els líquids retinguts i estimula la circulació de retorn. Només t'has d'estirar i relaxar.",
+      "whatIs": "La pressoteràpia és un tractament no invasiu que fa servir aire a pressió controlada. Et col·loquem unes botes (i, si cal, una faixa per a l'abdomen i els glutis o mànigues per als braços) amb cambres que s'inflen i es desinflen per torns, de baix cap amunt. Aquesta compressió rítmica ajuda a moure els líquids retinguts i activa la circulació de tornada cap al cor. Tu només t'has d'estirar i relaxar.",
       "mechanism": "La pressió d'aire reprodueix de manera mecànica l'efecte de bombeig del drenatge limfàtic: empeny el líquid acumulat entre les cèl·lules cap als vasos limfàtics i venosos perquè l'organisme el pugui eliminar. Com que ho fa de manera progressiva i ascendent, afavoreix el retorn venós de les cames. Per això es nota lleugeresa des de la primera sessió i és el complement ideal després de la cavitació o la maderoteràpia.",
       "benefits": [
         {
@@ -1417,8 +1393,8 @@
         }
       ],
       "duration": "30 – 40 min",
-      "sessions": "Cicle de 10 sessions, 2-3 per setmana, i després manteniment",
-      "results": "La sensació de lleugeresa es nota des de la primera sessió. La millora de la retenció depèn de la constància i dels hàbits.",
+      "sessions": "Un cicle d'unes 10 sessions, d'1 a 3 per setmana segons el teu cas, i després manteniment",
+      "results": "La sensació de lleugeresa es nota des de la primera sessió. La millora de la retenció se sol apreciar cap a la 3a-4a sessió i depèn de la constància, la hidratació i els hàbits. Resultats variables segons cada persona.",
       "aftercare": [
         "Beu aigua després de la sessió",
         "Camina una mica per activar la circulació",
@@ -1427,10 +1403,11 @@
         "Aixeca les cames una estona a la nit per allargar la sensació de lleugeresa"
       ],
       "contraindications": [
-        "Trombosi, flebitis o varius greus",
-        "Insuficiència cardíaca o renal, hipertensió no controlada",
+        "Trombosi o tromboflebitis, actual o passada, i varius greus",
+        "Insuficiència cardíaca o renal, malaltia cardiovascular greu o hipertensió no controlada",
         "Embaràs",
-        "Ferides o infeccions a les cames",
+        "Tractament oncològic en curs",
+        "Ferides, infeccions o pell molt fràgil a la zona",
         "Marcapassos o problemes cardíacs: consulta mèdica prèvia"
       ],
       "faq": [
@@ -1445,6 +1422,10 @@
         {
           "q": "La puc fer sola o millor combinada?",
           "a": "Funciona sola, però combinada amb maderoteràpia o drenatge manual l'efecte es potencia."
+        },
+        {
+          "q": "Serveix per eliminar greix?",
+          "a": "No. Treballa sobre els líquids i la circulació, no sobre el greix. Si vols tractar greix localitzat, la combinem amb cavitació."
         }
       ],
       "prices": [
@@ -1528,8 +1509,8 @@
         }
       ],
       "duration": "40 – 60 min segons la zona",
-      "sessions": "Entre 8 i 10 sessions, 1-2 per setmana, i després manteniment mensual",
-      "results": "La pell es nota més suau i tersa des de les primeres sessions. La millora de la fermesa és progressiva i se sol apreciar més a partir de la 4a sessió, a mesura que es forma col·lagen nou. Els resultats varien segons cada cos i els hàbits.",
+      "sessions": "Entre 6 i 10 sessions segons la zona, 1-2 per setmana, i després sessions de manteniment",
+      "results": "La pell es nota més suau i tersa des de les primeres sessions. La millora de la fermesa és progressiva i se sol apreciar a partir del primer mes (cap a la 4a sessió), a mesura que es forma col·lagen nou. Els resultats varien segons cada cos, l'estat de la pell i els hàbits.",
       "aftercare": [
         "Beu 1,5-2 litres d'aigua al dia per afavorir el drenatge",
         "La pell pot quedar una mica vermellosa i calenta durant una estona",
@@ -1544,6 +1525,7 @@
         "DIU de coure (per al tractament abdominal)",
         "Càncer actiu o recent",
         "Varius marcades, trombosi o alteracions de la sensibilitat a la zona",
+        "Malaltia cardíaca o alteracions de la coagulació",
         "Ferides, infeccions o cirurgia recent a la zona"
       ],
       "faq": [
@@ -1642,10 +1624,10 @@
         }
       ],
       "duration": "40 – 60 min",
-      "sessions": "Entre 8 i 10 sessions, amb almenys 72 hores entre sessions a la mateixa zona",
+      "sessions": "Entre 10 i 12 sessions, deixant almenys 72 hores (3 dies) entre sessions a la mateixa zona",
       "results": "La reducció del contorn se sol notar de manera progressiva a partir de la 3a-4a sessió. El resultat depèn de cada cos, de la zona i, sobretot, dels hàbits d'alimentació, hidratació i activitat.",
       "aftercare": [
-        "Beu 1,5-2 litres d'aigua el dia de la sessió i els següents",
+        "Beu aigua abans i després de la sessió (1,5-2 litres al dia) i també els dies següents",
         "Camina o fes exercici suau aquell dia per ajudar a eliminar",
         "Redueix els greixos, els sucres i l'alcohol durant el tractament",
         "Completa la sessió amb drenatge (pressoteràpia o manual) quan t'ho recomanem",
@@ -1705,90 +1687,91 @@
     {
       "id": "roll-systemic",
       "name": "Roll systemic",
-      "short": "Massatge mecànic amb corrons i succió que activa la circulació, drena i millora l'aspecte de la cel·lulitis.",
-      "hook": "El massatge que mobilitza la teva pell en profunditat",
-      "whatIs": "El roll systemic és un tractament de massatge mecànic corporal: un capçal amb corrons motoritzats i una succió suau pessiga, eleva i desplaça la pell de manera rítmica, i reprodueix la tècnica manual del «palpar-rodar» amb més intensitat i regularitat. S'utilitza per activar la circulació, afavorir el drenatge de líquids, suavitzar la pell de taronja i millorar la fermesa.",
-      "mechanism": "La succió forma un plec de pell que els corrons mobilitzen en totes direccions. Aquest estímul mecànic activa la microcirculació sanguínia i limfàtica, cosa que afavoreix el drenatge dels líquids retinguts entre les cèl·lules. En mobilitzar el teixit subcutani, ajuda a estovar els envans fibrosos que «estiren» la pell en la cel·lulitis i a millorar-ne l'aspecte. A més, l'estimulació repetida de la dermis activa els fibroblasts, que contribueixen a una pell més tonificada.",
+      "short": "Diatèrmia i massatge compressiu amb corrons alhora: drena, reafirma i millora l'aspecte de la cel·lulitis.",
+      "hook": "Calor des de dins i massatge en una sola sessió",
+      "whatIs": "El roll systemic és un tractament corporal que uneix dues tècniques en la mateixa sessió: un massatge compressiu amb corrons i la diatèrmia, que genera una calor suau dins dels teixits. S'utilitza per activar la circulació, ajudar a eliminar líquids retinguts i millorar l'aspecte de la cel·lulitis i la fermesa de la pell en zones com l'abdomen, els malucs, els braços o les cames. No és invasiu i tornes a la teva rutina al moment.",
+      "mechanism": "La diatèrmia fa servir un corrent d'alta freqüència que els mateixos teixits converteixen en calor (calor endògena), en lloc d'escalfar només la superfície. Aquesta calor dilata els vasos petits, millora l'oxigenació i activa el metabolisme de les cèl·lules. Mentrestant, els corrons comprimeixen i mobilitzen el teixit de manera rítmica, cosa que afavoreix el drenatge limfàtic i ajuda a moure els líquids acumulats. La suma de calor i massatge estimula a més els fibroblasts, les cèl·lules que fabriquen col·lagen, i contribueix a una pell més ferma i llisa.",
       "benefits": [
         {
-          "title": "Menys pell de taronja",
-          "text": "Ajuda a suavitzar l'aspecte de la cel·lulitis amb constància."
+          "title": "Millor aspecte de la cel·lulitis",
+          "text": "La calor i el massatge ajuden a suavitzar la pell de taronja amb constància."
         },
         {
           "title": "Efecte drenant",
-          "text": "Activa la circulació limfàtica i redueix la sensació de retenció."
+          "text": "Activa la circulació limfàtica i ajuda a reduir la retenció de líquids."
         },
         {
-          "title": "Pell més tonificada",
-          "text": "L'estimulació mecànica millora la textura i la fermesa."
+          "title": "Pell més ferma",
+          "text": "La calor estimula el col·lagen i millora la textura de la pell."
         },
         {
           "title": "Cames més lleugeres",
-          "text": "Alleuja la pesadesa i el cansament."
+          "text": "Alleuja la sensació de pesadesa i cansament."
         },
         {
-          "title": "Potencia altres tractaments",
-          "text": "Excel·lent després de la cavitació o com a preparació per a la radiofreqüència."
+          "title": "Contorn més definit",
+          "text": "Ajuda a millorar l'aspecte de les zones amb volum localitzat, juntament amb bons hàbits."
         },
         {
-          "title": "Agradable i no invasiu",
-          "text": "Sensació de massatge profund, sense recuperació."
+          "title": "Agradable i relaxant",
+          "text": "Calor envoltant i massatge profund, sense temps de recuperació."
         }
       ],
       "idealFor": [
         "Cel·lulitis i pell de taronja",
         "Retenció de líquids i cames cansades",
-        "Pell amb falta de to a les cuixes, els glutis o l'abdomen",
-        "Com a complement d'un pla corporal"
+        "Flacciditat lleu a l'abdomen, els braços, les cuixes o els malucs",
+        "Qui busca un tractament corporal complet i relaxant"
       ],
       "howItWorks": [
         {
           "title": "Valoració",
-          "text": "Revisem les zones, l'objectiu i les contraindicacions."
+          "text": "Revisem les zones, l'objectiu i les contraindicacions (la diatèrmia en té algunes d'importants)."
         },
         {
           "title": "Preparació",
-          "text": "Et donem una malla corporal perquè el capçal llisqui de manera higiènica i uniforme."
+          "text": "Preparem la zona i col·loquem els elèctrodes necessaris per a la diatèrmia."
         },
         {
-          "title": "Massatge mecànic",
-          "text": "Treballem cada zona seguint el recorregut de la circulació i n'ajustem la intensitat."
+          "title": "Calor i massatge",
+          "text": "Fem lliscar el capçal de corrons mentre la diatèrmia escalfa el teixit, i n'ajustem la intensitat i la temperatura perquè sigui sempre confortable."
         },
         {
           "title": "Final",
-          "text": "Acabem amb maniobres drenants o una crema específica."
+          "text": "Acabem amb maniobres drenants o una crema específica i continues el teu dia."
         }
       ],
       "duration": "30 – 45 min",
-      "sessions": "Un cicle de 10-12 sessions, 2 per setmana, i després manteniment",
-      "results": "La sensació de lleugeresa es nota des de la primera sessió. La millora de l'aspecte de la cel·lulitis i de la fermesa és progressiva i depèn de la constància i dels hàbits.",
+      "sessions": "Pla a mida després de la valoració: el més habitual és un cicle d'almenys 6 sessions i després manteniment",
+      "results": "La sensació de lleugeresa i de pell més suau se sol notar des de les primeres sessions. La millora de la cel·lulitis, la fermesa i el contorn és progressiva i depèn de la constància i dels hàbits. Resultats variables segons cada cos.",
       "aftercare": [
-        "Beu 1,5-2 litres d'aigua al dia",
+        "Beu 1,5-2 litres d'aigua al dia per afavorir el drenatge",
+        "La zona pot quedar calenta i una mica vermellosa durant una estona",
+        "Evita la sauna, els banys molt calents i el sol intens les primeres 24 h",
         "Camina o fes activitat suau per mantenir activa la circulació",
-        "Redueix la sal i l'alcohol durant el tractament",
-        "Pot quedar una lleu vermellor que desapareix en poca estona",
-        "Hidrata la pell amb una crema anticel·lulítica o reafirmant"
+        "Redueix la sal i l'alcohol durant el tractament"
       ],
       "contraindications": [
         "Embaràs",
-        "Varius marcades, trombosi o flebitis",
-        "Fragilitat capil·lar o tendència als hematomes",
-        "Tractaments anticoagulants",
-        "Ferides, infeccions o problemes de pell a la zona",
-        "Càncer actiu o cirurgia recent a la zona"
+        "Marcapassos o altres dispositius electrònics implantats",
+        "Epilèpsia",
+        "Pròtesis o implants metàl·lics a la zona",
+        "Trombosi, flebitis, varius marcades o tractament anticoagulant",
+        "Càncer actiu o recent",
+        "Ferides, infeccions o alteracions de la sensibilitat a la zona"
       ],
       "faq": [
         {
-          "q": "Fa mal?",
-          "a": "No n'hauria de fer. Es nota un massatge intens que regulem al teu gust."
+          "q": "Què se sent?",
+          "a": "Una calor agradable que surt des de dins i un massatge ferm amb corrons. Regulem la intensitat en tot moment."
         },
         {
-          "q": "Quina diferència hi ha amb la maderoteràpia?",
-          "a": "Totes dues mobilitzen el teixit. La maderoteràpia és manual i amb fusta; el roll systemic fa servir corrons i succió amb una intensitat molt regular."
+          "q": "En què es diferencia de la maderoteràpia o la pressoteràpia?",
+          "a": "Totes tres ajuden a drenar. La maderoteràpia és un massatge manual amb estris de fusta i la pressoteràpia fa servir pressió d'aire; el roll systemic suma la calor de la diatèrmia al massatge amb corrons."
         },
         {
-          "q": "Necessito roba especial?",
-          "a": "Et facilitem una malla corporal d'un sol ús o d'ús individual."
+          "q": "El puc fer si porto marcapassos?",
+          "a": "Amb diatèrmia, no. Si portes marcapassos o un altre dispositiu implantat, avisa'ns i et proposarem una altra opció."
         }
       ],
       "prices": [
@@ -1816,8 +1799,8 @@
       "name": "Diatèrmia (corporal i facial)",
       "short": "Calor profunda generada des de dins del teixit per reafirmar, activar la circulació i millorar la cel·lulitis. També al rostre.",
       "hook": "Calor des de dins per reafirmar el cos i el rostre",
-      "whatIs": "La diatèrmia és una tècnica que utilitza corrents d'alta freqüència per generar calor a l'interior dels teixits (calor endògena), en lloc d'aplicar-la des de fora. En estètica s'utilitza en mode capacitiu i resistiu per reafirmar la pell, activar la circulació, ajudar a drenar i millorar l'aspecte de la cel·lulitis al cos. Al rostre, amb un capçal més petit i menys intensitat, ajuda a millorar la fermesa, la lluminositat i les línies fines.",
-      "mechanism": "El corrent circula entre el capçal i una placa de retorn, i la resistència natural dels teixits el transforma en calor. En mode capacitiu la calor es concentra a les capes més superficials i riques en aigua, com la dermis; en mode resistiu arriba a teixits més profunds i densos, com el greix o la fàscia. Aquest augment de temperatura provoca vasodilatació, millora l'oxigenació i el drenatge limfàtic, accelera el metabolisme cel·lular i estimula els fibroblasts a produir col·lagen i elastina, cosa que es tradueix en una pell més ferma i uniforme.",
+      "whatIs": "La diatèrmia és una tècnica que fa servir corrent d'alta freqüència per generar calor dins dels teixits (calor endògena), en lloc d'aplicar-la des de fora. Al cos ajuda a reafirmar la pell, activar la circulació i millorar l'aspecte de la cel·lulitis en zones com l'abdomen, els braços o les cuixes. Al rostre, amb un capçal més petit i menys intensitat, ajuda a millorar la fermesa de l'oval i el coll, les línies fines i la lluminositat. L'apliquem amb el mateix equip multifunció que fem servir per a l'hidrafacial, així que pots combinar les dues tècniques en una mateixa sessió.",
+      "mechanism": "El corrent travessa els teixits i la seva resistència natural el transforma en calor. Segons el capçal i la zona, aquesta calor es concentra en capes més superficials, com la dermis, o arriba a teixits més profunds. L'augment de temperatura dilata els vasos petits, millora l'oxigenació i el drenatge, activa el metabolisme de les cèl·lules i estimula els fibroblasts perquè produeixin col·lagen i elastina. Amb sessions regulars, la pell es veu més ferma i uniforme.",
       "benefits": [
         {
           "title": "Reafirma el cos i el rostre",
@@ -1837,7 +1820,7 @@
         },
         {
           "title": "Versàtil",
-          "text": "S'adapta a l'abdomen, les cames, els glutis, els braços o el rostre."
+          "text": "S'adapta a l'abdomen, les cames, els glutis, els braços, l'oval facial o el coll."
         },
         {
           "title": "Agradable i sense recuperació",
@@ -1857,19 +1840,19 @@
         },
         {
           "title": "Preparació",
-          "text": "Col·loquem la placa de retorn i apliquem crema conductora."
+          "text": "Netegem la zona i apliquem un medi conductor."
         },
         {
           "title": "Diatèrmia",
-          "text": "Treballem la zona alternant el mode capacitiu i el resistiu segons l'objectiu."
+          "text": "Fem lliscar el capçal fins a notar una calor agradable, i n'ajustem la intensitat i la profunditat a l'objectiu."
         },
         {
           "title": "Acabat",
-          "text": "Massatge drenant i cosmètica reafirmant."
+          "text": "Massatge drenant al cos o sèrum reafirmant al rostre. Si la combines amb l'hidrafacial, la pell ja arriba neta i hidratada."
         }
       ],
       "duration": "40 – 60 min",
-      "sessions": "Entre 8 i 10 sessions, 1-2 per setmana, i després manteniment",
+      "sessions": "Entre 6 i 10 sessions segons la zona i l'objectiu, 1-2 per setmana, i després manteniment",
       "results": "La pell es nota més suau i lluminosa des de les primeres sessions. La millora de la fermesa i de l'aspecte de la cel·lulitis és progressiva. Els resultats varien segons cada persona i els seus hàbits.",
       "aftercare": [
         "Beu aigua en abundància per afavorir el drenatge",
@@ -1885,20 +1868,25 @@
         "Càncer actiu o recent",
         "Febre o processos infecciosos aguts",
         "Trombosi, varius marcades o alteracions de la sensibilitat",
+        "Malaltia cardíaca o alteracions de la coagulació",
         "Ferides o cirurgia recent a la zona"
       ],
       "faq": [
         {
           "q": "En què es diferencia de la radiofreqüència?",
-          "a": "Totes dues generen calor al teixit. La diatèrmia treballa amb placa de retorn i alterna el mode capacitiu i el resistiu per arribar a diferents profunditats."
+          "a": "Són tècniques molt semblants: totes dues generen calor dins del teixit amb corrent d'alta freqüència. Canvien l'equip i el capçal; a la consulta et recomanem la més adequada per a la teva zona."
         },
         {
           "q": "Es pot fer a la cara?",
-          "a": "Sí, amb capçals i intensitats adaptats al rostre."
+          "a": "Sí. Al rostre fem servir un capçal i una intensitat adaptats, sobretot a l'oval, el coll i les zones amb línies fines."
         },
         {
           "q": "Fa mal?",
           "a": "No. Es nota calor, que regulem perquè sigui sempre agradable."
+        },
+        {
+          "q": "La puc combinar amb l'hidrafacial?",
+          "a": "Sí. Totes dues es fan amb el mateix equip, així que en una sola cita podem netejar i hidratar la pell amb l'hidrafacial i acabar amb diatèrmia per treballar la fermesa."
         }
       ],
       "prices": [
@@ -1930,8 +1918,8 @@
       "name": "Body sculpt",
       "short": "Estimulació muscular intensa sense esforç per tonificar l'abdomen, els glutis, els braços o les cames.",
       "hook": "Tonifica mentre estàs estirada/estirat",
-      "whatIs": "El body sculpt és un tractament de remodelació corporal que provoca contraccions musculars intenses i repetides mitjançant estimulació electromagnètica o elèctrica, sense que hagis de fer cap esforç. Ajuda a tonificar i definir zones com l'abdomen, els glutis, els braços o les cuixes, i és un gran complement de l'exercici i dels tractaments de flacciditat i greix localitzat.",
-      "mechanism": "L'aplicador genera impulsos que arriben fins al múscul i el fan contraure moltes més vegades i de manera més intensa del que s'aconsegueix amb un exercici voluntari en el mateix temps. El múscul respon adaptant-se: millora el to i la fermesa, com després d'un entrenament. Aquest treball intens augmenta la despesa energètica de la zona i activa la circulació, cosa que contribueix a una silueta més definida quan s'acompanya de bons hàbits.",
+      "whatIs": "El body sculpt és un tractament de remodelació corporal amb tecnologia electromagnètica d'alta intensitat. Provoca contraccions musculars molt intenses i repetides sense que hagis de fer cap esforç ni passar per cirurgia. Ajuda a tonificar i reafirmar l'abdomen, els glutis, els braços o les cuixes, i és un gran complement de l'exercici i dels tractaments de flacciditat i greix localitzat.",
+      "mechanism": "L'aplicador crea un camp electromagnètic que travessa la pell i el greix i arriba al múscul. Allà provoca contraccions molt intenses, anomenades supramàximes, que no es poden aconseguir amb un exercici voluntari, i moltes més repeticions de les que faries en el mateix temps. El múscul respon adaptant-se: guanya to i fermesa, com després d'un entrenament. Aquest treball també activa el metabolisme de la zona; alguns estudis han observat a més una reducció moderada del greix que cobreix el múscul, tot i que el resultat canvia molt d'una persona a una altra.",
       "benefits": [
         {
           "title": "To muscular",
@@ -1983,8 +1971,8 @@
         }
       ],
       "duration": "30 min per zona",
-      "sessions": "Entre 6 i 8 sessions, 2 per setmana, i després manteniment mensual",
-      "results": "Es nota la zona treballada des de la primera sessió. La millora del to i la definició és progressiva i se sol apreciar a partir de la 4a sessió. Els resultats varien segons cada cos i els hàbits.",
+      "sessions": "Un cicle inicial de 4 a 8 sessions de 30 minuts, 2 per setmana (amb 2-3 dies de descans entre elles), i després manteniment",
+      "results": "Es nota la zona treballada des de la primera sessió. La millora del to i la definició és progressiva i continua avançant durant les setmanes posteriors al cicle. Els resultats varien segons cada cos i els hàbits.",
       "aftercare": [
         "Beu aigua després de la sessió",
         "És normal notar un cruiximent suau l'endemà",
@@ -2013,6 +2001,10 @@
         {
           "q": "Puc tractar diverses zones?",
           "a": "Sí, a la mateixa cita o alternant dies."
+        },
+        {
+          "q": "Serveix per treure greix?",
+          "a": "No és un tractament per aprimar-se: la seva funció principal és tonificar el múscul. Pot ajudar a millorar el contorn i, si vols treballar greix localitzat, el combinem amb cavitació."
         }
       ],
       "prices": [
@@ -2380,8 +2372,8 @@
       "name": "Hidrafacial (hidrodermoabrasió)",
       "short": "Neteja, exfoliació, extracció i hidratació en una sola sessió. Pell lluminosa a l'instant i sense vermellors.",
       "hook": "La teva pell, neta i sucosa en una sola sessió",
-      "whatIs": "La hidrodermoabrasió és un tractament facial que neteja, exfolia, extreu impureses i hidrata la pell en una mateixa sessió. Un capçal amb una punta especial combina una succió suau amb l'aplicació contínua de sèrums, de manera que la pell es renova mentre es va nodrint. És apte per a gairebé tots els tipus de pell, no necessita temps de recuperació i deixa un efecte «bona cara» immediat.",
-      "mechanism": "La primera fase retira les cèl·lules mortes de la capa còrnia, la més superficial, que apaguen el to i obstrueixen els porus. A continuació, la succió controlada ajuda a extreure el sèu i les impureses de l'interior del porus sense la pressió d'una extracció manual. Alhora, el capçal infon sèrums amb actius hidratants i antioxidants, com l'àcid hialurònic, que penetren millor en una pell acabada d'exfoliar. El resultat és una barrera cutània més hidratada, una superfície més llisa i una pell que reflecteix millor la llum.",
+      "whatIs": "La hidrodermoabrasió és un tractament facial que neteja, exfolia, extreu impureses i hidrata la pell en una mateixa sessió. Un capçal amb una punta especial combina una succió suau amb l'aplicació contínua de sèrums, de manera que la pell es renova mentre es va nodrint. És apte per a gairebé tots els tipus de pell, no necessita temps de recuperació i deixa un efecte «bona cara» immediat. El fem amb un equip multifunció que també inclou diatèrmia, així que, si vols, pots afegir un extra de fermesa a la mateixa sessió.",
+      "mechanism": "La primera fase retira les cèl·lules mortes de la capa còrnia, la més superficial, que apaguen el to i obstrueixen els porus. A continuació, la succió controlada ajuda a extreure el sèu i les impureses de l'interior del porus sense la pressió d'una extracció manual. Alhora, el capçal infon sèrums amb actius hidratants, antioxidants o pèptids, com l'àcid hialurònic, que penetren millor en una pell acabada d'exfoliar. El resultat és una barrera cutània més hidratada, una superfície més llisa i una pell que reflecteix millor la llum.",
       "benefits": [
         {
           "title": "Lluminositat immediata",
@@ -2397,7 +2389,7 @@
         },
         {
           "title": "Textura més fina",
-          "text": "L'exfoliació suau deixa una superfície més llisa i uniforme."
+          "text": "Superfície més llisa i uniforme, i millor aspecte de les línies fines per manca d'hidratació."
         },
         {
           "title": "Sense temps de recuperació",
@@ -2471,6 +2463,10 @@
         {
           "q": "És el mateix que la marca Hydrafacial®?",
           "a": "Hydrafacial® és una marca registrada d'un aparell concret. El tractament genèric s'anomena hidrodermoabrasió; a la consulta t'expliquem l'equip que fem servir."
+        },
+        {
+          "q": "El puc combinar amb diatèrmia?",
+          "a": "Sí. El nostre equip fa totes dues coses: primer netegem i hidratem amb l'hidrafacial i després apliquem diatèrmia per estimular la fermesa. Abans revisem que no tinguis cap contraindicació per a la calor (per exemple, marcapassos o embaràs)."
         }
       ],
       "prices": [
@@ -2556,7 +2552,7 @@
         }
       ],
       "duration": "40 – 50 min",
-      "sessions": "De 4 a 6 sessions cada 15-21 dies i després una de manteniment al mes",
+      "sessions": "De 4 a 6 sessions cada 2-4 setmanes i després una de manteniment cada mes o cada dos mesos",
       "results": "La pell es nota més suau i lluminosa en acabar. Les millores en la textura i les marques superficials són progressives i depenen de cada pell.",
       "aftercare": [
         "Hi pot haver un lleu envermelliment que desapareix en poques hores",
@@ -2656,8 +2652,8 @@
           "text": "Analitzem la teva pell i definim les zones i l'objectiu."
         },
         {
-          "title": "Neteja",
-          "text": "Netegem la pell i apliquem un medi conductor."
+          "title": "Neteja i exfoliació",
+          "text": "Netegem i exfoliem suaument la pell i apliquem un medi conductor."
         },
         {
           "title": "Radiofreqüència",
@@ -2670,7 +2666,7 @@
       ],
       "duration": "45 – 60 min",
       "sessions": "Entre 6 i 8 sessions, una per setmana o cada 15 dies, i després manteniment mensual",
-      "results": "Després de la sessió la pell es veu més tersa i lluminosa. La millora de la fermesa és progressiva: el col·lagen nou es forma les setmanes següents, per això se sol apreciar més a partir de la 3a-4a sessió. Els resultats varien segons cada pell.",
+      "results": "Després de la sessió la pell es veu més tersa i lluminosa. La millora de la fermesa és progressiva: el col·lagen nou es forma les setmanes següents, per això se sol apreciar més a partir del primer mes (3a-4a sessió). Els resultats varien segons cada pell.",
       "aftercare": [
         "Pot quedar un lleu envermelliment i calor durant una o dues hores",
         "Beu aigua i mantén la pell ben hidratada",
@@ -2683,6 +2679,7 @@
         "Marcapassos o altres dispositius electrònics implantats",
         "Implants metàl·lics o pròtesis a la zona",
         "Farciments o fils tensors recents: avisa'ns per valorar els terminis",
+        "Malaltia cardíaca o alteracions de la coagulació",
         "Càncer actiu o recent",
         "Ferides, herpes actiu, infeccions o alteracions de la sensibilitat a la zona"
       ],
@@ -2734,7 +2731,7 @@
       "short": "Un equip amb diversos capçals per netejar, purificar, oxigenar i nodrir la pell en un protocol a mida.",
       "hook": "Diverses tecnologies, un sol facial a la teva mida",
       "whatIs": "És un tractament que utilitza un equip facial multifunció: un aparell que reuneix diversos capçals i tècniques en un. Segons el que necessiti la teva pell aquell dia, combinem funcions de neteja profunda, exfoliació, aspiració, efecte purificant i aplicació d'actius en un mateix protocol. És molt versàtil: serveix tant per a pells greixoses amb impureses com per a pells apagades que necessiten llum i nutrició.",
-      "mechanism": "Cada funció de l'equip actua sobre una necessitat diferent. Les funcions de neteja i dessincrustació ajuden a dissoldre el sèu i la brutícia que obstrueixen el porus; l'aspiració activa la microcirculació i ajuda a extreure impureses; l'alta freqüència, si l'equip la inclou, aporta un efecte purificant i oxigenant molt útil en pells amb tendència acneica; i els corrents suaus de vehiculació faciliten que els actius penetrin millor. En encadenar-les en l'ordre adequat, la pell queda neta, equilibrada i receptiva.",
+      "mechanism": "Cada funció de l'equip actua sobre una necessitat diferent. Les més habituals en aquest tipus d'aparells són la microdermoabrasió, que retira cèl·lules mortes i afina la textura; l'espàtula ultrasònica, que amb la seva vibració ajuda a desprendre el sèu i les impureses de la superfície i del porus; i l'alta freqüència, que amb un elèctrode de vidre produeix un lleu espurneig i ozó, al qual s'atribueix un efecte purificant útil en pells amb tendència acneica. L'aspiració, a més, activa la microcirculació. En encadenar-les en l'ordre adequat i acabar amb actius, la pell queda neta, equilibrada i receptiva.",
       "benefits": [
         {
           "title": "Protocol a mida",
@@ -2810,7 +2807,7 @@
       "faq": [
         {
           "q": "Quines funcions té l'aparell?",
-          "a": "Depèn del protocol de cada dia. A la consulta t'expliquem quins capçals farem servir i per què."
+          "a": "Reuneix diverses tècniques de neteja i renovació de la pell, com l'exfoliació, el peeling ultrasònic o l'alta freqüència. Triem les que necessita la teva pell cada dia i a la consulta t'expliquem quins capçals farem servir i per què."
         },
         {
           "q": "En què es diferencia de la higiene facial?",

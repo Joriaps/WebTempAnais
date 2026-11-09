@@ -2,6 +2,7 @@
   "aloha": {
     "name": "Aloha",
     "subtitle": "Tu bienvenida a Imperium",
+    "discount": 15,
     "description": "¿Es tu primera vez con nosotras? Te recibimos con un 15% de descuento en tu primer tratamiento y una valoración gratuita para que sepas exactamente qué te conviene antes de pagar nada.",
     "perks": [
       "15% de descuento en tu primer tratamiento (cualquiera de la carta)",
@@ -15,6 +16,7 @@
   "ohana": {
     "name": "Ohana",
     "subtitle": "Trae a tu gente, ganáis las dos",
+    "discount": 20,
     "description": "En Imperium somos familia. Si traes a una amiga, amigo, pareja o familiar que no nos conozca, los dos os lleváis un 20% de descuento: tu acompañante en su primera visita y tú en tu próxima cita.",
     "perks": [
       "20% para tu amigo/a o familiar en su primer tratamiento",
@@ -96,7 +98,8 @@
       "price": 149,
       "oldPrice": 190,
       "highlight": false,
-      "cta": "Reservar Verano Láser"
+      "cta": "Reservar Verano Láser",
+      "active": false
     },
     {
       "id": "pack-relax",
@@ -150,21 +153,24 @@
       "label": "Láser axilas",
       "sessions": 6,
       "price": 135,
-      "oldPrice": 180
+      "oldPrice": 180,
+      "active": false
     },
     {
       "treatmentId": "depilacion-laser",
       "label": "Láser ingles",
       "sessions": 6,
       "price": 179,
-      "oldPrice": 240
+      "oldPrice": 240,
+      "active": false
     },
     {
       "treatmentId": "depilacion-laser",
       "label": "Láser piernas completas",
       "sessions": 6,
       "price": 549,
-      "oldPrice": 720
+      "oldPrice": 720,
+      "active": false
     },
     {
       "treatmentId": "maderoterapia",

@@ -47,13 +47,16 @@
     }
   ],
   "loyalty": {
-    "description": "La nostra targeta de fidelitat digital: cada visita suma una corona i, quan completes la targeta, t'emportes un regal. Sense quotes i sense lletra petita.",
+    "name": "Club Corona",
+    "description": "Com més et cuides, més et premiem. Amb la nostra targeta de fidelitat cada sessió suma i, quan la completes, es converteix en descomptes i ofertes exclusives per a qui forma part del club.",
     "steps": [
-      "Demana la teva targeta Club Corona en la primera visita (o registra-la amb el mòbil).",
-      "Suma 1 corona per cada cita de 25 € o més.",
-      "Quan arribes a 8 corones, tries regal: 50% en un tractament de fins a 50 € o un massatge relaxant de 30 minuts.",
-      "Les corones no caduquen mentre ens visitis almenys un cop cada 6 mesos."
-    ]
+      "Demana la teva targeta en la propera visita: és gratis.",
+      "Cada sessió que et facis suma un segell.",
+      "En completar [POR DEFINIR] sessions, t’emportes el teu descompte o oferta exclusiva."
+    ],
+    "subtitle": "La teva targeta de fidelitat",
+    "conditions": "[POR DEFINIR]",
+    "cta": "Vull la meva targeta"
   },
   "leadMagnet": {
     "title": "Diagnòstic de pell gratis",

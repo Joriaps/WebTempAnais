@@ -59,7 +59,7 @@ Valores con `"[POR DEFINIR]"` = dato real pendiente del negocio.
       "contraindications": [ "" ],
       "faq": [ { "q": "", "a": "" } ],
       "priceFrom": 0,                  // número en € (para "desde X €")
-      "prices": [ { "label": "", "price": 0, "oldPrice": null, "note": "" } ],
+      "prices": [ { "label": "", "price": 0, "priceHim": 0, "oldPrice": null, "note": "", "noDiscount": false } ],
       "priceNote": "Precio orientativo",
       "tags": [ "" ],
       "combinesWith": [ "id-de-otro-tratamiento" ]   // (opcional) 2-4 ids con los que combina bien
@@ -72,7 +72,7 @@ Iconos disponibles: `nail`, `foot`, `polish`, `laser`, `wax`, `lash`, `brow`, `t
 ## `packs.json` — Aloha, Ohana, packs y bonos
 ```jsonc
 {
-  "aloha": { "name": "Aloha", "subtitle": "", "description": "", "perks": [ "" ], "conditions": "", "cta": "" },
+  "aloha": { "name": "Aloha", "subtitle": "", "discount": 15, "description": "", "perks": [ "" ], "conditions": "", "cta": "" },
   "ohana": { "name": "Ohana", "subtitle": "", "description": "", "perks": [ "" ], "conditions": "", "cta": "" },
   "packs": [
     { "id": "", "name": "", "badge": "", "description": "", "items": [ "" ], "price": 0, "oldPrice": 0, "highlight": false, "cta": "" }
@@ -88,7 +88,7 @@ Iconos disponibles: `nail`, `foot`, `polish`, `laser`, `wax`, `lash`, `brow`, `t
 {
   "announcement": { "active": true, "text": "", "href": "" },
   "promos": [ { "id": "", "title": "", "text": "", "badge": "", "validity": "", "active": true } ],
-  "loyalty": { "name": "", "description": "", "steps": [ "" ] },
+  "loyalty": { "name": "", "subtitle": "", "description": "", "steps": [ "" ], "conditions": "", "cta": "" },
   "leadMagnet": { "title": "", "text": "", "cta": "" },
   "faqGeneral": [ { "q": "", "a": "" } ]
 }
@@ -147,6 +147,14 @@ Notas:
 
 ### Líneas de precio "desde"
 En `treatments[].prices[]` se puede añadir `"from": true` para mostrar "desde X €" (p. ej. decoraciones con precio según diseño).
+
+**Precios ella / él.** Si una línea de `prices` lleva `"priceHim"`, la tabla de ese tratamiento (y la de su categoría en /precios/) muestra dos columnas: **Ella** (`price`) y **Él** (`priceHim`). Las líneas sin `priceHim` ocupan las dos columnas (mismo precio para todos). `"priceHim": null` muestra «Consultar».
+
+**Columnas Aloha / Ohana.** Las tablas de precios calculan solas el precio con `aloha.discount` y `ohana.discount` (porcentaje, en `packs.json`). No se aplica a líneas ya rebajadas (con `oldPrice`) ni a las que lleven `"noDiscount": true` (bonos, combos…). Si se borra `discount`, desaparece esa columna.
+
+**Ocultar sin borrar.** Packs y bonos con `"active": false` no se muestran.
+
+**Tarjeta de fidelidad** (`marketing.json → loyalty`): sale como tercera tarjeta junto a Aloha y Ohana (portada y /packs/#fidelidad) y como banner bajo las tablas de /precios/. `steps` son los pasos; `[POR DEFINIR]` se resalta.
 
 ## «Quiénes somos» (`site.json → about`, opcional)
 Sección de la portada con id `quienes-somos`, situada antes de «Por qué nosotras» (`whyUs`). Si `about` no existe, no se muestra la sección ni el enlace del menú.

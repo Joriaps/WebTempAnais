@@ -501,51 +501,27 @@
       ],
       "prices": [
         {
-          "label": "Upper lip or chin",
-          "note": "Per session"
+          "label": "XS area",
+          "note": "Areolas, between the brows, upper lip, chin, sideburns, cheekbones, ears, nape or navel line"
         },
         {
-          "label": "Underarms",
-          "note": "Per session"
+          "label": "S area",
+          "note": "Underarms, standard bikini line, neck, hands or feet"
         },
         {
-          "label": "Bikini line",
-          "note": "Per session"
+          "label": "M area",
+          "note": "Forearms, shoulders, pubic area, between the buttocks, full face or beard outline"
         },
         {
-          "label": "Brazilian / full bikini",
-          "note": "Per session"
+          "label": "L area",
+          "note": "Half legs, full arms, abdomen, chest, upper back, lower back or buttocks"
         },
         {
-          "label": "Full arms",
-          "note": "Per session"
-        },
-        {
-          "label": "Half legs",
-          "note": "Per session"
-        },
-        {
-          "label": "Full back",
-          "note": "Per session"
-        },
-        {
-          "label": "Full legs",
-          "note": "Per session"
-        },
-        {
-          "label": "Full body pack",
-          "note": "Per session. Areas included to be confirmed at consultation"
-        },
-        {
-          "label": "6-session package, underarms",
-          "note": ""
-        },
-        {
-          "label": "6-session package, underarms + Brazilian bikini",
-          "note": ""
+          "label": "XL area",
+          "note": "Full legs, full back or full chest"
         }
       ],
-      "priceNote": "Guide price",
+      "priceNote": "Price per session and area",
       "tags": [
         "laser",
         "diode",
@@ -1364,7 +1340,7 @@
       "name": "Pressotherapy",
       "short": "Air-pressure boots that help drain fluid and leave your legs feeling ultra-light.",
       "hook": "Relax while your legs de-puff",
-      "whatIs": "We fit you with boots (and, if needed, a garment for the tummy or arms) with chambers that inflate and deflate in sequence, from the feet upwards. This rhythmic compression helps mobilise retained fluid and stimulates the return circulation. All you have to do is lie back and relax.",
+      "whatIs": "Pressotherapy is a non-invasive treatment that uses controlled air pressure. We fit you with boots (and, if needed, a garment for the tummy and buttocks or sleeves for the arms) with chambers that inflate and deflate in turn, from the bottom upwards. This rhythmic compression helps move retained fluid and boosts the circulation back towards the heart. All you have to do is lie back and relax.",
       "mechanism": "The air pressure mechanically reproduces the pumping effect of lymphatic drainage: it pushes the fluid that has built up between cells towards the lymphatic and venous vessels so the body can eliminate it. Working progressively upwards encourages venous return from the legs. That's why you feel lighter from the first session, and it's the ideal complement after cavitation or wood therapy.",
       "benefits": [
         {
@@ -1417,8 +1393,8 @@
         }
       ],
       "duration": "30 – 40 min",
-      "sessions": "A course of 10 sessions, 2-3 a week, followed by maintenance",
-      "results": "You'll feel lighter from the first session. Improvement in fluid retention depends on consistency and your habits.",
+      "sessions": "A course of around 10 sessions, 1 to 3 a week depending on your needs, followed by maintenance",
+      "results": "You'll feel lighter from the first session. Improvement in fluid retention is usually noticeable around the 3rd-4th session and depends on consistency, hydration and your habits. Results vary from person to person.",
       "aftercare": [
         "Drink water after the session",
         "Go for a short walk to get your circulation going",
@@ -1427,10 +1403,11 @@
         "Raise your legs for a while in the evening to make the light feeling last longer"
       ],
       "contraindications": [
-        "Thrombosis, phlebitis or severe varicose veins",
-        "Heart or kidney failure, uncontrolled high blood pressure",
+        "Current or past thrombosis or thrombophlebitis, and severe varicose veins",
+        "Heart or kidney failure, serious cardiovascular disease or uncontrolled high blood pressure",
         "Pregnancy",
-        "Wounds or infections on the legs",
+        "Ongoing cancer treatment",
+        "Wounds, infections or very fragile skin on the area",
         "Pacemaker or heart problems: medical consultation required first"
       ],
       "faq": [
@@ -1445,6 +1422,10 @@
         {
           "q": "Can I have it on its own or is it better combined?",
           "a": "It works on its own, but combined with wood therapy or manual drainage the effect is boosted."
+        },
+        {
+          "q": "Does it get rid of fat?",
+          "a": "No. It works on fluid and circulation, not on fat. If you want to target localised fat, we combine it with cavitation."
         }
       ],
       "prices": [
@@ -1528,8 +1509,8 @@
         }
       ],
       "duration": "40 – 60 min depending on the area",
-      "sessions": "Between 8 and 10 sessions, 1-2 a week, followed by monthly maintenance",
-      "results": "Your skin feels softer and smoother from the first few sessions. Firmness improves gradually and is usually more noticeable from the 4th session, as new collagen forms. Results vary depending on your body and habits.",
+      "sessions": "Between 6 and 10 sessions depending on the area, 1-2 a week, followed by maintenance sessions",
+      "results": "Your skin feels softer and smoother from the first few sessions. Firmness improves gradually and is usually noticeable from the first month (around the 4th session), as new collagen forms. Results vary depending on your body, the condition of your skin and your habits.",
       "aftercare": [
         "Drink 1.5-2 litres of water a day to support drainage",
         "Your skin may stay slightly red and warm for a while",
@@ -1544,6 +1525,7 @@
         "Copper IUD (for tummy treatments)",
         "Active or recent cancer",
         "Prominent varicose veins, thrombosis or altered sensation in the area",
+        "Heart disease or blood-clotting disorders",
         "Wounds, infections or recent surgery in the area"
       ],
       "faq": [
@@ -1642,10 +1624,10 @@
         }
       ],
       "duration": "40 – 60 min",
-      "sessions": "Between 8 and 10 sessions, with at least 72 hours between sessions on the same area",
+      "sessions": "Between 10 and 12 sessions, leaving at least 72 hours (3 days) between sessions on the same area",
       "results": "Reduced measurements are usually noticeable gradually from the 3rd-4th session. Results depend on your body, the area and, above all, your eating, hydration and activity habits.",
       "aftercare": [
-        "Drink 1.5-2 litres of water on the day of the session and the following days",
+        "Drink water before and after the session (1.5-2 litres a day) and on the following days too",
         "Go for a walk or do some gentle exercise that day to help elimination",
         "Cut down on fats, sugars and alcohol during the course of treatment",
         "Follow the session with drainage (pressotherapy or manual) when we recommend it",
@@ -1705,90 +1687,91 @@
     {
       "id": "roll-systemic",
       "name": "Roll systemic",
-      "short": "A mechanical massage with rollers and suction that boosts circulation, drains and improves the appearance of cellulite.",
-      "hook": "The massage that works your skin in depth",
-      "whatIs": "Roll systemic is a mechanical body massage treatment: a head with motorised rollers and gentle suction pinches, lifts and moves the skin rhythmically, reproducing the manual \"palper-rouler\" (skin-rolling) technique with greater intensity and consistency. It's used to boost circulation, encourage fluid drainage, smooth orange-peel skin and improve firmness.",
-      "mechanism": "The suction forms a fold of skin that the rollers move in every direction. This mechanical stimulation activates blood and lymphatic microcirculation, which encourages the drainage of fluid retained between cells. By mobilising the subcutaneous tissue, it helps soften the fibrous bands that \"pull\" on the skin in cellulite and improves its appearance. Repeated stimulation of the dermis also activates fibroblasts, which contribute to more toned skin.",
+      "short": "Diathermy and compressive roller massage at the same time: drains, firms and improves the appearance of cellulite.",
+      "hook": "Heat from within and massage in a single session",
+      "whatIs": "Roll systemic is a body treatment that brings together two techniques in the same session: a compressive massage with rollers and diathermy, which generates gentle heat inside the tissues. It's used to boost circulation, help eliminate retained fluid and improve the appearance of cellulite and skin firmness on areas such as the tummy, hips, arms or legs. It's non-invasive and you can get straight back to your routine.",
+      "mechanism": "Diathermy uses a high-frequency current that the tissues themselves turn into heat (endogenous heat), instead of just warming the surface. That heat dilates the small blood vessels, improves oxygenation and boosts cell metabolism. Meanwhile, the rollers compress and mobilise the tissue rhythmically, which encourages lymphatic drainage and helps move built-up fluid. The combination of heat and massage also stimulates fibroblasts, the cells that make collagen, and contributes to firmer, smoother skin.",
       "benefits": [
         {
-          "title": "Less orange-peel skin",
-          "text": "Helps smooth the appearance of cellulite with regular sessions."
+          "title": "Better-looking cellulite",
+          "text": "Heat and massage help smooth orange-peel skin with regular sessions."
         },
         {
           "title": "Draining effect",
-          "text": "Boosts lymphatic circulation and reduces that feeling of fluid retention."
+          "text": "Boosts lymphatic circulation and helps reduce fluid retention."
         },
         {
-          "title": "More toned skin",
-          "text": "Mechanical stimulation improves texture and firmness."
+          "title": "Firmer skin",
+          "text": "The heat stimulates collagen and improves skin texture."
         },
         {
           "title": "Lighter legs",
-          "text": "Eases heaviness and tiredness."
+          "text": "Eases that feeling of heaviness and tiredness."
         },
         {
-          "title": "Boosts other treatments",
-          "text": "Excellent after cavitation or as preparation for radiofrequency."
+          "title": "A more defined contour",
+          "text": "Helps improve the look of areas with localised volume, alongside good habits."
         },
         {
-          "title": "Pleasant and non-invasive",
-          "text": "Feels like a deep massage, with no downtime."
+          "title": "Pleasant and relaxing",
+          "text": "Enveloping warmth and a deep massage, with no downtime."
         }
       ],
       "idealFor": [
         "Cellulite and orange-peel skin",
         "Fluid retention and tired legs",
-        "Skin lacking tone on the thighs, buttocks or tummy",
-        "As an add-on to a body treatment plan"
+        "Mild sagging on the tummy, arms, thighs or hips",
+        "Anyone looking for a complete, relaxing body treatment"
       ],
       "howItWorks": [
         {
           "title": "Assessment",
-          "text": "We look at your areas, goal and any contraindications."
+          "text": "We look at your areas, goal and any contraindications (diathermy has some important ones)."
         },
         {
           "title": "Preparation",
-          "text": "We give you a bodysuit so the head glides hygienically and evenly."
+          "text": "We prepare the area and position the electrodes needed for the diathermy."
         },
         {
-          "title": "Mechanical massage",
-          "text": "We work on each area following the path of circulation, adjusting the intensity."
+          "title": "Heat and massage",
+          "text": "We glide the roller head while the diathermy warms the tissue, adjusting intensity and temperature to keep you comfortable."
         },
         {
           "title": "Finish",
-          "text": "We finish with draining movements or a specific cream."
+          "text": "We finish with draining movements or a specific cream and you carry on with your day."
         }
       ],
       "duration": "30 – 45 min",
-      "sessions": "A course of 10-12 sessions, twice a week, followed by maintenance",
-      "results": "You'll feel lighter from the first session. Improvements in the appearance of cellulite and in firmness are gradual and depend on consistency and your habits.",
+      "sessions": "A tailored plan after your assessment: usually a course of at least 6 sessions, followed by maintenance",
+      "results": "Feeling lighter and having softer skin is usually noticeable from the first few sessions. Improvements in cellulite, firmness and contour are gradual and depend on consistency and your habits. Results vary from body to body.",
       "aftercare": [
-        "Drink 1.5-2 litres of water a day",
+        "Drink 1.5-2 litres of water a day to support drainage",
+        "The area may stay warm and slightly red for a while",
+        "Avoid saunas, very hot baths and strong sun for the first 24 h",
         "Go for walks or do some gentle activity to keep your circulation going",
-        "Cut down on salt and alcohol during the course of treatment",
-        "Slight redness may appear, which soon disappears",
-        "Moisturise your skin with an anti-cellulite or firming cream"
+        "Cut down on salt and alcohol during the course of treatment"
       ],
       "contraindications": [
         "Pregnancy",
-        "Prominent varicose veins, thrombosis or phlebitis",
-        "Fragile capillaries or a tendency to bruise",
-        "Anticoagulant treatment",
-        "Wounds, infections or skin problems on the area",
-        "Active cancer or recent surgery on the area"
+        "Pacemaker or other implanted electronic devices",
+        "Epilepsy",
+        "Metal prostheses or implants in the area",
+        "Thrombosis, phlebitis, prominent varicose veins or anticoagulant treatment",
+        "Active or recent cancer",
+        "Wounds, infections or altered sensation in the area"
       ],
       "faq": [
         {
-          "q": "Does it hurt?",
-          "a": "It shouldn't. You'll feel an intense massage, which we adjust to suit you."
+          "q": "What does it feel like?",
+          "a": "A pleasant warmth coming from within and a firm massage with rollers. We adjust the intensity throughout."
         },
         {
-          "q": "How is it different from wood therapy?",
-          "a": "Both mobilise the tissue. Wood therapy is done by hand with wooden tools; roll systemic uses rollers and suction with a very consistent intensity."
+          "q": "How is it different from wood therapy or pressotherapy?",
+          "a": "All three help with drainage. Wood therapy is a manual massage with wooden tools and pressotherapy uses air pressure; roll systemic adds the heat of diathermy to the roller massage."
         },
         {
-          "q": "Do I need special clothing?",
-          "a": "We provide a disposable or single-use bodysuit."
+          "q": "Can I have it if I have a pacemaker?",
+          "a": "Not with diathermy. If you have a pacemaker or another implanted device, let us know and we'll suggest another option."
         }
       ],
       "prices": [
@@ -1816,8 +1799,8 @@
       "name": "Diathermy (body and face)",
       "short": "Deep heat generated from within the tissue to firm, boost circulation and improve cellulite. Also available for the face.",
       "hook": "Heat from within to firm your body and face",
-      "whatIs": "Diathermy is a technique that uses high-frequency currents to generate heat inside the tissues (endogenous heat), rather than applying it from the outside. In beauty treatments it's used in capacitive and resistive modes to firm the skin, boost circulation, help drainage and improve the appearance of cellulite on the body. On the face, with a smaller head and lower intensity, it helps improve firmness, radiance and fine lines.",
-      "mechanism": "The current flows between the head and a return plate, and the natural resistance of the tissues turns it into heat. In capacitive mode, the heat concentrates in the more superficial, water-rich layers, such as the dermis; in resistive mode, it reaches deeper, denser tissues, such as fat or fascia. This rise in temperature causes vasodilation, improves oxygenation and lymphatic drainage, speeds up cell metabolism and stimulates fibroblasts to produce collagen and elastin, resulting in firmer, more even skin.",
+      "whatIs": "Diathermy is a technique that uses high-frequency current to generate heat inside the tissues (endogenous heat), rather than applying it from the outside. On the body, it helps firm the skin, boost circulation and improve the appearance of cellulite on areas such as the tummy, arms or thighs. On the face, with a smaller head and lower intensity, it helps improve the firmness of the jawline and neck, fine lines and radiance. We use the same multifunction device as for our hidrafacial, so you can combine both techniques in a single session.",
+      "mechanism": "The current passes through the tissues and their natural resistance turns it into heat. Depending on the head and the area, that heat concentrates in more superficial layers, such as the dermis, or reaches deeper tissues. The rise in temperature dilates the small blood vessels, improves oxygenation and drainage, boosts cell metabolism and stimulates fibroblasts to produce collagen and elastin. With regular sessions, the skin looks firmer and more even.",
       "benefits": [
         {
           "title": "Firms body and face",
@@ -1837,7 +1820,7 @@
         },
         {
           "title": "Versatile",
-          "text": "Adapts to the tummy, legs, buttocks, arms or face."
+          "text": "Adapts to the tummy, legs, buttocks, arms, jawline or neck."
         },
         {
           "title": "Pleasant, with no downtime",
@@ -1857,19 +1840,19 @@
         },
         {
           "title": "Preparation",
-          "text": "We position the return plate and apply a conductive cream."
+          "text": "We cleanse the area and apply a conductive medium."
         },
         {
           "title": "Diathermy",
-          "text": "We work on the area, alternating capacitive and resistive modes depending on the goal."
+          "text": "We glide the head until you feel a pleasant warmth, adjusting intensity and depth to your goal."
         },
         {
           "title": "Finish",
-          "text": "A draining massage and firming skincare."
+          "text": "A draining massage on the body or a firming serum on the face. If you combine it with a hidrafacial, your skin is already clean and hydrated."
         }
       ],
       "duration": "40 – 60 min",
-      "sessions": "Between 8 and 10 sessions, 1-2 a week, followed by maintenance",
+      "sessions": "Between 6 and 10 sessions depending on the area and goal, 1-2 a week, followed by maintenance",
       "results": "Your skin feels softer and more radiant from the first few sessions. Improvements in firmness and the appearance of cellulite are gradual. Results vary from person to person and depend on their habits.",
       "aftercare": [
         "Drink plenty of water to support drainage",
@@ -1885,20 +1868,25 @@
         "Active or recent cancer",
         "Fever or acute infections",
         "Thrombosis, prominent varicose veins or altered sensation",
+        "Heart disease or blood-clotting disorders",
         "Wounds or recent surgery on the area"
       ],
       "faq": [
         {
           "q": "How is it different from radiofrequency?",
-          "a": "Both generate heat in the tissue. Diathermy works with a return plate and alternates between capacitive and resistive modes to reach different depths."
+          "a": "They're very similar techniques: both generate heat inside the tissue with high-frequency current. What changes is the device and the head; at your consultation we'll recommend the best option for your area."
         },
         {
           "q": "Can it be done on the face?",
-          "a": "Yes, with heads and intensities adapted to the face."
+          "a": "Yes. On the face we use a head and intensity adapted to it, especially on the jawline, neck and areas with fine lines."
         },
         {
           "q": "Does it hurt?",
           "a": "No. You feel warmth, which we adjust so it's always pleasant."
+        },
+        {
+          "q": "Can I combine it with a hidrafacial?",
+          "a": "Yes. Both are done with the same device, so in a single appointment we can cleanse and hydrate your skin with the hidrafacial and finish with diathermy to work on firmness."
         }
       ],
       "prices": [
@@ -1930,8 +1918,8 @@
       "name": "Body sculpt",
       "short": "Intense, effortless muscle stimulation to tone the tummy, buttocks, arms or legs.",
       "hook": "Tone up while you lie back",
-      "whatIs": "Body sculpt is a body contouring treatment that triggers intense, repeated muscle contractions through electromagnetic or electrical stimulation, without you having to make any effort. It helps tone and define areas such as the tummy, buttocks, arms or thighs, and it's a great complement to exercise and to treatments for sagging skin and localised fat.",
-      "mechanism": "The applicator generates impulses that reach the muscle and make it contract far more often and more intensely than you could achieve with voluntary exercise in the same amount of time. The muscle responds by adapting: its tone and firmness improve, just as after a workout. This intense work increases energy expenditure in the area and boosts circulation, which contributes to a more defined silhouette when combined with good habits.",
+      "whatIs": "Body sculpt is a body contouring treatment using high-intensity electromagnetic technology. It triggers very intense, repeated muscle contractions without you having to make any effort or have surgery. It helps tone and firm the tummy, buttocks, arms or thighs, and it's a great complement to exercise and to treatments for sagging skin and localised fat.",
+      "mechanism": "The applicator creates an electromagnetic field that passes through the skin and fat and reaches the muscle. There it triggers very intense contractions, known as supramaximal contractions, that can't be achieved with voluntary exercise, and far more repetitions than you'd manage in the same time. The muscle responds by adapting: it gains tone and firmness, just as after a workout. This work also boosts the metabolism of the area; some studies have also seen a moderate reduction in the fat covering the muscle, although results vary a lot from person to person.",
       "benefits": [
         {
           "title": "Muscle tone",
@@ -1983,8 +1971,8 @@
         }
       ],
       "duration": "30 min per area",
-      "sessions": "Between 6 and 8 sessions, twice a week, followed by monthly maintenance",
-      "results": "You'll feel the area has been worked from the first session. Improvements in tone and definition are gradual and usually noticeable from the 4th session. Results vary depending on your body and habits.",
+      "sessions": "An initial course of 4 to 8 sessions of 30 minutes, twice a week (with 2-3 days' rest in between), followed by maintenance",
+      "results": "You'll feel the area has been worked from the first session. Improvements in tone and definition are gradual and keep progressing over the weeks after the course. Results vary depending on your body and habits.",
       "aftercare": [
         "Drink water after the session",
         "It's normal to feel slightly stiff the next day",
@@ -2013,6 +2001,10 @@
         {
           "q": "Can I have several areas treated?",
           "a": "Yes, in the same appointment or on alternate days."
+        },
+        {
+          "q": "Does it get rid of fat?",
+          "a": "It isn't a weight-loss treatment: its main job is to tone the muscle. It can help improve your contour and, if you want to work on localised fat, we combine it with cavitation."
         }
       ],
       "prices": [
@@ -2380,8 +2372,8 @@
       "name": "Hidrafacial (hydrodermabrasion)",
       "short": "Cleansing, exfoliation, extraction and hydration in a single session. Instantly radiant skin, with no redness.",
       "hook": "Clean, dewy skin in a single session",
-      "whatIs": "Hydrodermabrasion is a facial treatment that cleanses, exfoliates, extracts impurities and hydrates the skin in one session. A handpiece with a special tip combines gentle suction with a continuous flow of serums, so your skin is renewed while it's being nourished. It's suitable for almost all skin types, needs no downtime and gives you an instant healthy-glow effect.",
-      "mechanism": "The first phase removes dead cells from the stratum corneum, the outermost layer, which dull your complexion and clog pores. Next, controlled suction helps extract sebum and impurities from inside the pores without the pressure of manual extraction. At the same time, the handpiece infuses serums with hydrating and antioxidant ingredients, such as hyaluronic acid, which penetrate better into freshly exfoliated skin. The result is a better-hydrated skin barrier, a smoother surface and skin that reflects light better.",
+      "whatIs": "Hydrodermabrasion is a facial treatment that cleanses, exfoliates, extracts impurities and hydrates the skin in one session. A handpiece with a special tip combines gentle suction with a continuous flow of serums, so your skin is renewed while it's being nourished. It's suitable for almost all skin types, needs no downtime and gives you an instant healthy-glow effect. We use a multifunction device that also includes diathermy, so if you like you can add an extra firming boost in the same session.",
+      "mechanism": "The first phase removes dead cells from the stratum corneum, the outermost layer, which dull your complexion and clog pores. Next, controlled suction helps extract sebum and impurities from inside the pores without the pressure of manual extraction. At the same time, the handpiece infuses serums with hydrating, antioxidant or peptide ingredients, such as hyaluronic acid, which penetrate better into freshly exfoliated skin. The result is a better-hydrated skin barrier, a smoother surface and skin that reflects light better.",
       "benefits": [
         {
           "title": "Instant radiance",
@@ -2397,7 +2389,7 @@
         },
         {
           "title": "Finer texture",
-          "text": "Gentle exfoliation leaves a smoother, more even surface."
+          "text": "A smoother, more even surface, and fine lines caused by dehydration look softer."
         },
         {
           "title": "No downtime",
@@ -2471,6 +2463,10 @@
         {
           "q": "Is it the same as the Hydrafacial® brand?",
           "a": "Hydrafacial® is the registered trademark of a specific device. The generic treatment is called hydrodermabrasion; at the consultation, we'll explain which equipment we use."
+        },
+        {
+          "q": "Can I combine it with diathermy?",
+          "a": "Yes. Our device does both: first we cleanse and hydrate with the hidrafacial and then we apply diathermy to stimulate firmness. Beforehand, we check you have no contraindications to heat (such as a pacemaker or pregnancy)."
         }
       ],
       "prices": [
@@ -2556,7 +2552,7 @@
         }
       ],
       "duration": "40 – 50 min",
-      "sessions": "4 to 6 sessions every 15-21 days, followed by one maintenance session a month",
+      "sessions": "4 to 6 sessions every 2-4 weeks, followed by one maintenance session every month or two",
       "results": "Your skin feels softer and more radiant as soon as we finish. Improvements in texture and superficial marks are gradual and depend on your skin.",
       "aftercare": [
         "There may be slight redness, which fades within a few hours",
@@ -2656,8 +2652,8 @@
           "text": "We analyse your skin and agree on the areas and goal."
         },
         {
-          "title": "Cleansing",
-          "text": "We cleanse the skin and apply a conductive medium."
+          "title": "Cleansing and exfoliation",
+          "text": "We cleanse and gently exfoliate the skin and apply a conductive medium."
         },
         {
           "title": "Radiofrequency",
@@ -2670,7 +2666,7 @@
       ],
       "duration": "45 – 60 min",
       "sessions": "Between 6 and 8 sessions, once a week or every fortnight, followed by monthly maintenance",
-      "results": "After the session, your skin looks smoother and more radiant. Firmness improves gradually: new collagen forms over the following weeks, so it's usually more noticeable from the 3rd-4th session. Results vary from skin to skin.",
+      "results": "After the session, your skin looks smoother and more radiant. Firmness improves gradually: new collagen forms over the following weeks, so it's usually more noticeable from the first month (3rd-4th session). Results vary from skin to skin.",
       "aftercare": [
         "Slight redness and warmth may remain for an hour or two",
         "Drink water and keep your skin well hydrated",
@@ -2683,6 +2679,7 @@
         "Pacemaker or other implanted electronic devices",
         "Metal implants or prostheses in the area",
         "Recent fillers or thread lifts: let us know so we can check the timing",
+        "Heart disease or blood-clotting disorders",
         "Active or recent cancer",
         "Wounds, active cold sores, infections or altered sensation in the area"
       ],
@@ -2734,7 +2731,7 @@
       "short": "A device with several heads to cleanse, purify, oxygenate and nourish the skin in a tailored protocol.",
       "hook": "Several technologies, one facial tailored to you",
       "whatIs": "It's a treatment that uses a multifunction facial device: a machine that brings together several heads and techniques in one. Depending on what your skin needs that day, we combine deep cleansing, exfoliation, suction, purifying and active-ingredient application functions in a single protocol. It's very versatile: it suits both oily skin with impurities and dull skin in need of radiance and nourishment.",
-      "mechanism": "Each function of the device addresses a different need. The cleansing and desincrustation functions help dissolve the sebum and dirt that clog pores; suction boosts microcirculation and helps extract impurities; high frequency, if the device includes it, provides a purifying and oxygenating effect that's very useful for acne-prone skin; and gentle infusion currents help active ingredients penetrate better. By chaining them in the right order, the skin is left clean, balanced and receptive.",
+      "mechanism": "Each function of the device addresses a different need. The most common ones in this type of device are microdermabrasion, which removes dead cells and refines texture; the ultrasonic spatula, whose vibration helps lift sebum and impurities from the surface and the pores; and high frequency, which uses a glass electrode to produce a gentle crackle and ozone, credited with a purifying effect that's useful for acne-prone skin. Suction also boosts microcirculation. By chaining them in the right order and finishing with active ingredients, the skin is left clean, balanced and receptive.",
       "benefits": [
         {
           "title": "A tailored protocol",
@@ -2810,7 +2807,7 @@
       "faq": [
         {
           "q": "What functions does the device have?",
-          "a": "It depends on the protocol for each session. At the consultation, we'll explain which heads we'll use and why."
+          "a": "It brings together several skin-cleansing and renewal techniques, such as exfoliation, ultrasonic peeling or high frequency. We choose the ones your skin needs each time and, at the consultation, we'll explain which heads we'll use and why."
         },
         {
           "q": "How is it different from a cleansing facial?",

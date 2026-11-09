@@ -116,7 +116,7 @@
       "whyEyebrow": "Por qué nosotras",
       "whyTitle": "Belleza con *cabeza* (y corazón)",
       "clubsEyebrow": "Ventajas exclusivas",
-      "clubsTitle": "Packs *Aloha* & Ohana",
+      "clubsTitle": "Tu bienvenida, tu gente y tu *fidelidad*",
       "promosEyebrow": "Solo por tiempo limitado",
       "promosTitle": "Promos que *enamoran*",
       "reviewsEyebrow": "Opiniones",
@@ -180,7 +180,13 @@
       "option": "Opción",
       "price": "Precio",
       "fromLabel": "Desde",
-      "packsLink": "Ahorra con packs y bonos"
+      "packsLink": "Ahorra con packs y bonos",
+      "her": "Ella",
+      "him": "Él",
+      "withPack": "Con {name} −{pct} %",
+      "noDisc": "Sin descuento adicional",
+      "discNote": "**Aloha**: −{aloha} % en tu primer tratamiento si es tu primera visita. **Ohana**: −{ohana} % para ti y para la persona nueva que traigas. No acumulables entre sí ni aplicables a bonos, packs o precios ya rebajados.",
+      "discLink": "Ver condiciones"
     },
     "packs": {
       "title": "Packs Aloha & Ohana, packs y bonos",
@@ -399,7 +405,7 @@
       "whyEyebrow": "Per què nosaltres",
       "whyTitle": "Bellesa amb *cap* (i cor)",
       "clubsEyebrow": "Avantatges exclusius",
-      "clubsTitle": "Packs *Aloha* & Ohana",
+      "clubsTitle": "La teva benvinguda, la teva gent i la teva *fidelitat*",
       "promosEyebrow": "Només per temps limitat",
       "promosTitle": "Promocions que *enamoren*",
       "reviewsEyebrow": "Opinions",
@@ -463,7 +469,13 @@
       "option": "Opció",
       "price": "Preu",
       "fromLabel": "Des de",
-      "packsLink": "Estalvia amb packs i bons"
+      "packsLink": "Estalvia amb packs i bons",
+      "her": "Ella",
+      "him": "Ell",
+      "withPack": "Amb {name} −{pct} %",
+      "noDisc": "Sense descompte addicional",
+      "discNote": "**Aloha**: −{aloha} % en el teu primer tractament si és la primera visita. **Ohana**: −{ohana} % per a tu i per a la persona nova que portis. No acumulables entre si ni aplicables a bons, packs o preus ja rebaixats.",
+      "discLink": "Veure condicions"
     },
     "packs": {
       "title": "Packs Aloha & Ohana, packs i bons",
@@ -682,7 +694,7 @@
       "whyEyebrow": "Why choose us",
       "whyTitle": "Beauty with *brains* (and heart)",
       "clubsEyebrow": "Exclusive perks",
-      "clubsTitle": "*Aloha* & Ohana packs",
+      "clubsTitle": "Your welcome, your people and your *loyalty*",
       "promosEyebrow": "Limited time only",
       "promosTitle": "Offers you'll *love*",
       "reviewsEyebrow": "Reviews",
@@ -746,7 +758,13 @@
       "option": "Option",
       "price": "Price",
       "fromLabel": "From",
-      "packsLink": "Save with packs and session bundles"
+      "packsLink": "Save with packs and session bundles",
+      "her": "Women",
+      "him": "Men",
+      "withPack": "With {name} −{pct}%",
+      "noDisc": "No additional discount",
+      "discNote": "**Aloha**: −{aloha}% off your first treatment on your first visit. **Ohana**: −{ohana}% for you and for the new person you bring. Cannot be combined with each other or applied to bundles, packs or already reduced prices.",
+      "discLink": "See terms"
     },
     "packs": {
       "title": "Aloha & Ohana, packs and session bundles",

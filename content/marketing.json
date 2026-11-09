@@ -56,13 +56,15 @@
   ],
   "loyalty": {
     "name": "Club Corona",
-    "description": "Nuestra tarjeta de fidelidad digital: cada visita suma una corona y, al completar la tarjeta, te llevas un regalo. Sin cuotas y sin letra pequeña.",
+    "description": "Cuanto más te cuidas, más te premiamos. Con nuestra tarjeta de fidelidad cada sesión suma y, al completarla, se convierte en descuentos y ofertas exclusivas para quienes forman parte del club.",
     "steps": [
-      "Pide tu tarjeta Club Corona en tu primera visita (o regístrala con tu móvil).",
-      "Suma 1 corona por cada cita de 25 € o más.",
-      "Al llegar a 8 coronas, eliges regalo: 50% en un tratamiento de hasta 50 € o un masaje relajante de 30 minutos.",
-      "Las coronas no caducan mientras nos visites al menos una vez cada 6 meses."
-    ]
+      "Pide tu tarjeta en tu próxima visita: es gratis.",
+      "Cada sesión que te hagas suma un sello.",
+      "Al completar [POR DEFINIR] sesiones, te llevas tu descuento u oferta exclusiva."
+    ],
+    "subtitle": "Tu tarjeta de fidelidad",
+    "conditions": "[POR DEFINIR]",
+    "cta": "Quiero mi tarjeta"
   },
   "leadMagnet": {
     "title": "Diagnóstico de piel gratis",

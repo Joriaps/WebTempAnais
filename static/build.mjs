@@ -234,6 +234,50 @@ const money = (v) => {
 };
 const saving = (price, old) => (isNum(price) && isNum(old) && old > price ? { amount: +(old - price).toFixed(2), pct: Math.round(((old - price) / old) * 100) } : null);
 const savingHtml = (s) => (s ? `<span class="save">${sub(esc(tx('saving')), { amount: money(s.amount), pct: s.pct })}</span>` : '');
+/* Columnas de precio: «Ella / Él» si alguna fila de la tabla trae `priceHim`, y columnas de precio con Aloha / Ohana
+   (porcentaje en packs.json → aloha.discount / ohana.discount). Sin descuento en filas ya rebajadas (oldPrice) o con noDiscount. */
+const discOf = (k) => (isNum(packs?.[k]?.discount) && packs[k].discount > 0 ? packs[k].discount : null);
+const discCols = () => ['aloha', 'ohana'].filter((k) => discOf(k));
+const isGendered = (rows) => rows.some((p) => p && Object.prototype.hasOwnProperty.call(p, 'priceHim'));
+const canDisc = (p) => isNum(p.price) && p.price > 0 && !(isNum(p.oldPrice) && p.oldPrice > p.price) && p.noDiscount !== true;
+const off = (v, pct) => +(v * (1 - pct / 100)).toFixed(2);
+function priceHead(g) {
+  return (g ? `<th scope="col" class="num">${u('prices.her')}</th><th scope="col" class="num">${u('prices.him')}</th>` : `<th scope="col" class="num">${u('prices.price')}</th>`)
+    + discCols().map((k) => `<th scope="col" class="num col-disc col-${k}">${u('prices.withPack', { name: packs[k].name, pct: discOf(k) })}</th>`).join('');
+}
+function priceCells(p, g) {
+  const fromP = p.from ? `${u('from')} ` : '';
+  const s = saving(p.price, p.oldPrice);
+  const hasHim = Object.prototype.hasOwnProperty.call(p, 'priceHim');
+  // En una tabla con columnas Ella/Él, una fila sin `priceHim` tiene el mismo precio para todos: ocupa las dos columnas.
+  const main = `<td class="num"${g && !hasHim ? ' colspan="2"' : ''}>${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">${u('before')} </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${fromP}${money(p.price)}</span>${s ? `<br>${savingHtml(s)}` : ''}</td>`;
+  const him = g && hasHim ? `<td class="num">${isNum(p.priceHim) && p.priceHim > 0 ? `<span class="price">${fromP}${money(p.priceHim)}</span>` : u('consult')}</td>` : '';
+  const disc = discCols().map((k) => {
+    const pct = discOf(k);
+    if (!canDisc(p)) return `<td class="num col-disc"><span aria-hidden="true">—</span><span class="visually-hidden">${u('prices.noDisc')}</span></td>`;
+    const her = `${fromP}${money(off(p.price, pct))}`;
+    if (g && isNum(p.priceHim) && p.priceHim > 0) return `<td class="num col-disc col-${k}"><span class="pair"><span><span class="pair__l">${u('prices.her')}</span> ${her}</span><span><span class="pair__l">${u('prices.him')}</span> ${fromP}${money(off(p.priceHim, pct))}</span></span></td>`;
+    return `<td class="num col-disc col-${k}">${her}</td>`;
+  }).join('');
+  return main + him + disc;
+}
+const discNote = (root = '\u0000ROOT\u0000') => (discCols().length ? `<p class="disclaimer disclaimer--packs">${icon('gift')}<span>${rich('prices.discNote', { aloha: discOf('aloha') ?? '', ohana: discOf('ohana') ?? '' })} <a href="${root}packs/">${u('prices.discLink')}</a></span></p>` : '');
+/* Tarjetas «club»: Aloha (bienvenida), Ohana (trae a tu gente) y la tarjeta de fidelidad (marketing.json → loyalty, id «fidelidad»). */
+const clubData = (k) => {
+  if (k !== 'fidelidad') return packs[k] || null;
+  const l = mk.loyalty; if (!l || !l.name) return null;
+  return { ...l, perks: arr(l.steps) };
+};
+const clubKeys = () => ['aloha', 'ohana', 'fidelidad'].filter((k) => clubData(k));
+const clubDeco = (k) => (k === 'aloha' ? palm('club__deco', 'white') : k === 'ohana' ? leaf('club__deco', 'white') : `<svg class="club__deco club__deco--crown" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path fill="#fff" d="M8 46 4 18l15 12 13-20 13 20 15-12-4 28Z"/><rect x="8" y="50" width="48" height="6" rx="3" fill="#fff"/></svg>`);
+function loyaltyBanner(root) {
+  const l = clubData('fidelidad'); if (!l) return '';
+  return `<aside class="loyal-banner reveal" aria-labelledby="loyal-banner-t">
+    <span class="loyal-banner__icon">${icon('star')}</span>
+    <div><p class="loyal-banner__eyebrow">${esc(l.subtitle || tx('packs.loyaltyEyebrow'))}</p><h2 id="loyal-banner-t">${esc(l.name)}</h2><p>${fill(l.description)}</p></div>
+    <a class="btn btn--ink" href="${root}packs/#fidelidad">${u('seeMore')} ${icon('arrow')}</a>
+  </aside>`;
+}
 const priceFromOf = (t) => (isNum(t.priceFrom) && t.priceFrom > 0 ? t.priceFrom : Math.min(...arr(t.prices).map((p) => p.price).filter((p) => isNum(p) && p > 0), Infinity));
 const icon = (name, cls = '') => `<svg class="icon ${cls}" aria-hidden="true" focusable="false"><use href="#i-${esc(name)}"></use></svg>`;
 const digits = (s) => String(s ?? '').replace(/\D/g, '');
@@ -891,15 +935,15 @@ ${arr(site.whyUs).length ? `<section class="section" aria-labelledby="why-title"
   </div>
 </section>` : ''}
 
-${packs.aloha || packs.ohana ? `<section class="section section--nude" aria-labelledby="clubs-title">
+${clubKeys().length ? `<section class="section section--nude" aria-labelledby="clubs-title">
   <div class="container">
     <div class="section__head"><p class="eyebrow">${u('homePage.clubsEyebrow')}</p><h2 id="clubs-title">${rich('homePage.clubsTitle')}</h2></div>
-    <div class="duo">${['aloha', 'ohana'].filter((k) => packs[k]).map((k) => { const p = packs[k]; return `<article class="club club--${k} reveal">
-      ${k === 'aloha' ? palm('club__deco', 'white') : leaf('club__deco', 'white')}
+    <div class="duo${clubKeys().length > 2 ? ' duo--3' : ''}">${clubKeys().map((k) => { const p = clubData(k); return `<article class="club club--${k} reveal">
+      ${clubDeco(k)}
       <p class="club__subtitle">${esc(p.subtitle)}</p>
       <h3 class="club__name">${esc(p.name)}</h3>
       <p>${esc(p.description)}</p>
-      ${arr(p.perks).length ? `<ul class="checklist">${arr(p.perks).slice(0, 3).map((x) => `<li>${icon('check')}<span>${esc(x)}</span></li>`).join('')}</ul>` : ''}
+      ${arr(p.perks).length ? `<ul class="checklist">${arr(p.perks).slice(0, 3).map((x) => `<li>${icon('check')}<span>${fill(x)}</span></li>`).join('')}</ul>` : ''}
       <p><a class="btn btn--ink" href="${root}packs/#${k}">${esc(p.cta || tx('seeMore'))} ${icon('arrow')}</a></p>
     </article>`; }).join('')}</div>
   </div>
@@ -1041,8 +1085,9 @@ function pageTreatment(t) {
   const sec = (id, title, iconName, inner, cls = '') => { S.push([id, title]); return `<section class="ficha-section reveal ${cls}" id="${id}" aria-labelledby="${id}-t"><h2 id="${id}-t"><span class="card__icon">${icon(iconName)}</span>${esc(title)}</h2>${inner}</section>`; };
 
   const prices = arr(t.prices);
-  const priceRows = prices.length ? prices.map((p) => `<tr><th scope="row">${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</th><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">${u('before')} </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${p.from ? `${u('from')} ` : ''}${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('')
-    : `<tr><th scope="row">${esc(t.name)}</th><td class="num"><span class="price">${isFinite(pf) ? `${u('from')} ${money(pf)}` : u('consult')}</span></td></tr>`;
+  const gT = isGendered(prices);
+  const priceRows = prices.length ? prices.map((p) => `<tr><th scope="row">${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</th>${priceCells(p, gT)}</tr>`).join('')
+    : `<tr><th scope="row">${esc(t.name)}</th>${priceCells(isFinite(pf) ? { price: pf, from: true } : { price: null }, false)}</tr>`;
 
   const sections = [
     t.whatIs ? sec('que-es', T('whatIs'), 'info', `<div class="prose"><p>${esc(t.whatIs)}</p></div>`) : '',
@@ -1060,7 +1105,8 @@ function pageTreatment(t) {
       </div>`;
     })() : '',
     arr(t.faq).length ? sec('preguntas', T('faq'), 'info', faqList(t.faq)) : '',
-    sec('precios', T('prices'), 'gift', `<div class="price-table"><div class="table-scroll"><table><caption class="visually-hidden">${esc(T('pricesCaption', { name: t.name }))}</caption><thead><tr><th scope="col">${esc(T('option'))}</th><th scope="col" class="num">${esc(T('price'))}</th></tr></thead><tbody>${priceRows}</tbody></table></div></div>
+    sec('precios', T('prices'), 'gift', `<div class="price-table"><div class="table-scroll"><table><caption class="visually-hidden">${esc(T('pricesCaption', { name: t.name }))}</caption><thead><tr><th scope="col">${esc(T('option'))}</th>${priceHead(gT)}</tr></thead><tbody>${priceRows}</tbody></table></div></div>
+      ${discNote()}
       <p class="disclaimer">${icon('info')}<span>${esc(t.priceNote ? `${t.priceNote}. ` : '')}${esc(legal.priceDisclaimer)}</span></p>
       <div class="btn-row" style="margin-top:1.25rem">${waBtn(waText, T('book', { name: t.name }))}${bookingBtn()}${callBtn()}</div>`),
   ].join('\n');
@@ -1120,11 +1166,13 @@ function pageTreatment(t) {
 function pagePrices() {
   const cats = categories.filter((c) => byCat(c.id).length);
   const table = (c) => {
+    const psOf = (t) => (arr(t.prices).length ? arr(t.prices) : [{ label: t.priceFrom ? tx('prices.fromLabel') : '—', price: t.priceFrom }]);
+    const g = byCat(c.id).some((t) => isGendered(psOf(t)));
     const rows = byCat(c.id).map((t) => {
-      const ps = arr(t.prices).length ? arr(t.prices) : [{ label: t.priceFrom ? tx('prices.fromLabel') : '—', price: t.priceFrom }];
-      return ps.map((p, i) => `<tr>${i === 0 ? `<th scope="rowgroup" rowspan="${ps.length}"><a href="../tratamientos/${esc(t.id)}/">${esc(t.name)}</a>${t.priceNote ? `<br><span class="small">${esc(t.priceNote)}</span>` : ''}</th>` : ''}<td>${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</td><td class="num">${isNum(p.oldPrice) && p.oldPrice > p.price ? `<del><span class="visually-hidden">${u('before')} </span>${money(p.oldPrice)}</del>` : ''}<span class="price">${p.from ? `${u('from')} ` : ''}${money(p.price)}</span>${saving(p.price, p.oldPrice) ? `<br>${savingHtml(saving(p.price, p.oldPrice))}` : ''}</td></tr>`).join('');
+      const ps = psOf(t);
+      return ps.map((p, i) => `<tr>${i === 0 ? `<th scope="rowgroup" rowspan="${ps.length}"><a href="../tratamientos/${esc(t.id)}/">${esc(t.name)}</a>${t.priceNote ? `<br><span class="small">${esc(t.priceNote)}</span>` : ''}</th>` : ''}<td>${esc(p.label)}${p.note ? `<br><span class="small">${esc(p.note)}</span>` : ''}</td>${priceCells(p, g)}</tr>`).join('');
     }).join('');
-    return `<div class="price-table"><div class="table-scroll"><table><caption class="visually-hidden">${u('prices.caption', { name: c.name })}</caption><thead><tr><th scope="col">${u('prices.treatment')}</th><th scope="col">${u('prices.option')}</th><th scope="col" class="num">${u('prices.price')}</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+    return `<div class="price-table"><div class="table-scroll"><table><caption class="visually-hidden">${u('prices.caption', { name: c.name })}</caption><thead><tr><th scope="col">${u('prices.treatment')}</th><th scope="col">${u('prices.option')}</th>${priceHead(g)}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
   };
   const html = layout({
     path: 'precios/', current: 'precios/', title: tx('prices.title'),
@@ -1143,7 +1191,9 @@ ${pageHero({ root, crumbs: [{ label: tx('prices.title') }], eyebrow: tx('prices.
         ${table(c)}
       </div>`).join('')}
     </div>
+    ${discNote(root)}
     <p class="disclaimer">${icon('info')}<span>${esc(legal.priceDisclaimer)}</span></p>
+    ${loyaltyBanner(root)}
     <p><a class="link-arrow" href="${root}packs/">${u('prices.packsLink')} ${icon('arrow')}</a></p>
   </div>
 </section>`,
@@ -1153,30 +1203,29 @@ ${pageHero({ root, crumbs: [{ label: tx('prices.title') }], eyebrow: tx('prices.
 
 /* ---------- Packs ---------- */
 function pagePacks() {
-  const list = arr(packs.packs);
-  const bonos = arr(packs.bonos);
+  const list = arr(packs.packs).filter((p) => p.active !== false);
+  const bonos = arr(packs.bonos).filter((b) => b.active !== false);
   const club = (k) => {
-    const p = packs[k]; if (!p) return '';
+    const p = clubData(k); if (!p) return '';
     const img = findImage(p.image, k);
     return `<article class="club club--${k} reveal" id="${k}" aria-labelledby="${k}-t">
-      ${k === 'aloha' ? palm('club__deco', 'white') : leaf('club__deco', 'white')}
+      ${clubDeco(k)}
       ${img ? `<div class="media"><img src="${esc(imgSrc(img, '../'))}" alt="${esc(p.imageAlt || '')}" loading="lazy"></div>` : ''}
       <p class="club__subtitle">${esc(p.subtitle)}</p>
       <h2 class="club__name" id="${k}-t">${esc(p.name)}</h2>
       <p>${esc(p.description)}</p>
-      ${arr(p.perks).length ? `<ul class="checklist">${arr(p.perks).map((x) => `<li>${icon('check')}<span>${esc(x)}</span></li>`).join('')}</ul>` : ''}
-      ${p.conditions ? `<p class="club__conditions"><strong>${u('packs.conditions')}</strong> ${esc(p.conditions)}</p>` : ''}
+      ${arr(p.perks).length ? `<${k === 'fidelidad' ? 'ol class="checklist checklist--steps"' : 'ul class="checklist"'}>${arr(p.perks).map((x) => `<li>${icon('check')}<span>${fill(x)}</span></li>`).join('')}</${k === 'fidelidad' ? 'ol' : 'ul'}>` : ''}
+      ${p.conditions ? `<p class="club__conditions"><strong>${u('packs.conditions')}</strong> ${fill(p.conditions)}</p>` : ''}
       <p>${waBtn(waFor(tx('waPack', { name: p.name })), p.cta || tx('packs.want', { name: p.name }), 'btn btn--ink')}</p>
     </article>`;
   };
-  const loyalty = mk.loyalty;
   const html = layout({
     path: 'packs/', current: 'packs/', title: tx('packs.title'),
     description: tx('packs.description', { brand: brand.name }),
     ld: [breadcrumbLd([{ label: tx('packs.crumb'), path: 'packs/' }]), ...list.filter((p) => isNum(p.price)).map((p) => ({ '@context': 'https://schema.org', '@type': 'Offer', name: p.name, description: p.description, price: p.price, priceCurrency: 'EUR', seller: { '@type': 'BeautySalon', name: brand.name } }))].filter(Boolean),
     body: (root) => `
 ${pageHero({ root, crumbs: [{ label: tx('packs.crumb') }], eyebrow: tx('packs.eyebrow'), title: rich('packs.heading'), lead: tx('packs.lead') })}
-<section class="section" aria-label="${u('packs.clubsLabel')}"><div class="container"><div class="duo">${club('aloha')}${club('ohana')}</div></div></section>
+<section class="section" aria-label="${u('packs.clubsLabel')}"><div class="container"><div class="duo${clubKeys().length > 2 ? ' duo--3' : ''}">${clubKeys().map(club).join('')}</div></div></section>
 
 ${list.length ? `<section class="section section--white" aria-labelledby="packs-title">
   <div class="container">
@@ -1209,14 +1258,7 @@ ${bonos.length ? `<section class="section" aria-labelledby="bonos-title">
   </div>
 </section>` : ''}
 
-${activePromos.length ? `<section class="section section--white" aria-labelledby="promos-title"><div class="container"><div class="section__head"><p class="eyebrow">${u('packs.promosEyebrow')}</p><h2 id="promos-title">${rich('packs.promosTitle')}</h2></div><div class="grid grid--3">${activePromos.map(promoCard).join('')}</div></div></section>` : ''}
-
-${loyalty && loyalty.name ? `<section class="section section--ink" aria-labelledby="loyal-title">
-  <div class="container">
-    <div class="section__head"><p class="eyebrow">${u('packs.loyaltyEyebrow')}</p><h2 id="loyal-title">${esc(loyalty.name)}</h2><p>${esc(loyalty.description)}</p></div>
-    ${arr(loyalty.steps).length ? `<ol class="loyalty-steps">${arr(loyalty.steps).map((s) => `<li>${esc(s)}</li>`).join('')}</ol>` : ''}
-  </div>
-</section>` : ''}`,
+${activePromos.length ? `<section class="section section--white" aria-labelledby="promos-title"><div class="container"><div class="section__head"><p class="eyebrow">${u('packs.promosEyebrow')}</p><h2 id="promos-title">${rich('packs.promosTitle')}</h2></div><div class="grid grid--3">${activePromos.map(promoCard).join('')}</div></div></section>` : ''}`,
   });
   writePage('packs/', html);
 }

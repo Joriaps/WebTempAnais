@@ -575,76 +575,45 @@
           "a": "Para que la luz llegue a la raíz y no queme el pelo de la superficie. Con cera arrancarías la raíz y el láser no tendría dónde actuar."
         }
       ],
-      "priceFrom": 15,
+      "priceFrom": 10,
       "prices": [
         {
-          "label": "Labio superior o mentón",
+          "label": "Zona XS",
+          "price": 10,
+          "priceHim": 10,
+          "oldPrice": null,
+          "note": "Areolas, entrecejo, labio superior, mentón, patillas, pómulos, orejas, nuca o línea alba"
+        },
+        {
+          "label": "Zona S",
           "price": 15,
+          "priceHim": 15,
           "oldPrice": null,
-          "note": "Por sesión"
+          "note": "Axilas, ingles normales, cuello, manos o pies"
         },
         {
-          "label": "Axilas",
-          "price": 25,
+          "label": "Zona M",
+          "price": 20,
+          "priceHim": 28,
           "oldPrice": null,
-          "note": "Por sesión"
+          "note": "Antebrazos, hombros, pubis, interglúteo, facial completo o perfilado de barba"
         },
         {
-          "label": "Ingles (línea del bikini)",
+          "label": "Zona L",
           "price": 30,
+          "priceHim": 35,
           "oldPrice": null,
-          "note": "Por sesión"
+          "note": "Medias piernas, brazos completos, abdomen, tórax, espalda superior, lumbosacra o glúteos"
         },
         {
-          "label": "Ingle brasileña / íntegra",
+          "label": "Zona XL",
           "price": 40,
+          "priceHim": 45,
           "oldPrice": null,
-          "note": "Por sesión"
-        },
-        {
-          "label": "Brazos completos",
-          "price": 60,
-          "oldPrice": null,
-          "note": "Por sesión"
-        },
-        {
-          "label": "Medias piernas",
-          "price": 60,
-          "oldPrice": null,
-          "note": "Por sesión"
-        },
-        {
-          "label": "Espalda completa",
-          "price": 70,
-          "oldPrice": null,
-          "note": "Por sesión"
-        },
-        {
-          "label": "Piernas completas",
-          "price": 95,
-          "oldPrice": null,
-          "note": "Por sesión"
-        },
-        {
-          "label": "Pack cuerpo completo",
-          "price": 149,
-          "oldPrice": 199,
-          "note": "Por sesión. Zonas incluidas a confirmar en consulta"
-        },
-        {
-          "label": "Bono 6 sesiones axilas",
-          "price": 120,
-          "oldPrice": 150,
-          "note": ""
-        },
-        {
-          "label": "Bono 6 sesiones axilas + ingle brasileña",
-          "price": 299,
-          "oldPrice": 390,
-          "note": ""
+          "note": "Piernas completas, espalda completa o pecho completo"
         }
       ],
-      "priceNote": "Precio orientativo",
+      "priceNote": "Precio por sesión y zona",
       "tags": [
         "láser",
         "diodo",
@@ -1597,7 +1566,7 @@
       "hook": "Relájate mientras tus piernas se deshinchan",
       "icon": "pressure",
       "featured": false,
-      "whatIs": "Te colocamos unas botas (y, si lo necesitas, faja para abdomen o brazos) con cámaras que se inflan y desinflan de forma secuencial, desde los pies hacia arriba. Esa compresión rítmica ayuda a movilizar los líquidos retenidos y estimula la circulación de retorno. Solo tienes que tumbarte y relajarte.",
+      "whatIs": "La presoterapia es un tratamiento no invasivo que usa aire a presión controlada. Te colocamos unas botas (y, si lo necesitas, una faja para abdomen y glúteos o mangas para los brazos) con cámaras que se inflan y desinflan por turnos, de abajo hacia arriba. Esa compresión rítmica ayuda a mover los líquidos retenidos y activa la circulación de vuelta al corazón. Tú solo tienes que tumbarte y relajarte.",
       "mechanism": "La presión de aire reproduce de forma mecánica el efecto de bombeo del drenaje linfático: empuja el líquido acumulado entre las células hacia los vasos linfáticos y venosos para que el organismo lo pueda eliminar. Al hacerlo de forma progresiva y ascendente, favorece el retorno venoso de las piernas. Por eso se nota ligereza desde la primera sesión y es el complemento ideal tras cavitación o maderoterapia.",
       "benefits": [
         {
@@ -1650,8 +1619,8 @@
         }
       ],
       "duration": "30 – 40 min",
-      "sessions": "Ciclo de 10 sesiones, 2-3 por semana, y luego mantenimiento",
-      "results": "La sensación de ligereza se nota desde la primera sesión. La mejora de la retención depende de la constancia y de los hábitos.",
+      "sessions": "Un ciclo de unas 10 sesiones, de 1 a 3 por semana según tu caso, y luego mantenimiento",
+      "results": "La sensación de ligereza se nota desde la primera sesión. La mejora de la retención suele apreciarse hacia la 3.ª-4.ª sesión y depende de la constancia, la hidratación y los hábitos. Resultados variables según cada persona.",
       "painLevel": 0,
       "aftercare": [
         "Bebe agua después de la sesión",
@@ -1661,10 +1630,11 @@
         "Eleva las piernas un rato por la noche para prolongar la sensación de ligereza"
       ],
       "contraindications": [
-        "Trombosis, flebitis o varices graves",
-        "Insuficiencia cardiaca o renal, hipertensión no controlada",
+        "Trombosis o tromboflebitis, actual o pasada, y varices graves",
+        "Insuficiencia cardiaca o renal, enfermedad cardiovascular grave o hipertensión no controlada",
         "Embarazo",
-        "Heridas o infecciones en las piernas",
+        "Tratamiento oncológico en curso",
+        "Heridas, infecciones o piel muy frágil en la zona",
         "Marcapasos o problemas cardiacos: consulta médica previa"
       ],
       "faq": [
@@ -1679,6 +1649,10 @@
         {
           "q": "¿Puedo hacerla sola o mejor combinada?",
           "a": "Funciona sola, pero combinada con maderoterapia o drenaje manual el efecto se potencia."
+        },
+        {
+          "q": "¿Sirve para eliminar grasa?",
+          "a": "No. Trabaja sobre los líquidos y la circulación, no sobre la grasa. Si quieres tratar grasa localizada, la combinamos con cavitación."
         }
       ],
       "priceFrom": 25,
@@ -1778,8 +1752,8 @@
         }
       ],
       "duration": "40 – 60 min según la zona",
-      "sessions": "Entre 8 y 10 sesiones, 1-2 por semana, y después mantenimiento mensual",
-      "results": "La piel se nota más suave y tersa desde las primeras sesiones. La mejora de firmeza es progresiva y suele apreciarse más a partir de la 4.ª sesión, a medida que se forma colágeno nuevo. Los resultados varían según cada cuerpo y los hábitos.",
+      "sessions": "Entre 6 y 10 sesiones según la zona, 1-2 por semana, y después sesiones de mantenimiento",
+      "results": "La piel se nota más suave y tersa desde las primeras sesiones. La mejora de firmeza es progresiva y suele apreciarse a partir del primer mes (hacia la 4.ª sesión), a medida que se forma colágeno nuevo. Los resultados varían según cada cuerpo, el estado de la piel y los hábitos.",
       "painLevel": 1,
       "aftercare": [
         "Bebe 1,5-2 litros de agua al día para favorecer el drenaje",
@@ -1795,6 +1769,7 @@
         "DIU de cobre (para tratamiento abdominal)",
         "Cáncer activo o reciente",
         "Varices marcadas, trombosis o alteraciones de la sensibilidad en la zona",
+        "Enfermedad cardiaca o alteraciones de la coagulación",
         "Heridas, infecciones o cirugía reciente en la zona"
       ],
       "faq": [
@@ -1909,11 +1884,11 @@
         }
       ],
       "duration": "40 – 60 min",
-      "sessions": "Entre 8 y 10 sesiones, con al menos 72 horas entre sesiones en la misma zona",
+      "sessions": "Entre 10 y 12 sesiones, dejando al menos 72 horas (3 días) entre sesiones en la misma zona",
       "results": "La reducción del contorno suele notarse de forma progresiva a partir de la 3.ª-4.ª sesión. El resultado depende de cada cuerpo, de la zona y, sobre todo, de los hábitos de alimentación, hidratación y actividad.",
       "painLevel": 1,
       "aftercare": [
-        "Bebe 1,5-2 litros de agua el día de la sesión y los siguientes",
+        "Bebe agua antes y después de la sesión (1,5-2 litros al día) y también los días siguientes",
         "Camina o haz ejercicio suave ese día para ayudar a eliminar",
         "Reduce grasas, azúcares y alcohol durante el tratamiento",
         "Completa la sesión con drenaje (presoterapia o manual) cuando lo recomendemos",
@@ -1987,93 +1962,94 @@
       "id": "roll-systemic",
       "category": "corporal",
       "name": "Roll systemic",
-      "short": "Masaje mecánico con rodillos y succión que activa la circulación, drena y mejora el aspecto de la celulitis.",
-      "hook": "El masaje que moviliza tu piel en profundidad",
+      "short": "Diatermia y masaje compresivo con rodillos a la vez: drena, reafirma y mejora el aspecto de la celulitis.",
+      "hook": "Calor desde dentro y masaje en una sola sesión",
       "icon": "drain",
       "featured": false,
-      "whatIs": "El roll systemic es un tratamiento de masaje mecánico corporal: un cabezal con rodillos motorizados y una succión suave pellizca, eleva y desplaza la piel de forma rítmica, reproduciendo la técnica manual del «palpar-rodar» con más intensidad y regularidad. Se utiliza para activar la circulación, favorecer el drenaje de líquidos, suavizar la piel de naranja y mejorar la firmeza.",
-      "mechanism": "La succión forma un pliegue de piel que los rodillos movilizan en todas direcciones. Ese estímulo mecánico activa la microcirculación sanguínea y linfática, lo que favorece el drenaje de los líquidos retenidos entre las células. Al movilizar el tejido subcutáneo, ayuda a ablandar los tabiques fibrosos que «tiran» de la piel en la celulitis y a mejorar su aspecto. Además, la estimulación repetida de la dermis activa a los fibroblastos, que contribuyen a una piel más tonificada.",
+      "whatIs": "El roll systemic es un tratamiento corporal que une dos técnicas en la misma sesión: un masaje compresivo con rodillos y la diatermia, que genera un calor suave dentro de los tejidos. Se usa para activar la circulación, ayudar a eliminar líquidos retenidos y mejorar el aspecto de la celulitis y la firmeza de la piel en zonas como abdomen, caderas, brazos o piernas. No es invasivo y vuelves a tu rutina al momento.",
+      "mechanism": "La diatermia usa una corriente de alta frecuencia que los propios tejidos convierten en calor (calor endógeno), en lugar de calentar solo la superficie. Ese calor dilata los pequeños vasos, mejora la oxigenación y activa el metabolismo de las células. Mientras tanto, los rodillos comprimen y movilizan el tejido de forma rítmica, lo que favorece el drenaje linfático y ayuda a mover los líquidos acumulados. La suma de calor y masaje estimula además a los fibroblastos, las células que fabrican colágeno, y contribuye a una piel más firme y lisa.",
       "benefits": [
         {
-          "title": "Menos piel de naranja",
-          "text": "Ayuda a suavizar el aspecto de la celulitis con constancia."
+          "title": "Mejor aspecto de la celulitis",
+          "text": "Calor y masaje ayudan a suavizar la piel de naranja con constancia."
         },
         {
           "title": "Efecto drenante",
-          "text": "Activa la circulación linfática y reduce la sensación de retención."
+          "text": "Activa la circulación linfática y ayuda a reducir la retención de líquidos."
         },
         {
-          "title": "Piel más tonificada",
-          "text": "La estimulación mecánica mejora la textura y la firmeza."
+          "title": "Piel más firme",
+          "text": "El calor estimula el colágeno y mejora la textura de la piel."
         },
         {
           "title": "Piernas más ligeras",
-          "text": "Alivia la pesadez y el cansancio."
+          "text": "Alivia la sensación de pesadez y cansancio."
         },
         {
-          "title": "Potencia otros tratamientos",
-          "text": "Excelente tras cavitación o como preparación para la radiofrecuencia."
+          "title": "Contorno más definido",
+          "text": "Ayuda a mejorar el aspecto de las zonas con volumen localizado, junto con buenos hábitos."
         },
         {
-          "title": "Agradable y no invasivo",
-          "text": "Sensación de masaje profundo, sin recuperación."
+          "title": "Agradable y relajante",
+          "text": "Calor envolvente y masaje profundo, sin tiempo de recuperación."
         }
       ],
       "idealFor": [
         "Celulitis y piel de naranja",
         "Retención de líquidos y piernas cansadas",
-        "Piel con falta de tono en muslos, glúteos o abdomen",
-        "Como complemento de un plan corporal"
+        "Flacidez leve en abdomen, brazos, muslos o caderas",
+        "Quien busca un tratamiento corporal completo y relajante"
       ],
       "howItWorks": [
         {
           "title": "Valoración",
-          "text": "Revisamos zonas, objetivo y contraindicaciones."
+          "text": "Revisamos zonas, objetivo y contraindicaciones (la diatermia tiene algunas importantes)."
         },
         {
           "title": "Preparación",
-          "text": "Te damos una malla corporal para que el cabezal deslice de forma higiénica y uniforme."
+          "text": "Preparamos la zona y colocamos los electrodos necesarios para la diatermia."
         },
         {
-          "title": "Masaje mecánico",
-          "text": "Trabajamos cada zona siguiendo el recorrido de la circulación, ajustando la intensidad."
+          "title": "Calor y masaje",
+          "text": "Deslizamos el cabezal de rodillos mientras la diatermia calienta el tejido, ajustando intensidad y temperatura a tu confort."
         },
         {
           "title": "Final",
-          "text": "Terminamos con maniobras drenantes o crema específica."
+          "text": "Terminamos con maniobras drenantes o crema específica y sigues con tu día."
         }
       ],
       "duration": "30 – 45 min",
-      "sessions": "Un ciclo de 10-12 sesiones, 2 por semana, y después mantenimiento",
-      "results": "La sensación de ligereza se nota desde la primera sesión. La mejora del aspecto de la celulitis y de la firmeza es progresiva y depende de la constancia y de los hábitos.",
+      "sessions": "Plan a medida tras la valoración: lo habitual es un ciclo de al menos 6 sesiones y después mantenimiento",
+      "results": "La sensación de ligereza y de piel más suave suele notarse desde las primeras sesiones. La mejora de la celulitis, la firmeza y el contorno es progresiva y depende de la constancia y de los hábitos. Resultados variables según cada cuerpo.",
       "painLevel": 1,
       "aftercare": [
-        "Bebe 1,5-2 litros de agua al día",
+        "Bebe 1,5-2 litros de agua al día para favorecer el drenaje",
+        "La zona puede quedar caliente y algo rojiza durante un rato",
+        "Evita sauna, baños muy calientes y sol intenso las primeras 24 h",
         "Camina o haz actividad suave para mantener activa la circulación",
-        "Reduce la sal y el alcohol durante el tratamiento",
-        "Puede quedar una leve rojez que desaparece en poco tiempo",
-        "Hidrata la piel con una crema anticelulítica o reafirmante"
+        "Reduce la sal y el alcohol durante el tratamiento"
       ],
       "contraindications": [
         "Embarazo",
-        "Varices marcadas, trombosis o flebitis",
-        "Fragilidad capilar o tendencia a hematomas",
-        "Tratamientos anticoagulantes",
-        "Heridas, infecciones o problemas de piel en la zona",
-        "Cáncer activo o cirugía reciente en la zona"
+        "Marcapasos u otros dispositivos electrónicos implantados",
+        "Epilepsia",
+        "Prótesis o implantes metálicos en la zona",
+        "Trombosis, flebitis, varices marcadas o tratamiento anticoagulante",
+        "Cáncer activo o reciente",
+        "Heridas, infecciones o alteraciones de la sensibilidad en la zona"
       ],
       "faq": [
         {
-          "q": "¿Duele?",
-          "a": "No debería. Se nota un masaje intenso que regulamos a tu gusto."
+          "q": "¿Qué se siente?",
+          "a": "Un calor agradable que sale desde dentro y un masaje firme con rodillos. Regulamos la intensidad en todo momento."
         },
         {
-          "q": "¿Qué diferencia hay con la maderoterapia?",
-          "a": "Ambas movilizan el tejido. La maderoterapia es manual con madera; el roll systemic usa rodillos y succión con una intensidad muy regular."
+          "q": "¿En qué se diferencia de la maderoterapia o la presoterapia?",
+          "a": "Las tres ayudan a drenar. La maderoterapia es un masaje manual con útiles de madera y la presoterapia usa presión de aire; el roll systemic suma el calor de la diatermia al masaje con rodillos."
         },
         {
-          "q": "¿Necesito ropa especial?",
-          "a": "Te facilitamos una malla corporal desechable o de uso individual."
+          "q": "¿Puedo hacerlo si llevo marcapasos?",
+          "a": "Con diatermia, no. Si llevas marcapasos u otro dispositivo implantado, avísanos y te proponemos otra opción."
         }
       ],
       "priceFrom": 35,
@@ -2115,8 +2091,8 @@
       "hook": "Calor desde dentro para reafirmar cuerpo y rostro",
       "icon": "device",
       "featured": false,
-      "whatIs": "La diatermia es una técnica que utiliza corrientes de alta frecuencia para generar calor en el interior de los tejidos (calor endógeno), en lugar de aplicarlo desde fuera. En estética se emplea en modo capacitivo y resistivo para reafirmar la piel, activar la circulación, ayudar a drenar y mejorar el aspecto de la celulitis en el cuerpo. En el rostro, con un cabezal más pequeño y menor intensidad, ayuda a mejorar la firmeza, la luminosidad y las líneas finas.",
-      "mechanism": "La corriente circula entre el cabezal y una placa de retorno, y la resistencia natural de los tejidos la transforma en calor. En modo capacitivo el calor se concentra en las capas más superficiales y ricas en agua, como la dermis; en modo resistivo llega a tejidos más profundos y densos, como la grasa o la fascia. Ese aumento de temperatura provoca vasodilatación, mejora la oxigenación y el drenaje linfático, acelera el metabolismo celular y estimula a los fibroblastos a producir colágeno y elastina, lo que se traduce en una piel más firme y uniforme.",
+      "whatIs": "La diatermia es una técnica que usa corriente de alta frecuencia para generar calor dentro de los tejidos (calor endógeno), en lugar de aplicarlo desde fuera. En el cuerpo ayuda a reafirmar la piel, activar la circulación y mejorar el aspecto de la celulitis en zonas como abdomen, brazos o muslos. En el rostro, con un cabezal más pequeño y menos intensidad, ayuda a mejorar la firmeza del óvalo y el cuello, las líneas finas y la luminosidad. La aplicamos con el mismo equipo multifunción que usamos para el hidrafacial, así que puedes combinar las dos técnicas en una misma sesión.",
+      "mechanism": "La corriente atraviesa los tejidos y su resistencia natural la transforma en calor. Según el cabezal y la zona, ese calor se concentra en capas más superficiales, como la dermis, o llega a tejidos más profundos. El aumento de temperatura dilata los pequeños vasos, mejora la oxigenación y el drenaje, activa el metabolismo de las células y estimula a los fibroblastos para que produzcan colágeno y elastina. Con sesiones regulares, la piel se ve más firme y uniforme.",
       "benefits": [
         {
           "title": "Reafirma cuerpo y rostro",
@@ -2136,7 +2112,7 @@
         },
         {
           "title": "Versátil",
-          "text": "Se adapta a abdomen, piernas, glúteos, brazos o rostro."
+          "text": "Se adapta a abdomen, piernas, glúteos, brazos, óvalo facial o cuello."
         },
         {
           "title": "Agradable y sin recuperación",
@@ -2156,19 +2132,19 @@
         },
         {
           "title": "Preparación",
-          "text": "Colocamos la placa de retorno y aplicamos crema conductora."
+          "text": "Limpiamos la zona y aplicamos un medio conductor."
         },
         {
           "title": "Diatermia",
-          "text": "Trabajamos la zona alternando modo capacitivo y resistivo según el objetivo."
+          "text": "Deslizamos el cabezal hasta notar un calor agradable, ajustando intensidad y profundidad al objetivo."
         },
         {
           "title": "Acabado",
-          "text": "Masaje drenante y cosmética reafirmante."
+          "text": "Masaje drenante en cuerpo o sérum reafirmante en rostro. Si la combinas con hidrafacial, la piel ya llega limpia e hidratada."
         }
       ],
       "duration": "40 – 60 min",
-      "sessions": "Entre 8 y 10 sesiones, 1-2 por semana, y después mantenimiento",
+      "sessions": "Entre 6 y 10 sesiones según la zona y el objetivo, 1-2 por semana, y después mantenimiento",
       "results": "La piel se nota más suave y luminosa desde las primeras sesiones. La mejora de firmeza y del aspecto de la celulitis es progresiva. Los resultados varían según cada persona y sus hábitos.",
       "painLevel": 0,
       "aftercare": [
@@ -2185,20 +2161,25 @@
         "Cáncer activo o reciente",
         "Fiebre o procesos infecciosos agudos",
         "Trombosis, varices marcadas o alteraciones de la sensibilidad",
+        "Enfermedad cardiaca o alteraciones de la coagulación",
         "Heridas o cirugía reciente en la zona"
       ],
       "faq": [
         {
           "q": "¿En qué se diferencia de la radiofrecuencia?",
-          "a": "Ambas generan calor en el tejido. La diatermia trabaja con placa de retorno y alterna modo capacitivo y resistivo para llegar a distintas profundidades."
+          "a": "Son técnicas muy parecidas: las dos generan calor dentro del tejido con corriente de alta frecuencia. Cambian el equipo y el cabezal; en la consulta te recomendamos la más adecuada para tu zona."
         },
         {
           "q": "¿Se puede hacer en la cara?",
-          "a": "Sí, con cabezales e intensidades adaptados al rostro."
+          "a": "Sí. En el rostro usamos un cabezal y una intensidad adaptados, sobre todo en óvalo, cuello y zonas con líneas finas."
         },
         {
           "q": "¿Duele?",
           "a": "No. Se nota calor que regulamos para que sea siempre agradable."
+        },
+        {
+          "q": "¿Puedo combinarla con el hidrafacial?",
+          "a": "Sí. Las dos se hacen con el mismo equipo, así que en una sola cita podemos limpiar e hidratar la piel con el hidrafacial y terminar con diatermia para trabajar la firmeza."
         }
       ],
       "priceFrom": 50,
@@ -2232,10 +2213,10 @@
         "corporal"
       ],
       "combinesWith": [
-        "presoterapia",
-        "body-sculpt",
+        "hidrafacial",
         "radiofrecuencia-facial",
-        "cavitacion"
+        "presoterapia",
+        "body-sculpt"
       ]
     },
     {
@@ -2246,8 +2227,8 @@
       "hook": "Tonifica mientras estás tumbada/o",
       "icon": "body",
       "featured": false,
-      "whatIs": "El body sculpt es un tratamiento de remodelación corporal que provoca contracciones musculares intensas y repetidas mediante estimulación electromagnética o eléctrica, sin que tengas que hacer ningún esfuerzo. Ayuda a tonificar y definir zonas como abdomen, glúteos, brazos o muslos, y es un gran complemento del ejercicio y de los tratamientos de flacidez y grasa localizada.",
-      "mechanism": "El aplicador genera impulsos que llegan hasta el músculo y le hacen contraerse muchas más veces y de forma más intensa de lo que se consigue con un ejercicio voluntario en el mismo tiempo. El músculo responde adaptándose: mejora su tono y su firmeza, como tras un entrenamiento. Ese trabajo intenso aumenta el gasto energético de la zona y activa la circulación, lo que contribuye a una silueta más definida cuando se acompaña de buenos hábitos.",
+      "whatIs": "El body sculpt es un tratamiento de remodelación corporal con tecnología electromagnética de alta intensidad. Provoca contracciones musculares muy intensas y repetidas sin que tengas que hacer ningún esfuerzo ni pasar por cirugía. Ayuda a tonificar y reafirmar abdomen, glúteos, brazos o muslos, y es un gran complemento del ejercicio y de los tratamientos de flacidez y grasa localizada.",
+      "mechanism": "El aplicador crea un campo electromagnético que atraviesa la piel y la grasa y llega al músculo. Allí provoca contracciones muy intensas, llamadas supramáximas, que no se pueden lograr con un ejercicio voluntario, y muchas más repeticiones de las que harías en el mismo tiempo. El músculo responde adaptándose: gana tono y firmeza, como tras un entrenamiento. Ese trabajo también activa el metabolismo de la zona; algunos estudios han visto además una reducción moderada de la grasa que cubre el músculo, aunque el resultado cambia mucho de una persona a otra.",
       "benefits": [
         {
           "title": "Tono muscular",
@@ -2299,8 +2280,8 @@
         }
       ],
       "duration": "30 min por zona",
-      "sessions": "Entre 6 y 8 sesiones, 2 por semana, y después mantenimiento mensual",
-      "results": "Se nota la zona trabajada desde la primera sesión. La mejora del tono y la definición es progresiva y suele apreciarse a partir de la 4.ª sesión. Los resultados varían según cada cuerpo y los hábitos.",
+      "sessions": "Un ciclo inicial de 4 a 8 sesiones de 30 minutos, 2 por semana (con 2-3 días de descanso entre ellas), y después mantenimiento",
+      "results": "Se nota la zona trabajada desde la primera sesión. La mejora del tono y la definición es progresiva y sigue avanzando durante las semanas posteriores al ciclo. Los resultados varían según cada cuerpo y los hábitos.",
       "painLevel": 1,
       "aftercare": [
         "Bebe agua después de la sesión",
@@ -2330,6 +2311,10 @@
         {
           "q": "¿Puedo tratar varias zonas?",
           "a": "Sí, en la misma cita o alternando días."
+        },
+        {
+          "q": "¿Sirve para quitar grasa?",
+          "a": "No es un tratamiento para adelgazar: su función principal es tonificar el músculo. Puede ayudar a mejorar el contorno y, si quieres trabajar grasa localizada, lo combinamos con cavitación."
         }
       ],
       "priceFrom": 50,
@@ -2762,8 +2747,8 @@
       "hook": "Tu piel, limpia y jugosa en una sola sesión",
       "icon": "glow",
       "featured": false,
-      "whatIs": "La hidrodermoabrasión es un tratamiento facial que limpia, exfolia, extrae impurezas e hidrata la piel en una misma sesión. Un cabezal con punta especial combina una succión suave con la aplicación continua de sérums, así que la piel se renueva mientras se va nutriendo. Es apto para casi todo tipo de pieles, no necesita tiempo de recuperación y deja un efecto «buena cara» inmediato.",
-      "mechanism": "La primera fase retira las células muertas de la capa córnea, la más superficial, que apagan el tono y obstruyen los poros. A continuación, la succión controlada ayuda a extraer sebo e impurezas del interior del poro sin la presión de una extracción manual. Al mismo tiempo, el cabezal infunde sérums con activos hidratantes y antioxidantes, como el ácido hialurónico, que penetran mejor en una piel recién exfoliada. El resultado es una barrera cutánea más hidratada, una superficie más lisa y una piel que refleja mejor la luz.",
+      "whatIs": "La hidrodermoabrasión es un tratamiento facial que limpia, exfolia, extrae impurezas e hidrata la piel en una misma sesión. Un cabezal con punta especial combina una succión suave con la aplicación continua de sérums, así que la piel se renueva mientras se va nutriendo. Es apto para casi todo tipo de pieles, no necesita tiempo de recuperación y deja un efecto «buena cara» inmediato. Lo hacemos con un equipo multifunción que también incluye diatermia, así que si quieres puedes sumar un extra de firmeza en la misma sesión.",
+      "mechanism": "La primera fase retira las células muertas de la capa córnea, la más superficial, que apagan el tono y obstruyen los poros. A continuación, la succión controlada ayuda a extraer sebo e impurezas del interior del poro sin la presión de una extracción manual. Al mismo tiempo, el cabezal infunde sérums con activos hidratantes, antioxidantes o péptidos, como el ácido hialurónico, que penetran mejor en una piel recién exfoliada. El resultado es una barrera cutánea más hidratada, una superficie más lisa y una piel que refleja mejor la luz.",
       "benefits": [
         {
           "title": "Luminosidad inmediata",
@@ -2779,7 +2764,7 @@
         },
         {
           "title": "Textura más fina",
-          "text": "La exfoliación suave deja una superficie más lisa y uniforme."
+          "text": "Superficie más lisa y uniforme, y mejor aspecto de las líneas finas por falta de hidratación."
         },
         {
           "title": "Sin tiempo de recuperación",
@@ -2854,6 +2839,10 @@
         {
           "q": "¿Es lo mismo que la marca Hydrafacial®?",
           "a": "Hydrafacial® es una marca registrada de un aparato concreto. El tratamiento genérico se llama hidrodermoabrasión; en la consulta te explicamos el equipo que utilizamos."
+        },
+        {
+          "q": "¿Puedo combinarlo con diatermia?",
+          "a": "Sí. Nuestro equipo hace las dos cosas: primero limpiamos e hidratamos con el hidrafacial y después aplicamos diatermia para estimular la firmeza. Antes revisamos que no tengas ninguna contraindicación para el calor (por ejemplo, marcapasos o embarazo)."
         }
       ],
       "priceFrom": 50,
@@ -2887,9 +2876,9 @@
         "poros"
       ],
       "combinesWith": [
+        "diatermia",
         "radiofrecuencia-facial",
         "higiene-facial",
-        "lifting-pestanas",
         "bb-glow"
       ]
     },
@@ -2955,7 +2944,7 @@
         }
       ],
       "duration": "40 – 50 min",
-      "sessions": "De 4 a 6 sesiones cada 15-21 días y después una de mantenimiento al mes",
+      "sessions": "De 4 a 6 sesiones cada 2-4 semanas y después una de mantenimiento al mes o cada dos meses",
       "results": "La piel se nota más suave y luminosa al terminar. Las mejoras en textura y marcas superficiales son progresivas y dependen de cada piel.",
       "painLevel": 1,
       "aftercare": [
@@ -3071,8 +3060,8 @@
           "text": "Analizamos tu piel y definimos zonas y objetivo."
         },
         {
-          "title": "Limpieza",
-          "text": "Limpiamos la piel y aplicamos un medio conductor."
+          "title": "Limpieza y exfoliación",
+          "text": "Limpiamos y exfoliamos suavemente la piel y aplicamos un medio conductor."
         },
         {
           "title": "Radiofrecuencia",
@@ -3085,7 +3074,7 @@
       ],
       "duration": "45 – 60 min",
       "sessions": "Entre 6 y 8 sesiones, una por semana o cada 15 días, y luego mantenimiento mensual",
-      "results": "Tras la sesión la piel se ve más tersa y luminosa. La mejora de firmeza es progresiva: el colágeno nuevo se forma en las semanas siguientes, por eso suele apreciarse más a partir de la 3.ª-4.ª sesión. Los resultados varían según cada piel.",
+      "results": "Tras la sesión la piel se ve más tersa y luminosa. La mejora de firmeza es progresiva: el colágeno nuevo se forma en las semanas siguientes, por eso suele apreciarse más a partir del primer mes (3.ª-4.ª sesión). Los resultados varían según cada piel.",
       "painLevel": 0,
       "aftercare": [
         "Puede quedar un leve enrojecimiento y calor durante una o dos horas",
@@ -3099,6 +3088,7 @@
         "Marcapasos u otros dispositivos electrónicos implantados",
         "Implantes metálicos o prótesis en la zona",
         "Rellenos o hilos tensores recientes: avísanos para valorar plazos",
+        "Enfermedad cardiaca o alteraciones de la coagulación",
         "Cáncer activo o reciente",
         "Heridas, herpes activo, infecciones o alteraciones de la sensibilidad en la zona"
       ],
@@ -3166,7 +3156,7 @@
       "icon": "device",
       "featured": false,
       "whatIs": "Es un tratamiento que utiliza un equipo facial multifunción: un aparato que reúne varios cabezales y técnicas en uno. Según lo que necesite tu piel ese día, combinamos funciones de limpieza profunda, exfoliación, aspiración, efecto purificante y aplicación de activos en un mismo protocolo. Es muy versátil: sirve tanto para pieles grasas con impurezas como para pieles apagadas que necesitan luz y nutrición.",
-      "mechanism": "Cada función del equipo actúa sobre una necesidad distinta. Las funciones de limpieza y desincrustación ayudan a disolver el sebo y la suciedad que obstruyen el poro; la aspiración activa la microcirculación y ayuda a extraer impurezas; la alta frecuencia, si el equipo la incluye, aporta un efecto purificante y oxigenante muy útil en pieles con tendencia acneica; y las corrientes suaves de vehiculización facilitan que los activos penetren mejor. Al encadenarlas en el orden adecuado, la piel queda limpia, equilibrada y receptiva.",
+      "mechanism": "Cada función del equipo actúa sobre una necesidad distinta. Las más habituales en este tipo de aparatos son la microdermoabrasión, que retira células muertas y afina la textura; la espátula ultrasónica, que con su vibración ayuda a desprender sebo e impurezas de la superficie y del poro; y la alta frecuencia, que con un electrodo de cristal produce un leve chisporroteo y ozono, al que se atribuye un efecto purificante útil en pieles con tendencia acneica. La aspiración, además, activa la microcirculación. Al encadenarlas en el orden adecuado y terminar con activos, la piel queda limpia, equilibrada y receptiva.",
       "benefits": [
         {
           "title": "Protocolo a medida",
@@ -3243,7 +3233,7 @@
       "faq": [
         {
           "q": "¿Qué funciones tiene el aparato?",
-          "a": "Depende del protocolo de cada día. En la consulta te explicamos qué cabezales usaremos y por qué."
+          "a": "Reúne varias técnicas de limpieza y renovación de la piel, como exfoliación, peeling ultrasónico o alta frecuencia. Elegimos las que necesita tu piel cada día y en la consulta te explicamos qué cabezales usaremos y por qué."
         },
         {
           "q": "¿En qué se diferencia de la higiene facial?",

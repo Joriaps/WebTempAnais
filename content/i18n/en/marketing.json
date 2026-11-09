@@ -48,13 +48,15 @@
   ],
   "loyalty": {
     "name": "Crown Club",
-    "description": "Our digital loyalty card: every visit earns you a crown and, when you complete the card, you get a gift. No fees and no small print.",
+    "description": "The more you look after yourself, the more we reward you. With our loyalty card every session counts and, once it is complete, it turns into exclusive discounts and offers for club members.",
     "steps": [
-      "Ask for your Crown Club card on your first visit (or register it with your phone).",
-      "Earn 1 crown for every appointment of 25 € or more.",
-      "When you reach 8 crowns, choose your gift: 50% off a treatment of up to 50 € or a 30-minute relaxing massage.",
-      "Your crowns don't expire as long as you visit us at least once every 6 months."
-    ]
+      "Ask for your card on your next visit: it is free.",
+      "Every session you book earns you a stamp.",
+      "Complete [POR DEFINIR] sessions and get your exclusive discount or offer."
+    ],
+    "subtitle": "Your loyalty card",
+    "conditions": "[POR DEFINIR]",
+    "cta": "I want my card"
   },
   "leadMagnet": {
     "title": "Free skin diagnosis",
