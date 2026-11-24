@@ -9,6 +9,9 @@ VIEWS = {  # (cámara, objetivo, alto visible) en ejes glTF (Y arriba, +Z al fre
     'espalda': ((0, .9, -6), (0, .87, 0), 1.9), 'cara': ((.55, 1.68, 3), (0, 1.62, 0), .34),
     'cara-frente': ((0, 1.62, 3), (0, 1.62, 0), .32), 'moño': ((-2, 2.1, -2.4), (0, 1.65, -.03), .36),
     'manos': ((1.6, 1.25, 2.6), (.5, .98, .06), .30), 'pubis': ((0, .9, 4), (0, .86, 0), .5), 'nuca': ((-1.6, 1.4, -2.6), (0, 1.62, -.06), .36),
+    'pose_reposo': ((0, .9, 6), (0, .9, 0), 1.9), 'pose_reposo-lado': ((6, .9, 0), (0, .9, 0), 1.9), 'pose_reposo-34': ((3.5, 1.0, 5), (0, .9, 0), 1.9),
+    'pose_reposo-espalda': ((0, .9, -6), (0, .9, 0), 1.9), 'pose_reposo-torso': ((1.2, 1.2, 4), (0, 1.1, 0), 1.0), 'mano': ((2.6, .95, 1.6), (.27, .80, .05), .35),
+    'cabeza-34': ((2.4, 1.85, 2.2), (0, 1.66, -.06), .36),
     'pose_brazos': ((2, 1.5, 3.6), (.1, 1.35, 0), 1.15), 'pose_manos': ((2.6, 1.4, 2.6), (.15, 1.25, .1), 1.1),
     'pose_rostro': ((.8, 1.65, 3), (0, 1.60, 0), .5), 'pose_espalda': ((-.9, 1.5, -4), (0, 1.25, 0), 1.2),
     'pose_piernas': ((-2.6, .9, 3.4), (0, .87, 0), 1.9), 'pies': ((.9, .9, 2.6), (.1, .05, 0), .40),
@@ -26,8 +29,8 @@ for o in bpy.data.objects:
     if o.data.color_attributes:  # AO por vértice
         n = m.node_tree.nodes.new('ShaderNodeVertexColor'); n.layer_name = o.data.color_attributes[0].name
         x = m.node_tree.nodes.new('ShaderNodeMix'); x.data_type = 'RGBA'; x.blend_type = 'MULTIPLY'
-        x.inputs['Factor'].default_value = 1; x.inputs['A'].default_value = (*c, 1)
-        m.node_tree.links.new(n.outputs['Color'], x.inputs['B']); m.node_tree.links.new(x.outputs['Result'], b.inputs['Base Color'])
+        x.inputs[0].default_value = 1; x.inputs[6].default_value = (*c, 1)
+        m.node_tree.links.new(n.outputs['Color'], x.inputs[7]); m.node_tree.links.new(x.outputs[2], b.inputs['Base Color'])
     o.data.materials.clear(); o.data.materials.append(m)
 S = bpy.context.scene
 S.render.engine = 'CYCLES'; S.cycles.samples = 48; S.cycles.use_denoising = True
@@ -46,7 +49,7 @@ for v in want:
     if RIG:
         RIG.animation_data.action = None
         for pb in RIG.pose.bones: pb.matrix_basis.identity()
-        act = next((x for x in bpy.data.actions if x.name.startswith(v)), None)
+        act = next((x for x in bpy.data.actions if x.name.startswith(v.split('-')[0] if v != 'mano' else 'pose_reposo')), None)
         if act:
             RIG.animation_data.action = act
             if act.slots: RIG.animation_data.action_slot = act.slots[0]

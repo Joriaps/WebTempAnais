@@ -54,7 +54,30 @@ const POSES = {
   espalda: 'pose_espalda',
   piernas: 'pose_piernas', pies: 'pose_piernas',
 };
-const POSE_TIME = 0.8; // duración de la mezcla entre poses (s)
+const POSE_REST = 'pose_reposo';   // base de las zonas sin pose propia (si el clip no existe, bind pose)
+const POSE_LEVEL = ['pose_rostro']; // clips en los que se anula el ladeo y el giro fijo de cuello y cabeza (se conserva el cabeceo)
+const POSE_TIME = 1.0;             // duración de la mezcla de cada hueso (s)
+/* Retraso (s) con que arranca cada hueso: columna → brazo → mano. Raíz y piernas, siempre a la vez (pies quietos). */
+const POSE_DELAY = [[/^clavicle/, 0.04], [/^(neck|head)/, 0.07], [/^upperarm/, 0.08], [/^lowerarm/, 0.14], [/^wrist/, 0.18], [/^finger/, 0.22]];
+/* Giro de cabeza de lado a lado sobre el eje vertical, sumado a la pose (grados, segundos). */
+const TURN = {
+  period: 8,           // ciclo completo: centro → un lado → centro → otro lado → centro
+  hold: 1.8,           // pausa en el centro (1 = seno puro; más = más pausa)
+  amp: { rostro: 14, mirada: 5, labios: 5, general: 4 }, // amplitud por zona activa ('general' = vista general)
+  other: 3,            // resto de zonas
+  ease: 1.6,           // rapidez con que cambia la amplitud de una zona a otra (1/s)
+  share: { neck01: 0.25, neck03: 0.3, head: 0.45 }, // reparto entre huesos (suma 1)
+};
+/* Micro-movimiento: [huesos, grados, periodo medio (s), ejes locales]. Cada hueso lleva su fase y su periodo.
+   No incluye raíz ni piernas: los pies no se mueven. En móvil se omiten los dedos. */
+const MICRO = [
+  [/^spine01/, 0.45, 6.4, 'xz'],
+  [/^clavicle/, 0.6, 5.2, 'xz'],
+  [/^upperarm01/, 0.8, 7.1, 'xz'],
+  [/^lowerarm01/, 0.8, 5.9, 'xz'],
+  [/^wrist/, 1.3, 4.7, 'xz'],
+  [/^finger\d-[12]/, 1.6, 4.1, 'x'],
+];
 /* Luz y piel: nude cálido y luminoso. La piel parte de --c-nude y se calienta hacia `warm`. */
 const SKIN = { warm: '#e29a70', warmth: 0.62, sheen: 0.4, sheenColor: '#ffd9b0', envMap: 0.4 };
 const LIGHT = {
@@ -300,32 +323,119 @@ function restMatrix(THREE, o) {
   return new THREE.Matrix4().multiplyMatrices(o.skeleton.bones[0].matrixWorld, o.skeleton.boneInverses[0]).multiply(o.bindMatrix);
 }
 
-/** Poses: último fotograma de cada clip de POSES; mezcla propia (sin mixer) y sin coste una vez alcanzada la pose. */
-function makeRig(THREE, root, clips) {
+/**
+ * Poses (último fotograma de cada clip), giro de cabeza y micro-movimiento.
+ * `base` = pose mezclada; encima, cada fotograma, se suma la vida (no altera la base ni la cámara).
+ */
+function makeRig(THREE, root, pivot, clips, mobile) {
   const nodes = new Map(), poses = { '': new Map() };
-  for (const name of new Set(Object.values(POSES))) {
-    const clip = clips.find((c) => c.name === name);
-    if (!clip) continue;
-    const pose = poses[name] = new Map();
+  const load = (name) => {
+    const clip = clips.find((c) => c.name === name), pose = new Map();
+    if (!clip) return null;
     for (const tr of clip.tracks) {
       const d = tr.name.lastIndexOf('.'), prop = tr.name.slice(d + 1), o = root.getObjectByName(tr.name.slice(0, d));
       if (!o || !(prop === 'quaternion' || prop === 'position' || prop === 'scale')) continue;
       const v = o[prop].clone().fromArray(tr.createInterpolant().evaluate(tr.times[tr.times.length - 1]));
-      const key = o.uuid + prop;
-      if (!nodes.has(key)) nodes.set(key, { val: o[prop], rest: o[prop].clone(), from: o[prop].clone(), q: prop === 'quaternion' });
+      const key = o.uuid + prop, dl = POSE_DELAY.find(([re]) => re.test(o.name));
+      if (!nodes.has(key)) nodes.set(key, { o, val: o[prop], rest: o[prop].clone(), from: o[prop].clone(), base: o[prop].clone(), q: prop === 'quaternion', delay: dl ? dl[1] : 0 });
       pose.set(key, v);
     }
-  }
+    return pose;
+  };
+  for (const name of new Set(Object.values(POSES))) { const p = load(name); if (p) poses[name] = p; }
+  poses[''] = load(POSE_REST) || poses[''];
   if (!nodes.size) return null;
-  let cur = '', t = 1;
+  const maxDelay = Math.max(...[...nodes.values()].map((n) => n.delay));
+  const bone = (n) => root.getObjectByName(n) || null;
+  const chain = Object.keys(TURN.share).map(bone);
+  const turnOk = chain.every((b) => b && nodes.has(b.uuid + 'quaternion'));
+
+  // Cuello y cabeza a nivel en las poses indicadas: orientación en el mundo respecto al reposo, solo con cabeceo
+  const qw = (o, get, out) => { out.identity(); for (let n = o; n && n !== pivot; n = n.parent) out.premultiply(get(n)); return out; };
+  if (turnOk) {
+    const A = new THREE.Quaternion(), B = new THREE.Quaternion(), P = new THREE.Quaternion(), e = new THREE.Euler();
+    const restQ = (n) => { const k = nodes.get(n.uuid + 'quaternion'); return k ? k.rest : n.quaternion; };
+    for (const name of POSE_LEVEL) {
+      const pose = poses[name];
+      if (!pose) continue;
+      const poseQ = (n) => pose.get(n.uuid + 'quaternion') || restQ(n);
+      const want = chain.map((b) => { // se calcula todo antes de corregir: cada hueso depende de su padre
+        const restW = qw(b, restQ, A), d = qw(b, poseQ, B).clone().multiply(restW.clone().invert());
+        e.setFromQuaternion(d, 'YXZ'); e.y = 0; e.z = 0;
+        return new THREE.Quaternion().setFromEuler(e).multiply(restW);
+      });
+      chain.forEach((b, i) => pose.set(b.uuid + 'quaternion', qw(b.parent, poseQ, P).clone().invert().multiply(want[i])));
+    }
+  }
+
+  // Huesos con micro-movimiento
+  const micro = [], seen = new Set();
+  nodes.forEach((n) => {
+    if (!n.q || seen.has(n.o)) return;
+    const def = MICRO.find(([re]) => re.test(n.o.name));
+    if (!def || (mobile && /^finger/.test(n.o.name))) return;
+    seen.add(n.o);
+    const i = micro.length, w = (k) => (Math.PI * 2) / (def[2] * (0.84 + 0.32 * ((i * 0.618 + k) % 1)));
+    micro.push({ q: n.o.quaternion, a: (def[1] * Math.PI) / 360, wx: w(0), wz: w(0.37), px: i * 2.4, pz: i * 1.7 + 1, z: def[3].includes('z') });
+  });
+
+  // Pies: durante la mezcla, la raíz compensa lo que se desplazaría su punto medio
+  const feet = [bone('foot_L'), bone('foot_R')], hip = bone('root'), hipN = hip && nodes.get(hip.uuid + 'position');
+  const lockFeet = !!(feet[0] && feet[1] && hipN && hip.parent);
+  const f0 = new THREE.Vector3(), f1 = new THREE.Vector3(), fv = new THREE.Vector3(), fw = new THREE.Vector3(), inv = new THREE.Matrix4();
+  const feetMid = (out) => { out.setFromMatrixPosition(feet[0].matrixWorld); return out.add(fw.setFromMatrixPosition(feet[1].matrixWorld)).multiplyScalar(0.5); };
+  const place = (get) => { nodes.forEach((n, key) => n.val.copy(get(n, key))); pivot.updateMatrixWorld(true); };
+  const goal = (n, key) => poses[cur].get(key) || n.rest;
+
+  const ease = (x) => x * x * (x * (x * (x * 3 - 7.5) + 4) + 1.5); // arranque y frenado suaves
+  let cur = '', t = POSE_TIME + maxDelay, turn = 0, first = true;
+  nodes.forEach((n, key) => n.base.copy(goal(n, key)));
+  const q = new THREE.Quaternion(), p = new THREE.Quaternion(), Y = new THREE.Vector3(0, 1, 0), liveQ = (n) => n.quaternion;
   return {
-    step(dt, want) {
+    /** Mezcla la pose de la zona. Devuelve true si la base ha cambiado (los huesos quedan en la base, sin vida; pivot sin balanceo). */
+    blend(dt, want) {
       const name = poses[want] ? want : '';
-      if (name !== cur) { cur = name; t = 0; nodes.forEach((n) => n.from.copy(n.val)); }
-      if (t >= 1) return;
-      t = Math.min(1, t + dt / POSE_TIME);
-      const k = smooth(0, 1, t), pose = poses[cur];
-      nodes.forEach((n, key) => { const to = pose.get(key) || n.rest; if (n.q) n.val.slerpQuaternions(n.from, to, k); else n.val.lerpVectors(n.from, to, k); });
+      if (name !== cur) {
+        cur = name; t = 0;
+        nodes.forEach((n) => n.from.copy(n.base));
+        if (lockFeet) { place((n) => n.from); feetMid(f0); place(goal); feetMid(f1); }
+      } else if (t >= POSE_TIME + maxDelay) {
+        if (!first) return false;
+        first = false; place((n) => n.base);
+        return true;
+      }
+      first = false;
+      t += dt;
+      nodes.forEach((n, key) => {
+        const k = ease(clamp((t - n.delay) / POSE_TIME, 0, 1));
+        if (n.q) n.base.slerpQuaternions(n.from, goal(n, key), k); else n.base.lerpVectors(n.from, goal(n, key), k);
+      });
+      place((n) => n.base);
+      if (lockFeet) {
+        feetMid(fv); fw.copy(f0).lerp(f1, ease(clamp(t / POSE_TIME, 0, 1)));
+        fv.subVectors(fw, fv); // desvío en el mundo → espacio del padre de la raíz
+        const s = inv.copy(hip.parent.matrixWorld).invert().elements, x = fv.x, y = fv.y, z = fv.z;
+        hipN.base.x += s[0] * x + s[4] * y + s[8] * z; hipN.base.y += s[1] * x + s[5] * y + s[9] * z; hipN.base.z += s[2] * x + s[6] * y + s[10] * z;
+        hipN.val.copy(hipN.base); pivot.updateMatrixWorld(true);
+      }
+      return true;
+    },
+    /** Suma micro-movimiento y giro de cabeza a la base. */
+    live(dt, id, time, amp) {
+      nodes.forEach((n) => n.val.copy(n.base));
+      for (const m of micro) {
+        const x = Math.sin(time * m.wx + m.px) * m.a * amp, z = m.z ? Math.sin(time * m.wz + m.pz) * m.a * amp : 0;
+        m.q.multiply(q.set(x, 0, z, 1).normalize());
+      }
+      if (!turnOk) return;
+      const want = id in TURN.amp ? TURN.amp[id] : TURN.other;
+      turn += (want - turn) * (1 - Math.exp(-dt * TURN.ease));
+      const s = Math.sin((time / TURN.period) * Math.PI * 2);
+      const yaw = Math.sign(s) * Math.pow(Math.abs(s), TURN.hold) * turn * amp * (Math.PI / 180);
+      chain.forEach((b) => { // giro sobre el eje vertical del cuerpo, llevado al espacio del padre de cada hueso
+        qw(b.parent, liveQ, p);
+        b.quaternion.premultiply(q.setFromAxisAngle(Y, yaw * TURN.share[b.name]).multiply(p).premultiply(p.invert()));
+      });
     },
   };
 }
@@ -544,14 +654,21 @@ async function createApp(THREE, sec, zoneEls, modsP) {
   const tgt = new THREE.Vector3(), v3 = new THREE.Vector3(), focus = new THREE.Vector3();
   let time = 0, last = 0;
 
-  const q4 = new THREE.Quaternion(), m4 = new THREE.Matrix4(), m4b = new THREE.Matrix4(), vn = new THREE.Vector3();
+  const sway = new THREE.Euler(), m4 = new THREE.Matrix4(), m4b = new THREE.Matrix4(), vn = new THREE.Vector3();
   /** Respiración, balanceo y pose de este fotograma; deja en cada zona la matriz de su ancla. */
   function animateFigure(dt, id) {
     life = Math.min(1, life + dt / LIFE.fadeIn);
     const amp = smooth(0, 1, life), ph = (time / LIFE.breathPeriod) * Math.PI * 2, rad = (amp * Math.PI) / 180;
     FU.uBreath.value.set(breathCurve(ph) * amp, breathCurve(ph - LIFE.bellyLag) * amp);
     figure.obj.rotation.set(Math.sin((time / LIFE.swayXPeriod) * Math.PI * 2) * LIFE.swayX * rad, 0, Math.sin((time / LIFE.swayZPeriod) * Math.PI * 2) * LIFE.swayZ * rad);
-    if (figure.rig) figure.rig.step(dt, POSES[id] || '');
+    if (figure.rig) {
+      sway.copy(figure.obj.rotation); figure.obj.rotation.set(0, 0, 0);
+      if (figure.rig.blend(dt, POSES[id] || '')) { // solo mientras cambia la pose: objetivo de cámara sin giro, vida ni balanceo
+        for (const z of zones) { figure.anchorMatrix(z, m4, m4b); z.cam = (z.cam || new THREE.Vector3()).fromArray(z.anchor).applyMatrix4(z.k); }
+      }
+      figure.obj.rotation.copy(sway);
+      figure.rig.live(dt, id || 'general', time, amp);
+    }
     figure.obj.updateMatrixWorld(true);
     for (const z of zones) {
       figure.anchorMatrix(z, m4, m4b);
@@ -560,9 +677,7 @@ async function createApp(THREE, sec, zoneEls, modsP) {
   }
   /** Ancla posada, sin respiración ni balanceo (objetivo de cámara: así el movimiento se sigue viendo). */
   function camAnchor(s, out) {
-    out.fromArray(s.anchor);
-    if (figure && figure.rig && s.k) out.applyMatrix4(s.k).applyQuaternion(q4.copy(figure.obj.quaternion).invert());
-    return out;
+    return s.cam ? out.copy(s.cam) : out.fromArray(s.anchor);
   }
   const ca = new THREE.Vector3(), cb = new THREE.Vector3();
 
@@ -759,7 +874,7 @@ async function createApp(THREE, sec, zoneEls, modsP) {
       z.k.multiply(b.multiplyMatrices(mesh.bindMatrix, restInv));
     }
     scene.add(pivot);
-    return { kind: 'mesh', obj: pivot, mesh, anchorMatrix, rig: skeletons.size ? makeRig(THREE, root, gltf.animations || []) : null,
+    return { kind: 'mesh', obj: pivot, mesh, anchorMatrix, rig: skeletons.size ? makeRig(THREE, root, pivot, gltf.animations || [], mobile) : null,
       casters: meshes.filter((m) => m.kind === 'body' || m.kind === 'hair').map((m) => m.o) };
   }
 
