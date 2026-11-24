@@ -3,7 +3,7 @@
   "title": "Tu cuerpo, zona a zona,",
   "titleAccent": "con el tratamiento justo",
   "intro": "Desliza y recorre la figura: en cada zona te contamos qué trabajamos y qué tratamientos encajan contigo. Toca cualquier tratamiento para ver su ficha completa.",
-  "model": "assets/models/figure.glb",
+  "model": "assets/models/figure-v3.glb",
   "zones": [
     {
       "id": "rostro",

@@ -15,6 +15,59 @@
    ========================================================================== */
 import { sampleSurface, sampleContours, makeSdf, makeGrad, FIG_Z } from './bodymap-figure.js';
 
+/* ---------- Ajustes: vida del maniquí (solo figura sólida; metros, segundos, grados) ---------- */
+const LIFE = {
+  breathPeriod: 4.6,  // duración de una respiración completa
+  chestDepth: 0.055,  // expansión del pecho hacia delante (fracción de la distancia al eje: ≈ 5 mm)
+  bellyDepth: 0.035,  // expansión del abdomen
+  backShare: 0.3,     // parte de esa expansión que nota la espalda
+  width: 0.016,       // ensanchamiento lateral del torso
+  lift: 0.0025,       // subida de hombros; brazos, cuello y cabeza suben en bloque con ellos
+  bellyLag: 0.5,      // retraso del abdomen respecto al pecho (radianes)
+  swayZ: 0.28, swayZPeriod: 7.8,   // balanceo lateral, rígido y con los pies como eje
+  swayX: 0.14, swayXPeriod: 10.7,  // balanceo adelante-atrás
+  fadeIn: 2.5,        // entrada gradual del movimiento al aparecer la figura
+};
+/* Alturas del cuerpo normalizado a 1,74 m [inicio, fin de la transición] (medidas sobre figure.glb) */
+const TORSO = {
+  axisZ: -0.075,                                   // eje de la columna
+  chestUp: [1.0, 1.26], chestDown: [1.32, 1.46],   // pecho: crece y se apaga antes del cuello
+  bellyUp: [0.9, 1.04], bellyDown: [1.12, 1.26],   // abdomen
+  lift: [1.16, 1.4],                               // a partir de aquí sube en bloque
+  armX: 0.185, armY: 1.26, armSlope: 0.7, armSoft: [-0.02, 0.03], // recta que separa el brazo (postura en A) del torso
+};
+/* Piezas del modelo, según el nombre del nodo. El cuerpo usa --c-nude (ver figureMaterial). */
+const PARTS = {
+  hair: { color: '#54311f', roughness: 0.5, sheen: 0.35, sheenColor: '#c98a58', clearcoat: 0.22, rim: 0.2 }, // castaño cobrizo satinado
+  brows: { color: '#5b3d2f', roughness: 0.75, rim: 0 },
+  lashes: { color: '#3a2a24', roughness: 0.75, rim: 0 },
+  eyes: { color: '#e9d8cb', roughness: 0.34, clearcoat: 0.3, rim: 0 }, // marfil discreto
+};
+const LOOK_ZONE = 'mirada'; // única zona que tiñe también cejas y pestañas
+const LOOK_AMOUNT = 0.45;   // fuerza de ese tinte (0…1): que sigan oscuras
+
+/* Poses (modelos con esqueleto): zona activa → clip del GLB. Sin entrada, sin clip o sin esqueleto = reposo. */
+const POSES = {
+  'brazos-axilas': 'pose_brazos',
+  manos: 'pose_manos',
+  rostro: 'pose_rostro', mirada: 'pose_rostro', labios: 'pose_rostro',
+  espalda: 'pose_espalda',
+  piernas: 'pose_piernas', pies: 'pose_piernas',
+};
+const POSE_TIME = 0.8; // duración de la mezcla entre poses (s)
+/* Luz y piel: nude cálido y luminoso. La piel parte de --c-nude y se calienta hacia `warm`. */
+const SKIN = { warm: '#e29a70', warmth: 0.62, sheen: 0.4, sheenColor: '#ffd9b0', envMap: 0.4 };
+const LIGHT = {
+  exposure: 1.0,
+  sky: 0xfff0e4, ground: 0xf0b595, hemi: 0.95,  // relleno general; el suelo devuelve luz cálida (sombras interiores suaves)
+  key: 1.25,                                    // principal (alta): da volumen
+  fill: 0.35,                                   // rosado lateral
+  low: 0.5,                                     // cálido, frontal y bajo (entrepierna, barbilla, axilas)
+  head: 0.45,                                   // acompaña a la cámara: rostro y espalda nunca a oscuras
+  rim: 1.3, rim2: 0.7,                          // contraluces dorados
+  shadow: 0.1,                                  // opacidad de la sombra del suelo
+};
+
 const sec = document.querySelector('[data-bodymap]');
 if (sec) setup(sec);
 
@@ -138,24 +191,100 @@ void main() {
   gl_Position = projectionMatrix * mv;
 }`;
 
+/* ---------- Respiración ----------
+   Campo de desplazamiento en función de la posición en reposo. Lo comparten todas las
+   piezas (cuerpo, pelo, cejas…), así que nada se separa; de cuello para arriba y en los
+   brazos es una traslación pura (no deforma). breathe() es su gemelo en JS (anclas). */
+const gf = (n) => { const s = String(n); return /[.e]/.test(s) ? s : s + '.0'; };
+const gs = (p, v) => `smoothstep(${gf(p[0])}, ${gf(p[1])}, ${v})`;
+const BREATH_GLSL = `
+uniform vec2 uBreath;
+vec3 bmBreath(vec3 p) {
+  float arm = ${gs(TORSO.armSoft, `abs(p.x) - (${gf(TORSO.armX)} + max(0.0, ${gf(TORSO.armY)} - p.y) * ${gf(TORSO.armSlope)})`)};
+  float chest = ${gs(TORSO.chestUp, 'p.y')} * (1.0 - ${gs(TORSO.chestDown, 'p.y')}) * uBreath.x;
+  float belly = ${gs(TORSO.bellyUp, 'p.y')} * (1.0 - ${gs(TORSO.bellyDown, 'p.y')}) * uBreath.y;
+  float up = 1.0 - (1.0 - ${gs(TORSO.lift, 'p.y')}) * (1.0 - arm);
+  float z = p.z - (${gf(TORSO.axisZ)});
+  float share = mix(${gf(LIFE.backShare)}, 1.0, smoothstep(-0.04, 0.04, z));
+  return vec3(p.x * ${gf(LIFE.width)} * (chest + belly * 0.5) * (1.0 - arm),
+    ${gf(LIFE.lift)} * up * uBreath.x,
+    z * share * (chest * ${gf(LIFE.chestDepth)} + belly * ${gf(LIFE.bellyDepth)}) * (1.0 - arm));
+}
+`;
+function breathe(p, b, out) {
+  const [x, y, z0] = p, st = (r, v) => smooth(r[0], r[1], v);
+  const arm = st(TORSO.armSoft, Math.abs(x) - (TORSO.armX + Math.max(0, TORSO.armY - y) * TORSO.armSlope));
+  const chest = st(TORSO.chestUp, y) * (1 - st(TORSO.chestDown, y)) * b.x;
+  const belly = st(TORSO.bellyUp, y) * (1 - st(TORSO.bellyDown, y)) * b.y;
+  const up = 1 - (1 - st(TORSO.lift, y)) * (1 - arm);
+  const z = z0 - TORSO.axisZ, share = lerp(LIFE.backShare, 1, smooth(-0.04, 0.04, z));
+  return out.set(x + x * LIFE.width * (chest + belly * 0.5) * (1 - arm), y + LIFE.lift * up * b.x,
+    z0 + z * share * (chest * LIFE.chestDepth + belly * LIFE.bellyDepth) * (1 - arm));
+}
+/** Curva 0…1: inspira algo más rápido de lo que espira. */
+const breathCurve = (ph) => 0.5 - 0.5 * Math.cos(ph + 0.35 * Math.sin(ph));
+
+/** Pieza del modelo según el nombre del nodo (o de sus padres) o del material; '' si no se reconoce. */
+function partOf(o, mat) {
+  const test = (n) => (/brow|ceja/i.test(n) ? 'brows' : /lash|pesta/i.test(n) ? 'lashes' : /hair|pelo/i.test(n) ? 'hair'
+    : /teeth|tongue|dientes|lengua/i.test(n) ? 'drop' : /eye|ojo/i.test(n) ? 'eyes' : /body|cuerpo/i.test(n) ? 'body' : '');
+  for (let n = o; n; n = n.parent) { const k = test(n.name || ''); if (k) return k; }
+  return test((mat && mat.name) || '');
+}
+
 /* Material del maniquí: satinado nude-perla + borde dorado (fresnel), tinte
    coral-dorado en la zona activa y aparición de pies a cabeza con filo dorado. */
-function figureMaterial(THREE, col, U) {
-  const pearl = new THREE.Color(col('--c-nude', '#F1DDD0')).lerp(new THREE.Color('#d9ae94'), 0.42);
+function figureMaterial(THREE, col, U, fineNormals) {
+  const pearl = new THREE.Color(col('--c-nude', '#F1DDD0')).lerp(new THREE.Color(SKIN.warm), SKIN.warmth);
   const m = new THREE.MeshPhysicalMaterial({
     color: pearl, roughness: 0.46, metalness: 0,
-    sheen: 0.55, sheenRoughness: 0.45, sheenColor: new THREE.Color('#f6dfae'),
-    clearcoat: 0.2, clearcoatRoughness: 0.5, envMapIntensity: 0.45,
+    sheen: SKIN.sheen, sheenRoughness: 0.45, sheenColor: new THREE.Color(SKIN.sheenColor),
+    clearcoat: 0.2, clearcoatRoughness: 0.5, envMapIntensity: SKIN.envMap,
   });
+  return patchMaterial(m, U, fineNormals, false);
+}
+
+/** Material de pelo, cejas, pestañas u ojos. `src`: material original (se conserva su recorte alfa). */
+function partMaterial(THREE, kind, src, U) {
+  const c = PARTS[kind], cut = !!(src && src.map && (src.transparent || src.alphaTest > 0));
+  const m = new THREE.MeshPhysicalMaterial({
+    color: c.color, roughness: c.roughness, metalness: 0, envMapIntensity: 0.45,
+    sheen: c.sheen || 0, sheenRoughness: 0.45, sheenColor: new THREE.Color(c.sheenColor || '#000'),
+    clearcoat: c.clearcoat || 0, clearcoatRoughness: 0.45, side: THREE.DoubleSide,
+  });
+  if (cut) { m.map = src.map; m.alphaTest = 0.35; }
+  if (kind === 'brows' || kind === 'lashes') { m.polygonOffset = true; m.polygonOffsetFactor = -1; m.polygonOffsetUnits = -2; } // casi pegadas a la piel
+  return patchMaterial(m, Object.assign({}, U, { uRimAmt: { value: c.rim } }), false, cut);
+}
+
+/* Todo se evalúa en la posición de reposo (uRestM: geometría → cuerpo en reposo, sin pose ni balanceo):
+   la respiración se suma antes del skinning, y el tinte y la aparición no resbalan sobre la piel. */
+function patchMaterial(m, U, fineNormals, alphaOnly) {
+  m.customProgramCacheKey = () => 'bm' + (fineNormals ? 1 : 0) + (alphaOnly ? 1 : 0);
   m.onBeforeCompile = (sh) => {
     Object.assign(sh.uniforms, U);
-    sh.vertexShader = 'varying vec3 vBmW;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\nvBmW = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.vertexShader = 'varying vec3 vBmW;\nuniform mat4 uRestM;\nuniform mat3 uRestInv;\n' + BREATH_GLSL + sh.vertexShader
+      .replace('#include <beginnormal_vertex>', `#include <beginnormal_vertex>
+      vBmW = (uRestM * vec4(position, 1.0)).xyz;
+      vec3 bmD = bmBreath(vBmW);` + (fineNormals ? `
+      vec3 bmN = normalize(mat3(uRestM) * objectNormal);
+      const float bmE = 0.01;
+      bmN -= vec3(dot(bmBreath(vBmW + vec3(bmE, 0.0, 0.0)) - bmD, bmN), dot(bmBreath(vBmW + vec3(0.0, bmE, 0.0)) - bmD, bmN), dot(bmBreath(vBmW + vec3(0.0, 0.0, bmE)) - bmD, bmN)) / bmE;
+      objectNormal = normalize(uRestInv * bmN);` : ''))
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\ntransformed += uRestInv * bmD;');
+    if (alphaOnly) sh.fragmentShader = sh.fragmentShader.replace('#include <map_fragment>', '#include <map_fragment>\ndiffuseColor.rgb = diffuse;'); // del mapa solo vale el recorte
     sh.fragmentShader = 'varying vec3 vBmW;\nuniform vec3 uFocus, uAccent, uRim;\nuniform float uFocusAmt, uFocusR, uReveal, uRimAmt;\n' + sh.fragmentShader
       .replace('#include <color_fragment>', `#include <color_fragment>
         if (vBmW.y > uReveal) discard;
         float bmEdge = 1.0 - smoothstep(0.0, 0.04, uReveal - vBmW.y);
         float bmF = uFocusAmt * (1.0 - smoothstep(uFocusR * 0.2, uFocusR, distance(vBmW, uFocus)));
         diffuseColor.rgb = mix(diffuseColor.rgb, uAccent, bmF * 0.3);`)
+      // Pelvis sin sombra marcada (maniquí liso): la luz la trata como una superficie plana hacia el frente
+      .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+        vec3 bmQ = (vBmW - vec3(0.0, 0.82, 0.0)) / vec3(0.15, 0.17, 1.0);
+        float bmPelvis = (1.0 - smoothstep(0.35, 1.0, length(bmQ.xy))) * smoothstep(-0.15, -0.09, vBmW.z);
+        vec3 bmFront = normalize((viewMatrix * vec4(0.0, 0.1, 1.0, 0.0)).xyz);
+        normal = normalize(mix(normal, bmFront, bmPelvis * 0.97 * smoothstep(0.0, 0.5, bmFront.z)));`)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
         totalEmissiveRadiance += uAccent * bmF * 0.09 + uRim * bmEdge * 1.6;`)
       .replace('#include <opaque_fragment>', `float bmNdv = clamp(dot(normalize(normal), normalize(vViewPosition)), 0.0, 1.0);
@@ -163,6 +292,42 @@ function figureMaterial(THREE, col, U) {
         #include <opaque_fragment>`);
   };
   return m;
+}
+
+/** Geometría → mundo con el esqueleto en reposo (en una malla con skin, su propio nodo no cuenta). Llamar antes de posar. */
+function restMatrix(THREE, o) {
+  if (!o.isSkinnedMesh) return o.matrixWorld.clone();
+  return new THREE.Matrix4().multiplyMatrices(o.skeleton.bones[0].matrixWorld, o.skeleton.boneInverses[0]).multiply(o.bindMatrix);
+}
+
+/** Poses: último fotograma de cada clip de POSES; mezcla propia (sin mixer) y sin coste una vez alcanzada la pose. */
+function makeRig(THREE, root, clips) {
+  const nodes = new Map(), poses = { '': new Map() };
+  for (const name of new Set(Object.values(POSES))) {
+    const clip = clips.find((c) => c.name === name);
+    if (!clip) continue;
+    const pose = poses[name] = new Map();
+    for (const tr of clip.tracks) {
+      const d = tr.name.lastIndexOf('.'), prop = tr.name.slice(d + 1), o = root.getObjectByName(tr.name.slice(0, d));
+      if (!o || !(prop === 'quaternion' || prop === 'position' || prop === 'scale')) continue;
+      const v = o[prop].clone().fromArray(tr.createInterpolant().evaluate(tr.times[tr.times.length - 1]));
+      const key = o.uuid + prop;
+      if (!nodes.has(key)) nodes.set(key, { val: o[prop], rest: o[prop].clone(), from: o[prop].clone(), q: prop === 'quaternion' });
+      pose.set(key, v);
+    }
+  }
+  if (!nodes.size) return null;
+  let cur = '', t = 1;
+  return {
+    step(dt, want) {
+      const name = poses[want] ? want : '';
+      if (name !== cur) { cur = name; t = 0; nodes.forEach((n) => n.from.copy(n.val)); }
+      if (t >= 1) return;
+      t = Math.min(1, t + dt / POSE_TIME);
+      const k = smooth(0, 1, t), pose = poses[cur];
+      nodes.forEach((n, key) => { const to = pose.get(key) || n.rest; if (n.q) n.val.slerpQuaternions(n.from, to, k); else n.val.lerpVectors(n.from, to, k); });
+    },
+  };
 }
 
 /** Sombra de contacto: degradado radial en un plano (sin coste de sombras reales). */
@@ -235,7 +400,7 @@ async function createApp(THREE, sec, zoneEls, modsP) {
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 0.92;
+  renderer.toneMappingExposure = LIGHT.exposure;
   const shadows = !mobile;
   if (shadows) { renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap; }
   const scene = new THREE.Scene();
@@ -247,8 +412,8 @@ async function createApp(THREE, sec, zoneEls, modsP) {
   const disposables = [];
 
   // Luces: principal cálida (con sombra suave en escritorio), relleno rosado y contraluz dorado
-  scene.add(new THREE.HemisphereLight(0xfff4ea, 0xb98f78, 0.22));
-  const key = new THREE.DirectionalLight(0xfff1e2, 1.75);
+  scene.add(new THREE.HemisphereLight(LIGHT.sky, LIGHT.ground, LIGHT.hemi));
+  const key = new THREE.DirectionalLight(0xffeedd, LIGHT.key);
   key.position.set(1.2, 5, 2); // alta: sombra corta y suave
   if (shadows) {
     key.castShadow = true;
@@ -258,15 +423,17 @@ async function createApp(THREE, sec, zoneEls, modsP) {
   }
   key.target.position.set(0, 0.9, 0);
   scene.add(key, key.target);
-  const fill = new THREE.DirectionalLight(0xffd6cc, 0.32); fill.position.set(-2.4, 1.2, 1.6); scene.add(fill);
-  const rim = new THREE.DirectionalLight(0xffd9a0, 1.5); rim.position.set(-0.8, 2.4, -2.6); scene.add(rim);
-  const rim2 = new THREE.DirectionalLight(0xffe7c4, 0.8); rim2.position.set(1.8, 1.6, -2.2); scene.add(rim2);
+  const fill = new THREE.DirectionalLight(0xffd6cc, LIGHT.fill); fill.position.set(-2.4, 1.2, 1.6); scene.add(fill);
+  const rim = new THREE.DirectionalLight(0xffd9a0, LIGHT.rim); rim.position.set(-0.8, 2.4, -2.6); scene.add(rim);
+  const rim2 = new THREE.DirectionalLight(0xffe7c4, LIGHT.rim2); rim2.position.set(1.8, 1.6, -2.2); scene.add(rim2);
+  const low = new THREE.DirectionalLight(0xffd2b4, LIGHT.low); low.position.set(0.3, -1.1, 2.6); scene.add(low);
+  const head = new THREE.DirectionalLight(0xffe6d4, LIGHT.head); scene.add(head); // se coloca en la cámara en cada fotograma
 
   // Suelo: sombra real (escritorio) + sombra de contacto difusa (siempre)
   const cs = contactShadow(THREE); scene.add(cs.mesh); disposables.push(cs);
   let ground = null;
   if (shadows) {
-    ground = new THREE.Mesh(new THREE.PlaneGeometry(4, 4), new THREE.ShadowMaterial({ opacity: 0.13, color: 0x5a3a28 }));
+    ground = new THREE.Mesh(new THREE.PlaneGeometry(4, 4), new THREE.ShadowMaterial({ opacity: LIGHT.shadow, color: 0x5a3a28 }));
     ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
     disposables.push(ground.geometry, ground.material);
   }
@@ -297,8 +464,11 @@ async function createApp(THREE, sec, zoneEls, modsP) {
   const FU = {
     uFocus: { value: new THREE.Vector3(0, 1, 0) }, uFocusAmt: { value: 0 }, uFocusR: { value: 0.3 },
     uAccent: { value: coral.clone().lerp(gold, 0.35) }, uRim: { value: new THREE.Color('#e9c27a') },
-    uRimAmt: { value: 0.55 }, uReveal: { value: -0.05 },
+    uRimAmt: { value: 0.55 }, uReveal: { value: -0.05 }, uBreath: { value: new THREE.Vector2(0, 0) },
   };
+  const uLook = { value: 0 };                                // tinte de cejas y pestañas
+  zones.forEach((z) => { z.k = new THREE.Matrix4(); z.pn = z.normal; }); // k: reposo → figura posada y balanceada (en su ancla)
+  let life = 0;                                              // 0 → 1: entrada gradual del movimiento
   let figure = null;   // { kind: 'mesh' | 'points', obj }
   let revealT0 = -1;   // instante (ms) en que empieza la aparición
 
@@ -374,6 +544,28 @@ async function createApp(THREE, sec, zoneEls, modsP) {
   const tgt = new THREE.Vector3(), v3 = new THREE.Vector3(), focus = new THREE.Vector3();
   let time = 0, last = 0;
 
+  const q4 = new THREE.Quaternion(), m4 = new THREE.Matrix4(), m4b = new THREE.Matrix4(), vn = new THREE.Vector3();
+  /** Respiración, balanceo y pose de este fotograma; deja en cada zona la matriz de su ancla. */
+  function animateFigure(dt, id) {
+    life = Math.min(1, life + dt / LIFE.fadeIn);
+    const amp = smooth(0, 1, life), ph = (time / LIFE.breathPeriod) * Math.PI * 2, rad = (amp * Math.PI) / 180;
+    FU.uBreath.value.set(breathCurve(ph) * amp, breathCurve(ph - LIFE.bellyLag) * amp);
+    figure.obj.rotation.set(Math.sin((time / LIFE.swayXPeriod) * Math.PI * 2) * LIFE.swayX * rad, 0, Math.sin((time / LIFE.swayZPeriod) * Math.PI * 2) * LIFE.swayZ * rad);
+    if (figure.rig) figure.rig.step(dt, POSES[id] || '');
+    figure.obj.updateMatrixWorld(true);
+    for (const z of zones) {
+      figure.anchorMatrix(z, m4, m4b);
+      vn.fromArray(z.normal).transformDirection(z.k); z.pn = [vn.x, vn.y, vn.z];
+    }
+  }
+  /** Ancla posada, sin respiración ni balanceo (objetivo de cámara: así el movimiento se sigue viendo). */
+  function camAnchor(s, out) {
+    out.fromArray(s.anchor);
+    if (figure && figure.rig && s.k) out.applyMatrix4(s.k).applyQuaternion(q4.copy(figure.obj.quaternion).invert());
+    return out;
+  }
+  const ca = new THREE.Vector3(), cb = new THREE.Vector3();
+
   function frame(now) {
     raf = 0;
     if (!running) return;
@@ -381,12 +573,16 @@ async function createApp(THREE, sec, zoneEls, modsP) {
     last = now; time += dt;
     const s = progress() * (N - 1);
     const i0 = Math.min(Math.floor(s), N - 1), i1 = Math.min(i0 + 1, N - 1), f = s - i0, fe = smooth(0.2, 0.8, f);
-    const A = steps[i0], B = steps[i1];
+    const A = steps[i0], B = steps[i1], act = f < 0.5 ? i0 : i1;
+    if (act !== active) setActive(act);
+    const z = steps[act];
+    if (figure && figure.kind === 'mesh') animateFigure(dt, z.id);
+    camAnchor(A, ca); camAnchor(B, cb);
     let az = lerp(A.az, B.az, fe), elv = lerp(A.el, B.el, fe);
     // Al orbitar mucho, la cámara se aleja a mitad de camino (no atraviesa la figura)
     const pull = Math.sin(Math.PI * fe) * Math.min(1, Math.abs(B.az - A.az) / 120) * 0.55;
     const ld = lerp(Math.log(D0 / A.zoom), Math.log(D0 / B.zoom), fe) + Math.log(1 + pull);
-    const tx = lerp(A.anchor[0], B.anchor[0], fe), ty = lerp(A.anchor[1], B.anchor[1], fe), tz = lerp(A.anchor[2], B.anchor[2], fe);
+    const tx = lerp(ca.x, cb.x, fe), ty = lerp(ca.y, cb.y, fe), tz = lerp(ca.z, cb.z, fe);
     az += Math.sin(time * 0.25) * 2.5; elv += Math.sin(time * 0.2) * 1.2;
     ptr.x += (ptr.tx - ptr.x) * Math.min(1, dt * 4); ptr.y += (ptr.ty - ptr.y) * Math.min(1, dt * 4);
     az += ptr.x * 7; elv -= ptr.y * 4;
@@ -398,27 +594,26 @@ async function createApp(THREE, sec, zoneEls, modsP) {
     tgt.set(cur.tx, cur.ty, cur.tz);
     camera.position.set(tgt.x + Math.sin(a) * Math.cos(e) * dist, tgt.y + Math.sin(e) * dist, tgt.z + Math.cos(a) * Math.cos(e) * dist);
     camera.lookAt(tgt);
+    head.position.copy(camera.position).sub(tgt);
 
-    const act = f < 0.5 ? i0 : i1;
-    if (act !== active) setActive(act);
-    const z = steps[act];
     focus.set(z.anchor[0], z.anchor[1], z.anchor[2]);
     const fk = cur.fa === 0 ? 1 : Math.min(1, dt * 6);
-    FU.uFocus.value.lerp(focus, fk);
+    FU.uFocus.value.lerp(focus, fk); // en reposo: el material también lo evalúa en reposo
     FU.uFocusR.value += (z.radius - FU.uFocusR.value) * fk;
     cur.fa += ((act > 0 ? 1 : 0) - cur.fa) * Math.min(1, dt * 3);
     FU.uFocusAmt.value = cur.fa;
+    uLook.value += ((z.id === LOOK_ZONE ? LOOK_AMOUNT : 0) - uLook.value) * Math.min(1, dt * 3);
     common.uTime.value = time;
     if (revealT0 >= 0 && FU.uReveal.value < 1.9) {
       if (!revealT0) revealT0 = now;
       FU.uReveal.value = lerp(-0.05, 1.9, smooth(0, 1, (now - revealT0) / 1900));
-      if (FU.uReveal.value >= 1.9 && figure && figure.kind === 'mesh' && shadows) figure.mesh.castShadow = true;
+      if (FU.uReveal.value >= 1.9 && figure && figure.kind === 'mesh' && shadows) figure.casters.forEach((o) => { o.castShadow = true; });
     }
     hint.classList.toggle('is-hidden', s > 0.35);
 
     renderer.render(scene, camera);
     placeHotspots();
-    raf = requestAnimationFrame(frame);
+    if (running && !raf) raf = requestAnimationFrame(frame);
   }
 
   function placeHotspots() {
@@ -427,9 +622,10 @@ async function createApp(THREE, sec, zoneEls, modsP) {
     for (let i = 0; i < zones.length; i++) {
       const z = zones[i], h = hots[i];
       v3.set(z.anchor[0], z.anchor[1], z.anchor[2]);
+      if (ready && figure.kind === 'mesh') breathe(z.anchor, FU.uBreath.value, v3).applyMatrix4(z.k); // el punto va pegado a la piel
       const cx = camera.position.x - v3.x, cy = camera.position.y - v3.y, cz = camera.position.z - v3.z;
       const cl = Math.hypot(cx, cy, cz) || 1;
-      const facing = (z.normal[0] * cx + z.normal[1] * cy + z.normal[2] * cz) / cl;
+      const facing = (z.pn[0] * cx + z.pn[1] * cy + z.pn[2] * cz) / cl;
       v3.project(camera);
       const x = (v3.x * 0.5 + 0.5) * M.w, y = (-v3.y * 0.5 + 0.5) * M.wh;
       const vis = ready && facing > (i + 1 === active ? -0.2 : 0.25) && v3.z < 1 && x > 16 && x < M.w - 16 && y > 16 && y < Math.min(M.wh, M.panelTop) - 16;
@@ -447,7 +643,7 @@ async function createApp(THREE, sec, zoneEls, modsP) {
     if (should && !running) { running = true; last = 0; raf = requestAnimationFrame(frame); }
     else if (!should && running) { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
   }
-  const vio = new IntersectionObserver((es) => { inView = es[es.length - 1].isIntersecting; update(); }, { rootMargin: '120px 0px' });
+  const vio = new IntersectionObserver((es) => { inView = es[es.length - 1].isIntersecting; update(); }, { rootMargin: '0px' });
   vio.observe(track);
   const onVis = () => update();
   document.addEventListener('visibilitychange', onVis);
@@ -488,44 +684,83 @@ async function createApp(THREE, sec, zoneEls, modsP) {
     const gltf = await withTimeout(gl.loadAsync(ds.model), 20000);
     if (dead) throw new Error('destruida');
     const root = gltf.scene;
-    // Sirve cualquier figura humana de pie (Y arriba, mirando a +Z). Se ocultan pelo, pestañas, cejas,
-    // dientes y piezas con transparencia (con el material de escultura quedarían como placas opacas).
-    const extra = /hair|lash|brow|teeth|tongue|pelo|pesta|ceja/i;
-    let mesh = null;
+    // Sirve cualquier figura humana de pie (Y arriba, mirando a +Z), de una sola malla o con nodos
+    // body, hair, brows, lashes y eyes. Lo no reconocido se trata como cuerpo. Se descartan dientes,
+    // lengua y piezas transparentes sin textura de recorte (quedarían como placas opacas).
+    const meshes = [], drop = [];
     root.traverse((o) => {
       if (!o.isMesh) return;
-      const om = Array.isArray(o.material) ? o.material[0] : o.material;
-      if (extra.test(o.name || '') || extra.test((om && om.name) || '') || (om && (om.transparent || om.alphaTest > 0))) { o.visible = false; return; }
-      if (!mesh || o.geometry.attributes.position.count > mesh.geometry.attributes.position.count) mesh = o; // la malla mayor = cuerpo
+      const om = Array.isArray(o.material) ? o.material[0] : o.material, kind = partOf(o, om);
+      const see = !!om && (om.transparent || om.alphaTest > 0), known = kind === 'body' || kind === 'eyes';
+      if (kind === 'drop' || (see && !known && !(PARTS[kind] && om.map))) drop.push(o);
+      else meshes.push({ o, om, kind: PARTS[kind] ? kind : 'body' });
     });
-    if (!mesh) throw new Error('modelo vacío');
-    const hidden = []; root.traverse((o) => { if (o.isMesh && !o.visible) hidden.push(o); });
-    hidden.forEach((o) => { o.removeFromParent(); o.geometry.dispose(); });
+    const bodies = meshes.filter((m) => m.kind === 'body');
+    if (!bodies.length) throw new Error('modelo vacío');
+    const mesh = bodies.reduce((m, p) => (p.o.geometry.attributes.position.count > m.geometry.attributes.position.count ? p.o : m), bodies[0].o); // la malla mayor = cuerpo
+    drop.forEach((o) => { o.geometry.dispose(); while (o.children.length) o.parent.attach(o.children[0]); o.removeFromParent(); });
     // Normaliza: pies en y = 0, centrado en x/z, 1,74 de alto (coincide con las anclas de bodymap.json)
     root.updateMatrixWorld(true);
-    const box = new THREE.Box3().setFromObject(root), size = box.getSize(new THREE.Vector3());
+    // Solo cuenta el cuerpo: el volumen del pelo no debe cambiar la escala ni descentrar las anclas
+    const box = new THREE.Box3();
+    bodies.forEach(({ o }) => { o.geometry.computeBoundingBox(); box.union(new THREE.Box3().copy(o.geometry.boundingBox).applyMatrix4(restMatrix(THREE, o))); });
+    const size = box.getSize(new THREE.Vector3());
     const s = 1.74 / (size.y || 1);
     const pivot = new THREE.Group();
     root.position.set(-(box.min.x + box.max.x) / 2, -box.min.y, -(box.min.z + box.max.z) / 2);
     pivot.scale.setScalar(s); pivot.add(root);
-    const mat = figureMaterial(THREE, col, FU);
-    root.traverse((o) => { if (o.isMesh) { (Array.isArray(o.material) ? o.material : [o.material]).forEach((x) => x && x.dispose()); o.material = mat; disposables.push(o.geometry); o.castShadow = false; o.receiveShadow = false; } });
-    disposables.push(mat);
     pivot.updateMatrixWorld(true);
+    const skeletons = new Set();
+    meshes.forEach(({ o, om, kind }) => { // un material por malla (comparten programa): cada una lleva su matriz de reposo
+      const old = Array.isArray(o.material) ? o.material : [o.material];
+      const rest = restMatrix(THREE, o);
+      const U = Object.assign({}, FU, { uRestM: { value: rest }, uRestInv: { value: new THREE.Matrix3().setFromMatrix4(rest).invert() } });
+      if (kind === 'body') o.material = figureMaterial(THREE, col, U, !mobile); // en móvil sin recálculo de normales
+      else o.material = partMaterial(THREE, kind, om, Object.assign(U, { uFocusAmt: kind === 'brows' || kind === 'lashes' ? uLook : { value: 0 } }));
+      if (kind === 'hair' && o.geometry.attributes.color) o.material.vertexColors = true; // AO horneado solo en el pelo: en el cuerpo apagaba la piel
+      if (o.material.map) disposables.push(o.material.map);
+      old.forEach((x) => x && x.dispose());
+      disposables.push(o.geometry, o.material);
+      if (o.isSkinnedMesh) { skeletons.add(o.skeleton); o.frustumCulled = false; } // la caja en reposo no cubre las poses
+      o.castShadow = false; o.receiveShadow = false;
+    });
+    skeletons.forEach((k) => disposables.push(k));
     // Normal de la superficie más cercana a cada ancla (visibilidad de los puntos)
     const pa = mesh.geometry.attributes.position, na = mesh.geometry.attributes.normal;
-    const w = new THREE.Vector3(), nm = new THREE.Matrix3().getNormalMatrix(mesh.matrixWorld), nv = new THREE.Vector3();
+    const w = new THREE.Vector3(), rest = restMatrix(THREE, mesh), nm = new THREE.Matrix3().getNormalMatrix(rest), nv = new THREE.Vector3();
     const best = zones.map(() => ({ d: 1e9, i: -1 }));
     for (let i = 0; i < pa.count; i++) {
-      w.fromBufferAttribute(pa, i).applyMatrix4(mesh.matrixWorld);
+      w.fromBufferAttribute(pa, i).applyMatrix4(rest);
       for (let j = 0; j < zones.length; j++) {
         const a = zones[j].anchor, d = (w.x - a[0]) ** 2 + (w.y - a[1]) ** 2 + (w.z - a[2]) ** 2;
         if (d < best[j].d) { best[j].d = d; best[j].i = i; }
       }
     }
     zones.forEach((z, j) => { if (na && best[j].i >= 0) { nv.fromBufferAttribute(na, best[j].i).applyMatrix3(nm).normalize(); z.normal = [nv.x, nv.y, nv.z]; } });
+    // Huesos (y pesos) del vértice de cada ancla: el punto sigue a la piel posada
+    const restInv = rest.clone().invert(), bind = [];
+    if (mesh.isSkinnedMesh) {
+      const si = mesh.geometry.attributes.skinIndex, sw = mesh.geometry.attributes.skinWeight;
+      zones.forEach((z, j) => {
+        const L = [], c = ['getX', 'getY', 'getZ', 'getW'];
+        c.forEach((g) => { const wt = sw[g](best[j].i); if (wt > 0) L.push([si[g](best[j].i), wt]); });
+        const sum = L.reduce((a, l) => a + l[1], 0) || 1;
+        bind[j] = L.map(([i, wt]) => [mesh.skeleton.bones[i], mesh.skeleton.boneInverses[i], wt / sum]);
+      });
+    }
+    function anchorMatrix(z, a, b) {
+      const L = bind[zones.indexOf(z)], e = z.k.elements;
+      if (!L || !L.length) { z.k.multiplyMatrices(mesh.matrixWorld, restInv); return; }
+      e.fill(0);
+      for (const [bone, inv, wt] of L) {
+        a.multiplyMatrices(bone.matrixWorld, inv);
+        for (let i = 0; i < 16; i++) e[i] += a.elements[i] * wt;
+      }
+      z.k.multiply(b.multiplyMatrices(mesh.bindMatrix, restInv));
+    }
     scene.add(pivot);
-    return { kind: 'mesh', obj: pivot, mesh };
+    return { kind: 'mesh', obj: pivot, mesh, anchorMatrix, rig: skeletons.size ? makeRig(THREE, root, gltf.animations || []) : null,
+      casters: meshes.filter((m) => m.kind === 'body' || m.kind === 'hair').map((m) => m.o) };
   }
 
   async function loadFallback() {
@@ -546,7 +781,7 @@ async function createApp(THREE, sec, zoneEls, modsP) {
     const pts = new THREE.Points(g1, m1);
     pts.position.z = FIG_Z;
     scene.add(pts); disposables.push(g1, m1);
-    zones.forEach((z) => { z.normal = procNormal(z.anchor); });
+    zones.forEach((z) => { z.normal = z.pn = procNormal(z.anchor); });
     return { kind: 'points', obj: pts };
   }
 
