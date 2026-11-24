@@ -1,6 +1,6 @@
 /* ==========================================================================
    Mapa corporal 3D (sección #zonas de la portada) — módulo ES.
-   - Sin JS / sin WebGL / prefers-reduced-motion: se queda la versión estática
+   - Sin JS / sin WebGL (o «Reducir movimiento» si RESPECT_REDUCED es true): se queda la versión estática
      (silueta SVG + acordeón) que ya trae el HTML con todo el contenido.
    - Si no: cuando la sección se acerca a la vista se carga Three.js (versión
      fijada, URL en data-three) y se monta una escena fijada (sticky): el scroll
@@ -91,6 +91,8 @@ const LIGHT = {
   shadow: 0.1,                                  // opacidad de la sombra del suelo
 };
 
+/* Decisión del centro: el 3D se ve también con «Reducir movimiento» activado. true = volver a respetarlo (dibujo 2D). */
+const RESPECT_REDUCED = false;
 const sec = document.querySelector('[data-bodymap]');
 /* Diagnóstico: con ?diag=1 en la dirección se muestra en pantalla qué ha pasado con el 3D. Sin ello no hace nada. */
 const DIAG = /[?&]diag=1/.test(location.search);
@@ -123,8 +125,9 @@ function webglOk() {
 }
 
 function setup(sec) {
-  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  diag('Reducir movimiento: ' + (mq.matches ? 'ACTIVADO' : 'no') + ' · WebGL: ' + (DIAG ? (webglOk() ? 'sí' : 'NO') : ''));
+  const sys = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mq = RESPECT_REDUCED ? sys : { matches: false };
+  diag('Reducir movimiento: ' + (sys.matches ? 'ACTIVADO' : 'no') + ' · WebGL: ' + (DIAG ? (webglOk() ? 'sí' : 'NO') : ''));
   if (mq.matches || !('IntersectionObserver' in window) || !sec.dataset.three || !webglOk()) return;
   const zoneEls = Array.prototype.slice.call(sec.querySelectorAll('.bm-zone'));
   if (!zoneEls.length) return;
@@ -161,7 +164,7 @@ function setup(sec) {
     setTimeout(again, 1200);
   });
   const onMq = (e) => { if (e.matches && app) { app.destroy(); app = null; } };
-  if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
+  if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq); // sin efecto si no se respeta el ajuste
 }
 
 const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
