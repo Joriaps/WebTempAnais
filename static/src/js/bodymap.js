@@ -92,6 +92,23 @@ const LIGHT = {
 };
 
 const sec = document.querySelector('[data-bodymap]');
+/* Diagnóstico: con ?diag=1 en la dirección se muestra en pantalla qué ha pasado con el 3D. Sin ello no hace nada. */
+const DIAG = /[?&]diag=1/.test(location.search);
+let diagBox = null;
+function diag(msg) {
+  if (!DIAG) return;
+  if (!diagBox) {
+    diagBox = document.createElement('pre');
+    diagBox.style.cssText = 'position:fixed;left:8px;right:8px;top:76px;z-index:9999;margin:0;padding:10px;max-height:45vh;overflow:auto;white-space:pre-wrap;font:12px/1.4 monospace;background:#2B2024;color:#fff;border-radius:8px';
+    document.body.append(diagBox);
+  }
+  diagBox.textContent += msg + String.fromCharCode(10);
+}
+if (DIAG) {
+  diag('v4 · ' + navigator.userAgent);
+  window.addEventListener('error', (e) => diag('ERROR ' + e.message));
+  window.addEventListener('unhandledrejection', (e) => diag('RECHAZO ' + (e.reason && e.reason.message || e.reason)));
+}
 if (sec) setup(sec);
 
 function webglOk() {
@@ -107,6 +124,7 @@ function webglOk() {
 
 function setup(sec) {
   const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  diag('Reducir movimiento: ' + (mq.matches ? 'ACTIVADO' : 'no') + ' · WebGL: ' + (DIAG ? (webglOk() ? 'sí' : 'NO') : ''));
   if (mq.matches || !('IntersectionObserver' in window) || !sec.dataset.three || !webglOk()) return;
   const zoneEls = Array.prototype.slice.call(sec.querySelectorAll('.bm-zone'));
   if (!zoneEls.length) return;
@@ -119,15 +137,29 @@ function setup(sec) {
 
   async function load() {
     let THREE;
-    try { THREE = await import(sec.dataset.three); } catch (e) { return; } // sin red / CDN: versión estática
+    try { THREE = await import(sec.dataset.three); } catch (e) { diag('Librería 3D: FALLO ' + e.message); return; } // sin red / CDN: versión estática
+    diag('Librería 3D: cargada');
     if (mq.matches) return;
     // Cargador glTF + decodificador meshopt + entorno de estudio (en paralelo con el montaje)
     const ds = sec.dataset;
     const mods = ds.model && ds.gltf
-      ? Promise.all([import(ds.gltf), ds.meshopt ? import(ds.meshopt) : null, ds.roomenv ? import(ds.roomenv).catch(() => null) : null]).catch(() => null)
+      ? Promise.all([import(ds.gltf), ds.meshopt ? import(ds.meshopt) : null, ds.roomenv ? import(ds.roomenv).catch(() => null) : null]).catch((e) => { diag('Cargadores: FALLO ' + e.message); return null; })
       : Promise.resolve(null);
-    try { app = await createApp(THREE, sec, zoneEls, mods); } catch (e) { app = null; }
+    try { app = await createApp(THREE, sec, zoneEls, mods); } catch (e) { app = null; diag('Escena: FALLO ' + e.message + ' ' + (e.stack || '').slice(0, 300)); }
   }
+  // iOS puede cortar el WebGL (memoria, cambio de app): se vuelve a montar al verse la página, como mucho 2 veces
+  let retries = 0;
+  sec.addEventListener('bm:lost', () => {
+    app = null;
+    if (retries++ >= 2) return;
+    const again = () => {
+      if (document.hidden || mq.matches) return;
+      document.removeEventListener('visibilitychange', again);
+      diag('Reintento ' + retries); load();
+    };
+    document.addEventListener('visibilitychange', again);
+    setTimeout(again, 1200);
+  });
   const onMq = (e) => { if (e.matches && app) { app.destroy(); app = null; } };
   if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
 }
@@ -776,7 +808,8 @@ async function createApp(THREE, sec, zoneEls, modsP) {
   const onResize = () => resize();
   window.addEventListener('resize', onResize);
   window.addEventListener('load', measure);
-  const onLost = (e) => { e.preventDefault(); destroy(); };
+  const onLost = (e) => { e.preventDefault(); destroy(); sec.dispatchEvent(new Event('bm:lost')); };
+  canvas.addEventListener('webglcontextlost', () => diag('WebGL: contexto perdido'));
   canvas.addEventListener('webglcontextlost', onLost);
 
   resize();
@@ -910,9 +943,9 @@ async function createApp(THREE, sec, zoneEls, modsP) {
 
   (async () => {
     let fig = null;
-    try { fig = await loadModel(); } catch (e) { fig = null; }
+    try { fig = await loadModel(); diag('Modelo: cargado'); } catch (e) { fig = null; diag('Modelo: FALLO ' + e.message); }
     if (dead) return;
-    if (!fig) { try { fig = await loadFallback(); } catch (e) { if (!dead) destroy(); return; } }
+    if (!fig) { try { fig = await loadFallback(); } catch (e) { diag('Respaldo: FALLO ' + e.message); if (!dead) destroy(); return; } }
     if (!dead) ready(fig);
   })();
 
