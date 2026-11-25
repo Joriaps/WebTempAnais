@@ -1,0 +1,34 @@
+/* GENERADO por static/build.mjs desde content/site.json → theme. No editar a mano. */
+:root {
+  --c-cream: #FBF4EE;
+  --c-nude: #F1DDD0;
+  --c-pink: #F4B6C2;
+  --c-coral: #F07C6C;
+  --c-sage: #B9CDB4;
+  --c-green: #3F6B57;
+  --c-gold: #C9A24B;
+  --c-ink: #2B2024;
+  --c-white: #FFFFFF;
+  --c-whatsapp: #25D366;
+  --c-coral-strong: #bf2813;
+  --c-pink-strong: #c11d3d;
+  --c-green-strong: #3f6b57;
+  --c-gold-strong: #7a6025;
+  --c-sage-strong: #506d48;
+  --c-gold-on-ink: #c9a24b;
+  --c-muted: #696061;
+  --c-wa: #25D366;
+  --on-cream: #2B2024;
+  --on-nude: #2B2024;
+  --on-pink: #2B2024;
+  --on-coral: #2B2024;
+  --on-sage: #2B2024;
+  --on-green: #FFFFFF;
+  --on-gold: #2B2024;
+  --on-ink: #FFFFFF;
+  --on-white: #2B2024;
+  --on-whatsapp: #2B2024;
+  --on-wa: #2B2024;
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
