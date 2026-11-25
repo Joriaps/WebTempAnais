@@ -561,6 +561,14 @@
     });
   });
 
+  /* ---------- Eventos: oculta los ya pasados (hora local) ---------- */
+  document.querySelectorAll('[data-events]').forEach(function (sec) {
+    var d = new Date(), today = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    var left = 0;
+    sec.querySelectorAll('[data-until]').forEach(function (c) { c.hidden = c.dataset.until < today; if (!c.hidden) left++; });
+    sec.hidden = !left;
+  });
+
   /* ---------- Año del footer ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
 })();

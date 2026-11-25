@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "id": "ejemplo-evento",
+      "title": "[EXEMPLE] Portes obertes",
+      "text": "Text de l’esdeveniment. Canvia active a true per publicar-lo.",
+      "place": "Al centre"
+    }
+  ]
+}

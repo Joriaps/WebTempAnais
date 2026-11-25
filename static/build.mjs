@@ -53,7 +53,12 @@ let bodymapData = {};
 if (existsSync(join(CONTENT, 'bodymap.json'))) {
   try { bodymapData = readJson(join(CONTENT, 'bodymap.json')); } catch (e) { warn(`content/bodymap.json no es JSON válido (${e.message}); no se muestra el mapa corporal`); }
 }
-const BASE = { site: siteSrc.data ?? {}, treatments: trSrc.data ?? {}, packs: pkSrc.data ?? {}, marketing: mkSrc.data ?? {}, bodymap: bodymapData };
+// Eventos (opcional): content/eventos.json
+let eventosData = {};
+if (existsSync(join(CONTENT, 'eventos.json'))) {
+  try { eventosData = readJson(join(CONTENT, 'eventos.json')); } catch (e) { warn(`content/eventos.json no es JSON válido (${e.message}); no se muestran eventos`); }
+}
+const BASE = { eventos: eventosData, site: siteSrc.data ?? {}, treatments: trSrc.data ?? {}, packs: pkSrc.data ?? {}, marketing: mkSrc.data ?? {}, bodymap: bodymapData };
 
 /* Idiomas: el español es la base (raíz /); ca y en en subcarpetas con los mismos slugs. */
 const LANGS = [
@@ -86,7 +91,7 @@ const NEVER_KEYS = new Set([
   'id', 'treatmentId', 'category', 'href', 'icon', 'price', 'oldPrice', 'priceFrom', 'order', 'painLevel', 'combinesWith',
   'featured', 'highlight', 'active', 'from', 'immersive', 'isPlaceholder',
   'theme', 'colors', 'fonts', 'image', 'ogImage', 'siteUrl', 'locale',
-  'phone', 'whatsapp', 'email', 'postalCode', 'mapsUrl', 'mapsEmbed', 'bookingUrl', 'formEndpoint',
+  'phone', 'whatsapp', 'email', 'postalCode', 'mapsUrl', 'mapsEmbed', 'bookingUrl', 'formEndpoint', 'date', 'endDate', 'time', 'action', 'emailField', 'noindex',
 ]);
 const NEVER_PATHS = new Set(['brand.name', 'brand.shortName', 'seo.titleSuffix', 'brand.logoText', 'brand.logoAccent', 'aloha.name', 'ohana.name', 'social', 'model']);
 const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
@@ -179,7 +184,7 @@ function loadUi(lang) {
 
 /* Estado del idioma en curso (lo fija setLang antes de generar cada idioma) */
 let L, LP = '', LANG_UP = '', UI = {};
-let site, brand, contact, seo, legal, categories, treatments, packs, mk, catById, trById, featured, activePromos, bodymap;
+let site, brand, contact, seo, legal, categories, treatments, packs, mk, catById, trById, featured, activePromos, bodymap, eventos;
 function setLang(lang) {
   L = LANGS.find((x) => x.code === lang);
   LP = L.prefix;
@@ -192,6 +197,8 @@ function setLang(lang) {
   packs = D.packs ?? {};
   mk = D.marketing ?? {};
   bodymap = D.bodymap ?? {};
+  // Solo eventos activos con fecha válida y no pasados (main.js oculta además los que pasen sin volver a publicar)
+  eventos = arr(D.eventos?.events).filter((e) => e.active !== false && /^\d{4}-\d{2}-\d{2}$/.test(e.date || '') && (e.endDate || e.date) >= BUILD_DATE).sort((a, b) => (a.date < b.date ? -1 : 1));
   catById = Object.fromEntries(categories.map((c) => [c.id, c]));
   trById = Object.fromEntries(treatments.map((t) => [t.id, t]));
   featured = (() => { const f = treatments.filter((t) => t.featured); return (f.length ? f : treatments).slice(0, 6); })();
@@ -572,6 +579,7 @@ function layout({ path, title, description, body, ld = [], current = '', ogType 
   const root = rootOverride ?? '../'.repeat(depth);   // raíz del idioma (enlaces a páginas)
   const aroot = rootOverride ?? root + LANG_UP;         // raíz de dist (css, js, assets compartidos)
   const here = { siteRoot: aroot, path: path === '404.html' ? '' : path }; // selector de idioma (404 → portadas)
+  const hide = noindex || seo.noindex === true; // seo.noindex: web en pruebas, fuera de los buscadores (el enlace funciona igual)
   const fullTitle = title ? `${title}${seo.titleSuffix || ''}` : `${brand.name} — ${brand.tagline}`;
   const desc = (description || seo.defaultDescription || brand.description || '').slice(0, 300);
   const url = noindex ? '' : pageUrl(path) || '';
@@ -589,10 +597,13 @@ function layout({ path, title, description, body, ld = [], current = '', ogType 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ${base ? `<base href="${esc(base)}">\n` : ''}<title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(desc)}">
-${noindex ? '<meta name="robots" content="noindex">\n' : ''}${url ? `<link rel="canonical" href="${esc(url)}">\n` : ''}${alternates}<meta name="theme-color" content="${esc(C.cream)}">
+${hide ? '<meta name="robots" content="noindex, nofollow">\n' : ''}${url ? `<link rel="canonical" href="${esc(url)}">\n` : ''}${alternates}<meta name="theme-color" content="${esc(C.cream)}">
 <link rel="icon" href="${aroot}assets/favicon.svg" type="image/svg+xml">
 ${fontsUrl ? `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="${esc(fontsUrl)}">\n` : ''}<link rel="stylesheet" href="${aroot}css/theme.css?v=${VERSION}">
-<link rel="stylesheet" href="${aroot}css/main.css?v=${VERSION}">
+${fontsUrl ? '' : `<link rel="preload" href="${aroot}assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${aroot}assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="${aroot}css/fonts.css?v=${VERSION}">
+`}<link rel="stylesheet" href="${aroot}css/main.css?v=${VERSION}">
 <meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="${esc(brand.name)}">
 <meta property="og:title" content="${esc(fullTitle)}">
@@ -797,12 +808,12 @@ function heroImmersive(root, h, heroImg) {
    js/bodymap.js lo convierte en una escena 3D fijada (Three.js, cargado solo
    cuando la sección se acerca) si hay WebGL y no hay prefers-reduced-motion.
    ========================================================================== */
-const THREE_CDN = 'https://cdn.jsdelivr.net/npm/three@0.160.0/';
-const THREE_URL = THREE_CDN + 'build/three.module.js';
-// Complementos de la misma versión (GLTFLoader importa 'three': se resuelve con el import map de la sección)
-const THREE_GLTF = THREE_CDN + 'examples/jsm/loaders/GLTFLoader.js';
-const THREE_MESHOPT = THREE_CDN + 'examples/jsm/libs/meshopt_decoder.module.js';
-const THREE_ROOMENV = THREE_CDN + 'examples/jsm/environments/RoomEnvironment.js';
+// Three.js 0.160.0 alojado en la propia web (js/vendor/three). Rutas relativas a js/bodymap.js, que las importa.
+const THREE_CDN = './vendor/three/';
+const THREE_URL = THREE_CDN + 'three.module.min.js';
+const THREE_GLTF = THREE_CDN + 'GLTFLoader.js';
+const THREE_MESHOPT = THREE_CDN + 'meshopt_decoder.module.js';
+const THREE_ROOMENV = THREE_CDN + 'RoomEnvironment.js';
 const BM_MODEL = 'assets/models/figure.glb'; // maniquí CC0 (MakeHuman) por defecto, ver static/src/assets/models/CREDITS.md
 /** Modelo 3D del recorrido: bodymap.json → model (ruta relativa a static/src/) o el de por defecto; '' si no existe. */
 function bodymapModel(bm) {
@@ -867,7 +878,6 @@ function bodymapSection(root) {
     </div>
   </div>
   <span class="bm__end" id="bm-end" tabindex="-1"></span>
-  <script type="importmap">{"imports":{"three":"${THREE_URL}"}}</script>
   <script type="module" src="${root}${LANG_UP}js/bodymap.js?v=${VERSION}"></script>
 </section>`;
 }
@@ -956,6 +966,8 @@ ${activePromos.length ? `<section class="section" aria-labelledby="promos-title"
   </div>
 </section>` : ''}
 
+${eventosSection()}
+
 ${arr(testi.items).length ? `<section class="section section--white" aria-labelledby="reviews-title">
   <div class="container">
     <div class="section__head"><p class="eyebrow">${u('homePage.reviewsEyebrow')}</p><h2 id="reviews-title">${rich('homePage.reviewsTitle')}</h2></div>
@@ -984,6 +996,8 @@ ${lm && lm.title ? `<section class="section" aria-labelledby="lead-title">
     </div>
   </div>
 </section>` : ''}
+
+${newsletterSection(root)}
 
 ${arr(mk.faqGeneral).length ? `<section class="section section--sage" aria-labelledby="faq-title">
   <div class="container container--narrow">
@@ -1025,6 +1039,37 @@ function aboutSection() {
 </section>`;
 }
 
+function eventosSection() {
+  if (!eventos.length) return '';
+  const fmt = (d) => new Intl.DateTimeFormat(L.intl, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(d + 'T12:00:00Z'));
+  return `<section class="section section--nude" id="eventos" aria-labelledby="ev-title" data-events>
+  <div class="container">
+    <div class="section__head"><p class="eyebrow">${u('eventos.eyebrow')}</p><h2 id="ev-title">${rich('eventos.title')}</h2></div>
+    <div class="grid grid--3">${eventos.map((e, i) => `<article class="card evento reveal" style="--i:${i % 3}" data-until="${esc(e.endDate || e.date)}">
+      <p class="evento__date">${icon('calendar')}<span><time datetime="${esc(e.date)}">${esc(fmt(e.date))}</time>${e.endDate && e.endDate !== e.date ? ` – <time datetime="${esc(e.endDate)}">${esc(fmt(e.endDate))}</time>` : ''}${e.time ? `<br>${esc(e.time)}` : ''}</span></p>
+      <h3>${esc(e.title)}</h3><p>${esc(e.text)}</p>
+      ${e.place || e.spots || e.price !== undefined && e.price !== null ? `<ul class="checklist">${e.place ? `<li>${icon('check')}<span>${esc(e.place)}</span></li>` : ''}${isNum(e.spots) ? `<li>${icon('check')}<span>${u('eventos.spots', { n: e.spots })}</span></li>` : ''}${e.price === 0 ? `<li>${icon('check')}<span>${u('eventos.free')}</span></li>` : isNum(e.price) ? `<li>${icon('check')}<span>${money(e.price)}</span></li>` : ''}</ul>` : ''}
+      <p>${waBtn(waFor(tx('eventos.wa', { name: e.title })), e.cta || tx('eventos.cta'), 'btn btn--ink')}</p>
+    </article>`).join('')}</div>
+  </div>
+</section>`;
+}
+/** Suscripción al boletín: solo si site.newsletter.action tiene la URL del formulario del proveedor (Brevo, Mailchimp…), con doble confirmación activada allí. */
+function newsletterSection(root) {
+  const n = site.newsletter;
+  if (!n || !/^https:\/\//.test(n.action || '')) return '';
+  return `<section class="section" id="boletin" aria-labelledby="nl-title">
+  <div class="container container--narrow">
+    <form class="form form--card" action="${esc(n.action)}" method="post" target="_blank" rel="noopener" aria-labelledby="nl-title">
+      <h2 id="nl-title">${u('newsletter.title')}</h2><p>${u('newsletter.text')}</p>
+      <div class="field"><label for="nl-email">${u('form.leadEmail')} *</label><input id="nl-email" name="${esc(n.emailField || 'EMAIL')}" type="email" autocomplete="email" required></div>
+      ${privacyCheck(root, 'nl-priv').replace(esc(legal.privacyText || tx('form.privacyDefault')), u('newsletter.consent'))}
+      <button class="btn" type="submit">${icon('mail')}<span>${u('newsletter.submit')}</span></button>
+      <p class="form__hint">${u('newsletter.hint')}</p>
+    </form>
+  </div>
+</section>`;
+}
 function promoCard(p, i = 0) {
   return `<article class="card promo reveal" style="--i:${i % 3}">
     ${p.badge ? `<span class="promo__badge">${esc(p.badge)}</span>` : ''}
@@ -1403,7 +1448,9 @@ function assets() {
 
 function seoFiles() {
   const list = [...pages];
-  if (SITE_URL) {
+  if (seo.noindex === true) {
+    // Sin sitemap. robots.txt sigue permitiendo el paso: si se bloquea, el buscador no llega a leer el «noindex».
+  } else if (SITE_URL) {
     // Una <url> por página e idioma, con sus alternativas hreflang (xhtml:link)
     const prio = (p) => (p === '' ? '1.0' : p.split('/').filter(Boolean).length > 1 ? '0.7' : '0.8');
     const alts = (p) => [...LANGS.map((x) => `<xhtml:link rel="alternate" hreflang="${x.code}" href="${esc(pageUrl(p, x))}"/>`), `<xhtml:link rel="alternate" hreflang="x-default" href="${esc(pageUrl(p, LANGS[0]))}"/>`].join('');
@@ -1422,7 +1469,7 @@ ${LANGS.flatMap((x) => list.map((p) => `  <url><loc>${esc(pageUrl(p, x))}</loc>$
 `);
     warn('Sin seo.siteUrl ni SITE_URL: no hay canonical ni sitemap con URLs (el workflow de GitHub Pages lo define automáticamente).');
   }
-  writeFileSync(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n${SITE_URL ? `\nSitemap: ${new URL('sitemap.xml', SITE_URL).href}\n` : ''}`);
+  writeFileSync(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n${SITE_URL && seo.noindex !== true ? `\nSitemap: ${new URL('sitemap.xml', SITE_URL).href}\n` : ''}`);
 }
 
 /* ==========================================================================

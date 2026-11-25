@@ -1082,3 +1082,9 @@ table { border-collapse: collapse; width: 100%; }
   .price-table tbody th[scope="row"], .price-table thead th:first-child { position: sticky; left: 0; z-index: 1; background: var(--c-white); box-shadow: 1px 0 0 color-mix(in srgb, var(--c-nude) 75%, transparent); min-width: 9.5rem; max-width: 11rem; }
   .price-table thead th:first-child { background: color-mix(in srgb, var(--c-nude) 35%, var(--c-white)); }
 }
+
+/* Eventos */
+.evento[hidden], [data-events][hidden] { display: none; }
+.evento__date { display: flex; gap: .6rem; align-items: flex-start; font-weight: 700; margin: 0; }
+.evento__date .icon { margin-top: .2em; color: var(--c-coral-strong); }
+.evento time::first-letter { text-transform: uppercase; }

@@ -1,0 +1,17 @@
+{
+  "events": [
+    {
+      "id": "ejemplo-evento",
+      "active": false,
+      "title": "[EJEMPLO] Puertas abiertas",
+      "text": "Texto del evento. Cambia active a true para publicarlo.",
+      "date": "2027-01-15",
+      "endDate": "",
+      "time": "17:00 – 19:00",
+      "place": "En el centro",
+      "spots": 10,
+      "price": 0,
+      "cta": ""
+    }
+  ]
+}

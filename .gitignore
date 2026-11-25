@@ -2,3 +2,6 @@ static/dist/
 node_modules/
 .DS_Store
 Thumbs.db
+
+# Documentos internos (estrategia, competencia…): solo en local
+docs/*.md

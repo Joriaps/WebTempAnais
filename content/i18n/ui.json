@@ -275,7 +275,7 @@
         "s1": "1. ¿Qué son las cookies?",
         "p1": "Pequeños archivos que un sitio web guarda en tu navegador.",
         "s2": "2. Cookies que usa este sitio",
-        "p2": "Este sitio **no instala cookies propias de análisis ni de publicidad**. Se cargan tipografías desde Google Fonts, lo que implica una conexión con servidores de Google (sin cookies de seguimiento por nuestra parte).",
+        "p2": "Este sitio **no instala cookies propias de análisis ni de publicidad**. Las tipografías y las librerías se sirven desde esta misma web, sin conectar con servidores de terceros.",
         "p2b": "Si en el futuro se añade analítica, mapas incrustados o un software de reservas que use cookies no esenciales, se incorporará un banner de consentimiento y se detallarán aquí. [POR DEFINIR]",
         "s3": "3. Cómo gestionarlas",
         "p3": "Puedes bloquear o borrar las cookies desde la configuración de tu navegador."
@@ -287,6 +287,21 @@
       "heading": "Ups, esta página se fue de spa",
       "lead": "No encontramos lo que buscas, pero seguro que algo de esto te encanta.",
       "back": "Volver al inicio"
+    },
+    "eventos": {
+      "eyebrow": "Agenda",
+      "title": "Próximos *eventos*",
+      "spots": "{n} plazas",
+      "free": "Gratis",
+      "cta": "Reservar plaza",
+      "wa": "¡Hola! Me gustaría reservar plaza en: {name}"
+    },
+    "newsletter": {
+      "title": "Novedades y ofertas por email",
+      "text": "Promociones y eventos del centro. Puedes darte de baja cuando quieras.",
+      "consent": "Quiero recibir novedades y ofertas por email y acepto la política de privacidad.",
+      "submit": "Suscribirme",
+      "hint": "Te enviaremos un email para confirmar. Hasta que no lo confirmes, no quedas en la lista."
     }
   },
   "ca": {
@@ -564,7 +579,7 @@
         "s1": "1. Què són les galetes?",
         "p1": "Són petits fitxers que un lloc web desa al teu navegador.",
         "s2": "2. Galetes que utilitza aquest lloc",
-        "p2": "Aquest lloc **no instal·la galetes pròpies d'anàlisi ni de publicitat**. Es carreguen tipografies des de Google Fonts, cosa que implica una connexió amb servidors de Google (sense galetes de seguiment per part nostra).",
+        "p2": "Aquest lloc **no instal·la galetes pròpies d'anàlisi ni de publicitat**. Les tipografies i les llibreries se serveixen des d'aquest mateix web, sense connectar amb servidors de tercers.",
         "p2b": "Si en el futur s'hi afegeix analítica, mapes incrustats o un programari de reserves que utilitzi galetes no essencials, s'hi incorporarà un bàner de consentiment i es detallaran aquí. [POR DEFINIR]",
         "s3": "3. Com gestionar-les",
         "p3": "Pots bloquejar o esborrar les galetes des de la configuració del teu navegador."
@@ -576,6 +591,21 @@
       "heading": "Vaja, aquesta pàgina se n'ha anat a l'spa",
       "lead": "No trobem el que cerques, però segur que alguna d'aquestes opcions t'encanta.",
       "back": "Torna a l'inici"
+    },
+    "eventos": {
+      "eyebrow": "Agenda",
+      "title": "Propers *esdeveniments*",
+      "spots": "{n} places",
+      "free": "Gratuït",
+      "cta": "Reservar plaça",
+      "wa": "Hola! M’agradaria reservar plaça a: {name}"
+    },
+    "newsletter": {
+      "title": "Novetats i ofertes per correu",
+      "text": "Promocions i esdeveniments del centre. Pots donar-te de baixa quan vulguis.",
+      "consent": "Vull rebre novetats i ofertes per correu i accepto la política de privacitat.",
+      "submit": "Subscriure’m",
+      "hint": "T’enviarem un correu per confirmar. Fins que no el confirmis, no quedes a la llista."
     }
   },
   "en": {
@@ -853,7 +883,7 @@
         "s1": "1. What are cookies?",
         "p1": "Small files that a website stores in your browser.",
         "s2": "2. Cookies used on this website",
-        "p2": "This website **does not set its own analytics or advertising cookies**. Fonts are loaded from Google Fonts, which involves a connection to Google's servers (with no tracking cookies on our part).",
+        "p2": "This website **does not set its own analytics or advertising cookies**. Fonts and libraries are served from this website itself, without connecting to third-party servers.",
         "p2b": "If analytics, embedded maps or booking software that uses non-essential cookies are added in the future, a consent banner will be added and the cookies will be listed here. [POR DEFINIR]",
         "s3": "3. How to manage them",
         "p3": "You can block or delete cookies in your browser settings."
@@ -865,6 +895,21 @@
       "heading": "Oops, this page has gone to the spa",
       "lead": "We couldn't find what you were looking for, but we're sure you'll love something here.",
       "back": "Back to home"
+    },
+    "eventos": {
+      "eyebrow": "What’s on",
+      "title": "Upcoming *events*",
+      "spots": "{n} places",
+      "free": "Free",
+      "cta": "Book a place",
+      "wa": "Hello! I would like to book a place at: {name}"
+    },
+    "newsletter": {
+      "title": "News and offers by email",
+      "text": "Promotions and events from the salon. You can unsubscribe at any time.",
+      "consent": "I want to receive news and offers by email and accept the privacy policy.",
+      "submit": "Subscribe",
+      "hint": "We will send you an email to confirm. You are not on the list until you confirm."
     }
   }
 }

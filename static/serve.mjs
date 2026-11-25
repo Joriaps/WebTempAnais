@@ -35,4 +35,4 @@ createServer(async (req, res) => {
   } catch (e) {
     res.writeHead(500).end(String(e));
   }
-}).listen(PORT, () => console.log(`Sirviendo static/dist en http://localhost:${PORT}/`));
+}).listen(PORT, '127.0.0.1', () => console.log(`Sirviendo static/dist en http://localhost:${PORT}/`));

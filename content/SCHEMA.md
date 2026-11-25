@@ -19,7 +19,7 @@ Valores con `"[POR DEFINIR]"` = dato real pendiente del negocio.
   "social": { "instagram": "", "tiktok": "", "facebook": "" },
   "theme": {
     "colors": { "cream": "", "nude": "", "pink": "", "coral": "", "sage": "", "green": "", "gold": "", "ink": "", "white": "" },
-    "fonts": { "heading": "", "body": "", "googleFontsUrl": "" }
+    "fonts": { "heading": "", "body": "", "googleFontsUrl": "" } // vacío = letras alojadas en la web (css/fonts.css)
   },
   "nav": [ { "label": "", "href": "" } ],
   "hero": { "eyebrow": "", "title": "", "titleAccent": "", "subtitle": "", "ctaPrimary": { "label": "", "href": "" }, "ctaSecondary": { "label": "", "href": "" } },
@@ -204,3 +204,12 @@ Sección «Recorrido por zonas» (`#zonas`) de la portada, entre las categorías
 - Si el modelo no carga (sin red, navegador sin import maps, archivo roto), se usa la figura procedural (`static/src/js/bodymap-figure.js`, maniquí neutro en la misma postura en A) como nube de puntos dorada. Esa misma geometría dibuja la silueta SVG de la versión estática.
 - Funcionamiento: sin JS, sin WebGL o con `prefers-reduced-motion` se ve la versión estática (silueta + acordeón con los textos y enlaces). Si no, `js/bodymap.js` carga Three.js y GLTFLoader (versión fijada desde jsDelivr, solo al acercarse a la sección; el HTML trae un import map para `three`) y monta la escena fijada: ~0,4 pantallas de scroll por zona, panel con la zona activa (aria-live), puntos de progreso y puntos de la figura clicables.
 - Traducción: `content/i18n/<ca|en>/bodymap.json` con `eyebrow`, `title`, `titleAccent`, `intro` y `zones` (`id`, `label`, `text`; se emparejan por `id`). `treatments`, `view` y `anchor` salen siempre del español. Textos fijos (botones, aria-labels, «Zona {n} de {total}»…): `content/i18n/ui.json → bodymap`.
+
+## `eventos.json` — eventos (portada)
+`{ "events": [ { "id", "active", "title", "text", "date": "AAAA-MM-DD", "endDate", "time", "place", "spots": 10, "price": 0, "cta" } ] }`
+Solo se ven los que tienen `active: true` y no han pasado. `price: 0` = Gratis; `null` = no se muestra. Traducciones en `i18n/{ca,en}/eventos.json` (por `id`).
+
+## Otros ajustes de `site.json`
+- `seo.noindex: true`: la web no sale en los buscadores (el enlace funciona). **Ponlo en false al abrir.**
+- `newsletter.action`: URL del formulario del proveedor de correo (activar allí la **doble confirmación**). Vacío = no se muestra. `emailField`: nombre del campo de email que pide el proveedor.
+- `contact.bookingUrl`: enlace de Booksy. Al rellenarlo aparece el botón de reserva online.

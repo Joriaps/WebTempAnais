@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "id": "ejemplo-evento",
+      "title": "[EXAMPLE] Open day",
+      "text": "Event text. Set active to true to publish it.",
+      "place": "At the salon"
+    }
+  ]
+}
