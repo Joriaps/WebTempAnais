@@ -91,7 +91,7 @@ const NEVER_KEYS = new Set([
   'id', 'treatmentId', 'category', 'href', 'icon', 'price', 'oldPrice', 'priceFrom', 'order', 'painLevel', 'combinesWith',
   'featured', 'highlight', 'active', 'from', 'immersive', 'isPlaceholder',
   'theme', 'colors', 'fonts', 'image', 'ogImage', 'siteUrl', 'locale',
-  'phone', 'whatsapp', 'email', 'postalCode', 'mapsUrl', 'mapsEmbed', 'bookingUrl', 'formEndpoint', 'date', 'endDate', 'time', 'action', 'emailField', 'noindex',
+  'phone', 'whatsapp', 'email', 'postalCode', 'mapsUrl', 'mapsEmbed', 'bookingUrl', 'formEndpoint', 'date', 'endDate', 'action', 'emailField', 'noindex',
 ]);
 const NEVER_PATHS = new Set(['brand.name', 'brand.shortName', 'seo.titleSuffix', 'brand.logoText', 'brand.logoAccent', 'aloha.name', 'ohana.name', 'social', 'model']);
 const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
